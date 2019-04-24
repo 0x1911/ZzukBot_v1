@@ -98,4 +98,13 @@ namespace ZzukBot.Constants
         internal XYZ Coordinates { get; private set; }
         internal string MapPosition { get; private set; }
     }
+
+    /// <summary>
+    /// Information about profession and skill level an object requires to be collected
+    /// </summary>
+    internal struct GatherInfo
+    {
+        public Enums.GatherType Type { get; set; }
+        public int RequiredSkill { get; set; }
+    }
 }

@@ -266,6 +266,7 @@ namespace ZzukBot.Engines.Grind
                 new StateWalk(),
                 new StateFindTarget(),
                 new StateApproachTarget(),
+                new StateWalkToGather(),
                 new StateFight(),
                 new StateRest(),
                 new StateBuff()

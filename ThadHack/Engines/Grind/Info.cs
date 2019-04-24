@@ -20,10 +20,12 @@ namespace ZzukBot.Engines.Grind
             Target = new _Target();
             Combat = new _Combat();
             Loot = new _Loot();
+            Gather = new _Gather();
             Vendor = new _Vendor();
             PathAfterFightToWaypoint = new _PathAfterFightToWaypoint();
             PathToPosition = new _PathToPosition();
             PathToUnit = new _PathToUnit();
+            PathToObject = new _PathToObject();
             PathSafeGhostwalk = new _PathSafeGhostwalk();
             PathBackup = new _PathBackup();
             PathForceBackup = new _PathForceBackup();
@@ -43,11 +45,13 @@ namespace ZzukBot.Engines.Grind
         internal _Target Target { get; set; }
         internal _Combat Combat { get; set; }
         internal _Loot Loot { get; set; }
+        internal _Gather Gather { get; set; }
         internal _Vendor Vendor { get; set; }
 
         internal _PathAfterFightToWaypoint PathAfterFightToWaypoint { get; set; }
         internal _PathToPosition PathToPosition { get; set; }
         internal _PathToUnit PathToUnit { get; set; }
+        internal _PathToObject PathToObject { get; set; }
         internal _PathSafeGhostwalk PathSafeGhostwalk { get; set; }
         internal _PathBackup PathBackup { get; set; }
         internal _PathForceBackup PathForceBackup { get; set; }

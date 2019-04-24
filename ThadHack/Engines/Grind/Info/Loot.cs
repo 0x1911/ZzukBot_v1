@@ -10,14 +10,13 @@ namespace ZzukBot.Engines.Grind.Info
     internal class _Loot
     {
         internal volatile bool BlacklistCurrentLoot;
+        private List<ulong> LootBlacklist { get; }
 
         internal _Loot()
         {
             LootBlacklist = new List<ulong>();
         }
-
-        private List<ulong> LootBlacklist { get; }
-
+        
         internal WoWUnit LootableMob
         {
             get

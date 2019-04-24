@@ -214,5 +214,15 @@ namespace ZzukBot.Constants
             Hotspot,
             Waypoint
         }
+
+        /// <summary>
+        /// Gather types of WoW
+        /// </summary>
+        internal enum GatherType
+        {
+            None = -1,
+            Herbalism = 2,
+            Mining = 3
+        }
     }
 }
