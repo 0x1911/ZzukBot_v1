@@ -92,6 +92,7 @@
     <Compile Include="Engines\Grind\States\stateWalkToGather.cs" />
     <Compile Include="FSM\Engine.cs" />
     <Compile Include="FSM\State.cs" />
+    <Compile Include="Game\Static\Skills.cs" />
     <Compile Include="GreyMagic\AllocatedMemory.cs" />
     <Compile Include="GreyMagic\ExternalProcessReader.cs" />
     <Compile Include="GreyMagic\InProcessMemoryReader.cs" />

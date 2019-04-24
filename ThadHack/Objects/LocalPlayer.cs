@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using ZzukBot.Constants;
 using ZzukBot.Engines.Grind;
@@ -38,6 +39,8 @@ namespace ZzukBot.Objects
 
         internal volatile Spells Spells;
 
+        internal IntPtr SkillField => Pointer.Add(8).ReadAs<IntPtr>().Add(0xB38);
+
         /// <summary>
         ///     Constructor
         /// </summary>
@@ -46,8 +49,10 @@ namespace ZzukBot.Objects
         {
             Inventory = new Inventory();
             Spells = new Spells();
+            Skills = new List<Game.Static.Skills.Skill>();
         }
-
+        
+        internal List<Game.Static.Skills.Skill> Skills = new Game.Static.Skills().GetAllPlayerSkills();
         /// <summary>
         ///     Position of corpse
         /// </summary>

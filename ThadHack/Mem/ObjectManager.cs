@@ -97,7 +97,8 @@ namespace ZzukBot.Mem
         /// </summary>
         internal static bool EnumObjects()
         {
-            if (Offsets.Player.IsIngame.ReadAs<byte>() == 0) return false;
+            if (Offsets.Player.IsIngame.ReadAs<byte>() == 0) return false;            
+
             return _EnumObjects();
         }
 
