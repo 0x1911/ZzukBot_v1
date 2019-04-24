@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using ZzukBot.Engines.CustomClass;
 
-namespace ZzukBot.GUI_Forms
+namespace ZzukBot.Forms
 {
     internal partial class CC_Selector : Form
     {

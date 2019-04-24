@@ -5,7 +5,6 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using ZzukBot.Engines.Grind;
-using ZzukBot.GUI_Forms;
 using ZzukBot.Helpers;
 using ZzukBot.Mem;
 using ZzukBot.Objects;
@@ -129,7 +128,7 @@ namespace ZzukBot.Engines.CustomClass
                 {
                     selectedCC = "";
 
-                    SelectorForm = new CC_Selector(temp_ccs);
+                    //SelectorForm = CC_Selector(temp_ccs);
                     SelectorForm.ShowDialog();
                     SelectorForm.Close();
                     SelectorForm.Dispose();
@@ -148,6 +147,11 @@ namespace ZzukBot.Engines.CustomClass
                 return true;
             }
             return false;
+        }
+
+        private static void CC_Selector(List<CustomClass> temp_ccs)
+        {
+            throw new NotImplementedException();
         }
 
         internal static void FightPulse(ref WoWUnit parTarget)

@@ -9,18 +9,16 @@ using System.Windows.Forms;
 using ZzukBot.Constants;
 using ZzukBot.Engines;
 using ZzukBot.Engines.CustomClass;
-using ZzukBot.Engines.Grind;
 using ZzukBot.Engines.Grind.Info;
 using ZzukBot.Engines.ProfileCreation;
 using ZzukBot.Helpers;
 using ZzukBot.Hooks;
-using ZzukBot.Ingame;
 using ZzukBot.Mem;
 using ZzukBot.Properties;
 using ZzukBot.Server.AuthClient;
 using ZzukBot.Settings;
 
-namespace ZzukBot.GUI_Forms
+namespace ZzukBot.Forms
 {
     //[System.Reflection.ObfuscationAttribute(Feature = "renaming", ApplyToMembers = true)]
     internal partial class Main : Form
@@ -37,29 +35,49 @@ namespace ZzukBot.GUI_Forms
             InitializeComponent();
             Text += " - " + Assembly.GetExecutingAssembly().GetName().Version;
             PrepareForLaunch();
-            while (true)
+
+            //set string bytes[] former set received from the auth server
+            try
             {
-                using (var login = new LoginForm())
-                {
-                    if (login.ShowDialog() == DialogResult.OK)
-                    {
-                        string reason;
-                        if (AuthProcessor.Instance.Auth(login.Email, login.Password, out reason))
-                        {
-                            Task.Run(() => EndLaunchPrepare());
-                            return;
-                        }
-                        else
-                        {
-                            MessageBox.Show($"Authentication failed: {reason}");
-                        }
-                    }
-                    else
-                    {
-                        Environment.Exit(0);
-                    }
-                }
+                var loadDetour =
+            "MOV [0xCE8978], EAX[|]" +
+            "pushfd[|]" +
+            "pushad[|]" +
+            "push EAX[|]" +
+            "call [|addr|][|]" +
+            "popad[|]" +
+            "popfd[|]" +
+            "jmp 0x006CA233[|]";
+                var memcpyDetour =
+            "PUSH ESI[|]" +
+            "PUSH EDI[|]" +
+            "CLD[|]" +
+            "MOV EDX, [ESP+20][|]" +
+            "MOV ESI, [ESP+16][|]" +
+            "MOV EAX, [ESP+12][|]" +
+            "MOV ECX, EDX[|]" +
+            "MOV EDI, EAX[|]" +
+            "pushfd[|]" +
+            "pushad[|]" +
+            "PUSH EDI[|]" +
+            "PUSH ECX[|]" +
+            "PUSH ESI[|]" +
+            "call [|addr|][|]" +
+            "popad[|]" +
+            "popfd[|]" +
+            "POP EDI[|]" +
+            "POP ESI[|]" +
+            "jmp [|addr|][|]";
+
+
+                SendOvers.WardenLoadDetour = loadDetour.Split(new string[] { "[|]" }, StringSplitOptions.RemoveEmptyEntries);
+                SendOvers.WardenMemCpyDetour = memcpyDetour.Split(new string[] { "[|]" }, StringSplitOptions.RemoveEmptyEntries);
             }
+            catch
+            {
+            }
+            
+                Task.Run(() => EndLaunchPrepare());                   
         }
 
         public sealed override string Text
@@ -691,6 +709,16 @@ namespace ZzukBot.GUI_Forms
 
         private void cbIgnoreZ_CheckedChanged(object sender, EventArgs e)
         {
+        }
+
+        private void cbMine_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbLootUnits_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
 
         #endregion

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace ZzukBot.GUI_Forms
+namespace ZzukBot.Forms
 {
     internal partial class FormRestockItem : Form
     {

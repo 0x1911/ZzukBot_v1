@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
 using ZzukBot.Engines.Grind;
 using ZzukBot.Engines.ProfileCreation;
-using ZzukBot.GUI_Forms;
+using ZzukBot.Forms;
 using ZzukBot.Settings;
 
 namespace ZzukBot.Engines

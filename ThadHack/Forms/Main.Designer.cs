@@ -1,4 +1,4 @@
-namespace ZzukBot.GUI_Forms
+namespace ZzukBot.Forms
 {
     partial class Main
     {
@@ -44,6 +44,7 @@ namespace ZzukBot.GUI_Forms
             this.lGrindLoadProfile = new System.Windows.Forms.Label();
             this.bGrindRun = new System.Windows.Forms.Button();
             this.tpProfile = new System.Windows.Forms.TabPage();
+            this.cbIgnoreZ = new System.Windows.Forms.CheckBox();
             this.lAddPointAs = new System.Windows.Forms.Label();
             this.rbWaypoint = new System.Windows.Forms.RadioButton();
             this.bCreateHelp = new System.Windows.Forms.Button();
@@ -155,7 +156,6 @@ namespace ZzukBot.GUI_Forms
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tpNews = new System.Windows.Forms.TabPage();
             this.rtbNews = new System.Windows.Forms.RichTextBox();
-            this.cbIgnoreZ = new System.Windows.Forms.CheckBox();
             this.tcMain.SuspendLayout();
             this.tpGrind.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgChat)).BeginInit();
@@ -361,6 +361,17 @@ namespace ZzukBot.GUI_Forms
             this.tpProfile.Size = new System.Drawing.Size(477, 467);
             this.tpProfile.TabIndex = 1;
             this.tpProfile.Text = "Profile";
+            // 
+            // cbIgnoreZ
+            // 
+            this.cbIgnoreZ.AutoSize = true;
+            this.cbIgnoreZ.Location = new System.Drawing.Point(223, 373);
+            this.cbIgnoreZ.Name = "cbIgnoreZ";
+            this.cbIgnoreZ.Size = new System.Drawing.Size(148, 17);
+            this.cbIgnoreZ.TabIndex = 14;
+            this.cbIgnoreZ.Text = "Ignore Z axis in this profile";
+            this.cbIgnoreZ.UseVisualStyleBackColor = true;
+            this.cbIgnoreZ.CheckedChanged += new System.EventHandler(this.cbIgnoreZ_CheckedChanged);
             // 
             // lAddPointAs
             // 
@@ -893,6 +904,7 @@ namespace ZzukBot.GUI_Forms
             this.cbLootUnits.TabIndex = 5;
             this.cbLootUnits.Text = "Loot Units";
             this.cbLootUnits.UseVisualStyleBackColor = true;
+            this.cbLootUnits.CheckedChanged += new System.EventHandler(this.cbLootUnits_CheckedChanged);
             // 
             // cbMine
             // 
@@ -903,6 +915,7 @@ namespace ZzukBot.GUI_Forms
             this.cbMine.TabIndex = 4;
             this.cbMine.Text = "Mine";
             this.cbMine.UseVisualStyleBackColor = true;
+            this.cbMine.CheckedChanged += new System.EventHandler(this.cbMine_CheckedChanged);
             // 
             // cbHerb
             // 
@@ -1598,17 +1611,6 @@ namespace ZzukBot.GUI_Forms
             this.rtbNews.TabIndex = 0;
             this.rtbNews.Text = "";
             this.rtbNews.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtbNews_LinkClicked);
-            // 
-            // cbIgnoreZ
-            // 
-            this.cbIgnoreZ.AutoSize = true;
-            this.cbIgnoreZ.Location = new System.Drawing.Point(223, 373);
-            this.cbIgnoreZ.Name = "cbIgnoreZ";
-            this.cbIgnoreZ.Size = new System.Drawing.Size(148, 17);
-            this.cbIgnoreZ.TabIndex = 14;
-            this.cbIgnoreZ.Text = "Ignore Z axis in this profile";
-            this.cbIgnoreZ.UseVisualStyleBackColor = true;
-            this.cbIgnoreZ.CheckedChanged += new System.EventHandler(this.cbIgnoreZ_CheckedChanged);
             // 
             // Main
             // 

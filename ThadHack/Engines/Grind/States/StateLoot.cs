@@ -70,7 +70,7 @@ namespace ZzukBot.Engines.Grind.States
                         Wait.Remove("Looting");
                     }
                 }
-                if (Wait.For("Looting", 5000))
+                if (Wait.For("Looting", 1300))
                 {
                     Grinder.Access.Info.Loot.AddToLootBlacklist(mob.Guid);
                 }

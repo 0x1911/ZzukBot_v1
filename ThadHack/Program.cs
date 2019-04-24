@@ -10,7 +10,7 @@ using System.Threading;
 using System.Windows.Forms;
 using ZzukBot.Constants;
 using ZzukBot.Engines.CustomClass;
-using ZzukBot.GUI_Forms;
+using ZzukBot.Forms;
 using ZzukBot.Helpers;
 using ZzukBot.OOP;
 using ZzukBot.Properties;
@@ -130,10 +130,10 @@ namespace ZzukBot
                 if (mmapVersion != mmapVersionConst)
                     QuitWithMessage("Wrong mmaps version! Please redownload");
             }
-            if (GetMD5AsBase64("Fasm.NET.dll") != Resources.FasmNetMd5)
+          /*  if (GetMD5AsBase64("Fasm.NET.dll") != Resources.FasmNetMd5)
             {
                 QuitWithMessage("Fastm.NET.dll is broken. Please redownload");
-            }
+            } */
 
             // Do the settings exist?
             if (!File.Exists("..\\Settings\\Settings.xml"))

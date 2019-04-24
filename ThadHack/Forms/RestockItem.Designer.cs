@@ -1,4 +1,4 @@
-﻿namespace ZzukBot.GUI_Forms
+﻿namespace ZzukBot.Forms
 {
     partial class FormRestockItem
     {

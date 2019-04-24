@@ -5,7 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
 using ZzukBot.Constants;
-using ZzukBot.GUI_Forms;
+using ZzukBot.Forms;
 using ZzukBot.Helpers;
 using ZzukBot.Mem;
 using ZzukBot.Settings;
