@@ -35,6 +35,9 @@ namespace ZzukBot.Engines.Grind.States
             Grinder.Access.Info.Target.SearchDirect = true;
             Grinder.Access.Info.Combat.LastFightTick = Environment.TickCount + ran.Next(50, 100);
 
+            //lets sprinkle in a random jump once in while, maybe?
+            Shared.RandomJump();
+
             if (target != null)
             {
                 try

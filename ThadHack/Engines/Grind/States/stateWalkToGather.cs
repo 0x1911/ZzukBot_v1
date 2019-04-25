@@ -35,6 +35,9 @@ namespace ZzukBot.Engines.Grind.States
             }
             if (Calc.Distance3D(resource.Position, ObjectManager.Player.Position) > 4)
             {
+                //lets sprinkle in a random jump once in while, maybe?
+                Shared.RandomJump();
+
                 var tu = Grinder.Access.Info.PathToObject.ToUnit(resource);
                 if (tu.Item1)
                     ObjectManager.Player.CtmTo(tu.Item2);

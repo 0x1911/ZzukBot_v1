@@ -18,9 +18,10 @@ namespace ZzukBot.Engines.Grind
         {
             if (Wait.For("RandomJump1", 1000))
             {
-                if (Wait.For("RandomJump2", ran.Next(30000, 50000)))
+                var ranNumber = ran.Next(1, 10);
+                if(ranNumber == 5)
                 {
-                    //Functions.DoString("Jump()");
+                    Functions.DoString("Jump()");
                 }
             }
         }
