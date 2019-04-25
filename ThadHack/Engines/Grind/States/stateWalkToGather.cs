@@ -28,8 +28,6 @@ namespace ZzukBot.Engines.Grind.States
 
             if (savedResource == null) return;
 
-            Helpers.Logger.Append("Want to gather " + savedResource.Name + " in " + Calc.Distance3D(savedResource.Position, ObjectManager.Player.Position));
-
             if (savedResource.Guid != oldResourceGuid)
             {
                 oldResourceGuid = savedResource.Guid;
@@ -62,6 +60,7 @@ namespace ZzukBot.Engines.Grind.States
             else
             {
                 ObjectManager.Player.StopMovement(Enums.ControlBits.All);
+                ObjectManager.Player.CtmStopMovement();
 
                 if (!ObjectManager.Player.IsLooting)
                 {
