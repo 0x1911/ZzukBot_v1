@@ -97,7 +97,7 @@ namespace ZzukBot.Engines.Grind
                             {
                                 if (!Info.RareSpotter.Notified(tmp.Guid))
                                 {
-                                    Main.MainForm.updateNotification("Found a rare: " + tmp.Name);
+                                    BMainForm.MainForm.updateNotification("Found a rare: " + tmp.Name);
                                 }
                             }
                         }
@@ -129,7 +129,7 @@ namespace ZzukBot.Engines.Grind
             }
             switch (Relog.LoginState)
             {
-                case "login":
+                case Constants.Enums.LoginState.login:
                     {
                         var glueText = Relog.GetGlueDialogText().ToLower();
                         if (!glueText.Contains("is full"))
@@ -159,7 +159,7 @@ namespace ZzukBot.Engines.Grind
                     }
                     break;
 
-                case "charselect":
+                case Constants.Enums.LoginState.charselect:
                     if (Wait.For("EnterWorldClicker", 2000))
                         Functions.EnterWorld();
                     break;
@@ -205,7 +205,7 @@ namespace ZzukBot.Engines.Grind
                         }
 
                         LastState = Engine.Pulse();
-                        Main.MainForm.UpdateControl("State: " + LastState, Main.MainForm.lGrindState);
+                        BMainForm.MainForm.UpdateControl("State: " + LastState, BMainForm.MainForm.lGrindState);
                     }
                     else
                     {

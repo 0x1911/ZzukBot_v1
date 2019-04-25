@@ -9,7 +9,6 @@ using System.Windows.Forms;
 using ZzukBot.Constants;
 using ZzukBot.Engines;
 using ZzukBot.Engines.CustomClass;
-using ZzukBot.Engines.Grind.Info;
 using ZzukBot.Engines.ProfileCreation;
 using ZzukBot.Helpers;
 using ZzukBot.Hooks;
@@ -20,17 +19,16 @@ using ZzukBot.Settings;
 
 namespace ZzukBot.Forms
 {
-    //[System.Reflection.ObfuscationAttribute(Feature = "renaming", ApplyToMembers = true)]
-    internal partial class Main : Form
+    internal partial class BMainForm : Form
     {
-        internal static Main MainForm;
+        internal static BMainForm MainForm;
 
         #region Constructor
 
         /// <summary>
         ///     Main constructor
         /// </summary>
-        internal Main()
+        internal BMainForm()
         {
             InitializeComponent();
             Text += " - " + Assembly.GetExecutingAssembly().GetName().Version;
@@ -249,6 +247,7 @@ namespace ZzukBot.Forms
             Options.PetFood = tbPetFood.Text;
             Options.AccountName = tbAccount.Text;
             Options.AccountPassword = tbPassword.Text;
+            Options.CharacterName = txt_Character.Text;
             Options.RestManaAt = (int) nudDrinkAt.Value;
             Options.Drink = tbDrink.Text;
             Options.RestHealthAt = (int) nudEatAt.Value;
@@ -306,19 +305,6 @@ namespace ZzukBot.Forms
         }
 
         #endregion
-
-        //private void bSendPvP_Click(object sender, EventArgs e)
-        //{
-        //    DataStore ds = new DataStore();
-        //    ds.PutInt32(0x253);
-        //    ds.PutBool(false);
-        //    ds.Send();
-        //}
-
-        //private void bPacketLogger_Click(object sender, EventArgs e)
-        //{
-        //    NetclientSendHook.Init();
-        //}
 
         private void bAddVendorHotspot_Click(object sender, EventArgs e)
         {
@@ -417,20 +403,6 @@ namespace ZzukBot.Forms
             MessageBox.Show(str, "Help");
         }
 
-        //private void bShowHacks_Click(object sender, EventArgs e)
-        //{
-        //    Console.Write(AntiWarden.HookWardenMemScan.HacksDebugOutput());
-        //}
-
-        private void Main_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            //Monitor.Quit();
-        }
-
-        private void Main_Load(object sender, EventArgs e)
-        {
-        }
-
         private void bClearGhostHotspots_Click(object sender, EventArgs e)
         {
             if (EngineManager.CurrentEngineType != Engines.Engines.ProfileCreation) return;
@@ -461,14 +433,7 @@ namespace ZzukBot.Forms
 
             br.Dispose();
         }
-
-        internal void RunThis(ref int fr)
-        {
-            ObjectManager.EnumObjects();
-            ObjectManager.Player.Spells.StopCasting();
-            DirectX.StopRunning();
-        }
-
+        
         private void rtbNews_LinkClicked(object sender, LinkClickedEventArgs e)
         {
             Process.Start(e.LinkText);
@@ -632,106 +597,23 @@ namespace ZzukBot.Forms
 
         #endregion
 
-        #region Buttons
+        #region Top menu tool strip        
+        private void runToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Relog.LoginHandling();
 
-        private void bGrindStop_Click(object sender, EventArgs e)
+            if (EngineManager.CurrentEngineType != Engines.Engines.None) return;
+
+            EngineManager.StartGrinder(cbLoadLastProfile.Checked);
+        }        
+
+        private void stopToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (EngineManager.CurrentEngineType != Engines.Engines.Grind) return;
             EngineManager.StopCurrentEngine();
             lGrindLoadProfile.Text = "Profile: ";
             lGrindState.Text = "State: ";
         }
-
-        private void bLogin_Click(object sender, EventArgs e)
-        {
-            if (Relog.LoginState == "login")
-            {
-                DirectX.RunAndSwapback(LoginEndScene);
-            }
-        }
-
-        private void LoginEndScene(ref int FrameCounter, bool IsIngame)
-        {
-            if (IsIngame) return;
-            Relog.Login();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (!ObjectManager.EnumObjects()) return;
-            _Combat combat = new _Combat();
-            var attackers = combat.Attackers;
-            Console.WriteLine(attackers.Count);
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            DirectX.RunAndSwapbackIngame((ref int FrameCount, bool IsIngame) =>
-            {
-                var i = ObjectManager.Target;
-                var canLoot = ((i.CanBeLooted ||
-                                (Options.SkinUnits && i.IsSkinable && (Options.NinjaSkin || i.TappedByMe))
-                               )
-                               && !i.IsSwimming
-                               && Calc.Distance3D(i.Position, ObjectManager.Player.Position) < 32);
-            });
-        }
-
-        private void button1_Click_2(object sender, EventArgs e)
-        {
-            MessageBox.Show(Relog.GetGlueDialogText());
-        }
-
-        private void button1_Click_3(object sender, EventArgs e)
-        {
-            DirectX.RunAndSwapbackIngame((ref int framecount , bool ingame) =>
-            {
-                var b = ObjectManager.Player.Inventory.IsMainhandEnchanted;
-                Console.WriteLine(b);
-            });
-            
-        }
-
-        private void button1_Click_4(object sender, EventArgs e)
-        {
-            Console.WriteLine(Relog.CurrentWindowName);
-        }
-
-        private void button1_Click_5(object sender, EventArgs e)
-        {
-            Functions.DoString("GlueDialogText:Hide()");
-            //var curWindow = Relog.CurrentWindowName;
-            //if (curWindow == "") return;
-            //Functions.DoString($"text13 = {curWindow}:GetNumRegions();");
-            //var regions = Functions.GetText("text13");
-            //Console.WriteLine(regions);
-        }
-
-        private void cbIgnoreZ_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void cbMine_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbLootUnits_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         #endregion
-
-        //private void button1_Click(object sender, EventArgs e)
-        //{
-        //    //Clipboard.SetText(ObjectManager.Player.Pointer.ToString("X"));
-        //    DirectX.RunAndSwapback((ref int count, bool ingame) =>
-        //    {
-        //        ObjectManager.EnumObjects();
-        //        ObjectManager.Player.Inventory.UseItem("Tough Jerky");
-        //    });
-
-        //}
     }
 }

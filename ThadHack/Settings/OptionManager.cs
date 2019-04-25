@@ -49,7 +49,7 @@ namespace ZzukBot.Settings
         internal static void LoadSettings()
         {
             LoadFromXml();
-            AppendProtectedItemsFromFile(Main.MainForm.tbProtectedItems);
+            AppendProtectedItemsFromFile(BMainForm.MainForm.tbProtectedItems);
         }
 
         private static void AppendProtectedItemsFromFile(TextBox parTb)
@@ -73,118 +73,121 @@ namespace ZzukBot.Settings
         {
             GetElement("AccountName",
                 ref Options.AccountName,
-                Main.MainForm.tbAccount);
+                BMainForm.MainForm.tbAccount);
 
             GetElement("StopOnRare",
                 ref Options.StopOnRare,
-                Main.MainForm.cbStopOnRare);
+                BMainForm.MainForm.cbStopOnRare);
 
             GetElement("NotifyOnRare",
                 ref Options.NotifyOnRare,
-                Main.MainForm.cbNotifyRare);
+                BMainForm.MainForm.cbNotifyRare);
 
             GetElement("PetFood",
                 ref Options.PetFood,
-                Main.MainForm.tbPetFood);
+                BMainForm.MainForm.tbPetFood);
 
 
             GetElement("AccountPassword",
                 ref Options.AccountPassword,
-                Main.MainForm.tbPassword);
+                BMainForm.MainForm.tbPassword);
 
+            GetElement("CharacterName",
+                ref Options.CharacterName,
+                BMainForm.MainForm.txt_Character);
 
             GetElement("RestManaAt",
                 ref Options.RestManaAt,
-                Main.MainForm.nudDrinkAt);
+                BMainForm.MainForm.nudDrinkAt);
 
             GetElement("Drink",
                 ref Options.Drink,
-                Main.MainForm.tbDrink);
+                BMainForm.MainForm.tbDrink);
 
 
             GetElement("RestHealthAt",
                 ref Options.RestHealthAt,
-                Main.MainForm.nudEatAt);
+                BMainForm.MainForm.nudEatAt);
 
             GetElement("Food",
                 ref Options.Food,
-                Main.MainForm.tbFood);
+                BMainForm.MainForm.tbFood);
 
             GetElement("MobSearchRange",
                 ref Options.MobSearchRange,
-                Main.MainForm.nudMobSearchRange);
+                BMainForm.MainForm.nudMobSearchRange);
 
             GetElement("MaxDiffToWp",
                 ref Options.MaxDiffToWp,
-                Main.MainForm.nudRoamFromWp);
+                BMainForm.MainForm.nudRoamFromWp);
 
             GetElement("CombatDistance",
                 ref Options.CombatDistance,
-                Main.MainForm.nudCombatRange);
+                BMainForm.MainForm.nudCombatRange);
 
             GetElement("MinFreeSlotsBeforeVendor",
                 ref Options.MinFreeSlotsBeforeVendor,
-                Main.MainForm.nudFreeSlots);
+                BMainForm.MainForm.nudFreeSlots);
 
             GetElement("KeepItemsFromQuality",
                 ref Options.KeepItemsFromQuality,
-                Main.MainForm.cbKeepQuality);
+                BMainForm.MainForm.cbKeepQuality);
 
             GetElement("WaypointModifier",
                 ref Options.WaypointModifier,
-                Main.MainForm.nudWaypointModifier);
+                BMainForm.MainForm.nudWaypointModifier);
 
             GetElement("BeepOnSay",
                 ref Options.BeepOnSay,
-                Main.MainForm.cbBeepSay);
+                BMainForm.MainForm.cbBeepSay);
 
             GetElement("BeepOnWhisper",
                 ref Options.BeepOnWhisper,
-                Main.MainForm.cbBeepWhisper);
+                BMainForm.MainForm.cbBeepWhisper);
 
             GetElement("BeepOnName",
                 ref Options.BeepOnName,
-                Main.MainForm.cbBeepName);
+                BMainForm.MainForm.cbBeepName);
 
             GetElement("BreakFor",
                 ref Options.BreakFor,
-                Main.MainForm.nudBreakFor);
+                BMainForm.MainForm.nudBreakFor);
 
             GetElement("ForceBreakAfter",
                 ref Options.ForceBreakAfter,
-                Main.MainForm.nudForceBreakAfter);
+                BMainForm.MainForm.nudForceBreakAfter);
 
             GetElement("UseIRC",
                 ref Options.UseIRC,
-                Main.MainForm.cbIRCConnect);
+                BMainForm.MainForm.cbIRCConnect);
 
             GetElement("IRCBotNickname",
                 ref Options.IRCBotNickname,
-                Main.MainForm.tbIRCBotNickname);
+                BMainForm.MainForm.tbIRCBotNickname);
 
             GetElement("IRCBotChannel",
                 ref Options.IRCBotChannel,
-                Main.MainForm.tbIRCBotChannel);
+                BMainForm.MainForm.tbIRCBotChannel);
 
             GetElement("SkinUnits",
                 ref Options.SkinUnits,
-                Main.MainForm.cbSkinUnits);
+                BMainForm.MainForm.cbSkinUnits);
 
             GetElement("NinjaSkin",
                 ref Options.NinjaSkin,
-                Main.MainForm.cbNinjaSkin);
+                BMainForm.MainForm.cbNinjaSkin);
 
             GetElement("LootUnits",
                 ref Options.LootUnits,
-                Main.MainForm.cbLootUnits);
+                BMainForm.MainForm.cbLootUnits);
 
             GetElement("Herb",
                 ref Options.Herb,
-                Main.MainForm.cbHerb);
+                BMainForm.MainForm.cbHerb);
 
             GetElement("Mine",
                 ref Options.Mine,
-                Main.MainForm.cbMine);
+                BMainForm.MainForm.cbMine);
 
             //GetProtectedItems(ref Options.ProtectedItems, Main.MainForm.tbProtectedItems);
         }
@@ -196,6 +199,7 @@ namespace ZzukBot.Settings
         {
             SaveElement("AccountName", Options.AccountName);
             SaveElement("AccountPassword", Options.AccountPassword);
+            SaveElement("CharacterName", Options.CharacterName);
             SaveElement("RestManaAt", Options.RestManaAt);
             SaveElement("Drink", Options.Drink);
             SaveElement("RestHealthAt", Options.RestHealthAt);
@@ -288,7 +292,7 @@ namespace ZzukBot.Settings
 
             object o = control;
             var x = (Control) o;
-            Main.MainForm.UpdateControl(Value, x);
+            BMainForm.MainForm.UpdateControl(Value, x);
             doc.Save(Paths.Settings);
         }
 

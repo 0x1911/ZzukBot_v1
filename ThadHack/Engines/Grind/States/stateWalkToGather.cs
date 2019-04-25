@@ -33,7 +33,7 @@ namespace ZzukBot.Engines.Grind.States
                 Wait.Remove("RunToGather");
                 Wait.Remove("Gathering");
             }
-            if (Calc.Distance3D(resource.Position, ObjectManager.Player.Position) > 2)
+            if (Calc.Distance3D(resource.Position, ObjectManager.Player.Position) > 4)
             {
                 var tu = Grinder.Access.Info.PathToObject.ToUnit(resource);
                 if (tu.Item1)
@@ -45,9 +45,9 @@ namespace ZzukBot.Engines.Grind.States
                 }
                 lastCheck = Environment.TickCount;
 
-                if (Wait.For("RunToGather", 10000))
+                if (Wait.For("RunToGather", 20000))
                 {
-                    //Grinder.Access.Info.Gather.AddToGatherBlacklist(resource.Guid);
+                    Grinder.Access.Info.Gather.AddToGatherBlacklist(resource.Guid);
                 }
                 Wait.Remove("Gathering");
                 randomOpenLootDelay = ran.Next(5050, 7550) + Grinder.Access.Info.Latency;

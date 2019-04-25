@@ -1,6 +1,6 @@
 namespace ZzukBot.Forms
 {
-    partial class Main
+    partial class BMainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,21 +28,19 @@ namespace ZzukBot.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BMainForm));
             this.tcMain = new System.Windows.Forms.TabControl();
             this.tpGrind = new System.Windows.Forms.TabPage();
-            this.cbLoadLastProfile = new System.Windows.Forms.CheckBox();
-            this.bClearChatLog = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgChat = new System.Windows.Forms.DataGridView();
             this.dType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dSender = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dMessage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bLogin = new System.Windows.Forms.Button();
+            this.cbLoadLastProfile = new System.Windows.Forms.CheckBox();
+            this.bClearChatLog = new System.Windows.Forms.Button();
             this.lGrindState = new System.Windows.Forms.Label();
-            this.bGrindStop = new System.Windows.Forms.Button();
             this.lGrindLoadProfile = new System.Windows.Forms.Label();
-            this.bGrindRun = new System.Windows.Forms.Button();
             this.tpProfile = new System.Windows.Forms.TabPage();
             this.cbIgnoreZ = new System.Windows.Forms.CheckBox();
             this.lAddPointAs = new System.Windows.Forms.Label();
@@ -156,8 +154,17 @@ namespace ZzukBot.Forms
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tpNews = new System.Windows.Forms.TabPage();
             this.rtbNews = new System.Windows.Forms.RichTextBox();
+            this.tpDev = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.runToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lbl_desc3489 = new System.Windows.Forms.Label();
+            this.txt_Character = new System.Windows.Forms.TextBox();
             this.tcMain.SuspendLayout();
             this.tpGrind.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgChat)).BeginInit();
             this.tpProfile.SuspendLayout();
             this.tcWaypoints.SuspendLayout();
@@ -187,6 +194,8 @@ namespace ZzukBot.Forms
             this.tpNotifications.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgNotifications)).BeginInit();
             this.tpNews.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tcMain
@@ -197,49 +206,38 @@ namespace ZzukBot.Forms
             this.tcMain.Controls.Add(this.tpIRC);
             this.tcMain.Controls.Add(this.tpNotifications);
             this.tcMain.Controls.Add(this.tpNews);
-            this.tcMain.Location = new System.Drawing.Point(12, 6);
+            this.tcMain.Controls.Add(this.tpDev);
+            this.tcMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tcMain.Location = new System.Drawing.Point(3, 23);
             this.tcMain.Name = "tcMain";
             this.tcMain.SelectedIndex = 0;
-            this.tcMain.Size = new System.Drawing.Size(485, 493);
+            this.tcMain.Size = new System.Drawing.Size(478, 746);
             this.tcMain.TabIndex = 0;
             // 
             // tpGrind
             // 
+            this.tpGrind.Controls.Add(this.groupBox1);
             this.tpGrind.Controls.Add(this.cbLoadLastProfile);
             this.tpGrind.Controls.Add(this.bClearChatLog);
-            this.tpGrind.Controls.Add(this.dgChat);
-            this.tpGrind.Controls.Add(this.bLogin);
             this.tpGrind.Controls.Add(this.lGrindState);
-            this.tpGrind.Controls.Add(this.bGrindStop);
             this.tpGrind.Controls.Add(this.lGrindLoadProfile);
-            this.tpGrind.Controls.Add(this.bGrindRun);
             this.tpGrind.Location = new System.Drawing.Point(4, 22);
             this.tpGrind.Name = "tpGrind";
             this.tpGrind.Padding = new System.Windows.Forms.Padding(10);
-            this.tpGrind.Size = new System.Drawing.Size(477, 467);
+            this.tpGrind.Size = new System.Drawing.Size(470, 720);
             this.tpGrind.TabIndex = 0;
             this.tpGrind.Text = "Main";
             this.tpGrind.UseVisualStyleBackColor = true;
             // 
-            // cbLoadLastProfile
+            // groupBox1
             // 
-            this.cbLoadLastProfile.AutoSize = true;
-            this.cbLoadLastProfile.Location = new System.Drawing.Point(107, 62);
-            this.cbLoadLastProfile.Name = "cbLoadLastProfile";
-            this.cbLoadLastProfile.Size = new System.Drawing.Size(100, 17);
-            this.cbLoadLastProfile.TabIndex = 7;
-            this.cbLoadLastProfile.Text = "Load last profile";
-            this.cbLoadLastProfile.UseVisualStyleBackColor = true;
-            // 
-            // bClearChatLog
-            // 
-            this.bClearChatLog.Location = new System.Drawing.Point(15, 387);
-            this.bClearChatLog.Name = "bClearChatLog";
-            this.bClearChatLog.Size = new System.Drawing.Size(83, 20);
-            this.bClearChatLog.TabIndex = 3;
-            this.bClearChatLog.Text = "Clear Log";
-            this.bClearChatLog.UseVisualStyleBackColor = true;
-            this.bClearChatLog.Click += new System.EventHandler(this.bClearChatLog_Click);
+            this.groupBox1.Controls.Add(this.dgChat);
+            this.groupBox1.Location = new System.Drawing.Point(5, 395);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(450, 293);
+            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "InGame Chat";
             // 
             // dgChat
             // 
@@ -254,12 +252,15 @@ namespace ZzukBot.Forms
             this.dTime,
             this.dSender,
             this.dMessage});
-            this.dgChat.Location = new System.Drawing.Point(15, 101);
+            this.dgChat.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgChat.Location = new System.Drawing.Point(3, 16);
             this.dgChat.MultiSelect = false;
             this.dgChat.Name = "dgChat";
             this.dgChat.ReadOnly = true;
-            this.dgChat.Size = new System.Drawing.Size(439, 282);
-            this.dgChat.TabIndex = 4;
+            this.dgChat.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgChat.RowHeadersVisible = false;
+            this.dgChat.Size = new System.Drawing.Size(444, 274);
+            this.dgChat.TabIndex = 6;
             // 
             // dType
             // 
@@ -289,53 +290,43 @@ namespace ZzukBot.Forms
             this.dMessage.Name = "dMessage";
             this.dMessage.ReadOnly = true;
             // 
-            // bLogin
+            // cbLoadLastProfile
             // 
-            this.bLogin.Location = new System.Drawing.Point(15, 62);
-            this.bLogin.Name = "bLogin";
-            this.bLogin.Size = new System.Drawing.Size(83, 20);
-            this.bLogin.TabIndex = 2;
-            this.bLogin.Text = "Login";
-            this.bLogin.UseVisualStyleBackColor = true;
-            this.bLogin.Click += new System.EventHandler(this.bLogin_Click);
+            this.cbLoadLastProfile.AutoSize = true;
+            this.cbLoadLastProfile.Location = new System.Drawing.Point(16, 58);
+            this.cbLoadLastProfile.Name = "cbLoadLastProfile";
+            this.cbLoadLastProfile.Size = new System.Drawing.Size(100, 17);
+            this.cbLoadLastProfile.TabIndex = 7;
+            this.cbLoadLastProfile.Text = "Load last profile";
+            this.cbLoadLastProfile.UseVisualStyleBackColor = true;
+            // 
+            // bClearChatLog
+            // 
+            this.bClearChatLog.Location = new System.Drawing.Point(7, 694);
+            this.bClearChatLog.Name = "bClearChatLog";
+            this.bClearChatLog.Size = new System.Drawing.Size(83, 20);
+            this.bClearChatLog.TabIndex = 3;
+            this.bClearChatLog.Text = "Clear Log";
+            this.bClearChatLog.UseVisualStyleBackColor = true;
+            this.bClearChatLog.Click += new System.EventHandler(this.bClearChatLog_Click);
             // 
             // lGrindState
             // 
             this.lGrindState.AutoSize = true;
-            this.lGrindState.Location = new System.Drawing.Point(104, 40);
+            this.lGrindState.Location = new System.Drawing.Point(13, 36);
             this.lGrindState.Name = "lGrindState";
             this.lGrindState.Size = new System.Drawing.Size(38, 13);
             this.lGrindState.TabIndex = 6;
             this.lGrindState.Text = "State: ";
             // 
-            // bGrindStop
-            // 
-            this.bGrindStop.Location = new System.Drawing.Point(15, 36);
-            this.bGrindStop.Name = "bGrindStop";
-            this.bGrindStop.Size = new System.Drawing.Size(83, 20);
-            this.bGrindStop.TabIndex = 1;
-            this.bGrindStop.Text = "Stop";
-            this.bGrindStop.UseVisualStyleBackColor = true;
-            this.bGrindStop.Click += new System.EventHandler(this.bGrindStop_Click);
-            // 
             // lGrindLoadProfile
             // 
             this.lGrindLoadProfile.AutoSize = true;
-            this.lGrindLoadProfile.Location = new System.Drawing.Point(104, 14);
+            this.lGrindLoadProfile.Location = new System.Drawing.Point(13, 10);
             this.lGrindLoadProfile.Name = "lGrindLoadProfile";
             this.lGrindLoadProfile.Size = new System.Drawing.Size(39, 13);
             this.lGrindLoadProfile.TabIndex = 5;
             this.lGrindLoadProfile.Text = "Profile:";
-            // 
-            // bGrindRun
-            // 
-            this.bGrindRun.Location = new System.Drawing.Point(15, 10);
-            this.bGrindRun.Name = "bGrindRun";
-            this.bGrindRun.Size = new System.Drawing.Size(83, 20);
-            this.bGrindRun.TabIndex = 0;
-            this.bGrindRun.Text = "Run";
-            this.bGrindRun.UseVisualStyleBackColor = true;
-            this.bGrindRun.Click += new System.EventHandler(this.bGrindLoadProfile_Click);
             // 
             // tpProfile
             // 
@@ -358,7 +349,7 @@ namespace ZzukBot.Forms
             this.tpProfile.Location = new System.Drawing.Point(4, 22);
             this.tpProfile.Name = "tpProfile";
             this.tpProfile.Padding = new System.Windows.Forms.Padding(3);
-            this.tpProfile.Size = new System.Drawing.Size(477, 467);
+            this.tpProfile.Size = new System.Drawing.Size(470, 720);
             this.tpProfile.TabIndex = 1;
             this.tpProfile.Text = "Profile";
             // 
@@ -371,7 +362,6 @@ namespace ZzukBot.Forms
             this.cbIgnoreZ.TabIndex = 14;
             this.cbIgnoreZ.Text = "Ignore Z axis in this profile";
             this.cbIgnoreZ.UseVisualStyleBackColor = true;
-            this.cbIgnoreZ.CheckedChanged += new System.EventHandler(this.cbIgnoreZ_CheckedChanged);
             // 
             // lAddPointAs
             // 
@@ -862,7 +852,7 @@ namespace ZzukBot.Forms
             this.tpSettings.Location = new System.Drawing.Point(4, 22);
             this.tpSettings.Name = "tpSettings";
             this.tpSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.tpSettings.Size = new System.Drawing.Size(477, 467);
+            this.tpSettings.Size = new System.Drawing.Size(470, 720);
             this.tpSettings.TabIndex = 2;
             this.tpSettings.Text = "Settings";
             this.tpSettings.UseVisualStyleBackColor = true;
@@ -904,7 +894,6 @@ namespace ZzukBot.Forms
             this.cbLootUnits.TabIndex = 5;
             this.cbLootUnits.Text = "Loot Units";
             this.cbLootUnits.UseVisualStyleBackColor = true;
-            this.cbLootUnits.CheckedChanged += new System.EventHandler(this.cbLootUnits_CheckedChanged);
             // 
             // cbMine
             // 
@@ -915,7 +904,6 @@ namespace ZzukBot.Forms
             this.cbMine.TabIndex = 4;
             this.cbMine.Text = "Mine";
             this.cbMine.UseVisualStyleBackColor = true;
-            this.cbMine.CheckedChanged += new System.EventHandler(this.cbMine_CheckedChanged);
             // 
             // cbHerb
             // 
@@ -1001,7 +989,7 @@ namespace ZzukBot.Forms
             // 
             // bSettingsHelp
             // 
-            this.bSettingsHelp.Location = new System.Drawing.Point(202, 418);
+            this.bSettingsHelp.Location = new System.Drawing.Point(207, 464);
             this.bSettingsHelp.Name = "bSettingsHelp";
             this.bSettingsHelp.Size = new System.Drawing.Size(89, 21);
             this.bSettingsHelp.TabIndex = 11;
@@ -1100,7 +1088,7 @@ namespace ZzukBot.Forms
             // 
             // bReload
             // 
-            this.bReload.Location = new System.Drawing.Point(107, 418);
+            this.bReload.Location = new System.Drawing.Point(112, 464);
             this.bReload.Name = "bReload";
             this.bReload.Size = new System.Drawing.Size(89, 21);
             this.bReload.TabIndex = 9;
@@ -1110,7 +1098,7 @@ namespace ZzukBot.Forms
             // 
             // tbProtectedItems
             // 
-            this.tbProtectedItems.Location = new System.Drawing.Point(14, 279);
+            this.tbProtectedItems.Location = new System.Drawing.Point(14, 301);
             this.tbProtectedItems.Multiline = true;
             this.tbProtectedItems.Name = "tbProtectedItems";
             this.tbProtectedItems.Size = new System.Drawing.Size(136, 70);
@@ -1119,7 +1107,7 @@ namespace ZzukBot.Forms
             // lProtectedItems
             // 
             this.lProtectedItems.AutoSize = true;
-            this.lProtectedItems.Location = new System.Drawing.Point(26, 256);
+            this.lProtectedItems.Location = new System.Drawing.Point(26, 278);
             this.lProtectedItems.Name = "lProtectedItems";
             this.lProtectedItems.Size = new System.Drawing.Size(81, 13);
             this.lProtectedItems.TabIndex = 7;
@@ -1200,7 +1188,7 @@ namespace ZzukBot.Forms
             this.gbDistances.Controls.Add(this.nudMobSearchRange);
             this.gbDistances.Controls.Add(this.lCombatRange);
             this.gbDistances.Controls.Add(this.lMobSearchRange);
-            this.gbDistances.Location = new System.Drawing.Point(34, 95);
+            this.gbDistances.Location = new System.Drawing.Point(34, 117);
             this.gbDistances.Name = "gbDistances";
             this.gbDistances.Size = new System.Drawing.Size(136, 152);
             this.gbDistances.TabIndex = 5;
@@ -1426,7 +1414,7 @@ namespace ZzukBot.Forms
             // 
             // bSaveSettings
             // 
-            this.bSaveSettings.Location = new System.Drawing.Point(12, 418);
+            this.bSaveSettings.Location = new System.Drawing.Point(17, 464);
             this.bSaveSettings.Name = "bSaveSettings";
             this.bSaveSettings.Size = new System.Drawing.Size(89, 21);
             this.bSaveSettings.TabIndex = 3;
@@ -1436,13 +1424,15 @@ namespace ZzukBot.Forms
             // 
             // gbRelog
             // 
+            this.gbRelog.Controls.Add(this.txt_Character);
+            this.gbRelog.Controls.Add(this.lbl_desc3489);
             this.gbRelog.Controls.Add(this.tbPassword);
             this.gbRelog.Controls.Add(this.lPassword);
             this.gbRelog.Controls.Add(this.tbAccount);
             this.gbRelog.Controls.Add(this.lAccount);
             this.gbRelog.Location = new System.Drawing.Point(35, 11);
             this.gbRelog.Name = "gbRelog";
-            this.gbRelog.Size = new System.Drawing.Size(136, 73);
+            this.gbRelog.Size = new System.Drawing.Size(136, 100);
             this.gbRelog.TabIndex = 2;
             this.gbRelog.TabStop = false;
             this.gbRelog.Text = "Relog";
@@ -1490,7 +1480,7 @@ namespace ZzukBot.Forms
             this.tpIRC.Location = new System.Drawing.Point(4, 22);
             this.tpIRC.Name = "tpIRC";
             this.tpIRC.Padding = new System.Windows.Forms.Padding(3);
-            this.tpIRC.Size = new System.Drawing.Size(477, 467);
+            this.tpIRC.Size = new System.Drawing.Size(470, 720);
             this.tpIRC.TabIndex = 5;
             this.tpIRC.Text = "IRC";
             this.tpIRC.UseVisualStyleBackColor = true;
@@ -1554,7 +1544,7 @@ namespace ZzukBot.Forms
             this.tpNotifications.Controls.Add(this.dgNotifications);
             this.tpNotifications.Location = new System.Drawing.Point(4, 22);
             this.tpNotifications.Name = "tpNotifications";
-            this.tpNotifications.Size = new System.Drawing.Size(477, 467);
+            this.tpNotifications.Size = new System.Drawing.Size(470, 720);
             this.tpNotifications.TabIndex = 3;
             this.tpNotifications.Text = "Notifications";
             this.tpNotifications.UseVisualStyleBackColor = true;
@@ -1597,7 +1587,7 @@ namespace ZzukBot.Forms
             this.tpNews.Location = new System.Drawing.Point(4, 22);
             this.tpNews.Name = "tpNews";
             this.tpNews.Padding = new System.Windows.Forms.Padding(3);
-            this.tpNews.Size = new System.Drawing.Size(477, 467);
+            this.tpNews.Size = new System.Drawing.Size(470, 720);
             this.tpNews.TabIndex = 4;
             this.tpNews.Text = "News";
             this.tpNews.UseVisualStyleBackColor = true;
@@ -1612,22 +1602,97 @@ namespace ZzukBot.Forms
             this.rtbNews.Text = "";
             this.rtbNews.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtbNews_LinkClicked);
             // 
-            // Main
+            // tpDev
+            // 
+            this.tpDev.Location = new System.Drawing.Point(4, 22);
+            this.tpDev.Name = "tpDev";
+            this.tpDev.Size = new System.Drawing.Size(470, 720);
+            this.tpDev.TabIndex = 6;
+            this.tpDev.Text = "DEV";
+            this.tpDev.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.tcMain, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.menuStrip1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.statusStrip1, 0, 2);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(484, 792);
+            this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.runToolStripMenuItem,
+            this.stopToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(484, 20);
+            this.menuStrip1.TabIndex = 3;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // runToolStripMenuItem
+            // 
+            this.runToolStripMenuItem.Name = "runToolStripMenuItem";
+            this.runToolStripMenuItem.Size = new System.Drawing.Size(40, 16);
+            this.runToolStripMenuItem.Text = "Run";
+            this.runToolStripMenuItem.Click += new System.EventHandler(this.runToolStripMenuItem_Click);
+            // 
+            // stopToolStripMenuItem
+            // 
+            this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
+            this.stopToolStripMenuItem.Size = new System.Drawing.Size(43, 16);
+            this.stopToolStripMenuItem.Text = "Stop";
+            this.stopToolStripMenuItem.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Location = new System.Drawing.Point(0, 772);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(484, 20);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lbl_desc3489
+            // 
+            this.lbl_desc3489.AutoSize = true;
+            this.lbl_desc3489.Location = new System.Drawing.Point(4, 72);
+            this.lbl_desc3489.Name = "lbl_desc3489";
+            this.lbl_desc3489.Size = new System.Drawing.Size(53, 13);
+            this.lbl_desc3489.TabIndex = 4;
+            this.lbl_desc3489.Text = "Character";
+            // 
+            // txt_Character
+            // 
+            this.txt_Character.Location = new System.Drawing.Point(57, 69);
+            this.txt_Character.Name = "txt_Character";
+            this.txt_Character.Size = new System.Drawing.Size(71, 20);
+            this.txt_Character.TabIndex = 5;
+            // 
+            // BMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(509, 511);
-            this.Controls.Add(this.tcMain);
+            this.ClientSize = new System.Drawing.Size(484, 792);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.Name = "Main";
+            this.Name = "BMainForm";
             this.Text = "ZzukBot";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
-            this.Load += new System.EventHandler(this.Main_Load);
             this.tcMain.ResumeLayout(false);
             this.tpGrind.ResumeLayout(false);
             this.tpGrind.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgChat)).EndInit();
             this.tpProfile.ResumeLayout(false);
             this.tpProfile.PerformLayout();
@@ -1672,6 +1737,10 @@ namespace ZzukBot.Forms
             this.tpNotifications.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgNotifications)).EndInit();
             this.tpNews.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1718,17 +1787,9 @@ namespace ZzukBot.Forms
         private System.Windows.Forms.Label lProtectedItems;
         private System.Windows.Forms.Button bReload;
         private System.Windows.Forms.Button bSave;
-        private System.Windows.Forms.Button bGrindRun;
-        private System.Windows.Forms.Button bGrindStop;
         internal System.Windows.Forms.Label lGrindState;
-        private System.Windows.Forms.Button bLogin;
         private System.Windows.Forms.TabPage tpHotspots;
         private System.Windows.Forms.TabPage tpVendor;
-        private System.Windows.Forms.DataGridView dgChat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dSender;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dMessage;
         private System.Windows.Forms.Button bClearChatLog;
         private System.Windows.Forms.GroupBox gbOther;
         internal System.Windows.Forms.NumericUpDown nudWaypointModifier;
@@ -1809,6 +1870,20 @@ namespace ZzukBot.Forms
         internal System.Windows.Forms.CheckBox cbNinjaSkin;
         private System.Windows.Forms.CheckBox cbLoadLastProfile;
         internal System.Windows.Forms.CheckBox cbIgnoreZ;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridView dgChat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dSender;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dMessage;
+        private System.Windows.Forms.ToolStripMenuItem runToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem stopToolStripMenuItem;
+        private System.Windows.Forms.TabPage tpDev;
+        internal System.Windows.Forms.TextBox txt_Character;
+        private System.Windows.Forms.Label lbl_desc3489;
     }
 }
 

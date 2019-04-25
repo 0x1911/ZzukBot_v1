@@ -97,7 +97,7 @@ namespace ZzukBot
                 SetRealmlist();
                 try
                 {
-                    Application.Run(new Main());
+                    Application.Run(new BMainForm());
                 }
                 catch (Exception e)
                 {

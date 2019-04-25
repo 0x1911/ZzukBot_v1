@@ -12,7 +12,19 @@ namespace ZzukBot.Mem
     {
         internal static int NumCharacterCount => Offsets.CharacterScreen.NumCharacters.ReadAs<int>();
 
-        internal static string LoginState => Offsets.CharacterScreen.LoginState.ReadString();
+        internal static string GetCharacterNameAtPos(int index)
+        {
+            return Offsets.CharacterScreen.Pointer.ReadAs<IntPtr>().Add(0x120 * index + 0x8).ReadString();
+        }
+        internal static Enums.LoginState LoginState
+        {
+            get
+            {
+                Constants.Enums.LoginState LoginState = (Constants.Enums.LoginState)Enum.Parse(typeof(Constants.Enums.LoginState), Offsets.CharacterScreen.LoginState.ReadString(), true);
+                return LoginState;
+            }
+        }
+
 
         internal static string CurrentWindowName
         {
@@ -40,12 +52,47 @@ namespace ZzukBot.Mem
             ClearGlueDialogText();
         }
 
-        internal static void Login()
+        internal static void LoginHandling()
+        {
+            if (Relog.LoginState == Enums.LoginState.login)
+            {
+                if(Relog.Login())
+                    LoginHandling();
+            }
+
+            if (Relog.LoginState == Enums.LoginState.charselect)
+            {
+                //only one char on the account? simply enter the world on that one
+                if (Relog.NumCharacterCount == 1)
+                {
+                    Relog.EnterWorld();
+                    return;
+                }
+
+                Helpers.Logger.Append("We got " + Relog.NumCharacterCount + " characters on this account.");
+                for (var i = 0; i < Relog.NumCharacterCount; i++)
+                {
+                    var tmpCharName = Relog.GetCharacterNameAtPos(i);
+                    Helpers.Logger.Append(i + " is " + tmpCharName);
+
+                    if (tmpCharName.ToLower().Equals(Options.CharacterName.ToLower()))
+                    {
+                        Relog.EnterWorld();
+                    }
+                }
+            }            
+        }
+        internal static bool Login()
         {
             Functions.DoString("DefaultServerLogin('" + Options.AccountName + "', '" + Options.AccountPassword + "');");
+            
+            if (LoginState == Enums.LoginState.charselect)
+                return true;
+
+            return false;
         }
 
-        internal static void Enter()
+        internal static void EnterWorld()
         {
             Functions.EnterWorld();
         }

@@ -10,6 +10,7 @@
 
         internal static string AccountName = "";
         internal static string AccountPassword = "";
+        internal static string CharacterName = string.Empty;
         internal static int RestManaAt = 40;
         internal static string Drink = "";
         internal static int RestHealthAt = 40;

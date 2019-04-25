@@ -136,7 +136,7 @@ namespace ZzukBot.Mem
             var str = "if CharSelectEnterWorldButton ~= nil then CharSelectEnterWorldButton:Click()  end";
             DoString(str);
         }
-
+        
         internal static void SetControlBit(int parBit, int parState, int parTickCount)
         {
             if (SetControlBitFunction == null)

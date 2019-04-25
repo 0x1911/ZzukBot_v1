@@ -25,10 +25,10 @@ namespace ZzukBot.Engines.Grind.Info
             int tmpCount = 0;
             foreach (var tmpWoWObject in tmpPossibleGatherObjects)
             {
-                if (tmpWoWObject.GatherInfo.Type == Constants.Enums.GatherType.Herbalism && HasEnoughSkill(Enums.Skills.HERBALISM, tmpWoWObject) ||
-                    tmpWoWObject.GatherInfo.Type == Constants.Enums.GatherType.Mining && HasEnoughSkill(Enums.Skills.MINING, tmpWoWObject))
+                if (tmpWoWObject.GatherInfo.Type == Constants.Enums.GatherType.Herbalism && HasSkill(Enums.Skills.HERBALISM) || tmpWoWObject.GatherInfo.Type == Constants.Enums.GatherType.Mining && HasSkill(Enums.Skills.MINING))//|| tmpWoWObject.GatherInfo.Type == Constants.Enums.GatherType.Mining)
                 {
-                    return true;
+                    if(!Grinder.Access.Info.Gather.ResourceBlacklist.Contains(tmpWoWObject.Guid))
+                        return true;
                 }
             }
             
@@ -44,15 +44,45 @@ namespace ZzukBot.Engines.Grind.Info
 
             foreach (var tmpWoWObject in tmpPossibleGatherObjects)
             {
-                if (tmpWoWObject.GatherInfo.Type == Constants.Enums.GatherType.Herbalism && HasEnoughSkill(Enums.Skills.HERBALISM, tmpWoWObject) ||
-                    tmpWoWObject.GatherInfo.Type == Constants.Enums.GatherType.Mining && HasEnoughSkill(Enums.Skills.MINING, tmpWoWObject))
+                if (tmpWoWObject.GatherInfo.Type == Constants.Enums.GatherType.Herbalism ) // && HasEnoughSkill(Enums.Skills.HERBALISM, tmpWoWObject) || tmpWoWObject.GatherInfo.Type == Constants.Enums.GatherType.Mining && HasEnoughSkill(Enums.Skills.MINING, tmpWoWObject))
                 {
                     return tmpWoWObject;
                 }
             }
 
 
+
             return null;
+        }
+
+        /// <summary>
+        /// Check if we have the required Skill
+        /// </summary>
+        /// <param name="skillType"></param>
+        /// <returns></returns>
+        private bool HasSkill(Enums.Skills skillType)
+        {
+            /* var player = ObjectManager.Player;
+
+             foreach (var tmpPlayerSkill in player.Skills)
+             {
+                 Enums.Skills tmpSkill = tmpPlayerSkill.Id;
+                 Helpers.Logger.Append("My skill in " + tmpSkill.ToString() + " is " + tmpPlayerSkill.CurrentLevel + "/ " + tmpPlayerSkill.MaxLevel);
+
+                 if (tmpPlayerSkill.Id == skillType)
+                 {
+                     if (tmpPlayerSkill.CurrentLevel >= 1)
+                     {
+                         return true;
+                     }
+
+
+                     return false;
+                 }
+             }
+
+             return false; */
+            return true;
         }
 
         /// <summary>
@@ -71,6 +101,8 @@ namespace ZzukBot.Engines.Grind.Info
                 {
                     if(tmpPlayerSkill.CurrentLevel >= targetObject.GatherInfo.RequiredSkill)
                     {
+                        Enums.Skills tmpSkill = tmpPlayerSkill.Id;
+                        Helpers.Logger.Append("Our skill in " + tmpSkill.ToString() + " is " + tmpPlayerSkill.CurrentLevel + "/ " + tmpPlayerSkill.MaxLevel + ". The resource needs: " + targetObject.GatherInfo.RequiredSkill);
                         return true;
                     }
 

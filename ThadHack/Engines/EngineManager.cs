@@ -45,7 +45,7 @@ namespace ZzukBot.Engines
 
         internal static void StartProfileCreation()
         {
-            Main.MainForm.Invoke(new MethodInvoker(delegate
+            BMainForm.MainForm.Invoke(new MethodInvoker(delegate
             {
                 if (IsEngineRunning) return;
                 _Engine = new ProfileCreator();
@@ -82,9 +82,9 @@ namespace ZzukBot.Engines
             tmpGrind = new Grinder();
             if (!IsWaitingForGeneration && tmpGrind.Prepare(tmpProfileName, Callback))
             {
-                Main.MainForm.Invoke(new MethodInvoker(delegate
+                BMainForm.MainForm.Invoke(new MethodInvoker(delegate
                 {
-                    Main.MainForm.lGrindState.Text = "State: Loading mmaps";
+                    BMainForm.MainForm.lGrindState.Text = "State: Loading mmaps";
                     IsWaitingForGeneration = true;
                     Options.LastProfile = tmpProfileName;
                 }));
@@ -95,9 +95,9 @@ namespace ZzukBot.Engines
         {
             if (tmpGrind != null && tmpGrind.Run())
             {
-                Main.MainForm.Invoke(new MethodInvoker(delegate
+                BMainForm.MainForm.Invoke(new MethodInvoker(delegate
                 {
-                    Main.MainForm.lGrindLoadProfile.Text = "Profile: Loaded";
+                    BMainForm.MainForm.lGrindLoadProfile.Text = "Profile: Loaded";
                     _Engine = tmpGrind;
                     IsWaitingForGeneration = false;
                 }));

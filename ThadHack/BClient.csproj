@@ -135,23 +135,23 @@
     <Compile Include="Engines\Grind\States\stateWalkBackToGrind.cs" />
     <Compile Include="Engines\Grind\StuckHelper.cs" />
     <Compile Include="Engines\ProfileCreation\ProfileCreator.cs" />
-    <Compile Include="Forms\CC Selector.cs">
+    <Compile Include="Forms\CCSelectorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CC Selector.Designer.cs">
-      <DependentUpon>CC Selector.cs</DependentUpon>
+    <Compile Include="Forms\CCSelectorForm.Designer.cs">
+      <DependentUpon>CCSelectorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Main.cs">
+    <Compile Include="Forms\BMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Main.Designer.cs">
-      <DependentUpon>Main.cs</DependentUpon>
+    <Compile Include="Forms\BMainForm.Designer.cs">
+      <DependentUpon>BMainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\RestockItem.cs">
+    <Compile Include="Forms\RestockItemForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\RestockItem.Designer.cs">
-      <DependentUpon>RestockItem.cs</DependentUpon>
+    <Compile Include="Forms\RestockItemForm.Designer.cs">
+      <DependentUpon>RestockItemForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Calc.cs" />
     <Compile Include="Helpers\DebugAssist.cs" />
@@ -261,14 +261,14 @@
     <Compile Include="Settings\OptionManager.cs" />
     <Compile Include="Settings\Options.cs" />
     <Compile Include="Settings\Paths.cs" />
-    <EmbeddedResource Include="Forms\CC Selector.resx">
-      <DependentUpon>CC Selector.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\CCSelectorForm.resx">
+      <DependentUpon>CCSelectorForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Main.resx">
-      <DependentUpon>Main.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\BMainForm.resx">
+      <DependentUpon>BMainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\RestockItem.resx">
-      <DependentUpon>RestockItem.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\RestockItemForm.resx">
+      <DependentUpon>RestockItemForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
