@@ -32,7 +32,7 @@ namespace ZzukBot.Engines.Grind.States
                 Wait.Remove("RunToLoot");
                 Wait.Remove("Looting");
             }
-            if (Calc.Distance3D(mob.Position, ObjectManager.Player.Position) > 2)
+            if (Calc.Distance3D(mob.Position, ObjectManager.Player.Position) > 4)
             {
                 var tu = Grinder.Access.Info.PathToUnit.ToUnit(mob);
                 if (tu.Item1)
