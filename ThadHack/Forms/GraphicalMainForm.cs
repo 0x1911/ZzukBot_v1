@@ -99,33 +99,15 @@ namespace ZzukBot.Forms
             CCManager.LoadCCs();
             Memory.Init();
             OptionManager.LoadSettings();
-            try
-            {
-                using (var wc = new WebClient())
-                {
-                    GuiCore.MainForm.rtbNews.Text = wc.DownloadString("http://zzukbot.com/Hk3VEXpjfj8K/Important.txt");
-                }
-            }
-            catch
-            {
-                GuiCore.MainForm.rtbNews.Text = "Error while fetching news";
-            }
+          
             IrcMonitor.Instance.MessageReceived += ChannelMessageRecieved;
-            SetupIrc();
+            GuiCore.SettingsForm.SetupIrc();
             Enums.DynamicFlags.AdjustToRealm();
             GuiCore.MainForm.Enabled = true;
             ChatHook.OnNewChatMessage += updateChat;
             LoginBlock.Disable();
         }
-
-        private void SetupIrc()
-        {
-            if (Options.UseIRC)
-            {
-                IrcMonitor.Instance.Start(Options.IRCBotChannel, Options.IRCBotNickname);
-            }
-        }
-
+        
         private void PlayBeep()
         {
             WinImports.PlaySound(Resources.beep, IntPtr.Zero,
@@ -230,67 +212,7 @@ namespace ZzukBot.Forms
                 }
             }));
         }
-
-        /// <summary>
-        ///     Save the settings
-        /// </summary>
-        private void bSaveSettings_Click(object sender, EventArgs e)
-        {
-            Options.BeepOnName = cbBeepName.Checked;
-            Options.BeepOnSay = cbBeepSay.Checked;
-            Options.BeepOnWhisper = cbBeepWhisper.Checked;
-            Options.NotifyOnRare = cbNotifyRare.Checked;
-            Options.StopOnRare = cbStopOnRare.Checked;
-
-            Options.PetFood = tbPetFood.Text;
-            Options.AccountName = tbAccount.Text;
-            Options.AccountPassword = tbPassword.Text;
-            Options.CharacterName = txt_Character.Text;
-            Options.RestManaAt = (int) nudDrinkAt.Value;
-            Options.Drink = tbDrink.Text;
-            Options.RestHealthAt = (int) nudEatAt.Value;
-            Options.Food = tbFood.Text;
-            Options.MobSearchRange = (float) nudMobSearchRange.Value;
-            Options.MaxDiffToWp = (float) nudRoamFromWp.Value;
-            Options.CombatDistance = (float) nudCombatRange.Value;
-            Options.MinFreeSlotsBeforeVendor = (int) nudFreeSlots.Value;
-            Options.WaypointModifier = nudWaypointModifier.Value;
-            Options.KeepItemsFromQuality =
-                (int) Enum.Parse(typeof (Enums.ItemQuality),
-                    (string) cbKeepQuality.SelectedItem);
-
-            Options.ForceBreakAfter = (int) nudForceBreakAfter.Value;
-            Options.BreakFor = (int) nudBreakFor.Value;
-
-            Options.ProtectedItems = tbProtectedItems.Text.Split(
-                new[] {Environment.NewLine},
-                StringSplitOptions.None);
-
-            Options.IRCBotChannel = tbIRCBotChannel.Text;
-            Options.IRCBotNickname = tbIRCBotNickname.Text;
-            Options.UseIRC = cbIRCConnect.Checked;
-
-            Options.SkinUnits = cbSkinUnits.Checked;
-            Options.NinjaSkin = cbNinjaSkin.Checked;
-            Options.Herb = cbHerb.Checked;
-            Options.Mine = cbMine.Checked;
-            Options.LootUnits = cbLootUnits.Checked;
-
-            OptionManager.SaveSettings();
-
-            SetupIrc();
-        }
-
-        /// <summary>
-        ///     Reload all settings
-        /// </summary>
-        private void bReload_Click(object sender, EventArgs e)
-        {
-            OptionManager.LoadSettings();
-            if (EngineManager.CurrentEngineType == Engines.Engines.None)
-                CCManager.LoadCCs();
-        }
-
+        
         #region Grindbot gui part
 
         /// <summary>
@@ -372,42 +294,13 @@ namespace ZzukBot.Forms
         {
             dgChat.Rows.Clear();
         }
-
-
-        private void bSettingsHelp_Click(object sender, EventArgs e)
-        {
-            var str = "Account and Password -> Used for Relog\n";
-            str += "Search Mob Range -> Radius around the toon which will searched for the next target\n";
-            str += "Combat Range -> Distance at which the bot stops moving towards the target\n";
-            str += "Roam from Waypoint -> Distance how far the bot will move away from the current path\n";
-            str += "Free Slots -> Start vendoring if free slot count fall under this value\n";
-            str +=
-                "Waypoint Modifier -> Usually the next waypoint will be loaded if the toon is 1.3 yards or closer to the current one. Very bad computers could cause stuttering. You can modify the value at which a next waypoint will be loaded by a value from -0.5 (0.8) to 0.5 (1.8) to counter this";
-
-            MessageBox.Show(str, "Help");
-        }
-
-        private void bCreateHelp_Click(object sender, EventArgs e)
-        {
-            var str =
-                "Hotspots -> Add hotspots around the area you like to grind. The bot will automatically build paths around those\n";
-            str += "Vendor Hotspots -> Visit the forums for a guide on how to use those\n";
-            str += "Factions -> Target a mob which the bot should kill and add its faction\n";
-
-            str +=
-                "Every position related profile item will be saved with its ingame coordinates inside the profile to ease up the task of editing existing profiles\n";
-            str += "If no factions are added the bot will attack any mob which isnt friendly";
-
-            MessageBox.Show(str, "Help");
-        }
-
+        
         private void bClearGhostHotspots_Click(object sender, EventArgs e)
         {
             if (EngineManager.CurrentEngineType != Engines.Engines.ProfileCreation) return;
             EngineManager.EngineAs<ProfileCreator>().ClearGhostWaypoints();
         }
-
-
+        
         private void tcWaypoints_DrawItem_1(object sender, DrawItemEventArgs e)
         {
             var f = e.Font;
@@ -439,10 +332,10 @@ namespace ZzukBot.Forms
 
         private void cbIRCConnect_Click(object sender, EventArgs e)
         {
-            if (!cbIRCConnect.Checked)
+            if (!GuiCore.SettingsForm.cbIRCConnect.Checked)
             {
-                var botName = tbIRCBotNickname.Text;
-                var botChannel = tbIRCBotChannel.Text;
+                var botName = GuiCore.SettingsForm.tbIRCBotNickname.Text;
+                var botChannel = GuiCore.SettingsForm.tbIRCBotChannel.Text;
                 if (string.IsNullOrWhiteSpace(botName))
                 {
                     MessageBox.Show("Bot Nickname cant be empty");
@@ -453,10 +346,10 @@ namespace ZzukBot.Forms
                     MessageBox.Show("Channel must start with a #");
                     return;
                 }
-                cbIRCConnect.Checked = true;
+                GuiCore.SettingsForm.cbIRCConnect.Checked = true;
             }
             else
-                cbIRCConnect.Checked = false;
+                GuiCore.SettingsForm.cbIRCConnect.Checked = false;
         }
 
         #region Profilecreation buttons & fields
@@ -611,7 +504,18 @@ namespace ZzukBot.Forms
             EngineManager.StopCurrentEngine();
             lGrindLoadProfile.Text = "Profile: ";
             lGrindState.Text = "State: ";
+        }        
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(GuiCore.SettingsForm == null)
+            {
+                GuiCore.SettingsForm = new Forms.GraphicalSettingsForm();
+            }
+
+            GuiCore.SettingsForm.Show();
         }
         #endregion
+
     }
 }

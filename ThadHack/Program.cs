@@ -97,7 +97,8 @@ namespace ZzukBot
                 SetRealmlist();
                 try
                 {
-                    GuiCore.MainForm = new GraphicalMainForm();
+                    GuiCore.MainForm = new Forms.GraphicalMainForm();
+                    GuiCore.SettingsForm = new Forms.GraphicalSettingsForm();
                     Application.Run(GuiCore.MainForm);
                 }
                 catch (Exception e)
