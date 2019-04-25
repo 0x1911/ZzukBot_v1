@@ -25,7 +25,7 @@ namespace ZzukBot.Engines.Grind.Info
             int tmpCount = 0;
             foreach (var tmpWoWObject in tmpPossibleGatherObjects)
             {
-                if (tmpWoWObject.GatherInfo.Type == Constants.Enums.GatherType.Herbalism && HasSkill(Enums.Skills.HERBALISM) || tmpWoWObject.GatherInfo.Type == Constants.Enums.GatherType.Mining && HasSkill(Enums.Skills.MINING))//|| tmpWoWObject.GatherInfo.Type == Constants.Enums.GatherType.Mining)
+                if (tmpWoWObject.GatherInfo.Type == Constants.Enums.GatherType.Herbalism && HasSkill(Enums.Skills.HERBALISM)) // || tmpWoWObject.GatherInfo.Type == Constants.Enums.GatherType.Mining && HasSkill(Enums.Skills.MINING))//|| tmpWoWObject.GatherInfo.Type == Constants.Enums.GatherType.Mining)
                 {
                     if(!Grinder.Access.Info.Gather.ResourceBlacklist.Contains(tmpWoWObject.Guid))
                         return true;

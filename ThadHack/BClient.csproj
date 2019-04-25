@@ -81,6 +81,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GuiCore.cs" />
     <Compile Include="Constants\Enums.cs" />
     <Compile Include="Constants\GameConstants.cs" />
     <Compile Include="Constants\Strings.cs" />
@@ -135,23 +136,23 @@
     <Compile Include="Engines\Grind\States\stateWalkBackToGrind.cs" />
     <Compile Include="Engines\Grind\StuckHelper.cs" />
     <Compile Include="Engines\ProfileCreation\ProfileCreator.cs" />
-    <Compile Include="Forms\CCSelectorForm.cs">
+    <Compile Include="Forms\GraphicalCCSelectorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CCSelectorForm.Designer.cs">
-      <DependentUpon>CCSelectorForm.cs</DependentUpon>
+    <Compile Include="Forms\GraphicalCCSelectorForm.Designer.cs">
+      <DependentUpon>GraphicalCCSelectorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\BMainForm.cs">
+    <Compile Include="Forms\GraphicalMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\BMainForm.Designer.cs">
-      <DependentUpon>BMainForm.cs</DependentUpon>
+    <Compile Include="Forms\GraphicalMainForm.Designer.cs">
+      <DependentUpon>GraphicalMainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\RestockItemForm.cs">
+    <Compile Include="Forms\GraphicalRestockItemForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\RestockItemForm.Designer.cs">
-      <DependentUpon>RestockItemForm.cs</DependentUpon>
+    <Compile Include="Forms\GraphicalRestockItemForm.Designer.cs">
+      <DependentUpon>GraphicalRestockItemForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Calc.cs" />
     <Compile Include="Helpers\DebugAssist.cs" />
@@ -261,14 +262,14 @@
     <Compile Include="Settings\OptionManager.cs" />
     <Compile Include="Settings\Options.cs" />
     <Compile Include="Settings\Paths.cs" />
-    <EmbeddedResource Include="Forms\CCSelectorForm.resx">
-      <DependentUpon>CCSelectorForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\GraphicalCCSelectorForm.resx">
+      <DependentUpon>GraphicalCCSelectorForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\BMainForm.resx">
-      <DependentUpon>BMainForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\GraphicalMainForm.resx">
+      <DependentUpon>GraphicalMainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\RestockItemForm.resx">
-      <DependentUpon>RestockItemForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\GraphicalRestockItemForm.resx">
+      <DependentUpon>GraphicalRestockItemForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

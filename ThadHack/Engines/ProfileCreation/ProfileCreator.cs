@@ -22,7 +22,7 @@ namespace ZzukBot.Engines.ProfileCreation
         private volatile bool boolAddVendorWaypoint;
         // bools to check if user wants to add something to the profile
         private volatile bool boolAddWaypoint;
-        private bool boolIgnoreZAxis => BMainForm.MainForm.cbIgnoreZ.Checked;
+        private bool boolIgnoreZAxis => GuiCore.MainForm.cbIgnoreZ.Checked;
 
         // Are we running the profile creation?
         internal volatile bool IsCreatingProfile = false;
@@ -54,8 +54,8 @@ namespace ZzukBot.Engines.ProfileCreation
         {
             if (DirectX.RunInEndScene(CreateProfile))
             {
-                BMainForm.MainForm.lRecording.Text = "Recording";
-                BMainForm.MainForm.lRecording.Visible = true;
+                GuiCore.MainForm.lRecording.Text = "Recording";
+                GuiCore.MainForm.lRecording.Visible = true;
             }
         }
 
@@ -81,96 +81,96 @@ namespace ZzukBot.Engines.ProfileCreation
 
         private void StopIt()
         {
-            BMainForm.MainForm.tbHotspots.Text = "";
-            BMainForm.MainForm.tbVendorHotspots.Text = "";
-            BMainForm.MainForm.tbGhostHotspots.Text = "";
-            BMainForm.MainForm.tbFactions.Text = "";
-            BMainForm.MainForm.tbRepair.Text = "";
-            BMainForm.MainForm.tbVendor.Text = "";
-            BMainForm.MainForm.tbRestock.Text = "";
-            BMainForm.MainForm.tbRestockItems.Text = "";
-            BMainForm.MainForm.cbIgnoreZ.Checked = false;
-            BMainForm.MainForm.lHotspotCount.Text = "Count: ";
-            BMainForm.MainForm.lVendorHotspotCount.Text = "Count: ";
-            BMainForm.MainForm.lFactionCount.Text = "Count: ";
-            BMainForm.MainForm.lGhostHotspotCount.Text = "Count: ";
-            BMainForm.MainForm.lRecording.Visible = false;
+            GuiCore.MainForm.tbHotspots.Text = "";
+            GuiCore.MainForm.tbVendorHotspots.Text = "";
+            GuiCore.MainForm.tbGhostHotspots.Text = "";
+            GuiCore.MainForm.tbFactions.Text = "";
+            GuiCore.MainForm.tbRepair.Text = "";
+            GuiCore.MainForm.tbVendor.Text = "";
+            GuiCore.MainForm.tbRestock.Text = "";
+            GuiCore.MainForm.tbRestockItems.Text = "";
+            GuiCore.MainForm.cbIgnoreZ.Checked = false;
+            GuiCore.MainForm.lHotspotCount.Text = "Count: ";
+            GuiCore.MainForm.lVendorHotspotCount.Text = "Count: ";
+            GuiCore.MainForm.lFactionCount.Text = "Count: ";
+            GuiCore.MainForm.lGhostHotspotCount.Text = "Count: ";
+            GuiCore.MainForm.lRecording.Visible = false;
             DirectX.StopRunning();
         }
 
         internal void ClearVendor()
         {
-            BMainForm.MainForm.Invoke(new MethodInvoker(delegate
+            GuiCore.MainForm.Invoke(new MethodInvoker(delegate
             {
-                BMainForm.MainForm.tbVendor.Text = "";
+                GuiCore.MainForm.tbVendor.Text = "";
                 VendorNpc = null;
             }));
         }
 
         internal void ClearRestock()
         {
-            BMainForm.MainForm.Invoke(new MethodInvoker(delegate
+            GuiCore.MainForm.Invoke(new MethodInvoker(delegate
             {
-                BMainForm.MainForm.tbRestock.Text = "";
+                GuiCore.MainForm.tbRestock.Text = "";
                 RestockNpc = null;
             }));
         }
 
         internal void ClearRepair()
         {
-            BMainForm.MainForm.Invoke(new MethodInvoker(delegate
+            GuiCore.MainForm.Invoke(new MethodInvoker(delegate
             {
-                BMainForm.MainForm.tbRepair.Text = "";
+                GuiCore.MainForm.tbRepair.Text = "";
                 RepairNpc = null;
             }));
         }
 
         internal void ClearFactions()
         {
-            BMainForm.MainForm.Invoke(new MethodInvoker(delegate
+            GuiCore.MainForm.Invoke(new MethodInvoker(delegate
             {
                 listFactions.Clear();
-                BMainForm.MainForm.tbFactions.Text = "";
-                BMainForm.MainForm.lFactionCount.Text = "Count: ";
+                GuiCore.MainForm.tbFactions.Text = "";
+                GuiCore.MainForm.lFactionCount.Text = "Count: ";
             }));
         }
 
         internal void ClearHotspots()
         {
-            BMainForm.MainForm.Invoke(new MethodInvoker(delegate
+            GuiCore.MainForm.Invoke(new MethodInvoker(delegate
             {
                 listHotspots.Clear();
-                BMainForm.MainForm.tbHotspots.Text = "";
-                BMainForm.MainForm.lHotspotCount.Text = "Count: ";
+                GuiCore.MainForm.tbHotspots.Text = "";
+                GuiCore.MainForm.lHotspotCount.Text = "Count: ";
             }));
         }
 
         internal void ClearRestockItems()
         {
-            BMainForm.MainForm.Invoke(new MethodInvoker(delegate
+            GuiCore.MainForm.Invoke(new MethodInvoker(delegate
             {
-                BMainForm.MainForm.tbRestockItems.Text = "";
+                GuiCore.MainForm.tbRestockItems.Text = "";
                 listRestockItems.Clear();
             }));
         }
 
         internal void ClearVendorWaypoints()
         {
-            BMainForm.MainForm.Invoke(new MethodInvoker(delegate
+            GuiCore.MainForm.Invoke(new MethodInvoker(delegate
             {
                 listVendorHotspots.Clear();
-                BMainForm.MainForm.tbVendorHotspots.Text = "";
-                BMainForm.MainForm.lVendorHotspotCount.Text = "Count: ";
+                GuiCore.MainForm.tbVendorHotspots.Text = "";
+                GuiCore.MainForm.lVendorHotspotCount.Text = "Count: ";
             }));
         }
 
         internal void ClearGhostWaypoints()
         {
-            BMainForm.MainForm.Invoke(new MethodInvoker(delegate
+            GuiCore.MainForm.Invoke(new MethodInvoker(delegate
             {
                 listGhostHotspots.Clear();
-                BMainForm.MainForm.tbGhostHotspots.Text = "";
-                BMainForm.MainForm.lGhostHotspotCount.Text = "Count: ";
+                GuiCore.MainForm.tbGhostHotspots.Text = "";
+                GuiCore.MainForm.lGhostHotspotCount.Text = "Count: ";
             }));
         }
 
@@ -219,7 +219,7 @@ namespace ZzukBot.Engines.ProfileCreation
                     var tmpItem = new RestockItem(tmpForm.tbItemName.Text,
                         (int) tmpForm.nudRestockUpTo.Value);
                     listRestockItems.Add(tmpItem);
-                    BMainForm.MainForm.tbRestockItems.Text += tmpItem.Item + Environment.NewLine;
+                    GuiCore.MainForm.tbRestockItems.Text += tmpItem.Item + Environment.NewLine;
                 }
             }
         }
@@ -234,36 +234,36 @@ namespace ZzukBot.Engines.ProfileCreation
 
             Enums.PositionType posType;
 
-            BMainForm.MainForm.Invoke(new MethodInvoker(delegate
+            GuiCore.MainForm.Invoke(new MethodInvoker(delegate
             {
-                posType = BMainForm.MainForm.rbHotspot.Checked ? Enums.PositionType.Hotspot : Enums.PositionType.Waypoint;
+                posType = GuiCore.MainForm.rbHotspot.Checked ? Enums.PositionType.Hotspot : Enums.PositionType.Waypoint;
 
                 switch (parType)
                 {
                     case HotspotType.Hotspot:
                         posType = Enums.PositionType.Hotspot;
                         listHotspots.Add(Tuple.Create(tmpVec, pos, posType));
-                        BMainForm.MainForm.tbHotspots.Text += tmpVec + Environment.NewLine;
-                        BMainForm.MainForm.lHotspotCount.Text = "Count: " + listHotspots.Count;
+                        GuiCore.MainForm.tbHotspots.Text += tmpVec + Environment.NewLine;
+                        GuiCore.MainForm.lHotspotCount.Text = "Count: " + listHotspots.Count;
                         boolAddWaypoint = false;
                         if (listHotspots.Count == 1)
                         {
                             profileStart = Functions.GetText(posInfoEncrypted);
-                            BMainForm.MainForm.lRecording.Text = "Recording" + Environment.NewLine + pos;
+                            GuiCore.MainForm.lRecording.Text = "Recording" + Environment.NewLine + pos;
                         }
                         break;
 
                     case HotspotType.VendorHotspot:
                         listVendorHotspots.Add(Tuple.Create(tmpVec, pos, posType));
-                        BMainForm.MainForm.tbVendorHotspots.Text += tmpVec + Environment.NewLine;
-                        BMainForm.MainForm.lVendorHotspotCount.Text = "Count: " + listVendorHotspots.Count;
+                        GuiCore.MainForm.tbVendorHotspots.Text += tmpVec + Environment.NewLine;
+                        GuiCore.MainForm.lVendorHotspotCount.Text = "Count: " + listVendorHotspots.Count;
                         boolAddVendorWaypoint = false;
                         break;
 
                     case HotspotType.Ghost:
                         listGhostHotspots.Add(Tuple.Create(tmpVec, pos, posType));
-                        BMainForm.MainForm.tbGhostHotspots.Text += tmpVec + Environment.NewLine;
-                        BMainForm.MainForm.lGhostHotspotCount.Text = "Count: " + listGhostHotspots.Count;
+                        GuiCore.MainForm.tbGhostHotspots.Text += tmpVec + Environment.NewLine;
+                        GuiCore.MainForm.lGhostHotspotCount.Text = "Count: " + listGhostHotspots.Count;
                         boolAddGhostWaypoint = false;
                         break;
                 }
@@ -276,7 +276,7 @@ namespace ZzukBot.Engines.ProfileCreation
                 ObjectManager.Npcs
                     .FirstOrDefault(i => i.Guid == ObjectManager.Player.TargetGuid);
 
-            BMainForm.MainForm.Invoke(new MethodInvoker(delegate
+            GuiCore.MainForm.Invoke(new MethodInvoker(delegate
             {
                 if (tmpUnit != null)
                 {
@@ -285,8 +285,8 @@ namespace ZzukBot.Engines.ProfileCreation
                         if (tmpUnit.Reaction != Enums.UnitReaction.Friendly)
                         {
                             listFactions.Add(tmpUnit.FactionID);
-                            BMainForm.MainForm.tbFactions.Text += tmpUnit.FactionID + Environment.NewLine;
-                            BMainForm.MainForm.lFactionCount.Text = "Count: " + listFactions.Count;
+                            GuiCore.MainForm.tbFactions.Text += tmpUnit.FactionID + Environment.NewLine;
+                            GuiCore.MainForm.lFactionCount.Text = "Count: " + listFactions.Count;
                         }
                     }
                 }
@@ -311,26 +311,26 @@ namespace ZzukBot.Engines.ProfileCreation
             Functions.DoString(Strings.PosInfos.Replace("justPos", justPosEncrypted));
             var pos = Functions.GetText(justPosEncrypted);
 
-            BMainForm.MainForm.Invoke(new MethodInvoker(delegate
+            GuiCore.MainForm.Invoke(new MethodInvoker(delegate
             {
                 switch (parType)
                 {
                     case NpcType.Repair:
                         RepairNpc = new NPC(tmpUnit.Name, tmpUnit.Position,
                             pos);
-                        BMainForm.MainForm.tbRepair.Text = tmpUnit.Name;
+                        GuiCore.MainForm.tbRepair.Text = tmpUnit.Name;
                         boolAddRepair = false;
                         break;
 
                     case NpcType.Restock:
                         RestockNpc = new NPC(tmpUnit.Name, tmpUnit.Position, pos);
-                        BMainForm.MainForm.tbRestock.Text = tmpUnit.Name;
+                        GuiCore.MainForm.tbRestock.Text = tmpUnit.Name;
                         boolAddRestock = false;
                         break;
 
                     case NpcType.Vendor:
                         VendorNpc = new NPC(tmpUnit.Name, tmpUnit.Position, pos);
-                        BMainForm.MainForm.tbVendor.Text = tmpUnit.Name;
+                        GuiCore.MainForm.tbVendor.Text = tmpUnit.Name;
                         boolAddVendor = false;
                         break;
                 }

@@ -49,7 +49,7 @@ namespace ZzukBot.Settings
         internal static void LoadSettings()
         {
             LoadFromXml();
-            AppendProtectedItemsFromFile(BMainForm.MainForm.tbProtectedItems);
+            AppendProtectedItemsFromFile(GuiCore.MainForm.tbProtectedItems);
         }
 
         private static void AppendProtectedItemsFromFile(TextBox parTb)
@@ -73,121 +73,120 @@ namespace ZzukBot.Settings
         {
             GetElement("AccountName",
                 ref Options.AccountName,
-                BMainForm.MainForm.tbAccount);
+                GuiCore.MainForm.tbAccount);
 
             GetElement("StopOnRare",
                 ref Options.StopOnRare,
-                BMainForm.MainForm.cbStopOnRare);
+                GuiCore.MainForm.cbStopOnRare);
 
             GetElement("NotifyOnRare",
                 ref Options.NotifyOnRare,
-                BMainForm.MainForm.cbNotifyRare);
+                GuiCore.MainForm.cbNotifyRare);
 
             GetElement("PetFood",
                 ref Options.PetFood,
-                BMainForm.MainForm.tbPetFood);
+                GuiCore.MainForm.tbPetFood);
 
 
             GetElement("AccountPassword",
                 ref Options.AccountPassword,
-                BMainForm.MainForm.tbPassword);
+                GuiCore.MainForm.tbPassword);
 
             GetElement("CharacterName",
                 ref Options.CharacterName,
-                BMainForm.MainForm.txt_Character);
+                GuiCore.MainForm.txt_Character);
 
             GetElement("RestManaAt",
                 ref Options.RestManaAt,
-                BMainForm.MainForm.nudDrinkAt);
+                GuiCore.MainForm.nudDrinkAt);
 
             GetElement("Drink",
                 ref Options.Drink,
-                BMainForm.MainForm.tbDrink);
-
+                GuiCore.MainForm.tbDrink);
 
             GetElement("RestHealthAt",
                 ref Options.RestHealthAt,
-                BMainForm.MainForm.nudEatAt);
+                GuiCore.MainForm.nudEatAt);
 
             GetElement("Food",
                 ref Options.Food,
-                BMainForm.MainForm.tbFood);
+                GuiCore.MainForm.tbFood);
 
             GetElement("MobSearchRange",
                 ref Options.MobSearchRange,
-                BMainForm.MainForm.nudMobSearchRange);
+                GuiCore.MainForm.nudMobSearchRange);
 
             GetElement("MaxDiffToWp",
                 ref Options.MaxDiffToWp,
-                BMainForm.MainForm.nudRoamFromWp);
+                GuiCore.MainForm.nudRoamFromWp);
 
             GetElement("CombatDistance",
                 ref Options.CombatDistance,
-                BMainForm.MainForm.nudCombatRange);
+                GuiCore.MainForm.nudCombatRange);
 
             GetElement("MinFreeSlotsBeforeVendor",
                 ref Options.MinFreeSlotsBeforeVendor,
-                BMainForm.MainForm.nudFreeSlots);
+                GuiCore.MainForm.nudFreeSlots);
 
             GetElement("KeepItemsFromQuality",
                 ref Options.KeepItemsFromQuality,
-                BMainForm.MainForm.cbKeepQuality);
+                GuiCore.MainForm.cbKeepQuality);
 
             GetElement("WaypointModifier",
                 ref Options.WaypointModifier,
-                BMainForm.MainForm.nudWaypointModifier);
+                GuiCore.MainForm.nudWaypointModifier);
 
             GetElement("BeepOnSay",
                 ref Options.BeepOnSay,
-                BMainForm.MainForm.cbBeepSay);
+                GuiCore.MainForm.cbBeepSay);
 
             GetElement("BeepOnWhisper",
                 ref Options.BeepOnWhisper,
-                BMainForm.MainForm.cbBeepWhisper);
+                GuiCore.MainForm.cbBeepWhisper);
 
             GetElement("BeepOnName",
                 ref Options.BeepOnName,
-                BMainForm.MainForm.cbBeepName);
+                GuiCore.MainForm.cbBeepName);
 
             GetElement("BreakFor",
                 ref Options.BreakFor,
-                BMainForm.MainForm.nudBreakFor);
+                GuiCore.MainForm.nudBreakFor);
 
             GetElement("ForceBreakAfter",
                 ref Options.ForceBreakAfter,
-                BMainForm.MainForm.nudForceBreakAfter);
+                GuiCore.MainForm.nudForceBreakAfter);
 
             GetElement("UseIRC",
                 ref Options.UseIRC,
-                BMainForm.MainForm.cbIRCConnect);
+                GuiCore.MainForm.cbIRCConnect);
 
             GetElement("IRCBotNickname",
                 ref Options.IRCBotNickname,
-                BMainForm.MainForm.tbIRCBotNickname);
+                GuiCore.MainForm.tbIRCBotNickname);
 
             GetElement("IRCBotChannel",
                 ref Options.IRCBotChannel,
-                BMainForm.MainForm.tbIRCBotChannel);
+                GuiCore.MainForm.tbIRCBotChannel);
 
             GetElement("SkinUnits",
                 ref Options.SkinUnits,
-                BMainForm.MainForm.cbSkinUnits);
+                GuiCore.MainForm.cbSkinUnits);
 
             GetElement("NinjaSkin",
                 ref Options.NinjaSkin,
-                BMainForm.MainForm.cbNinjaSkin);
+                GuiCore.MainForm.cbNinjaSkin);
 
             GetElement("LootUnits",
                 ref Options.LootUnits,
-                BMainForm.MainForm.cbLootUnits);
+                GuiCore.MainForm.cbLootUnits);
 
             GetElement("Herb",
                 ref Options.Herb,
-                BMainForm.MainForm.cbHerb);
+                GuiCore.MainForm.cbHerb);
 
             GetElement("Mine",
                 ref Options.Mine,
-                BMainForm.MainForm.cbMine);
+                GuiCore.MainForm.cbMine);
 
             //GetProtectedItems(ref Options.ProtectedItems, Main.MainForm.tbProtectedItems);
         }
@@ -292,7 +291,7 @@ namespace ZzukBot.Settings
 
             object o = control;
             var x = (Control) o;
-            BMainForm.MainForm.UpdateControl(Value, x);
+            GuiCore.MainForm.UpdateControl(Value, x);
             doc.Save(Paths.Settings);
         }
 

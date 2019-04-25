@@ -1,6 +1,6 @@
 namespace ZzukBot.Forms
 {
-    partial class BMainForm
+    partial class GraphicalMainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@ namespace ZzukBot.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BMainForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GraphicalMainForm));
             this.tcMain = new System.Windows.Forms.TabControl();
             this.tpGrind = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();

@@ -97,7 +97,7 @@ namespace ZzukBot.Engines.Grind
                             {
                                 if (!Info.RareSpotter.Notified(tmp.Guid))
                                 {
-                                    BMainForm.MainForm.updateNotification("Found a rare: " + tmp.Name);
+                                    GuiCore.MainForm.updateNotification("Found a rare: " + tmp.Name);
                                 }
                             }
                         }
@@ -205,7 +205,7 @@ namespace ZzukBot.Engines.Grind
                         }
 
                         LastState = Engine.Pulse();
-                        BMainForm.MainForm.UpdateControl("State: " + LastState, BMainForm.MainForm.lGrindState);
+                        GuiCore.MainForm.UpdateControl("State: " + LastState, GuiCore.MainForm.lGrindState);
                     }
                     else
                     {

@@ -60,7 +60,7 @@ namespace ZzukBot.Mem
                     LoginHandling();
             }
 
-            if (Relog.LoginState == Enums.LoginState.charselect)
+            if (Relog.LoginState == Enums.LoginState.charselect)// && !ObjectManager.IsIngame)
             {
                 //only one char on the account? simply enter the world on that one
                 if (Relog.NumCharacterCount == 1)
@@ -82,6 +82,7 @@ namespace ZzukBot.Mem
                 }
             }            
         }
+
         internal static bool Login()
         {
             Functions.DoString("DefaultServerLogin('" + Options.AccountName + "', '" + Options.AccountPassword + "');");

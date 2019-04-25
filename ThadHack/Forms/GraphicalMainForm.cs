@@ -19,16 +19,14 @@ using ZzukBot.Settings;
 
 namespace ZzukBot.Forms
 {
-    internal partial class BMainForm : Form
+    internal partial class GraphicalMainForm : Form
     {
-        internal static BMainForm MainForm;
-
         #region Constructor
 
         /// <summary>
         ///     Main constructor
         /// </summary>
-        internal BMainForm()
+        internal GraphicalMainForm()
         {
             InitializeComponent();
             Text += " - " + Assembly.GetExecutingAssembly().GetName().Version;
@@ -89,7 +87,7 @@ namespace ZzukBot.Forms
         [Obfuscation(Feature = "virtualization", Exclude = false)]
         private void PrepareForLaunch()
         {
-            MainForm = this;
+           // GuiCore.MainForm = this;
             Enabled = false;
             OptionManager.LoadXmlSettings();
             LoginBlock.Enable();
@@ -105,17 +103,17 @@ namespace ZzukBot.Forms
             {
                 using (var wc = new WebClient())
                 {
-                    MainForm.rtbNews.Text = wc.DownloadString("http://zzukbot.com/Hk3VEXpjfj8K/Important.txt");
+                    GuiCore.MainForm.rtbNews.Text = wc.DownloadString("http://zzukbot.com/Hk3VEXpjfj8K/Important.txt");
                 }
             }
             catch
             {
-                MainForm.rtbNews.Text = "Error while fetching news";
+                GuiCore.MainForm.rtbNews.Text = "Error while fetching news";
             }
             IrcMonitor.Instance.MessageReceived += ChannelMessageRecieved;
             SetupIrc();
             Enums.DynamicFlags.AdjustToRealm();
-            MainForm.Enabled = true;
+            GuiCore.MainForm.Enabled = true;
             ChatHook.OnNewChatMessage += updateChat;
             LoginBlock.Disable();
         }
