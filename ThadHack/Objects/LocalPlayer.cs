@@ -40,7 +40,7 @@ namespace ZzukBot.Objects
         internal volatile Spells Spells;
 
         internal IntPtr SkillField => Pointer.Add(8).ReadAs<IntPtr>().Add(0xB38);
-        internal List<Game.Static.Skills.Skill> Skills = new List<Game.Static.Skills.Skill>(); // = new Game.Static.Skills().GetAllPlayerSkills();
+        internal List<Game.Static.Skills.Skill> Skills = new List<Game.Static.Skills.Skill>();
         /// <summary>
         ///     Constructor
         /// </summary>
@@ -49,6 +49,8 @@ namespace ZzukBot.Objects
         {
             Inventory = new Inventory();
             Spells = new Spells();
+            
+            //TODO: if isingame
             //Skills = new Game.Static.Skills().GetAllPlayerSkills();
         }
         
@@ -126,7 +128,7 @@ namespace ZzukBot.Objects
         internal int LootSlots => Functions.GetLootSlots();
 
         /// <summary>
-        ///     How many items can we loot?
+        ///     Which Map Id are we on?
         /// </summary>
         /// <summary>
         ///     the ID of the map we are on

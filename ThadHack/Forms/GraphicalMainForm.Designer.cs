@@ -33,6 +33,25 @@ namespace ZzukBot.Forms
             this.tpGrind = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lbl_targetId = new System.Windows.Forms.Label();
+            this.lbl_targetFaction = new System.Windows.Forms.Label();
+            this.lbl_targetZ = new System.Windows.Forms.Label();
+            this.lbl_targetY = new System.Windows.Forms.Label();
+            this.lbl_targetX = new System.Windows.Forms.Label();
+            this.lbl_targetLife = new System.Windows.Forms.Label();
+            this.lbl_targetName = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lbl_playerSubZone = new System.Windows.Forms.Label();
+            this.lbl_playerZone = new System.Windows.Forms.Label();
+            this.lbl_playerAccountName = new System.Windows.Forms.Label();
+            this.lbl_playerRealm = new System.Windows.Forms.Label();
+            this.lbl_playerNickName = new System.Windows.Forms.Label();
+            this.lbl_playerMana = new System.Windows.Forms.Label();
+            this.lbl_playerLife = new System.Windows.Forms.Label();
+            this.lbl_playerZ = new System.Windows.Forms.Label();
+            this.lbl_playerY = new System.Windows.Forms.Label();
+            this.lbl_playerX = new System.Windows.Forms.Label();
             this.lGrindLoadProfile = new System.Windows.Forms.Label();
             this.cbLoadLastProfile = new System.Windows.Forms.CheckBox();
             this.lGrindState = new System.Windows.Forms.Label();
@@ -66,6 +85,8 @@ namespace ZzukBot.Forms
             this.tpGrind.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.tC_Log.SuspendLayout();
             this.tp_InGameChat.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -82,65 +103,282 @@ namespace ZzukBot.Forms
             this.tcMain.Controls.Add(this.tp_InGameChat);
             this.tcMain.Controls.Add(this.tpNotifications);
             this.tcMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tcMain.Location = new System.Drawing.Point(3, 27);
+            this.tcMain.Location = new System.Drawing.Point(4, 34);
+            this.tcMain.Margin = new System.Windows.Forms.Padding(4);
             this.tcMain.Name = "tcMain";
             this.tcMain.SelectedIndex = 0;
-            this.tcMain.Size = new System.Drawing.Size(478, 479);
+            this.tcMain.Size = new System.Drawing.Size(382, 491);
             this.tcMain.TabIndex = 0;
             // 
             // tpGrind
             // 
             this.tpGrind.BackColor = System.Drawing.SystemColors.Control;
             this.tpGrind.Controls.Add(this.tableLayoutPanel2);
-            this.tpGrind.Location = new System.Drawing.Point(4, 22);
+            this.tpGrind.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tpGrind.Location = new System.Drawing.Point(4, 25);
+            this.tpGrind.Margin = new System.Windows.Forms.Padding(4);
             this.tpGrind.Name = "tpGrind";
-            this.tpGrind.Padding = new System.Windows.Forms.Padding(10);
-            this.tpGrind.Size = new System.Drawing.Size(470, 453);
+            this.tpGrind.Padding = new System.Windows.Forms.Padding(1);
+            this.tpGrind.Size = new System.Drawing.Size(374, 462);
             this.tpGrind.TabIndex = 0;
-            this.tpGrind.Text = "Main";
+            this.tpGrind.Text = "Overview";
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.tC_Log, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(10, 10);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(1, 1);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(450, 433);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(372, 460);
             this.tableLayoutPanel2.TabIndex = 8;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.groupBox3);
+            this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.lGrindLoadProfile);
             this.panel1.Controls.Add(this.cbLoadLastProfile);
             this.panel1.Controls.Add(this.lGrindState);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Location = new System.Drawing.Point(4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(444, 210);
+            this.panel1.Size = new System.Drawing.Size(364, 314);
             this.panel1.TabIndex = 1;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.lbl_targetId);
+            this.groupBox3.Controls.Add(this.lbl_targetFaction);
+            this.groupBox3.Controls.Add(this.lbl_targetZ);
+            this.groupBox3.Controls.Add(this.lbl_targetY);
+            this.groupBox3.Controls.Add(this.lbl_targetX);
+            this.groupBox3.Controls.Add(this.lbl_targetLife);
+            this.groupBox3.Controls.Add(this.lbl_targetName);
+            this.groupBox3.Location = new System.Drawing.Point(183, 4);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Size = new System.Drawing.Size(170, 241);
+            this.groupBox3.TabIndex = 9;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Target";
+            // 
+            // lbl_targetId
+            // 
+            this.lbl_targetId.AutoSize = true;
+            this.lbl_targetId.Location = new System.Drawing.Point(8, 112);
+            this.lbl_targetId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_targetId.Name = "lbl_targetId";
+            this.lbl_targetId.Size = new System.Drawing.Size(32, 16);
+            this.lbl_targetId.TabIndex = 18;
+            this.lbl_targetId.Text = "Id: 0";
+            // 
+            // lbl_targetFaction
+            // 
+            this.lbl_targetFaction.AutoSize = true;
+            this.lbl_targetFaction.Location = new System.Drawing.Point(8, 96);
+            this.lbl_targetFaction.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_targetFaction.Name = "lbl_targetFaction";
+            this.lbl_targetFaction.Size = new System.Drawing.Size(65, 16);
+            this.lbl_targetFaction.TabIndex = 17;
+            this.lbl_targetFaction.Text = "Faction: 0";
+            // 
+            // lbl_targetZ
+            // 
+            this.lbl_targetZ.AutoSize = true;
+            this.lbl_targetZ.Location = new System.Drawing.Point(8, 52);
+            this.lbl_targetZ.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_targetZ.Name = "lbl_targetZ";
+            this.lbl_targetZ.Size = new System.Drawing.Size(29, 16);
+            this.lbl_targetZ.TabIndex = 16;
+            this.lbl_targetZ.Text = "Z: 0";
+            // 
+            // lbl_targetY
+            // 
+            this.lbl_targetY.AutoSize = true;
+            this.lbl_targetY.Location = new System.Drawing.Point(8, 36);
+            this.lbl_targetY.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_targetY.Name = "lbl_targetY";
+            this.lbl_targetY.Size = new System.Drawing.Size(30, 16);
+            this.lbl_targetY.TabIndex = 15;
+            this.lbl_targetY.Text = "Y: 0";
+            // 
+            // lbl_targetX
+            // 
+            this.lbl_targetX.AutoSize = true;
+            this.lbl_targetX.Location = new System.Drawing.Point(8, 20);
+            this.lbl_targetX.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_targetX.Name = "lbl_targetX";
+            this.lbl_targetX.Size = new System.Drawing.Size(29, 16);
+            this.lbl_targetX.TabIndex = 14;
+            this.lbl_targetX.Text = "X: 0";
+            // 
+            // lbl_targetLife
+            // 
+            this.lbl_targetLife.AutoSize = true;
+            this.lbl_targetLife.Location = new System.Drawing.Point(8, 80);
+            this.lbl_targetLife.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_targetLife.Name = "lbl_targetLife";
+            this.lbl_targetLife.Size = new System.Drawing.Size(42, 16);
+            this.lbl_targetLife.TabIndex = 13;
+            this.lbl_targetLife.Text = "Life: 0";
+            // 
+            // lbl_targetName
+            // 
+            this.lbl_targetName.AutoSize = true;
+            this.lbl_targetName.Location = new System.Drawing.Point(8, 156);
+            this.lbl_targetName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_targetName.Name = "lbl_targetName";
+            this.lbl_targetName.Size = new System.Drawing.Size(103, 16);
+            this.lbl_targetName.TabIndex = 12;
+            this.lbl_targetName.Text = "Name: unknown";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.lbl_playerSubZone);
+            this.groupBox2.Controls.Add(this.lbl_playerZone);
+            this.groupBox2.Controls.Add(this.lbl_playerAccountName);
+            this.groupBox2.Controls.Add(this.lbl_playerRealm);
+            this.groupBox2.Controls.Add(this.lbl_playerNickName);
+            this.groupBox2.Controls.Add(this.lbl_playerMana);
+            this.groupBox2.Controls.Add(this.lbl_playerLife);
+            this.groupBox2.Controls.Add(this.lbl_playerZ);
+            this.groupBox2.Controls.Add(this.lbl_playerY);
+            this.groupBox2.Controls.Add(this.lbl_playerX);
+            this.groupBox2.Location = new System.Drawing.Point(5, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(170, 241);
+            this.groupBox2.TabIndex = 8;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Player";
+            // 
+            // lbl_playerSubZone
+            // 
+            this.lbl_playerSubZone.AutoSize = true;
+            this.lbl_playerSubZone.Location = new System.Drawing.Point(8, 214);
+            this.lbl_playerSubZone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_playerSubZone.Name = "lbl_playerSubZone";
+            this.lbl_playerSubZone.Size = new System.Drawing.Size(128, 16);
+            this.lbl_playerSubZone.TabIndex = 15;
+            this.lbl_playerSubZone.Text = "Sub-Zone: Unknown";
+            // 
+            // lbl_playerZone
+            // 
+            this.lbl_playerZone.AutoSize = true;
+            this.lbl_playerZone.Location = new System.Drawing.Point(8, 198);
+            this.lbl_playerZone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_playerZone.Name = "lbl_playerZone";
+            this.lbl_playerZone.Size = new System.Drawing.Size(100, 16);
+            this.lbl_playerZone.TabIndex = 14;
+            this.lbl_playerZone.Text = "Zone: Unknown";
+            // 
+            // lbl_playerAccountName
+            // 
+            this.lbl_playerAccountName.AutoSize = true;
+            this.lbl_playerAccountName.Location = new System.Drawing.Point(8, 156);
+            this.lbl_playerAccountName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_playerAccountName.Name = "lbl_playerAccountName";
+            this.lbl_playerAccountName.Size = new System.Drawing.Size(114, 16);
+            this.lbl_playerAccountName.TabIndex = 13;
+            this.lbl_playerAccountName.Text = "Account: unknown";
+            // 
+            // lbl_playerRealm
+            // 
+            this.lbl_playerRealm.AutoSize = true;
+            this.lbl_playerRealm.Location = new System.Drawing.Point(8, 140);
+            this.lbl_playerRealm.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_playerRealm.Name = "lbl_playerRealm";
+            this.lbl_playerRealm.Size = new System.Drawing.Size(106, 16);
+            this.lbl_playerRealm.TabIndex = 12;
+            this.lbl_playerRealm.Text = "Realm: unknown";
+            // 
+            // lbl_playerNickName
+            // 
+            this.lbl_playerNickName.AutoSize = true;
+            this.lbl_playerNickName.Location = new System.Drawing.Point(8, 124);
+            this.lbl_playerNickName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_playerNickName.Name = "lbl_playerNickName";
+            this.lbl_playerNickName.Size = new System.Drawing.Size(103, 16);
+            this.lbl_playerNickName.TabIndex = 11;
+            this.lbl_playerNickName.Text = "Name: unknown";
+            // 
+            // lbl_playerMana
+            // 
+            this.lbl_playerMana.AutoSize = true;
+            this.lbl_playerMana.Location = new System.Drawing.Point(8, 96);
+            this.lbl_playerMana.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_playerMana.Name = "lbl_playerMana";
+            this.lbl_playerMana.Size = new System.Drawing.Size(55, 16);
+            this.lbl_playerMana.TabIndex = 10;
+            this.lbl_playerMana.Text = "Mana: 0";
+            // 
+            // lbl_playerLife
+            // 
+            this.lbl_playerLife.AutoSize = true;
+            this.lbl_playerLife.Location = new System.Drawing.Point(8, 80);
+            this.lbl_playerLife.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_playerLife.Name = "lbl_playerLife";
+            this.lbl_playerLife.Size = new System.Drawing.Size(42, 16);
+            this.lbl_playerLife.TabIndex = 9;
+            this.lbl_playerLife.Text = "Life: 0";
+            // 
+            // lbl_playerZ
+            // 
+            this.lbl_playerZ.AutoSize = true;
+            this.lbl_playerZ.Location = new System.Drawing.Point(8, 52);
+            this.lbl_playerZ.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_playerZ.Name = "lbl_playerZ";
+            this.lbl_playerZ.Size = new System.Drawing.Size(29, 16);
+            this.lbl_playerZ.TabIndex = 8;
+            this.lbl_playerZ.Text = "Z: 0";
+            // 
+            // lbl_playerY
+            // 
+            this.lbl_playerY.AutoSize = true;
+            this.lbl_playerY.Location = new System.Drawing.Point(8, 36);
+            this.lbl_playerY.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_playerY.Name = "lbl_playerY";
+            this.lbl_playerY.Size = new System.Drawing.Size(30, 16);
+            this.lbl_playerY.TabIndex = 7;
+            this.lbl_playerY.Text = "Y: 0";
+            // 
+            // lbl_playerX
+            // 
+            this.lbl_playerX.AutoSize = true;
+            this.lbl_playerX.Location = new System.Drawing.Point(8, 20);
+            this.lbl_playerX.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_playerX.Name = "lbl_playerX";
+            this.lbl_playerX.Size = new System.Drawing.Size(29, 16);
+            this.lbl_playerX.TabIndex = 6;
+            this.lbl_playerX.Text = "X: 0";
             // 
             // lGrindLoadProfile
             // 
             this.lGrindLoadProfile.AutoSize = true;
-            this.lGrindLoadProfile.Location = new System.Drawing.Point(4, 11);
+            this.lGrindLoadProfile.Location = new System.Drawing.Point(8, 252);
+            this.lGrindLoadProfile.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lGrindLoadProfile.Name = "lGrindLoadProfile";
-            this.lGrindLoadProfile.Size = new System.Drawing.Size(39, 13);
+            this.lGrindLoadProfile.Size = new System.Drawing.Size(49, 16);
             this.lGrindLoadProfile.TabIndex = 5;
             this.lGrindLoadProfile.Text = "Profile:";
             // 
             // cbLoadLastProfile
             // 
             this.cbLoadLastProfile.AutoSize = true;
-            this.cbLoadLastProfile.Location = new System.Drawing.Point(3, 180);
+            this.cbLoadLastProfile.Location = new System.Drawing.Point(217, 290);
+            this.cbLoadLastProfile.Margin = new System.Windows.Forms.Padding(4);
             this.cbLoadLastProfile.Name = "cbLoadLastProfile";
-            this.cbLoadLastProfile.Size = new System.Drawing.Size(100, 17);
+            this.cbLoadLastProfile.Size = new System.Drawing.Size(122, 20);
             this.cbLoadLastProfile.TabIndex = 7;
             this.cbLoadLastProfile.Text = "Load last profile";
             this.cbLoadLastProfile.UseVisualStyleBackColor = true;
@@ -148,9 +386,10 @@ namespace ZzukBot.Forms
             // lGrindState
             // 
             this.lGrindState.AutoSize = true;
-            this.lGrindState.Location = new System.Drawing.Point(4, 30);
+            this.lGrindState.Location = new System.Drawing.Point(8, 268);
+            this.lGrindState.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lGrindState.Name = "lGrindState";
-            this.lGrindState.Size = new System.Drawing.Size(38, 13);
+            this.lGrindState.Size = new System.Drawing.Size(45, 16);
             this.lGrindState.TabIndex = 6;
             this.lGrindState.Text = "State: ";
             // 
@@ -160,38 +399,42 @@ namespace ZzukBot.Forms
             this.tC_Log.Controls.Add(this.tabPage2);
             this.tC_Log.Controls.Add(this.tabPage3);
             this.tC_Log.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tC_Log.Location = new System.Drawing.Point(3, 219);
+            this.tC_Log.Location = new System.Drawing.Point(4, 326);
+            this.tC_Log.Margin = new System.Windows.Forms.Padding(4);
             this.tC_Log.Name = "tC_Log";
             this.tC_Log.SelectedIndex = 0;
-            this.tC_Log.Size = new System.Drawing.Size(444, 211);
+            this.tC_Log.Size = new System.Drawing.Size(364, 130);
             this.tC_Log.TabIndex = 2;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(436, 185);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage1.Size = new System.Drawing.Size(356, 101);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Log";
             // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(436, 185);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage2.Size = new System.Drawing.Size(356, 101);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Debug";
             // 
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(436, 185);
+            this.tabPage3.Size = new System.Drawing.Size(356, 101);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Exception";
             // 
@@ -200,18 +443,21 @@ namespace ZzukBot.Forms
             this.tp_InGameChat.BackColor = System.Drawing.SystemColors.Control;
             this.tp_InGameChat.Controls.Add(this.groupBox1);
             this.tp_InGameChat.Controls.Add(this.bClearChatLog);
-            this.tp_InGameChat.Location = new System.Drawing.Point(4, 22);
+            this.tp_InGameChat.Location = new System.Drawing.Point(4, 25);
+            this.tp_InGameChat.Margin = new System.Windows.Forms.Padding(4);
             this.tp_InGameChat.Name = "tp_InGameChat";
-            this.tp_InGameChat.Size = new System.Drawing.Size(470, 453);
+            this.tp_InGameChat.Size = new System.Drawing.Size(374, 462);
             this.tp_InGameChat.TabIndex = 7;
             this.tp_InGameChat.Text = "Chat";
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgChat);
-            this.groupBox1.Location = new System.Drawing.Point(8, 5);
+            this.groupBox1.Location = new System.Drawing.Point(11, 6);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(450, 293);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(600, 361);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "InGame Chat";
@@ -230,13 +476,14 @@ namespace ZzukBot.Forms
             this.dSender,
             this.dMessage});
             this.dgChat.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgChat.Location = new System.Drawing.Point(3, 16);
+            this.dgChat.Location = new System.Drawing.Point(4, 19);
+            this.dgChat.Margin = new System.Windows.Forms.Padding(4);
             this.dgChat.MultiSelect = false;
             this.dgChat.Name = "dgChat";
             this.dgChat.ReadOnly = true;
             this.dgChat.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgChat.RowHeadersVisible = false;
-            this.dgChat.Size = new System.Drawing.Size(444, 274);
+            this.dgChat.Size = new System.Drawing.Size(592, 338);
             this.dgChat.TabIndex = 6;
             // 
             // dType
@@ -269,9 +516,10 @@ namespace ZzukBot.Forms
             // 
             // bClearChatLog
             // 
-            this.bClearChatLog.Location = new System.Drawing.Point(10, 304);
+            this.bClearChatLog.Location = new System.Drawing.Point(13, 374);
+            this.bClearChatLog.Margin = new System.Windows.Forms.Padding(4);
             this.bClearChatLog.Name = "bClearChatLog";
-            this.bClearChatLog.Size = new System.Drawing.Size(83, 20);
+            this.bClearChatLog.Size = new System.Drawing.Size(111, 25);
             this.bClearChatLog.TabIndex = 9;
             this.bClearChatLog.Text = "Clear Log";
             this.bClearChatLog.UseVisualStyleBackColor = true;
@@ -281,9 +529,10 @@ namespace ZzukBot.Forms
             // 
             this.tpNotifications.BackColor = System.Drawing.SystemColors.Control;
             this.tpNotifications.Controls.Add(this.dgNotifications);
-            this.tpNotifications.Location = new System.Drawing.Point(4, 22);
+            this.tpNotifications.Location = new System.Drawing.Point(4, 25);
+            this.tpNotifications.Margin = new System.Windows.Forms.Padding(4);
             this.tpNotifications.Name = "tpNotifications";
-            this.tpNotifications.Size = new System.Drawing.Size(470, 453);
+            this.tpNotifications.Size = new System.Drawing.Size(374, 462);
             this.tpNotifications.TabIndex = 3;
             this.tpNotifications.Text = "Notifications";
             // 
@@ -301,10 +550,12 @@ namespace ZzukBot.Forms
             this.dataGridViewTextBoxColumn4});
             this.dgNotifications.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgNotifications.Location = new System.Drawing.Point(0, 0);
+            this.dgNotifications.Margin = new System.Windows.Forms.Padding(4);
             this.dgNotifications.MultiSelect = false;
             this.dgNotifications.Name = "dgNotifications";
             this.dgNotifications.ReadOnly = true;
-            this.dgNotifications.Size = new System.Drawing.Size(470, 453);
+            this.dgNotifications.RowHeadersVisible = false;
+            this.dgNotifications.Size = new System.Drawing.Size(374, 462);
             this.dgNotifications.TabIndex = 5;
             // 
             // dataGridViewTextBoxColumn2
@@ -330,12 +581,13 @@ namespace ZzukBot.Forms
             this.tableLayoutPanel1.Controls.Add(this.statusStrip1, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(484, 533);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(390, 559);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // menuStrip1
@@ -348,7 +600,8 @@ namespace ZzukBot.Forms
             this.dEVToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(484, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(390, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -403,21 +656,24 @@ namespace ZzukBot.Forms
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 511);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 537);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(484, 22);
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(390, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // GraphicalMainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 533);
+            this.ClientSize = new System.Drawing.Size(390, 559);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "GraphicalMainForm";
             this.Text = "ZzukBot";
@@ -426,6 +682,10 @@ namespace ZzukBot.Forms
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.tC_Log.ResumeLayout(false);
             this.tp_InGameChat.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -475,6 +735,25 @@ namespace ZzukBot.Forms
         private System.Windows.Forms.ToolStripMenuItem newsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem dEVToolStripMenuItem;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox2;
+        internal System.Windows.Forms.Label lbl_targetId;
+        internal System.Windows.Forms.Label lbl_targetFaction;
+        internal System.Windows.Forms.Label lbl_targetZ;
+        internal System.Windows.Forms.Label lbl_targetY;
+        internal System.Windows.Forms.Label lbl_targetX;
+        internal System.Windows.Forms.Label lbl_targetLife;
+        internal System.Windows.Forms.Label lbl_targetName;
+        internal System.Windows.Forms.Label lbl_playerSubZone;
+        internal System.Windows.Forms.Label lbl_playerZone;
+        internal System.Windows.Forms.Label lbl_playerAccountName;
+        internal System.Windows.Forms.Label lbl_playerRealm;
+        internal System.Windows.Forms.Label lbl_playerNickName;
+        internal System.Windows.Forms.Label lbl_playerMana;
+        internal System.Windows.Forms.Label lbl_playerLife;
+        internal System.Windows.Forms.Label lbl_playerZ;
+        internal System.Windows.Forms.Label lbl_playerY;
+        internal System.Windows.Forms.Label lbl_playerX;
     }
 }
 

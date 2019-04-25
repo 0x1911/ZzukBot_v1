@@ -206,6 +206,43 @@ namespace ZzukBot.Engines.Grind
 
                         LastState = Engine.Pulse();
                         GuiCore.MainForm.UpdateControl("State: " + LastState, GuiCore.MainForm.lGrindState);
+
+                        #region Update OverView labels
+                        var target = ObjectManager.Target;
+                        if (target != null)
+                        {
+                            GuiCore.MainForm.lbl_targetX.Text = "X: " + target.Position.X.ToString();
+                            GuiCore.MainForm.lbl_targetY.Text = "Z: " + target.Position.Y.ToString();
+                            GuiCore.MainForm.lbl_targetZ.Text = "Y: " + target.Position.Z.ToString();
+
+                            GuiCore.MainForm.lbl_targetLife.Text = "Life: " + target.HealthPercent.ToString() + "%";
+                            GuiCore.MainForm.lbl_targetFaction.Text = "Faction: " + target.FactionID.ToString();
+                            GuiCore.MainForm.lbl_targetId.Text = "Id: " + target.NpcID.ToString();
+
+
+                            GuiCore.MainForm.lbl_targetName.Text = "Name: " + target.Name.ToString();
+                        }
+                                                
+                        var player = ObjectManager.Player;
+                        if(player != null)
+                        {
+                            GuiCore.MainForm.lbl_playerX.Text = "X: " + player.Position.X.ToString();
+                            GuiCore.MainForm.lbl_playerY.Text = "Z: " + player.Position.Y.ToString();
+                            GuiCore.MainForm.lbl_playerZ.Text = "Y: " + player.Position.Z.ToString();
+
+                            GuiCore.MainForm.lbl_playerLife.Text = "Life: " + player.HealthPercent.ToString() + "%";
+                            if(player.MaxMana > 0) { GuiCore.MainForm.lbl_playerMana.Text = "Mana: " + player.ManaPercent.ToString() + "%"; }
+                            else if (player.Class == Constants.Enums.ClassIds.Rogue) { GuiCore.MainForm.lbl_playerMana.Text = "Energy: " + player.Energy.ToString(); }
+                            else if (player.Class == Constants.Enums.ClassIds.Warrior) { GuiCore.MainForm.lbl_playerMana.Text = "Rage: " + player.Rage.ToString(); }
+
+                            GuiCore.MainForm.lbl_playerZone.Text = "Zone: " + player.GetMapID;
+                            GuiCore.MainForm.lbl_playerSubZone.Text = "Sub-Zone: " + player.MinimapZoneText.ToString();
+                        }
+
+                        //GuiCore.MainForm.lbl_playerRealm.Text = "Realm: " + player.
+                        //GuiCore.MainForm.lbl_playerNickName.Text = "Nick: " + player.
+                        GuiCore.MainForm.lbl_playerAccountName.Text = "Account: " + Options.AccountName;
+                        #endregion
                     }
                     else
                     {
