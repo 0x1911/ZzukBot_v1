@@ -2,6 +2,8 @@
 using ZzukBot.Objects;
 using System.Collections.Generic;
 using ZzukBot.Constants;
+using ZzukBot.Helpers;
+using System.Linq;
 
 namespace ZzukBot.Engines.Grind.Info
 {
@@ -46,15 +48,27 @@ namespace ZzukBot.Engines.Grind.Info
             var tmpPossibleGatherObjects = ObjectManager.GameObjects;
             var player = ObjectManager.Player;
 
+            Dictionary<WoWGameObject, float> tmpResources = new Dictionary<WoWGameObject, float>();
+ 
             foreach (var tmpWoWObject in tmpPossibleGatherObjects)
             {
                 if (Settings.Options.Herb && tmpWoWObject.GatherInfo.Type == Constants.Enums.GatherType.Herbalism && HasEnoughSkill(Enums.Skills.HERBALISM, tmpWoWObject) ||
                     Settings.Options.Mine && tmpWoWObject.GatherInfo.Type == Constants.Enums.GatherType.Mining && HasEnoughSkill(Enums.Skills.MINING, tmpWoWObject))
                 {
-                    return tmpWoWObject;
+                    tmpResources.Add(tmpWoWObject, Calc.Distance3D(tmpWoWObject.Position, ObjectManager.Player.Position));
                 }
             }
             
+            var items = from pair in tmpResources
+                        orderby pair.Value ascending
+                        select pair;
+
+           
+            foreach (KeyValuePair<WoWGameObject, float> pair in items)
+            {
+                return pair.Key;
+            }
+
 
             return null;
         }

@@ -3,6 +3,7 @@ using ZzukBot.FSM;
 using ZzukBot.Helpers;
 using ZzukBot.Mem;
 using ZzukBot.Constants;
+using ZzukBot.Objects;
 
 namespace ZzukBot.Engines.Grind.States
 {
@@ -19,51 +20,53 @@ namespace ZzukBot.Engines.Grind.States
 
         internal override bool NeedToRun => Grinder.Access.Info.Gather.SearchGatherObjects();
 
-        internal override string Name => "Traveling to gathering spot";
+        internal override string Name => "Gathering";
 
         internal override void Run()
         {
-            var resource = Grinder.Access.Info.Gather.GetNearestResource();
+            WoWGameObject savedResource = Grinder.Access.Info.Gather.GetNearestResource();
 
-            if (resource == null) return;
-            if (resource.Guid != oldResourceGuid)
+            if (savedResource == null) return;
+
+            Helpers.Logger.Append("Want to gather " + savedResource.Name + " in " + Calc.Distance3D(savedResource.Position, ObjectManager.Player.Position));
+
+            if (savedResource.Guid != oldResourceGuid)
             {
-                oldResourceGuid = resource.Guid;
+                oldResourceGuid = savedResource.Guid;
                 lastCheck = Environment.TickCount;
-                Wait.Remove("RunToGather");
                 Wait.Remove("Gathering");
             }
-            if (Calc.Distance3D(resource.Position, ObjectManager.Player.Position) > 4)
+            if (Calc.Distance3D(savedResource.Position, ObjectManager.Player.Position) > 5)
             {
                 //lets sprinkle in a random jump once in while, maybe?
                 Shared.RandomJump();
 
-                var tu = Grinder.Access.Info.PathToObject.ToUnit(resource);
+                var tu = Grinder.Access.Info.PathToObject.ToUnit(savedResource);
                 if (tu.Item1)
                     ObjectManager.Player.CtmTo(tu.Item2);
 
                 if (Environment.TickCount - lastCheck >= 5000)
                 {
-                    Wait.Remove("RunToGather");
+                    Wait.Remove("Gathering");
                 }
                 lastCheck = Environment.TickCount;
 
-                if (Wait.For("RunToGather", 20000))
+                if (Wait.For("Gathering", 20000))
                 {
-                    Grinder.Access.Info.Gather.AddToGatherBlacklist(resource.Guid);
+                    Grinder.Access.Info.Gather.AddToGatherBlacklist(savedResource.Guid);
                 }
                 Wait.Remove("Gathering");
-                randomOpenLootDelay = ran.Next(5050, 7550) + Grinder.Access.Info.Latency;
+                randomOpenLootDelay = ran.Next(200, 550) + Grinder.Access.Info.Latency;
                 randomTakeLootDelay = ran.Next(50, 250) + Grinder.Access.Info.Latency;
             }
             else
             {
+                ObjectManager.Player.StopMovement(Enums.ControlBits.All);
+
                 if (!ObjectManager.Player.IsLooting)
                 {
-                    ObjectManager.Player.StopMovement(Enums.ControlBits.All);
-
                     if (Wait.For("LootClick", randomOpenLootDelay))
-                        resource.Interact(false);
+                        savedResource.Interact(false);
                 }
                 else
                 {
@@ -71,13 +74,17 @@ namespace ZzukBot.Engines.Grind.States
                     {
                         ObjectManager.Player.LootAll();
                         if (ObjectManager.Player.LootSlots == 0)
-                           // Grinder.Access.Info.Gather.AddToGatherBlacklist(resource.Guid);
+                        {
+                           // Grinder.Access.Info.Gather.AddToGatherBlacklist(savedResource.Guid);
+                        }
+                           
                         Wait.Remove("Gathering");
                     }
                 }
                 if (Wait.For("Gathering", 5300))
                 {
-                   // Grinder.Access.Info.Gather.AddToGatherBlacklist(resource.Guid);
+                   // Grinder.Access.Info.Gather.AddToGatherBlacklist(savedResource.Guid);
+                   // savedResource = null;
                 }
             }
         }

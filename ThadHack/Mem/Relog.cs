@@ -60,7 +60,7 @@ namespace ZzukBot.Mem
                     LoginHandling();
             }
 
-            if (Relog.LoginState == Enums.LoginState.charselect)// && !ObjectManager.IsIngame)
+            if (Relog.LoginState == Enums.LoginState.charselect && !ObjectManager.IsInGame)
             {
                 //only one char on the account? simply enter the world on that one
                 if (Relog.NumCharacterCount == 1)
