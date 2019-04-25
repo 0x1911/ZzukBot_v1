@@ -283,52 +283,11 @@ namespace ZzukBot.Forms
                     break;
             }
         }
-
-        private void bClearVendorHotspots_Click(object sender, EventArgs e)
-        {
-            if (EngineManager.CurrentEngineType != Engines.Engines.ProfileCreation) return;
-            EngineManager.EngineAs<ProfileCreator>().ClearVendorWaypoints();
-        }
-
+        
         private void bClearChatLog_Click(object sender, EventArgs e)
         {
             dgChat.Rows.Clear();
-        }
-        
-        private void bClearGhostHotspots_Click(object sender, EventArgs e)
-        {
-            if (EngineManager.CurrentEngineType != Engines.Engines.ProfileCreation) return;
-            EngineManager.EngineAs<ProfileCreator>().ClearGhostWaypoints();
-        }
-        
-        private void tcWaypoints_DrawItem_1(object sender, DrawItemEventArgs e)
-        {
-            var f = e.Font;
-            Brush br = new SolidBrush(Color.Transparent);
-            if (e.Index == tcWaypoints.SelectedIndex)
-            {
-                f = new Font(e.Font, FontStyle.Underline);
-            }
-
-            e.Graphics.FillRectangle(br, e.Bounds);
-            var sz = e.Graphics.MeasureString(tcWaypoints.TabPages[e.Index].Text, e.Font);
-
-            e.Graphics.DrawString(tcWaypoints.TabPages[e.Index].Text, f, Brushes.Black,
-                e.Bounds.Left + (e.Bounds.Width - sz.Width)/2, e.Bounds.Top + (e.Bounds.Height - sz.Height)/2 + 1);
-
-            var rect = e.Bounds;
-            rect.Offset(0, 1);
-            rect.Inflate(0, -1);
-            e.Graphics.DrawRectangle(Pens.Transparent, rect);
-            e.DrawFocusRectangle();
-
-            br.Dispose();
-        }
-        
-        private void rtbNews_LinkClicked(object sender, LinkClickedEventArgs e)
-        {
-            Process.Start(e.LinkText);
-        }
+        }        
 
         private void cbIRCConnect_Click(object sender, EventArgs e)
         {
@@ -362,16 +321,7 @@ namespace ZzukBot.Forms
             if (EngineManager.CurrentEngineType != Engines.Engines.ProfileCreation) return;
             EngineManager.EngineAs<ProfileCreator>().AddWaypoint();
         }
-
-        /// <summary>
-        ///     Clear the list of hotspots settings
-        /// </summary>
-        private void bClearHotspots_Click(object sender, EventArgs e)
-        {
-            if (EngineManager.CurrentEngineType != Engines.Engines.ProfileCreation) return;
-            EngineManager.EngineAs<ProfileCreator>().ClearHotspots();
-        }
-
+        
         /// <summary>
         ///     Add faction button
         /// </summary>
@@ -438,7 +388,7 @@ namespace ZzukBot.Forms
         private void bAddGhostHotspot_Click(object sender, EventArgs e)
         {
             if (EngineManager.CurrentEngineType != Engines.Engines.ProfileCreation) return;
-            EngineManager.EngineAs<ProfileCreator>().AddGWP();
+            EngineManager.EngineAs<ProfileCreator>().AddGhostWaypoint();
         }
 
         /// <summary>

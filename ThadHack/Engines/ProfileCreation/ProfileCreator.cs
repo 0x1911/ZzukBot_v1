@@ -22,7 +22,7 @@ namespace ZzukBot.Engines.ProfileCreation
         private volatile bool boolAddVendorWaypoint;
         // bools to check if user wants to add something to the profile
         private volatile bool boolAddWaypoint;
-        private bool boolIgnoreZAxis => GuiCore.MainForm.cbIgnoreZ.Checked;
+        private bool boolIgnoreZAxis => GuiCore.ProfileCreationForm.cbIgnoreZ.Checked;
 
         // Are we running the profile creation?
         internal volatile bool IsCreatingProfile = false;
@@ -54,47 +54,46 @@ namespace ZzukBot.Engines.ProfileCreation
         {
             if (DirectX.RunInEndScene(CreateProfile))
             {
-                GuiCore.MainForm.lRecording.Text = "Recording";
-                GuiCore.MainForm.lRecording.Visible = true;
+                GuiCore.ProfileCreationForm.lRecording.Text = "Recording";
+                GuiCore.ProfileCreationForm.Text = "Recording new Profile";
+                GuiCore.ProfileCreationForm.lRecording.Visible = true;
             }
         }
 
         internal bool Dispose()
         {
             var finalRes = true;
-            var res = MessageBox.Show("Create the profile?", "", MessageBoxButtons.YesNo);
-            if (res != DialogResult.Yes)
+            var res = MessageBox.Show("Write profile to disk?", "", MessageBoxButtons.YesNo);
+            if (res == DialogResult.Yes)
             {
-                StopIt();
-            }
-            else if (listHotspots.Count < 2)
-            {
-                finalRes = false;
+                if(WriteToXmlProfile())
+                    StopIt();
             }
             else
             {
-                WriteToXmlProfile();
                 StopIt();
             }
+            
             return finalRes;
         }
 
         private void StopIt()
         {
-            GuiCore.MainForm.tbHotspots.Text = "";
-            GuiCore.MainForm.tbVendorHotspots.Text = "";
-            GuiCore.MainForm.tbGhostHotspots.Text = "";
-            GuiCore.MainForm.tbFactions.Text = "";
-            GuiCore.MainForm.tbRepair.Text = "";
-            GuiCore.MainForm.tbVendor.Text = "";
-            GuiCore.MainForm.tbRestock.Text = "";
-            GuiCore.MainForm.tbRestockItems.Text = "";
-            GuiCore.MainForm.cbIgnoreZ.Checked = false;
-            GuiCore.MainForm.lHotspotCount.Text = "Count: ";
-            GuiCore.MainForm.lVendorHotspotCount.Text = "Count: ";
-            GuiCore.MainForm.lFactionCount.Text = "Count: ";
-            GuiCore.MainForm.lGhostHotspotCount.Text = "Count: ";
-            GuiCore.MainForm.lRecording.Visible = false;
+            GuiCore.ProfileCreationForm.tbHotspots.Text = "";
+            GuiCore.ProfileCreationForm.tbVendorHotspots.Text = "";
+            GuiCore.ProfileCreationForm.tbGhostHotspots.Text = "";
+            GuiCore.ProfileCreationForm.tbFactions.Text = "";
+            GuiCore.ProfileCreationForm.tbRepair.Text = "";
+            GuiCore.ProfileCreationForm.tbVendor.Text = "";
+            GuiCore.ProfileCreationForm.tbRestock.Text = "";
+            GuiCore.ProfileCreationForm.tbRestockItems.Text = "";
+            GuiCore.ProfileCreationForm.cbIgnoreZ.Checked = false;
+            GuiCore.ProfileCreationForm.lHotspotCount.Text = "Count: ";
+            GuiCore.ProfileCreationForm.lVendorHotspotCount.Text = "Count: ";
+            GuiCore.ProfileCreationForm.lFactionCount.Text = "Count: ";
+            GuiCore.ProfileCreationForm.lGhostHotspotCount.Text = "Count: ";
+            GuiCore.ProfileCreationForm.lRecording.Visible = false;
+            GuiCore.ProfileCreationForm.Text = "Recording stopped!";
             DirectX.StopRunning();
         }
 
@@ -102,7 +101,7 @@ namespace ZzukBot.Engines.ProfileCreation
         {
             GuiCore.MainForm.Invoke(new MethodInvoker(delegate
             {
-                GuiCore.MainForm.tbVendor.Text = "";
+                GuiCore.ProfileCreationForm.tbVendor.Text = "";
                 VendorNpc = null;
             }));
         }
@@ -111,7 +110,7 @@ namespace ZzukBot.Engines.ProfileCreation
         {
             GuiCore.MainForm.Invoke(new MethodInvoker(delegate
             {
-                GuiCore.MainForm.tbRestock.Text = "";
+                GuiCore.ProfileCreationForm.tbRestock.Text = "";
                 RestockNpc = null;
             }));
         }
@@ -120,7 +119,7 @@ namespace ZzukBot.Engines.ProfileCreation
         {
             GuiCore.MainForm.Invoke(new MethodInvoker(delegate
             {
-                GuiCore.MainForm.tbRepair.Text = "";
+                GuiCore.ProfileCreationForm.tbRepair.Text = "";
                 RepairNpc = null;
             }));
         }
@@ -130,8 +129,8 @@ namespace ZzukBot.Engines.ProfileCreation
             GuiCore.MainForm.Invoke(new MethodInvoker(delegate
             {
                 listFactions.Clear();
-                GuiCore.MainForm.tbFactions.Text = "";
-                GuiCore.MainForm.lFactionCount.Text = "Count: ";
+                GuiCore.ProfileCreationForm.tbFactions.Text = "";
+                GuiCore.ProfileCreationForm.lFactionCount.Text = "Count: ";
             }));
         }
 
@@ -140,8 +139,8 @@ namespace ZzukBot.Engines.ProfileCreation
             GuiCore.MainForm.Invoke(new MethodInvoker(delegate
             {
                 listHotspots.Clear();
-                GuiCore.MainForm.tbHotspots.Text = "";
-                GuiCore.MainForm.lHotspotCount.Text = "Count: ";
+                GuiCore.ProfileCreationForm.tbHotspots.Text = "";
+                GuiCore.ProfileCreationForm.lHotspotCount.Text = "Count: ";
             }));
         }
 
@@ -149,7 +148,7 @@ namespace ZzukBot.Engines.ProfileCreation
         {
             GuiCore.MainForm.Invoke(new MethodInvoker(delegate
             {
-                GuiCore.MainForm.tbRestockItems.Text = "";
+                GuiCore.ProfileCreationForm.tbRestockItems.Text = "";
                 listRestockItems.Clear();
             }));
         }
@@ -159,8 +158,8 @@ namespace ZzukBot.Engines.ProfileCreation
             GuiCore.MainForm.Invoke(new MethodInvoker(delegate
             {
                 listVendorHotspots.Clear();
-                GuiCore.MainForm.tbVendorHotspots.Text = "";
-                GuiCore.MainForm.lVendorHotspotCount.Text = "Count: ";
+                GuiCore.ProfileCreationForm.tbVendorHotspots.Text = "";
+                GuiCore.ProfileCreationForm.lVendorHotspotCount.Text = "Count: ";
             }));
         }
 
@@ -169,12 +168,12 @@ namespace ZzukBot.Engines.ProfileCreation
             GuiCore.MainForm.Invoke(new MethodInvoker(delegate
             {
                 listGhostHotspots.Clear();
-                GuiCore.MainForm.tbGhostHotspots.Text = "";
-                GuiCore.MainForm.lGhostHotspotCount.Text = "Count: ";
+                GuiCore.ProfileCreationForm.tbGhostHotspots.Text = "";
+                GuiCore.ProfileCreationForm.lGhostHotspotCount.Text = "Count: ";
             }));
         }
 
-        internal void AddGWP()
+        internal void AddGhostWaypoint()
         {
             boolAddGhostWaypoint = true;
         }
@@ -219,7 +218,7 @@ namespace ZzukBot.Engines.ProfileCreation
                     var tmpItem = new RestockItem(tmpForm.tbItemName.Text,
                         (int) tmpForm.nudRestockUpTo.Value);
                     listRestockItems.Add(tmpItem);
-                    GuiCore.MainForm.tbRestockItems.Text += tmpItem.Item + Environment.NewLine;
+                    GuiCore.ProfileCreationForm.tbRestockItems.Text += tmpItem.Item + Environment.NewLine;
                 }
             }
         }
@@ -236,34 +235,34 @@ namespace ZzukBot.Engines.ProfileCreation
 
             GuiCore.MainForm.Invoke(new MethodInvoker(delegate
             {
-                posType = GuiCore.MainForm.rbHotspot.Checked ? Enums.PositionType.Hotspot : Enums.PositionType.Waypoint;
+                posType = GuiCore.ProfileCreationForm.rbHotspot.Checked ? Enums.PositionType.Hotspot : Enums.PositionType.Waypoint;
 
                 switch (parType)
                 {
                     case HotspotType.Hotspot:
                         posType = Enums.PositionType.Hotspot;
                         listHotspots.Add(Tuple.Create(tmpVec, pos, posType));
-                        GuiCore.MainForm.tbHotspots.Text += tmpVec + Environment.NewLine;
-                        GuiCore.MainForm.lHotspotCount.Text = "Count: " + listHotspots.Count;
+                        GuiCore.ProfileCreationForm.tbHotspots.Text += tmpVec + Environment.NewLine;
+                        GuiCore.ProfileCreationForm.lHotspotCount.Text = "Count: " + listHotspots.Count;
                         boolAddWaypoint = false;
                         if (listHotspots.Count == 1)
                         {
                             profileStart = Functions.GetText(posInfoEncrypted);
-                            GuiCore.MainForm.lRecording.Text = "Recording" + Environment.NewLine + pos;
+                            GuiCore.ProfileCreationForm.lRecording.Text = "Recording" + Environment.NewLine + pos;
                         }
                         break;
 
                     case HotspotType.VendorHotspot:
                         listVendorHotspots.Add(Tuple.Create(tmpVec, pos, posType));
-                        GuiCore.MainForm.tbVendorHotspots.Text += tmpVec + Environment.NewLine;
-                        GuiCore.MainForm.lVendorHotspotCount.Text = "Count: " + listVendorHotspots.Count;
+                        GuiCore.ProfileCreationForm.tbVendorHotspots.Text += tmpVec + Environment.NewLine;
+                        GuiCore.ProfileCreationForm.lVendorHotspotCount.Text = "Count: " + listVendorHotspots.Count;
                         boolAddVendorWaypoint = false;
                         break;
 
                     case HotspotType.Ghost:
                         listGhostHotspots.Add(Tuple.Create(tmpVec, pos, posType));
-                        GuiCore.MainForm.tbGhostHotspots.Text += tmpVec + Environment.NewLine;
-                        GuiCore.MainForm.lGhostHotspotCount.Text = "Count: " + listGhostHotspots.Count;
+                        GuiCore.ProfileCreationForm.tbGhostHotspots.Text += tmpVec + Environment.NewLine;
+                        GuiCore.ProfileCreationForm.lGhostHotspotCount.Text = "Count: " + listGhostHotspots.Count;
                         boolAddGhostWaypoint = false;
                         break;
                 }
@@ -285,8 +284,8 @@ namespace ZzukBot.Engines.ProfileCreation
                         if (tmpUnit.Reaction != Enums.UnitReaction.Friendly)
                         {
                             listFactions.Add(tmpUnit.FactionID);
-                            GuiCore.MainForm.tbFactions.Text += tmpUnit.FactionID + Environment.NewLine;
-                            GuiCore.MainForm.lFactionCount.Text = "Count: " + listFactions.Count;
+                            GuiCore.ProfileCreationForm.tbFactions.Text += tmpUnit.FactionID + Environment.NewLine;
+                            GuiCore.ProfileCreationForm.lFactionCount.Text = "Count: " + listFactions.Count;
                         }
                     }
                 }
@@ -318,19 +317,19 @@ namespace ZzukBot.Engines.ProfileCreation
                     case NpcType.Repair:
                         RepairNpc = new NPC(tmpUnit.Name, tmpUnit.Position,
                             pos);
-                        GuiCore.MainForm.tbRepair.Text = tmpUnit.Name;
+                        GuiCore.ProfileCreationForm.tbRepair.Text = tmpUnit.Name;
                         boolAddRepair = false;
                         break;
 
                     case NpcType.Restock:
                         RestockNpc = new NPC(tmpUnit.Name, tmpUnit.Position, pos);
-                        GuiCore.MainForm.tbRestock.Text = tmpUnit.Name;
+                        GuiCore.ProfileCreationForm.tbRestock.Text = tmpUnit.Name;
                         boolAddRestock = false;
                         break;
 
                     case NpcType.Vendor:
                         VendorNpc = new NPC(tmpUnit.Name, tmpUnit.Position, pos);
-                        GuiCore.MainForm.tbVendor.Text = tmpUnit.Name;
+                        GuiCore.ProfileCreationForm.tbVendor.Text = tmpUnit.Name;
                         boolAddVendor = false;
                         break;
                 }
@@ -375,7 +374,7 @@ namespace ZzukBot.Engines.ProfileCreation
             }
         }
 
-        private void WriteToXmlProfile()
+        private bool WriteToXmlProfile()
         {
             if (!Directory.Exists(Paths.ProfileFolder))
                 Directory.CreateDirectory(Paths.ProfileFolder);
@@ -387,9 +386,9 @@ namespace ZzukBot.Engines.ProfileCreation
                 Indent = true,
                 IndentChars = "\t"
             };
+            var tmpProfilePath = Paths.ProfileFolder + "\\" + DateTime.Now.ToString("MMddHHmmss") + ".xml";
             using (
-                var writer = XmlWriter.Create(
-                    Paths.ProfileFolder + "\\" + DateTime.Now.ToString("MMddHHmmss") + ".xml", settings))
+                var writer = XmlWriter.Create(tmpProfilePath, settings))
             {
                 // Start document
                 writer.WriteStartDocument();
@@ -514,6 +513,9 @@ namespace ZzukBot.Engines.ProfileCreation
                 writer.WriteEndElement();
                 // End document
                 writer.WriteEndDocument();
+
+                MessageBox.Show("The profile has been written to: " + tmpProfilePath);
+                return true;
             }
         }
 

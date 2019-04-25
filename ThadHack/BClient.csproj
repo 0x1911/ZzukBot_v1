@@ -81,6 +81,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\GraphicalProfileCreationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GraphicalProfileCreationForm.Designer.cs">
+      <DependentUpon>GraphicalProfileCreationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\GraphicalSettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -273,6 +279,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\GraphicalMainForm.resx">
       <DependentUpon>GraphicalMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GraphicalProfileCreationForm.resx">
+      <DependentUpon>GraphicalProfileCreationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\GraphicalRestockItemForm.resx">
       <DependentUpon>GraphicalRestockItemForm.cs</DependentUpon>

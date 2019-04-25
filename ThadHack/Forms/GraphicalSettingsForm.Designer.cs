@@ -93,6 +93,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.gbMisc.SuspendLayout();
@@ -129,6 +130,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage1.Controls.Add(this.gbMisc);
             this.tabPage1.Controls.Add(this.gbChat);
             this.tabPage1.Controls.Add(this.gbOther);
@@ -144,7 +146,6 @@
             this.tabPage1.Size = new System.Drawing.Size(613, 360);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "General";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // gbMisc
             // 
@@ -747,6 +748,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage2.Controls.Add(this.lIRCDescription);
             this.tabPage2.Controls.Add(this.tbIRCBotChannel);
             this.tabPage2.Controls.Add(this.tbIRCBotNickname);
@@ -759,7 +761,6 @@
             this.tabPage2.Size = new System.Drawing.Size(613, 360);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "IRC";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // lIRCDescription
             // 
@@ -834,7 +835,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveToolStripMenuItem,
-            this.reloadToolStripMenuItem});
+            this.reloadToolStripMenuItem,
+            this.newProfileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(627, 24);
@@ -854,6 +856,13 @@
             this.reloadToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.reloadToolStripMenuItem.Text = "Reload";
             this.reloadToolStripMenuItem.Click += new System.EventHandler(this.reloadToolStripMenuItem_Click);
+            // 
+            // newProfileToolStripMenuItem
+            // 
+            this.newProfileToolStripMenuItem.Name = "newProfileToolStripMenuItem";
+            this.newProfileToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.newProfileToolStripMenuItem.Text = "New Profile";
+            this.newProfileToolStripMenuItem.Click += new System.EventHandler(this.newProfileToolStripMenuItem_Click);
             // 
             // GraphicalSettingsForm
             // 
@@ -968,5 +977,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reloadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newProfileToolStripMenuItem;
     }
 }

@@ -85,5 +85,15 @@ namespace ZzukBot.Forms
             if (EngineManager.CurrentEngineType == Engines.Engines.None)
                 CCManager.LoadCCs();
         }
+
+        private void newProfileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GuiCore.ProfileCreationForm = new Forms.GraphicalProfileCreationForm();
+
+            if (EngineManager.CurrentEngineType != Engines.Engines.None) return;
+            EngineManager.StartProfileCreation();
+
+            GuiCore.ProfileCreationForm.Show();
+        }
     }
 }
