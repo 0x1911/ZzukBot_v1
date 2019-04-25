@@ -99,6 +99,7 @@ namespace ZzukBot
                 {
                     GuiCore.MainForm = new Forms.GraphicalMainForm();
                     GuiCore.SettingsForm = new Forms.GraphicalSettingsForm();
+
                     Application.Run(GuiCore.MainForm);
                 }
                 catch (Exception e)

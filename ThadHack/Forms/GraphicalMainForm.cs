@@ -467,5 +467,10 @@ namespace ZzukBot.Forms
         }
         #endregion
 
+        private void dEVToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var tmpDevForm = new Forms.GraphicalDEVForm();
+            tmpDevForm.Show();
+        }
     }
 }

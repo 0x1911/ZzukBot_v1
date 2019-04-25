@@ -138,7 +138,7 @@ namespace ZzukBot.Forms
             // cbLoadLastProfile
             // 
             this.cbLoadLastProfile.AutoSize = true;
-            this.cbLoadLastProfile.Location = new System.Drawing.Point(40, 78);
+            this.cbLoadLastProfile.Location = new System.Drawing.Point(3, 180);
             this.cbLoadLastProfile.Name = "cbLoadLastProfile";
             this.cbLoadLastProfile.Size = new System.Drawing.Size(100, 17);
             this.cbLoadLastProfile.TabIndex = 7;
@@ -275,6 +275,7 @@ namespace ZzukBot.Forms
             this.bClearChatLog.TabIndex = 9;
             this.bClearChatLog.Text = "Clear Log";
             this.bClearChatLog.UseVisualStyleBackColor = true;
+            this.bClearChatLog.Visible = false;
             // 
             // tpNotifications
             // 
@@ -398,6 +399,7 @@ namespace ZzukBot.Forms
             this.dEVToolStripMenuItem.Name = "dEVToolStripMenuItem";
             this.dEVToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
             this.dEVToolStripMenuItem.Text = "DEV";
+            this.dEVToolStripMenuItem.Click += new System.EventHandler(this.dEVToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 

@@ -34,7 +34,7 @@ namespace ZzukBot.Game.Static
         /// <returns></returns>
         public List<Skill> GetAllPlayerSkills()
         {
-            if (!ObjectManager.IsIngame) return new List<Skill>();
+            if (!ObjectManager.IsInGame) return new List<Skill>();
             var start = ObjectManager.Player.SkillField;
             var list = new List<Skill>();
             var maxSkills = 0x00B700B4.ReadAs<int>();

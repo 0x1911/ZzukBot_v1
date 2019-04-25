@@ -68,7 +68,7 @@ namespace ZzukBot.Mem
         internal static List<WoWItem> Items => Objects.OfType<WoWItem>()
             .ToList();
 
-        internal static bool IsIngame { get; private set; }
+        internal static bool IsInGame => Offsets.Player.IsInGame.ReadAs<byte>() == 1;
 
         /// <summary>
         ///     Initialise Object Manager
@@ -76,7 +76,6 @@ namespace ZzukBot.Mem
         internal static void Init()
         {
             if (Prepared) return;
-            IsIngame = false;
             _callback = Callback;
             ourCallback = Marshal.GetFunctionPointerForDelegate(_callback);
             Prepared = false;
@@ -97,7 +96,7 @@ namespace ZzukBot.Mem
         /// </summary>
         internal static bool EnumObjects()
         {
-            if (Offsets.Player.IsIngame.ReadAs<byte>() == 0) return false;            
+            if (!IsInGame) { return false; }           
 
             return _EnumObjects();
         }

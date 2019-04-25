@@ -40,7 +40,7 @@ namespace ZzukBot.Objects
         internal volatile Spells Spells;
 
         internal IntPtr SkillField => Pointer.Add(8).ReadAs<IntPtr>().Add(0xB38);
-
+        internal List<Game.Static.Skills.Skill> Skills = new List<Game.Static.Skills.Skill>(); // = new Game.Static.Skills().GetAllPlayerSkills();
         /// <summary>
         ///     Constructor
         /// </summary>
@@ -49,10 +49,10 @@ namespace ZzukBot.Objects
         {
             Inventory = new Inventory();
             Spells = new Spells();
-            Skills = new List<Game.Static.Skills.Skill>();
+            //Skills = new Game.Static.Skills().GetAllPlayerSkills();
         }
         
-        internal List<Game.Static.Skills.Skill> Skills = new Game.Static.Skills().GetAllPlayerSkills();
+        
         /// <summary>
         ///     Position of corpse
         /// </summary>
