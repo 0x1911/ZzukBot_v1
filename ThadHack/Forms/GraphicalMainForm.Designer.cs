@@ -385,10 +385,11 @@ namespace ZzukBot.Forms
             // lGrindLoadProfile
             // 
             this.lGrindLoadProfile.AutoSize = true;
+            this.lGrindLoadProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lGrindLoadProfile.Location = new System.Drawing.Point(8, 252);
             this.lGrindLoadProfile.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lGrindLoadProfile.Name = "lGrindLoadProfile";
-            this.lGrindLoadProfile.Size = new System.Drawing.Size(49, 16);
+            this.lGrindLoadProfile.Size = new System.Drawing.Size(39, 13);
             this.lGrindLoadProfile.TabIndex = 5;
             this.lGrindLoadProfile.Text = "Profile:";
             // 

@@ -44,9 +44,8 @@ namespace ZzukBot.Engines.Grind.States
                 //lets sprinkle in a random jump once in while, maybe?
                 Shared.RandomJump();
 
-                var tu = Grinder.Access.Info.PathToObject.ToUnit(savedResource);
-                if (tu.Item1)
-                    ObjectManager.Player.CtmTo(tu.Item2);
+                var tu = Grinder.Access.Info.PathToPosition.ToPos(savedResource.Position);
+                ObjectManager.Player.CtmTo(tu);
 
                 if (Environment.TickCount - lastCheck >= 5000)
                 {

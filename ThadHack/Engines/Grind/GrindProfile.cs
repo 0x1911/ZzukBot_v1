@@ -40,7 +40,7 @@ namespace ZzukBot.Engines.Grind
                 // parse the vendor
                 ExtractVendor(tmpVendor);
                 // parse the Repair
-                ExtractRepairNpcAndWaypoints(tmpVendorHotspots, tmpRepair);
+                ExtractRepairNPC(tmpRepair);
                 // parse the Restock
                 ExtractRestockNpcAndItems(tmpRestock, tmpRestockItems);
                 ExtractGhosthotspots(tmpGhostrHotspots);
@@ -119,21 +119,21 @@ namespace ZzukBot.Engines.Grind
             }
         }
 
-        private void ExtractRepairNpcAndWaypoints(XElement tmpRepair)
+        private void ExtractRepairNPC(XElement tmpRepairNPC)
         {
-            if (tmpRepair != null)
+            if (tmpRepairNPC != null)
             {
                 var vec3 = new XYZ
                 {
                     X = Convert.ToSingle(
-                        tmpRepair.Element("Position").Element("X").Value),
+                        tmpRepairNPC.Element("Position").Element("X").Value),
                     Y = Convert.ToSingle(
-                        tmpRepair.Element("Position").Element("Y").Value),
+                        tmpRepairNPC.Element("Position").Element("Y").Value),
                     Z = Convert.ToSingle(
-                        tmpRepair.Element("Position").Element("Z").Value)
+                        tmpRepairNPC.Element("Position").Element("Z").Value)
                 };
 
-                RepairNPC = new NPC(tmpRepair.Element("Name").Value,
+                RepairNPC = new NPC(tmpRepairNPC.Element("Name").Value,
                     vec3, "");
             }
         }
