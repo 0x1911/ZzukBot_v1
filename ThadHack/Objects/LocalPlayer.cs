@@ -49,9 +49,6 @@ namespace ZzukBot.Objects
         {
             Inventory = new Inventory();
             Spells = new Spells();
-            
-            //TODO: if isingame
-            //Skills = new Game.Static.Skills().GetAllPlayerSkills();
         }
         
         

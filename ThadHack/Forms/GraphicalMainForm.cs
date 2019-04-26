@@ -274,10 +274,6 @@ namespace ZzukBot.Forms
         private void runToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Relog.LoginHandling();
-
-            if (EngineManager.CurrentEngineType != Engines.Engines.None) return;
-
-            EngineManager.StartGrinder(cbLoadLastProfile.Checked);
         }        
 
         private void stopToolStripMenuItem_Click(object sender, EventArgs e)

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Text;
 using ZzukBot.Constants;
+using ZzukBot.Engines;
 using ZzukBot.Settings;
 
 namespace ZzukBot.Mem
@@ -52,12 +54,33 @@ namespace ZzukBot.Mem
             ClearGlueDialogText();
         }
 
+        internal static BackgroundWorker backgroundWorker;
         internal static void LoginHandling()
         {
-            if (Relog.LoginState == Enums.LoginState.login)
+            backgroundWorker = new BackgroundWorker();
+            backgroundWorker.WorkerSupportsCancellation = true;
+            backgroundWorker.DoWork += BackgroundWorker_DoWork;
+            backgroundWorker.RunWorkerCompleted += BackgroundWorker_RunWorkerCompleted;
+            backgroundWorker.RunWorkerAsync();
+        }
+
+        private static void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Helpers.Logger.Append("bgworker completed");
+
+            if (EngineManager.CurrentEngineType != Engines.Engines.None) return;
+
+            EngineManager.StartGrinder(GuiCore.MainForm.cbLoadLastProfile.Checked);
+        }
+
+        private static void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Random rand = new Random();
+            if (Relog.LoginState == Enums.LoginState.login && !ObjectManager.IsInGame)
             {
-                if(Relog.Login())
-                    LoginHandling();
+                Helpers.Logger.Append("Logging in..");
+                Relog.Login();
+                while (Relog.LoginState == Enums.LoginState.login) { System.Threading.Thread.Sleep(100); }
             }
 
             if (Relog.LoginState == Enums.LoginState.charselect && !ObjectManager.IsInGame)
@@ -65,22 +88,37 @@ namespace ZzukBot.Mem
                 //only one char on the account? simply enter the world on that one
                 if (Relog.NumCharacterCount == 1)
                 {
+                    Helpers.Logger.Append("Entering world..");
                     Relog.EnterWorld();
-                    return;
+                    SleepWhileNotIngame();
                 }
-
-                Helpers.Logger.Append("We got " + Relog.NumCharacterCount + " characters on this account.");
-                for (var i = 0; i < Relog.NumCharacterCount; i++)
+                else if (Relog.NumCharacterCount > 1)
                 {
-                    var tmpCharName = Relog.GetCharacterNameAtPos(i);
-                    Helpers.Logger.Append(i + " is " + tmpCharName);
-
-                    if (tmpCharName.ToLower().Equals(Options.CharacterName.ToLower()))
+                    Helpers.Logger.Append("We got " + Relog.NumCharacterCount + " characters on this account.");
+                    for (var i = 0; i < Relog.NumCharacterCount; i++)
                     {
-                        Relog.EnterWorld();
+                        var tmpCharName = Relog.GetCharacterNameAtPos(i);
+                        Helpers.Logger.Append(i + " is " + tmpCharName);
+
+                        if (tmpCharName.ToLower().Equals(Options.CharacterName.ToLower()))
+                        {
+                            Helpers.Logger.Append("Entering world with " + tmpCharName);
+                            Relog.EnterWorld();
+                            SleepWhileNotIngame();
+                        }
                     }
                 }
-            }            
+            }
+        }
+
+        internal static bool SleepWhileNotIngame()
+        {
+            while (!ObjectManager.IsInGame)
+            {
+                System.Threading.Thread.Sleep(100);
+            }
+
+            return true;
         }
 
         internal static bool Login()
