@@ -7,7 +7,6 @@ using ZzukBot.AntiWarden;
 using ZzukBot.Engines.CustomClass;
 using ZzukBot.Engines.Grind.States;
 using ZzukBot.FSM;
-using ZzukBot.Forms;
 using ZzukBot.Helpers;
 using ZzukBot.Hooks;
 using ZzukBot.Mem;
@@ -221,6 +220,19 @@ namespace ZzukBot.Engines.Grind
 
 
                             GuiCore.MainForm.lbl_targetName.Text = "Name: " + target.Name.ToString();
+                        }
+                        else
+                        {
+                            GuiCore.MainForm.lbl_targetX.Text = "X: 0";
+                            GuiCore.MainForm.lbl_targetY.Text = "Z: 0";
+                            GuiCore.MainForm.lbl_targetZ.Text = "Y: 0";
+
+                            GuiCore.MainForm.lbl_targetLife.Text = "Life: 0";
+                            GuiCore.MainForm.lbl_targetFaction.Text = "Faction: 0";
+                            GuiCore.MainForm.lbl_targetId.Text = "Id: 0";
+
+
+                            GuiCore.MainForm.lbl_targetName.Text = "Name: Unknown";
                         }
                                                 
                         var player = ObjectManager.Player;

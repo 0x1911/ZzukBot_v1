@@ -94,6 +94,7 @@
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn_ConnectIrc = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.gbMisc.SuspendLayout();
@@ -749,6 +750,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage2.Controls.Add(this.btn_ConnectIrc);
             this.tabPage2.Controls.Add(this.lIRCDescription);
             this.tabPage2.Controls.Add(this.tbIRCBotChannel);
             this.tabPage2.Controls.Add(this.tbIRCBotNickname);
@@ -796,6 +798,7 @@
             this.cbIRCConnect.TabIndex = 8;
             this.cbIRCConnect.Text = "Connect to IRC";
             this.cbIRCConnect.UseVisualStyleBackColor = true;
+            this.cbIRCConnect.CheckedChanged += new System.EventHandler(this.cbIRCConnect_CheckedChanged);
             // 
             // lIrcBotname
             // 
@@ -863,6 +866,16 @@
             this.newProfileToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
             this.newProfileToolStripMenuItem.Text = "New Profile";
             this.newProfileToolStripMenuItem.Click += new System.EventHandler(this.newProfileToolStripMenuItem_Click);
+            // 
+            // btn_ConnectIrc
+            // 
+            this.btn_ConnectIrc.Location = new System.Drawing.Point(22, 88);
+            this.btn_ConnectIrc.Name = "btn_ConnectIrc";
+            this.btn_ConnectIrc.Size = new System.Drawing.Size(75, 23);
+            this.btn_ConnectIrc.TabIndex = 12;
+            this.btn_ConnectIrc.Text = "Connect";
+            this.btn_ConnectIrc.UseVisualStyleBackColor = true;
+            this.btn_ConnectIrc.Click += new System.EventHandler(this.btn_ConnectIrc_Click);
             // 
             // GraphicalSettingsForm
             // 
@@ -978,5 +991,6 @@
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reloadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newProfileToolStripMenuItem;
+        private System.Windows.Forms.Button btn_ConnectIrc;
     }
 }

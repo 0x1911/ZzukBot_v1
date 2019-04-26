@@ -1,13 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
 using ZzukBot.Mem;
-using ZzukBot.Server.AuthClient;
-using ZzukBot.Settings;
 using Ptr = ZzukBot.Constants.Offsets;
 
 namespace ZzukBot.AntiWarden
@@ -156,25 +152,25 @@ namespace ZzukBot.AntiWarden
                     {
                         string[] asmCodeOnline =
                         {
-                            SendOvers.WardenMemCpyDetour[0],
-                            SendOvers.WardenMemCpyDetour[1],
-                            SendOvers.WardenMemCpyDetour[2],
-                            SendOvers.WardenMemCpyDetour[3],
-                            SendOvers.WardenMemCpyDetour[4],
-                            SendOvers.WardenMemCpyDetour[5],
-                            SendOvers.WardenMemCpyDetour[6],
-                            SendOvers.WardenMemCpyDetour[7],
-                            SendOvers.WardenMemCpyDetour[8],
-                            SendOvers.WardenMemCpyDetour[9],
-                            SendOvers.WardenMemCpyDetour[10],
-                            SendOvers.WardenMemCpyDetour[11],
-                            SendOvers.WardenMemCpyDetour[12],
-                            SendOvers.WardenMemCpyDetour[13].Replace("[|addr|]", "0x" + ((uint) AddrToWardenMemCpy).ToString("X")),
-                            SendOvers.WardenMemCpyDetour[14],
-                            SendOvers.WardenMemCpyDetour[15],
-                            SendOvers.WardenMemCpyDetour[16],
-                            SendOvers.WardenMemCpyDetour[17],
-                            SendOvers.WardenMemCpyDetour[18].Replace("[|addr|]", "0x" + ((uint) (memScanPtr + 0x24)).ToString("X"))
+                            Constants.Warden.WardenMemCpyDetour[0],
+                            Constants.Warden.WardenMemCpyDetour[1],
+                            Constants.Warden.WardenMemCpyDetour[2],
+                            Constants.Warden.WardenMemCpyDetour[3],
+                            Constants.Warden.WardenMemCpyDetour[4],
+                            Constants.Warden.WardenMemCpyDetour[5],
+                            Constants.Warden.WardenMemCpyDetour[6],
+                            Constants.Warden.WardenMemCpyDetour[7],
+                            Constants.Warden.WardenMemCpyDetour[8],
+                            Constants.Warden.WardenMemCpyDetour[9],
+                            Constants.Warden.WardenMemCpyDetour[10],
+                            Constants.Warden.WardenMemCpyDetour[11],
+                            Constants.Warden.WardenMemCpyDetour[12],
+                            Constants.Warden.WardenMemCpyDetour[13].Replace("[|addr|]", "0x" + ((uint) AddrToWardenMemCpy).ToString("X")),
+                            Constants.Warden.WardenMemCpyDetour[14],
+                            Constants.Warden.WardenMemCpyDetour[15],
+                            Constants.Warden.WardenMemCpyDetour[16],
+                            Constants.Warden.WardenMemCpyDetour[17],
+                            Constants.Warden.WardenMemCpyDetour[18].Replace("[|addr|]", "0x" + ((uint) (memScanPtr + 0x24)).ToString("X"))
                         };
                         WardenMemCpyDetourPtr = Memory.InjectAsm(asmCodeOnline, "WardenMemCpyDetour");
                     }
@@ -193,14 +189,14 @@ namespace ZzukBot.AntiWarden
             var addrToDetour = Marshal.GetFunctionPointerForDelegate(_modifyWarden);
             string[] asmCode =
             {
-                SendOvers.WardenLoadDetour[0],
-                SendOvers.WardenLoadDetour[1],
-                SendOvers.WardenLoadDetour[2],
-                SendOvers.WardenLoadDetour[3],           
-                SendOvers.WardenLoadDetour[4].Replace("[|addr|]", ((uint)addrToDetour).ToString()),
-                SendOvers.WardenLoadDetour[5],
-                SendOvers.WardenLoadDetour[6],
-                SendOvers.WardenLoadDetour[7],      
+                Constants.Warden.WardenLoadDetour[0],
+                Constants.Warden.WardenLoadDetour[1],
+                Constants.Warden.WardenLoadDetour[2],
+                Constants.Warden.WardenLoadDetour[3],
+                Constants.Warden.WardenLoadDetour[4].Replace("[|addr|]", ((uint)addrToDetour).ToString()),
+                Constants.Warden.WardenLoadDetour[5],
+                Constants.Warden.WardenLoadDetour[6],
+                Constants.Warden.WardenLoadDetour[7],      
             };
             var WardenDetour = Memory.InjectAsm(asmCode, "WardenLoadDetour");
             Memory.InjectAsm(0x006CA22E, "jmp " + WardenDetour, "WardenLoadDetourJmp");

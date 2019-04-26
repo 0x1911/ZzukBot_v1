@@ -63,19 +63,23 @@
             this.tbFactions = new System.Windows.Forms.TextBox();
             this.lFactionCount = new System.Windows.Forms.Label();
             this.bSave = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.grp_Hotspots = new System.Windows.Forms.GroupBox();
+            this.grp_Vendor = new System.Windows.Forms.GroupBox();
+            this.grp_Ghost = new System.Windows.Forms.GroupBox();
             this.bClearGhostHotspots = new System.Windows.Forms.Button();
             this.tbGhostHotspots = new System.Windows.Forms.TextBox();
             this.bAddGhostHotspot = new System.Windows.Forms.Button();
             this.lGhostHotspotCount = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btn_VendorAutoRecord = new System.Windows.Forms.Button();
+            this.btn_GhostAutoRecord = new System.Windows.Forms.Button();
+            this.btn_WaypointsAutoRecord = new System.Windows.Forms.Button();
+            this.bgWorker_Recording = new System.ComponentModel.BackgroundWorker();
             this.gbVendor.SuspendLayout();
             this.gbFaction.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.grp_Hotspots.SuspendLayout();
+            this.grp_Vendor.SuspendLayout();
+            this.grp_Ghost.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -122,9 +126,9 @@
             // 
             // bClearHotspots
             // 
-            this.bClearHotspots.Location = new System.Drawing.Point(101, 97);
+            this.bClearHotspots.Location = new System.Drawing.Point(142, 97);
             this.bClearHotspots.Name = "bClearHotspots";
-            this.bClearHotspots.Size = new System.Drawing.Size(83, 20);
+            this.bClearHotspots.Size = new System.Drawing.Size(44, 20);
             this.bClearHotspots.TabIndex = 1;
             this.bClearHotspots.Text = "Clear";
             this.bClearHotspots.UseVisualStyleBackColor = true;
@@ -150,9 +154,9 @@
             // 
             // bAddHotspots
             // 
-            this.bAddHotspots.Location = new System.Drawing.Point(6, 97);
+            this.bAddHotspots.Location = new System.Drawing.Point(92, 97);
             this.bAddHotspots.Name = "bAddHotspots";
-            this.bAddHotspots.Size = new System.Drawing.Size(83, 20);
+            this.bAddHotspots.Size = new System.Drawing.Size(44, 20);
             this.bAddHotspots.TabIndex = 0;
             this.bAddHotspots.Text = "Add";
             this.bAddHotspots.UseVisualStyleBackColor = true;
@@ -160,9 +164,9 @@
             // 
             // bClearVendorHotspots
             // 
-            this.bClearVendorHotspots.Location = new System.Drawing.Point(101, 97);
+            this.bClearVendorHotspots.Location = new System.Drawing.Point(142, 97);
             this.bClearVendorHotspots.Name = "bClearVendorHotspots";
-            this.bClearVendorHotspots.Size = new System.Drawing.Size(83, 20);
+            this.bClearVendorHotspots.Size = new System.Drawing.Size(44, 20);
             this.bClearVendorHotspots.TabIndex = 11;
             this.bClearVendorHotspots.Text = "Clear";
             this.bClearVendorHotspots.UseVisualStyleBackColor = true;
@@ -188,9 +192,9 @@
             // 
             // bAddVendorHotspot
             // 
-            this.bAddVendorHotspot.Location = new System.Drawing.Point(6, 97);
+            this.bAddVendorHotspot.Location = new System.Drawing.Point(92, 97);
             this.bAddVendorHotspot.Name = "bAddVendorHotspot";
-            this.bAddVendorHotspot.Size = new System.Drawing.Size(83, 20);
+            this.bAddVendorHotspot.Size = new System.Drawing.Size(44, 20);
             this.bAddVendorHotspot.TabIndex = 10;
             this.bAddVendorHotspot.Text = "Add";
             this.bAddVendorHotspot.UseVisualStyleBackColor = true;
@@ -438,56 +442,60 @@
             this.bSave.UseVisualStyleBackColor = true;
             this.bSave.Click += new System.EventHandler(this.bSave_Click);
             // 
-            // groupBox1
+            // grp_Hotspots
             // 
-            this.groupBox1.Controls.Add(this.bClearHotspots);
-            this.groupBox1.Controls.Add(this.tbHotspots);
-            this.groupBox1.Controls.Add(this.bAddHotspots);
-            this.groupBox1.Controls.Add(this.lHotspotCount);
-            this.groupBox1.Controls.Add(this.lAddPointAs);
-            this.groupBox1.Controls.Add(this.rbHotspot);
-            this.groupBox1.Controls.Add(this.rbWaypoint);
-            this.groupBox1.Location = new System.Drawing.Point(12, 200);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(256, 151);
-            this.groupBox1.TabIndex = 30;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Hotspots";
+            this.grp_Hotspots.Controls.Add(this.btn_WaypointsAutoRecord);
+            this.grp_Hotspots.Controls.Add(this.bClearHotspots);
+            this.grp_Hotspots.Controls.Add(this.tbHotspots);
+            this.grp_Hotspots.Controls.Add(this.bAddHotspots);
+            this.grp_Hotspots.Controls.Add(this.lHotspotCount);
+            this.grp_Hotspots.Controls.Add(this.lAddPointAs);
+            this.grp_Hotspots.Controls.Add(this.rbHotspot);
+            this.grp_Hotspots.Controls.Add(this.rbWaypoint);
+            this.grp_Hotspots.Location = new System.Drawing.Point(12, 200);
+            this.grp_Hotspots.Name = "grp_Hotspots";
+            this.grp_Hotspots.Size = new System.Drawing.Size(256, 151);
+            this.grp_Hotspots.TabIndex = 30;
+            this.grp_Hotspots.TabStop = false;
+            this.grp_Hotspots.Text = "Grind Hotspots";
             // 
-            // groupBox2
+            // grp_Vendor
             // 
-            this.groupBox2.Controls.Add(this.bClearVendorHotspots);
-            this.groupBox2.Controls.Add(this.tbVendorHotspots);
-            this.groupBox2.Controls.Add(this.bAddVendorHotspot);
-            this.groupBox2.Controls.Add(this.lVendorHotspotCount);
-            this.groupBox2.Location = new System.Drawing.Point(280, 200);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(256, 121);
-            this.groupBox2.TabIndex = 31;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Vendor Waypoints";
+            this.grp_Vendor.Controls.Add(this.btn_VendorAutoRecord);
+            this.grp_Vendor.Controls.Add(this.bClearVendorHotspots);
+            this.grp_Vendor.Controls.Add(this.tbVendorHotspots);
+            this.grp_Vendor.Controls.Add(this.bAddVendorHotspot);
+            this.grp_Vendor.Controls.Add(this.lVendorHotspotCount);
+            this.grp_Vendor.Location = new System.Drawing.Point(280, 200);
+            this.grp_Vendor.Name = "grp_Vendor";
+            this.grp_Vendor.Size = new System.Drawing.Size(256, 121);
+            this.grp_Vendor.TabIndex = 31;
+            this.grp_Vendor.TabStop = false;
+            this.grp_Vendor.Text = "Vendor Waypoints";
             // 
-            // groupBox3
+            // grp_Ghost
             // 
-            this.groupBox3.Controls.Add(this.bClearGhostHotspots);
-            this.groupBox3.Controls.Add(this.tbGhostHotspots);
-            this.groupBox3.Controls.Add(this.bAddGhostHotspot);
-            this.groupBox3.Controls.Add(this.lGhostHotspotCount);
-            this.groupBox3.Location = new System.Drawing.Point(280, 329);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(256, 124);
-            this.groupBox3.TabIndex = 32;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Ghost Waypoints";
+            this.grp_Ghost.Controls.Add(this.btn_GhostAutoRecord);
+            this.grp_Ghost.Controls.Add(this.bClearGhostHotspots);
+            this.grp_Ghost.Controls.Add(this.tbGhostHotspots);
+            this.grp_Ghost.Controls.Add(this.bAddGhostHotspot);
+            this.grp_Ghost.Controls.Add(this.lGhostHotspotCount);
+            this.grp_Ghost.Location = new System.Drawing.Point(280, 329);
+            this.grp_Ghost.Name = "grp_Ghost";
+            this.grp_Ghost.Size = new System.Drawing.Size(256, 124);
+            this.grp_Ghost.TabIndex = 32;
+            this.grp_Ghost.TabStop = false;
+            this.grp_Ghost.Text = "Ghost Waypoints";
             // 
             // bClearGhostHotspots
             // 
-            this.bClearGhostHotspots.Location = new System.Drawing.Point(101, 97);
+            this.bClearGhostHotspots.Location = new System.Drawing.Point(142, 97);
             this.bClearGhostHotspots.Name = "bClearGhostHotspots";
-            this.bClearGhostHotspots.Size = new System.Drawing.Size(83, 20);
+            this.bClearGhostHotspots.Size = new System.Drawing.Size(44, 20);
             this.bClearGhostHotspots.TabIndex = 8;
             this.bClearGhostHotspots.Text = "Clear";
             this.bClearGhostHotspots.UseVisualStyleBackColor = true;
+            this.bClearGhostHotspots.Click += new System.EventHandler(this.bClearGhostHotspots_Click);
             // 
             // tbGhostHotspots
             // 
@@ -500,12 +508,13 @@
             // 
             // bAddGhostHotspot
             // 
-            this.bAddGhostHotspot.Location = new System.Drawing.Point(6, 97);
+            this.bAddGhostHotspot.Location = new System.Drawing.Point(92, 97);
             this.bAddGhostHotspot.Name = "bAddGhostHotspot";
-            this.bAddGhostHotspot.Size = new System.Drawing.Size(83, 20);
+            this.bAddGhostHotspot.Size = new System.Drawing.Size(44, 20);
             this.bAddGhostHotspot.TabIndex = 7;
             this.bAddGhostHotspot.Text = "Add";
             this.bAddGhostHotspot.UseVisualStyleBackColor = true;
+            this.bAddGhostHotspot.Click += new System.EventHandler(this.bAddGhostHotspot_Click);
             // 
             // lGhostHotspotCount
             // 
@@ -528,6 +537,40 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Restock Items";
             // 
+            // btn_VendorAutoRecord
+            // 
+            this.btn_VendorAutoRecord.Location = new System.Drawing.Point(6, 97);
+            this.btn_VendorAutoRecord.Name = "btn_VendorAutoRecord";
+            this.btn_VendorAutoRecord.Size = new System.Drawing.Size(78, 20);
+            this.btn_VendorAutoRecord.TabIndex = 12;
+            this.btn_VendorAutoRecord.Text = "Auto Record";
+            this.btn_VendorAutoRecord.UseVisualStyleBackColor = true;
+            this.btn_VendorAutoRecord.Click += new System.EventHandler(this.btn_VendorAutoRecord_Click);
+            // 
+            // btn_GhostAutoRecord
+            // 
+            this.btn_GhostAutoRecord.Location = new System.Drawing.Point(6, 97);
+            this.btn_GhostAutoRecord.Name = "btn_GhostAutoRecord";
+            this.btn_GhostAutoRecord.Size = new System.Drawing.Size(78, 20);
+            this.btn_GhostAutoRecord.TabIndex = 13;
+            this.btn_GhostAutoRecord.Text = "Auto Record";
+            this.btn_GhostAutoRecord.UseVisualStyleBackColor = true;
+            this.btn_GhostAutoRecord.Click += new System.EventHandler(this.btn_GhostAutoRecord_Click);
+            // 
+            // btn_WaypointsAutoRecord
+            // 
+            this.btn_WaypointsAutoRecord.Location = new System.Drawing.Point(6, 97);
+            this.btn_WaypointsAutoRecord.Name = "btn_WaypointsAutoRecord";
+            this.btn_WaypointsAutoRecord.Size = new System.Drawing.Size(78, 20);
+            this.btn_WaypointsAutoRecord.TabIndex = 29;
+            this.btn_WaypointsAutoRecord.Text = "Auto Record";
+            this.btn_WaypointsAutoRecord.UseVisualStyleBackColor = true;
+            this.btn_WaypointsAutoRecord.Click += new System.EventHandler(this.btn_WaypointsAutoRecord_Click);
+            // 
+            // bgWorker_Recording
+            // 
+            this.bgWorker_Recording.WorkerSupportsCancellation = true;
+            // 
             // GraphicalProfileCreationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -535,9 +578,9 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(552, 461);
             this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.grp_Ghost);
+            this.Controls.Add(this.grp_Vendor);
+            this.Controls.Add(this.grp_Hotspots);
             this.Controls.Add(this.cbIgnoreZ);
             this.Controls.Add(this.lRecording);
             this.Controls.Add(this.gbVendor);
@@ -546,16 +589,17 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "GraphicalProfileCreationForm";
             this.Text = "New Profile - Recording";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GraphicalProfileCreationForm_FormClosing);
             this.gbVendor.ResumeLayout(false);
             this.gbVendor.PerformLayout();
             this.gbFaction.ResumeLayout(false);
             this.gbFaction.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.grp_Hotspots.ResumeLayout(false);
+            this.grp_Hotspots.PerformLayout();
+            this.grp_Vendor.ResumeLayout(false);
+            this.grp_Vendor.PerformLayout();
+            this.grp_Ghost.ResumeLayout(false);
+            this.grp_Ghost.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
@@ -600,13 +644,17 @@
         internal System.Windows.Forms.TextBox tbFactions;
         internal System.Windows.Forms.Label lFactionCount;
         private System.Windows.Forms.Button bSave;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox grp_Hotspots;
+        private System.Windows.Forms.GroupBox grp_Vendor;
+        private System.Windows.Forms.GroupBox grp_Ghost;
         internal System.Windows.Forms.Button bClearGhostHotspots;
         internal System.Windows.Forms.TextBox tbGhostHotspots;
         internal System.Windows.Forms.Button bAddGhostHotspot;
         internal System.Windows.Forms.Label lGhostHotspotCount;
         private System.Windows.Forms.GroupBox groupBox4;
+        internal System.Windows.Forms.Button btn_WaypointsAutoRecord;
+        internal System.Windows.Forms.Button btn_VendorAutoRecord;
+        internal System.Windows.Forms.Button btn_GhostAutoRecord;
+        private System.ComponentModel.BackgroundWorker bgWorker_Recording;
     }
 }

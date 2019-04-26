@@ -265,20 +265,22 @@ namespace ZzukBot.Forms
             // lbl_playerSubZone
             // 
             this.lbl_playerSubZone.AutoSize = true;
+            this.lbl_playerSubZone.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_playerSubZone.Location = new System.Drawing.Point(8, 214);
             this.lbl_playerSubZone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_playerSubZone.Name = "lbl_playerSubZone";
-            this.lbl_playerSubZone.Size = new System.Drawing.Size(128, 16);
+            this.lbl_playerSubZone.Size = new System.Drawing.Size(106, 13);
             this.lbl_playerSubZone.TabIndex = 15;
             this.lbl_playerSubZone.Text = "Sub-Zone: Unknown";
             // 
             // lbl_playerZone
             // 
             this.lbl_playerZone.AutoSize = true;
+            this.lbl_playerZone.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_playerZone.Location = new System.Drawing.Point(8, 198);
             this.lbl_playerZone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_playerZone.Name = "lbl_playerZone";
-            this.lbl_playerZone.Size = new System.Drawing.Size(100, 16);
+            this.lbl_playerZone.Size = new System.Drawing.Size(84, 13);
             this.lbl_playerZone.TabIndex = 14;
             this.lbl_playerZone.Text = "Zone: Unknown";
             // 
@@ -453,11 +455,11 @@ namespace ZzukBot.Forms
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgChat);
-            this.groupBox1.Location = new System.Drawing.Point(11, 6);
+            this.groupBox1.Location = new System.Drawing.Point(4, 6);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(600, 361);
+            this.groupBox1.Size = new System.Drawing.Size(365, 419);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "InGame Chat";
@@ -483,7 +485,7 @@ namespace ZzukBot.Forms
             this.dgChat.ReadOnly = true;
             this.dgChat.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgChat.RowHeadersVisible = false;
-            this.dgChat.Size = new System.Drawing.Size(592, 338);
+            this.dgChat.Size = new System.Drawing.Size(357, 396);
             this.dgChat.TabIndex = 6;
             // 
             // dType
@@ -516,14 +518,14 @@ namespace ZzukBot.Forms
             // 
             // bClearChatLog
             // 
-            this.bClearChatLog.Location = new System.Drawing.Point(13, 374);
+            this.bClearChatLog.Location = new System.Drawing.Point(8, 433);
             this.bClearChatLog.Margin = new System.Windows.Forms.Padding(4);
             this.bClearChatLog.Name = "bClearChatLog";
             this.bClearChatLog.Size = new System.Drawing.Size(111, 25);
             this.bClearChatLog.TabIndex = 9;
             this.bClearChatLog.Text = "Clear Log";
             this.bClearChatLog.UseVisualStyleBackColor = true;
-            this.bClearChatLog.Visible = false;
+            this.bClearChatLog.Click += new System.EventHandler(this.bClearChatLog_Click);
             // 
             // tpNotifications
             // 

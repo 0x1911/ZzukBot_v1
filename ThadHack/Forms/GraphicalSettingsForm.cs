@@ -88,12 +88,40 @@ namespace ZzukBot.Forms
 
         private void newProfileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GuiCore.ProfileCreationForm = new Forms.GraphicalProfileCreationForm();
+            var tmpNewProfileForm = new Forms.GraphicalProfileCreationForm();
 
-            if (EngineManager.CurrentEngineType != Engines.Engines.None) return;
-            EngineManager.StartProfileCreation();
+            if (EngineManager.CurrentEngineType != Engines.Engines.None) { EngineManager.StopCurrentEngine(); }
 
-            GuiCore.ProfileCreationForm.Show();
+
+            EngineManager.StartProfileCreation(tmpNewProfileForm);
+            tmpNewProfileForm.Show();
+        }
+
+        private void cbIRCConnect_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_ConnectIrc_Click(object sender, EventArgs e)
+        {
+            if (!GuiCore.SettingsForm.cbIRCConnect.Checked)
+            {
+                var botName = GuiCore.SettingsForm.tbIRCBotNickname.Text;
+                var botChannel = GuiCore.SettingsForm.tbIRCBotChannel.Text;
+                if (string.IsNullOrWhiteSpace(botName))
+                {
+                    MessageBox.Show("Bot Nickname cant be empty");
+                    return;
+                }
+                if (!botChannel.StartsWith("#") || string.IsNullOrWhiteSpace(botChannel))
+                {
+                    MessageBox.Show("Channel must start with a #");
+                    return;
+                }
+                GuiCore.SettingsForm.cbIRCConnect.Checked = true;
+            }
+            else
+                GuiCore.SettingsForm.cbIRCConnect.Checked = false;
         }
     }
 }

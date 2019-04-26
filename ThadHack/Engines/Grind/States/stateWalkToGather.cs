@@ -26,7 +26,12 @@ namespace ZzukBot.Engines.Grind.States
         {
             WoWGameObject savedResource = Grinder.Access.Info.Gather.GetNearestResource();
 
-            if (savedResource == null) return;
+            if (savedResource == null) { Wait.Remove("Gathering"); return; }
+
+            //if (lastCheck + 10000 >= Environment.TickCount) { Wait.Remove("Gathering"); return; }
+            //lastCheck = Environment.TickCount;
+
+            Helpers.Logger.Append("Want to gather " + savedResource.Name + " in " + Calc.Distance3D(savedResource.Position, ObjectManager.Player.Position));
 
             if (savedResource.Guid != oldResourceGuid)
             {

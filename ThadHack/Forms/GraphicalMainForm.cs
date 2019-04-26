@@ -14,7 +14,6 @@ using ZzukBot.Helpers;
 using ZzukBot.Hooks;
 using ZzukBot.Mem;
 using ZzukBot.Properties;
-using ZzukBot.Server.AuthClient;
 using ZzukBot.Settings;
 
 namespace ZzukBot.Forms
@@ -66,8 +65,8 @@ namespace ZzukBot.Forms
             "jmp [|addr|][|]";
 
 
-                SendOvers.WardenLoadDetour = loadDetour.Split(new string[] { "[|]" }, StringSplitOptions.RemoveEmptyEntries);
-                SendOvers.WardenMemCpyDetour = memcpyDetour.Split(new string[] { "[|]" }, StringSplitOptions.RemoveEmptyEntries);
+                Constants.Warden.WardenLoadDetour = loadDetour.Split(new string[] { "[|]" }, StringSplitOptions.RemoveEmptyEntries);
+                Constants.Warden.WardenMemCpyDetour = memcpyDetour.Split(new string[] { "[|]" }, StringSplitOptions.RemoveEmptyEntries);
             }
             catch
             {
@@ -212,26 +211,7 @@ namespace ZzukBot.Forms
                 }
             }));
         }
-        
-        #region Grindbot gui part
-
-        /// <summary>
-        ///     Load a profile
-        /// </summary>
-        private void bGrindLoadProfile_Click(object sender, EventArgs e)
-        {
-            if (EngineManager.CurrentEngineType != Engines.Engines.None) return;
-            EngineManager.StartGrinder(cbLoadLastProfile.Checked);
-        }
-
-        #endregion
-
-        private void bAddVendorHotspot_Click(object sender, EventArgs e)
-        {
-            if (EngineManager.CurrentEngineType != Engines.Engines.ProfileCreation) return;
-            EngineManager.EngineAs<ProfileCreator>().AddVendorWaypoint();
-        }
-
+                
         private static void ChannelMessageRecieved(object S, IrcMonitor.MessageArgs e)
         {
             var msg = e.Message.Split(' ');
@@ -289,155 +269,7 @@ namespace ZzukBot.Forms
             dgChat.Rows.Clear();
         }        
 
-        private void cbIRCConnect_Click(object sender, EventArgs e)
-        {
-            if (!GuiCore.SettingsForm.cbIRCConnect.Checked)
-            {
-                var botName = GuiCore.SettingsForm.tbIRCBotNickname.Text;
-                var botChannel = GuiCore.SettingsForm.tbIRCBotChannel.Text;
-                if (string.IsNullOrWhiteSpace(botName))
-                {
-                    MessageBox.Show("Bot Nickname cant be empty");
-                    return;
-                }
-                if (!botChannel.StartsWith("#") || string.IsNullOrWhiteSpace(botChannel))
-                {
-                    MessageBox.Show("Channel must start with a #");
-                    return;
-                }
-                GuiCore.SettingsForm.cbIRCConnect.Checked = true;
-            }
-            else
-                GuiCore.SettingsForm.cbIRCConnect.Checked = false;
-        }
-
-        #region Profilecreation buttons & fields
-
-        /// <summary>
-        ///     Add hotspot button
-        /// </summary>
-        private void bAddWaypoint_Click(object sender, EventArgs e)
-        {
-            if (EngineManager.CurrentEngineType != Engines.Engines.ProfileCreation) return;
-            EngineManager.EngineAs<ProfileCreator>().AddWaypoint();
-        }
         
-        /// <summary>
-        ///     Add faction button
-        /// </summary>
-        private void bAddFaction_Click(object sender, EventArgs e)
-        {
-            if (EngineManager.CurrentEngineType != Engines.Engines.ProfileCreation) return;
-            EngineManager.EngineAs<ProfileCreator>().AddFaction();
-        }
-
-        /// <summary>
-        ///     Clear faction buttons
-        /// </summary>
-        private void bClearFactions_Click(object sender, EventArgs e)
-        {
-            if (EngineManager.CurrentEngineType != Engines.Engines.ProfileCreation) return;
-            EngineManager.EngineAs<ProfileCreator>().ClearFactions();
-        }
-
-        /// <summary>
-        ///     Add repair npc
-        /// </summary>
-        private void bAddRepair_Click(object sender, EventArgs e)
-        {
-            if (EngineManager.CurrentEngineType != Engines.Engines.ProfileCreation) return;
-            EngineManager.EngineAs<ProfileCreator>().AddRepair();
-        }
-
-        /// <summary>
-        ///     Clear repair NPC
-        /// </summary>
-        private void bClearRepair_Click(object sender, EventArgs e)
-        {
-            if (EngineManager.CurrentEngineType != Engines.Engines.ProfileCreation) return;
-            EngineManager.EngineAs<ProfileCreator>().ClearRepair();
-        }
-
-        /// <summary>
-        ///     Add restock NPC
-        /// </summary>
-        private void bAddRestock_Click(object sender, EventArgs e)
-        {
-            if (EngineManager.CurrentEngineType != Engines.Engines.ProfileCreation) return;
-            EngineManager.EngineAs<ProfileCreator>().AddRestock();
-        }
-
-        /// <summary>
-        ///     Clear the restock NPC info
-        /// </summary>
-        private void bClearRestock_Click(object sender, EventArgs e)
-        {
-            if (EngineManager.CurrentEngineType != Engines.Engines.ProfileCreation) return;
-            EngineManager.EngineAs<ProfileCreator>().ClearRestock();
-        }
-
-        /// <summary>
-        ///     Add a vendor NPC
-        /// </summary>
-        private void bAddVendor_Click(object sender, EventArgs e)
-        {
-            if (EngineManager.CurrentEngineType != Engines.Engines.ProfileCreation) return;
-            EngineManager.EngineAs<ProfileCreator>().AddVendor();
-        }
-
-        private void bAddGhostHotspot_Click(object sender, EventArgs e)
-        {
-            if (EngineManager.CurrentEngineType != Engines.Engines.ProfileCreation) return;
-            EngineManager.EngineAs<ProfileCreator>().AddGhostWaypoint();
-        }
-
-        /// <summary>
-        ///     Clear the vendor NPC
-        /// </summary>
-        private void bClearVendor_Click(object sender, EventArgs e)
-        {
-            if (EngineManager.CurrentEngineType != Engines.Engines.ProfileCreation) return;
-            EngineManager.EngineAs<ProfileCreator>().ClearVendor();
-        }
-
-        /// <summary>
-        ///     Add a item to restock
-        /// </summary>
-        private void bAddRestockItem_Click(object sender, EventArgs e)
-        {
-            if (EngineManager.CurrentEngineType != Engines.Engines.ProfileCreation) return;
-            EngineManager.EngineAs<ProfileCreator>().AddRestockItem();
-        }
-
-        /// <summary>
-        ///     Clear the list of items we should restock
-        /// </summary>
-        private void bClearRestockItems_Click(object sender, EventArgs e)
-        {
-            if (EngineManager.CurrentEngineType != Engines.Engines.ProfileCreation) return;
-            EngineManager.EngineAs<ProfileCreator>().ClearRestockItems();
-        }
-
-        /// <summary>
-        ///     Save the profile or cancel
-        /// </summary>
-        private void bSave_Click(object sender, EventArgs e)
-        {
-            if (EngineManager.CurrentEngineType != Engines.Engines.ProfileCreation) return;
-            EngineManager.StopCurrentEngine();
-        }
-
-        /// <summary>
-        ///     Start creating a new profile
-        /// </summary>
-        private void bCreate_Click(object sender, EventArgs e)
-        {
-            if (EngineManager.CurrentEngineType != Engines.Engines.None) return;
-            EngineManager.StartProfileCreation();
-        }
-
-        #endregion
-
         #region Top menu tool strip        
         private void runToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -464,6 +296,7 @@ namespace ZzukBot.Forms
             }
 
             GuiCore.SettingsForm.Show();
+            GuiCore.SettingsForm.BringToFront();
         }
         #endregion
 

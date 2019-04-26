@@ -43,12 +43,12 @@ namespace ZzukBot.Engines
             return (T) _Engine;
         }
 
-        internal static void StartProfileCreation()
+        internal static void StartProfileCreation(Forms.GraphicalProfileCreationForm targetForm)
         {
             GuiCore.MainForm.Invoke(new MethodInvoker(delegate
             {
                 if (IsEngineRunning) return;
-                _Engine = new ProfileCreator();
+                _Engine = new ProfileCreator(targetForm);
             }));
         }
 
