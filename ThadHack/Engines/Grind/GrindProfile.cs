@@ -26,7 +26,6 @@ namespace ZzukBot.Engines.Grind
                 // get subelements of xml profile
                 var tmpHotspots = sub.Element("Hotspots");
                 var tmpIgnoreZAxis = sub.Element("IgnoreZAxis");
-                var tmpVendorHotspots = sub.Element("VendorHotspots");
                 var tmpGhostrHotspots = sub.Element("GhostHotspots");
                 var tmpFactions = sub.Element("Factions");
                 var tmpVendor = sub.Element("Vendor");
@@ -120,39 +119,10 @@ namespace ZzukBot.Engines.Grind
             }
         }
 
-        private void ExtractRepairNpcAndWaypoints(XElement tmpVendorHotspots, XElement tmpRepair)
+        private void ExtractRepairNpcAndWaypoints(XElement tmpRepair)
         {
             if (tmpRepair != null)
             {
-                if (tmpVendorHotspots != null)
-                {
-                    var tmpListVendorHotspots = new List<Waypoint>();
-                    // ReSharper disable once LoopCanBeConvertedToQuery
-                    foreach (var x in tmpVendorHotspots.Nodes().ToList())
-                    {
-                        var tmpX = x as XElement;
-                        if (tmpX.Name == "VendorHotspot")
-                        {
-                            var _vec3 = new XYZ
-                            {
-                                X = Convert.ToSingle(tmpX.Element("X").Value),
-                                Y = Convert.ToSingle(tmpX.Element("Y").Value),
-                                Z = Convert.ToSingle(tmpX.Element("Z").Value)
-                            };
-
-                            var tmpWp = new Waypoint
-                            {
-                                Position = _vec3,
-                                Type = (Enums.PositionType)
-                                    Enum.Parse(typeof (Enums.PositionType), tmpX.Element("Type").Value, true)
-                            };
-
-                            tmpListVendorHotspots.Add(tmpWp);
-                        }
-                    }
-                    VendorHotspots = tmpListVendorHotspots.ToArray();
-                }
-
                 var vec3 = new XYZ
                 {
                     X = Convert.ToSingle(

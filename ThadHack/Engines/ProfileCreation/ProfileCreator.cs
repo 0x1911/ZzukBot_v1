@@ -84,7 +84,6 @@ namespace ZzukBot.Engines.ProfileCreation
         private void StopIt()
         {
             usedProfileForm.tbHotspots.Text = "";
-            usedProfileForm.tbVendorHotspots.Text = "";
             usedProfileForm.tbGhostHotspots.Text = "";
             usedProfileForm.tbFactions.Text = "";
             usedProfileForm.tbRepair.Text = "";
@@ -93,7 +92,6 @@ namespace ZzukBot.Engines.ProfileCreation
             usedProfileForm.tbRestockItems.Text = "";
             usedProfileForm.cbIgnoreZ.Checked = false;
             usedProfileForm.lHotspotCount.Text = "Count: ";
-            usedProfileForm.lVendorHotspotCount.Text = "Count: ";
             usedProfileForm.lFactionCount.Text = "Count: ";
             usedProfileForm.lGhostHotspotCount.Text = "Count: ";
             usedProfileForm.lRecording.Visible = false;
@@ -156,17 +154,7 @@ namespace ZzukBot.Engines.ProfileCreation
                 listRestockItems.Clear();
             }));
         }
-
-        internal void ClearVendorWaypoints()
-        {
-            GuiCore.MainForm.Invoke(new MethodInvoker(delegate
-            {
-                listVendorHotspots.Clear();
-                usedProfileForm.tbVendorHotspots.Text = "";
-                usedProfileForm.lVendorHotspotCount.Text = "Count: ";
-            }));
-        }
-
+        
         internal void ClearGhostWaypoints()
         {
             GuiCore.MainForm.Invoke(new MethodInvoker(delegate
@@ -186,12 +174,7 @@ namespace ZzukBot.Engines.ProfileCreation
         {
             boolAddWaypoint = true;
         }
-
-        internal void AddVendorWaypoint()
-        {
-            boolAddVendorWaypoint = true;
-        }
-
+        
         internal void AddVendor()
         {
             boolAddVendor = true;
@@ -250,14 +233,7 @@ namespace ZzukBot.Engines.ProfileCreation
                         usedProfileForm.lHotspotCount.Text = "Count: " + listHotspots.Count;
                         boolAddWaypoint = false;
                         break;
-
-                    case HotspotType.VendorHotspot:
-                        listVendorHotspots.Add(Tuple.Create(tmpVec, pos, posType));
-                        usedProfileForm.tbVendorHotspots.Text += tmpVec + Environment.NewLine;
-                        usedProfileForm.lVendorHotspotCount.Text = "Count: " + listVendorHotspots.Count;
-                        boolAddVendorWaypoint = false;
-                        break;
-
+                        
                     case HotspotType.Ghost:
                         listGhostHotspots.Add(Tuple.Create(tmpVec, pos, posType));
                         usedProfileForm.tbGhostHotspots.Text += tmpVec + Environment.NewLine;

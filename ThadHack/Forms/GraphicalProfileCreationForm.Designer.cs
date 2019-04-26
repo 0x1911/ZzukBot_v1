@@ -36,10 +36,6 @@
             this.tbHotspots = new System.Windows.Forms.TextBox();
             this.lHotspotCount = new System.Windows.Forms.Label();
             this.bAddHotspots = new System.Windows.Forms.Button();
-            this.bClearVendorHotspots = new System.Windows.Forms.Button();
-            this.tbVendorHotspots = new System.Windows.Forms.TextBox();
-            this.lVendorHotspotCount = new System.Windows.Forms.Label();
-            this.bAddVendorHotspot = new System.Windows.Forms.Button();
             this.bClearRestockItems = new System.Windows.Forms.Button();
             this.bAddRestockItem = new System.Windows.Forms.Button();
             this.tbRestockItems = new System.Windows.Forms.TextBox();
@@ -64,21 +60,18 @@
             this.lFactionCount = new System.Windows.Forms.Label();
             this.bSave = new System.Windows.Forms.Button();
             this.grp_Hotspots = new System.Windows.Forms.GroupBox();
-            this.grp_Vendor = new System.Windows.Forms.GroupBox();
+            this.btn_WaypointsAutoRecord = new System.Windows.Forms.Button();
             this.grp_Ghost = new System.Windows.Forms.GroupBox();
+            this.btn_GhostAutoRecord = new System.Windows.Forms.Button();
             this.bClearGhostHotspots = new System.Windows.Forms.Button();
             this.tbGhostHotspots = new System.Windows.Forms.TextBox();
             this.bAddGhostHotspot = new System.Windows.Forms.Button();
             this.lGhostHotspotCount = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.btn_VendorAutoRecord = new System.Windows.Forms.Button();
-            this.btn_GhostAutoRecord = new System.Windows.Forms.Button();
-            this.btn_WaypointsAutoRecord = new System.Windows.Forms.Button();
             this.bgWorker_Recording = new System.ComponentModel.BackgroundWorker();
             this.gbVendor.SuspendLayout();
             this.gbFaction.SuspendLayout();
             this.grp_Hotspots.SuspendLayout();
-            this.grp_Vendor.SuspendLayout();
             this.grp_Ghost.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
@@ -161,44 +154,6 @@
             this.bAddHotspots.Text = "Add";
             this.bAddHotspots.UseVisualStyleBackColor = true;
             this.bAddHotspots.Click += new System.EventHandler(this.bAddHotspots_Click);
-            // 
-            // bClearVendorHotspots
-            // 
-            this.bClearVendorHotspots.Location = new System.Drawing.Point(142, 97);
-            this.bClearVendorHotspots.Name = "bClearVendorHotspots";
-            this.bClearVendorHotspots.Size = new System.Drawing.Size(44, 20);
-            this.bClearVendorHotspots.TabIndex = 11;
-            this.bClearVendorHotspots.Text = "Clear";
-            this.bClearVendorHotspots.UseVisualStyleBackColor = true;
-            this.bClearVendorHotspots.Click += new System.EventHandler(this.bClearVendorHotspots_Click);
-            // 
-            // tbVendorHotspots
-            // 
-            this.tbVendorHotspots.Enabled = false;
-            this.tbVendorHotspots.Location = new System.Drawing.Point(6, 19);
-            this.tbVendorHotspots.Multiline = true;
-            this.tbVendorHotspots.Name = "tbVendorHotspots";
-            this.tbVendorHotspots.Size = new System.Drawing.Size(243, 72);
-            this.tbVendorHotspots.TabIndex = 9;
-            // 
-            // lVendorHotspotCount
-            // 
-            this.lVendorHotspotCount.AutoSize = true;
-            this.lVendorHotspotCount.Location = new System.Drawing.Point(190, 101);
-            this.lVendorHotspotCount.Name = "lVendorHotspotCount";
-            this.lVendorHotspotCount.Size = new System.Drawing.Size(38, 13);
-            this.lVendorHotspotCount.TabIndex = 8;
-            this.lVendorHotspotCount.Text = "Count:";
-            // 
-            // bAddVendorHotspot
-            // 
-            this.bAddVendorHotspot.Location = new System.Drawing.Point(92, 97);
-            this.bAddVendorHotspot.Name = "bAddVendorHotspot";
-            this.bAddVendorHotspot.Size = new System.Drawing.Size(44, 20);
-            this.bAddVendorHotspot.TabIndex = 10;
-            this.bAddVendorHotspot.Text = "Add";
-            this.bAddVendorHotspot.UseVisualStyleBackColor = true;
-            this.bAddVendorHotspot.Click += new System.EventHandler(this.bAddVendorHotspot_Click);
             // 
             // bClearRestockItems
             // 
@@ -459,19 +414,15 @@
             this.grp_Hotspots.TabStop = false;
             this.grp_Hotspots.Text = "Grind Hotspots";
             // 
-            // grp_Vendor
+            // btn_WaypointsAutoRecord
             // 
-            this.grp_Vendor.Controls.Add(this.btn_VendorAutoRecord);
-            this.grp_Vendor.Controls.Add(this.bClearVendorHotspots);
-            this.grp_Vendor.Controls.Add(this.tbVendorHotspots);
-            this.grp_Vendor.Controls.Add(this.bAddVendorHotspot);
-            this.grp_Vendor.Controls.Add(this.lVendorHotspotCount);
-            this.grp_Vendor.Location = new System.Drawing.Point(280, 200);
-            this.grp_Vendor.Name = "grp_Vendor";
-            this.grp_Vendor.Size = new System.Drawing.Size(256, 121);
-            this.grp_Vendor.TabIndex = 31;
-            this.grp_Vendor.TabStop = false;
-            this.grp_Vendor.Text = "Vendor Waypoints";
+            this.btn_WaypointsAutoRecord.Location = new System.Drawing.Point(6, 97);
+            this.btn_WaypointsAutoRecord.Name = "btn_WaypointsAutoRecord";
+            this.btn_WaypointsAutoRecord.Size = new System.Drawing.Size(78, 20);
+            this.btn_WaypointsAutoRecord.TabIndex = 29;
+            this.btn_WaypointsAutoRecord.Text = "Auto Record";
+            this.btn_WaypointsAutoRecord.UseVisualStyleBackColor = true;
+            this.btn_WaypointsAutoRecord.Click += new System.EventHandler(this.btn_WaypointsAutoRecord_Click);
             // 
             // grp_Ghost
             // 
@@ -480,12 +431,22 @@
             this.grp_Ghost.Controls.Add(this.tbGhostHotspots);
             this.grp_Ghost.Controls.Add(this.bAddGhostHotspot);
             this.grp_Ghost.Controls.Add(this.lGhostHotspotCount);
-            this.grp_Ghost.Location = new System.Drawing.Point(280, 329);
+            this.grp_Ghost.Location = new System.Drawing.Point(283, 200);
             this.grp_Ghost.Name = "grp_Ghost";
             this.grp_Ghost.Size = new System.Drawing.Size(256, 124);
             this.grp_Ghost.TabIndex = 32;
             this.grp_Ghost.TabStop = false;
             this.grp_Ghost.Text = "Ghost Waypoints";
+            // 
+            // btn_GhostAutoRecord
+            // 
+            this.btn_GhostAutoRecord.Location = new System.Drawing.Point(6, 97);
+            this.btn_GhostAutoRecord.Name = "btn_GhostAutoRecord";
+            this.btn_GhostAutoRecord.Size = new System.Drawing.Size(78, 20);
+            this.btn_GhostAutoRecord.TabIndex = 13;
+            this.btn_GhostAutoRecord.Text = "Auto Record";
+            this.btn_GhostAutoRecord.UseVisualStyleBackColor = true;
+            this.btn_GhostAutoRecord.Click += new System.EventHandler(this.btn_GhostAutoRecord_Click);
             // 
             // bClearGhostHotspots
             // 
@@ -537,36 +498,6 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Restock Items";
             // 
-            // btn_VendorAutoRecord
-            // 
-            this.btn_VendorAutoRecord.Location = new System.Drawing.Point(6, 97);
-            this.btn_VendorAutoRecord.Name = "btn_VendorAutoRecord";
-            this.btn_VendorAutoRecord.Size = new System.Drawing.Size(78, 20);
-            this.btn_VendorAutoRecord.TabIndex = 12;
-            this.btn_VendorAutoRecord.Text = "Auto Record";
-            this.btn_VendorAutoRecord.UseVisualStyleBackColor = true;
-            this.btn_VendorAutoRecord.Click += new System.EventHandler(this.btn_VendorAutoRecord_Click);
-            // 
-            // btn_GhostAutoRecord
-            // 
-            this.btn_GhostAutoRecord.Location = new System.Drawing.Point(6, 97);
-            this.btn_GhostAutoRecord.Name = "btn_GhostAutoRecord";
-            this.btn_GhostAutoRecord.Size = new System.Drawing.Size(78, 20);
-            this.btn_GhostAutoRecord.TabIndex = 13;
-            this.btn_GhostAutoRecord.Text = "Auto Record";
-            this.btn_GhostAutoRecord.UseVisualStyleBackColor = true;
-            this.btn_GhostAutoRecord.Click += new System.EventHandler(this.btn_GhostAutoRecord_Click);
-            // 
-            // btn_WaypointsAutoRecord
-            // 
-            this.btn_WaypointsAutoRecord.Location = new System.Drawing.Point(6, 97);
-            this.btn_WaypointsAutoRecord.Name = "btn_WaypointsAutoRecord";
-            this.btn_WaypointsAutoRecord.Size = new System.Drawing.Size(78, 20);
-            this.btn_WaypointsAutoRecord.TabIndex = 29;
-            this.btn_WaypointsAutoRecord.Text = "Auto Record";
-            this.btn_WaypointsAutoRecord.UseVisualStyleBackColor = true;
-            this.btn_WaypointsAutoRecord.Click += new System.EventHandler(this.btn_WaypointsAutoRecord_Click);
-            // 
             // bgWorker_Recording
             // 
             this.bgWorker_Recording.WorkerSupportsCancellation = true;
@@ -579,7 +510,6 @@
             this.ClientSize = new System.Drawing.Size(552, 461);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.grp_Ghost);
-            this.Controls.Add(this.grp_Vendor);
             this.Controls.Add(this.grp_Hotspots);
             this.Controls.Add(this.cbIgnoreZ);
             this.Controls.Add(this.lRecording);
@@ -596,8 +526,6 @@
             this.gbFaction.PerformLayout();
             this.grp_Hotspots.ResumeLayout(false);
             this.grp_Hotspots.PerformLayout();
-            this.grp_Vendor.ResumeLayout(false);
-            this.grp_Vendor.PerformLayout();
             this.grp_Ghost.ResumeLayout(false);
             this.grp_Ghost.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -617,10 +545,6 @@
         internal System.Windows.Forms.TextBox tbHotspots;
         internal System.Windows.Forms.Label lHotspotCount;
         internal System.Windows.Forms.Button bAddHotspots;
-        internal System.Windows.Forms.Button bClearVendorHotspots;
-        internal System.Windows.Forms.TextBox tbVendorHotspots;
-        internal System.Windows.Forms.Label lVendorHotspotCount;
-        internal System.Windows.Forms.Button bAddVendorHotspot;
         internal System.Windows.Forms.Button bClearRestockItems;
         internal System.Windows.Forms.Button bAddRestockItem;
         internal System.Windows.Forms.TextBox tbRestockItems;
@@ -645,7 +569,6 @@
         internal System.Windows.Forms.Label lFactionCount;
         private System.Windows.Forms.Button bSave;
         private System.Windows.Forms.GroupBox grp_Hotspots;
-        private System.Windows.Forms.GroupBox grp_Vendor;
         private System.Windows.Forms.GroupBox grp_Ghost;
         internal System.Windows.Forms.Button bClearGhostHotspots;
         internal System.Windows.Forms.TextBox tbGhostHotspots;
@@ -653,7 +576,6 @@
         internal System.Windows.Forms.Label lGhostHotspotCount;
         private System.Windows.Forms.GroupBox groupBox4;
         internal System.Windows.Forms.Button btn_WaypointsAutoRecord;
-        internal System.Windows.Forms.Button btn_VendorAutoRecord;
         internal System.Windows.Forms.Button btn_GhostAutoRecord;
         private System.ComponentModel.BackgroundWorker bgWorker_Recording;
     }
