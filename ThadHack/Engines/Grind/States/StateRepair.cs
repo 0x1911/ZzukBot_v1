@@ -40,7 +40,7 @@ namespace ZzukBot.Engines.Grind.States
                 else
                 {
                     // sell our shit
-                    if (!Wait.For("SellItemsTimer112", Grinder.Access.Info.Latency*2 + 200)) return;
+                    if (!Wait.For("SellItemsTimer112", Grinder.Access.Info.Latency * 2 + 200)) return;
                     BackToPath =
                         !ObjectManager.Player.Inventory.VendorItems();
                     if (BackToPath)
@@ -66,38 +66,8 @@ namespace ZzukBot.Engines.Grind.States
                     }
                 }
             }
-            // not close enough? lets travel to the vendor using another state!
-            else
-            {
-                Grinder.Access.Info.Vendor.TravelingToVendor = true;
-                var tmpList = new List<Waypoint>();
-
-                //if (Grinder.Profile.VendorHotspots == null || Grinder.Profile.VendorHotspots.Length == 0)
-                //    return;
-
-                Grinder.Access.Info.Waypoints.RevertHotspotsToOriginal();
-                var curHotspot = Grinder.Access.Info.Waypoints.CurrentHotspotIndex;
-
-                if (curHotspot > 0)
-                {
-                    for (var i = curHotspot - 1; i >= 0; i--)
-                    {
-                        tmpList.Add(Grinder.Access.Profile.Hotspots[i]);
-                    }
-                }
-                if (Grinder.Access.Profile.VendorHotspots != null && Grinder.Access.Profile.VendorHotspots.Length != 0)
-                {
-                    tmpList.AddRange(Grinder.Access.Profile.VendorHotspots);
-                }
-                var tmpWp = new Waypoint
-                {
-                    Position = Grinder.Access.Profile.RepairNPC.Coordinates,
-                    Type = Enums.PositionType.Hotspot
-                };
-                tmpList.Add(tmpWp);
-
-                Grinder.Access.Info.PathManager.GrindToVendor = new BasePath(tmpList);
-            }
+            else // not close enough? lets travel to the vendor using another state!
+            { Grinder.Access.Info.Vendor.TravelingToVendor = true; }
         }
     }
 }

@@ -56,9 +56,9 @@ namespace ZzukBot.Engines
         {
             if (IsEngineRunning) return;
             string tmpProfileName;
-            if (parLoadLast && Options.LastProfile != "")
+            if (parLoadLast && Options.LastProfileFileName != "")
             {
-                tmpProfileName = Options.LastProfile;
+                tmpProfileName = Options.LastProfileFileName;
             }
             else
             {
@@ -86,7 +86,8 @@ namespace ZzukBot.Engines
                 {
                     GuiCore.MainForm.lGrindState.Text = "State: Loading mmaps";
                     IsWaitingForGeneration = true;
-                    Options.LastProfile = tmpProfileName;
+                    string profileFileName = tmpProfileName.Replace(Paths.ProfileFolder, "");
+                    Options.LastProfileFileName = profileFileName;
                 }));
             }
         }
@@ -97,7 +98,7 @@ namespace ZzukBot.Engines
             {
                 GuiCore.MainForm.Invoke(new MethodInvoker(delegate
                 {
-                    GuiCore.MainForm.lGrindLoadProfile.Text = "Profile: Loaded";
+                    GuiCore.MainForm.lGrindLoadProfile.Text = "Profile: " + Options.LastProfileFileName + " Loaded";
                     _Engine = tmpGrind;
                     IsWaitingForGeneration = false;
                 }));

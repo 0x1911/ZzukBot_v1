@@ -24,7 +24,7 @@
         internal static string[] ProtectedItems = {};
         internal static decimal WaypointModifier = 0;
 
-        internal static string LastProfile = "";
+        internal static string LastProfileFileName = "";
 
         internal static int CapFpsTo = 60;
 

@@ -1,4 +1,5 @@
 ﻿using ZzukBot.FSM;
+using ZzukBot.Helpers;
 using ZzukBot.Mem;
 
 namespace ZzukBot.Engines.Grind.States
@@ -13,19 +14,25 @@ namespace ZzukBot.Engines.Grind.States
 
         internal override void Run()
         {
-            //lets sprinkle in a random jump once in while, maybe?
-            Shared.RandomJump();
-
-            if (Grinder.Access.Info.Vendor.RegenerateSubPath)
+            //do we have a repair NPC saved?
+            if (Grinder.Access.Profile.RepairNPC == null)
             {
-                Grinder.Access.Info.PathManager.GrindToVendor.RegenerateSubPath();
-                Grinder.Access.Info.Vendor.RegenerateSubPath = false;
+                //there is nothing we can do without the proper data..
+                Grinder.Access.Info.Vendor.TravelingToVendor = false;
+                return;
             }
 
-            var to = Grinder.Access.Info.PathManager.GrindToVendor.NextWaypoint;
-            ObjectManager.Player.CtmTo(to);
 
-            if (Grinder.Access.Info.PathManager.GrindToVendor.ArrivedAtDestination)
+            XYZ tmpNpcCoords = Grinder.Access.Profile.RepairNPC.Coordinates;
+            if (Calc.Distance3D(tmpNpcCoords, ObjectManager.Player.Position) > 4)
+            {
+                //lets sprinkle in a random jump once in while
+                Shared.RandomJump();
+
+                var to = Grinder.Access.Info.PathToPosition.ToPos(tmpNpcCoords);
+                ObjectManager.Player.CtmTo(to);
+            }
+            else
             {
                 Grinder.Access.Info.Vendor.TravelingToVendor = false;
             }

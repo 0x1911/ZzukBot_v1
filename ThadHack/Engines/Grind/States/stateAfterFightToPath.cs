@@ -7,7 +7,7 @@ namespace ZzukBot.Engines.Grind.States
     {
         internal override int Priority => 33;
 
-        internal override bool NeedToRun => Grinder.Access.Info.PathAfterFightToWaypoint.NeedToReturn();
+        internal override bool NeedToRun => Grinder.Access.Info.PathAfterFightToWaypoint.NeedToReturn() && !Grinder.Access.Info.Rest.NeedToDrink && !Grinder.Access.Info.Rest.NeedToEat;
 
         internal override string Name => "Back to path";
 
