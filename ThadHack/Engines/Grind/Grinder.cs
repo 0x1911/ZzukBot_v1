@@ -248,6 +248,15 @@ namespace ZzukBot.Engines.Grind
                             else if (player.Class == Constants.Enums.ClassIds.Rogue) { GuiCore.MainForm.pBar_playerMana.Value = player.Energy; GuiCore.MainForm.pBar_playerMana.ForeColor = System.Drawing.Color.Yellow; }
                             else if (player.Class == Constants.Enums.ClassIds.Warrior) { GuiCore.MainForm.pBar_playerMana.Value = player.Rage; GuiCore.MainForm.pBar_playerMana.ForeColor = System.Drawing.Color.Red; }
 
+                            if(player.Level < 60)
+                            {
+                                decimal tmpCurXp = player.CurrentXp;
+                                decimal tmpMaxXp = player.NextLevelXp;
+                                decimal lvlPercentDone = (tmpCurXp / tmpMaxXp) *100;
+                                GuiCore.MainForm.pBar_playerExperience.Value = (int)lvlPercentDone;
+                            }
+                            else { GuiCore.MainForm.pBar_playerExperience.Visible = false;  }
+
                             GuiCore.MainForm.lbl_playerZone.Text = "Zone: " + player.GetMapID;
                             GuiCore.MainForm.lbl_playerSubZone.Text = "Sub-Zone: " + player.MinimapZoneText.ToString();
                         }

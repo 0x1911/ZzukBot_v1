@@ -78,9 +78,10 @@ namespace ZzukBot.Forms
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.dEVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.pBar_targetHealth = new ZzukBot.Helpers.NewProgressBar();
+            this.pBar_playerExperience = new ZzukBot.Helpers.NewProgressBar();
             this.pBar_playerMana = new ZzukBot.Helpers.NewProgressBar();
             this.pBar_playerHealth = new ZzukBot.Helpers.NewProgressBar();
-            this.pBar_targetHealth = new ZzukBot.Helpers.NewProgressBar();
             this.tcMain.SuspendLayout();
             this.tpGrind.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -174,65 +175,72 @@ namespace ZzukBot.Forms
             // lbl_targetId
             // 
             this.lbl_targetId.AutoSize = true;
+            this.lbl_targetId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_targetId.Location = new System.Drawing.Point(8, 112);
             this.lbl_targetId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_targetId.Name = "lbl_targetId";
-            this.lbl_targetId.Size = new System.Drawing.Size(32, 16);
+            this.lbl_targetId.Size = new System.Drawing.Size(28, 13);
             this.lbl_targetId.TabIndex = 18;
             this.lbl_targetId.Text = "Id: 0";
             // 
             // lbl_targetFaction
             // 
             this.lbl_targetFaction.AutoSize = true;
+            this.lbl_targetFaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_targetFaction.Location = new System.Drawing.Point(8, 96);
             this.lbl_targetFaction.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_targetFaction.Name = "lbl_targetFaction";
-            this.lbl_targetFaction.Size = new System.Drawing.Size(65, 16);
+            this.lbl_targetFaction.Size = new System.Drawing.Size(54, 13);
             this.lbl_targetFaction.TabIndex = 17;
             this.lbl_targetFaction.Text = "Faction: 0";
             // 
             // lbl_targetZ
             // 
             this.lbl_targetZ.AutoSize = true;
+            this.lbl_targetZ.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_targetZ.Location = new System.Drawing.Point(8, 52);
             this.lbl_targetZ.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_targetZ.Name = "lbl_targetZ";
-            this.lbl_targetZ.Size = new System.Drawing.Size(29, 16);
+            this.lbl_targetZ.Size = new System.Drawing.Size(26, 13);
             this.lbl_targetZ.TabIndex = 16;
             this.lbl_targetZ.Text = "Z: 0";
             // 
             // lbl_targetY
             // 
             this.lbl_targetY.AutoSize = true;
+            this.lbl_targetY.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_targetY.Location = new System.Drawing.Point(8, 36);
             this.lbl_targetY.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_targetY.Name = "lbl_targetY";
-            this.lbl_targetY.Size = new System.Drawing.Size(30, 16);
+            this.lbl_targetY.Size = new System.Drawing.Size(26, 13);
             this.lbl_targetY.TabIndex = 15;
             this.lbl_targetY.Text = "Y: 0";
             // 
             // lbl_targetX
             // 
             this.lbl_targetX.AutoSize = true;
+            this.lbl_targetX.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_targetX.Location = new System.Drawing.Point(8, 20);
             this.lbl_targetX.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_targetX.Name = "lbl_targetX";
-            this.lbl_targetX.Size = new System.Drawing.Size(29, 16);
+            this.lbl_targetX.Size = new System.Drawing.Size(26, 13);
             this.lbl_targetX.TabIndex = 14;
             this.lbl_targetX.Text = "X: 0";
             // 
             // lbl_targetName
             // 
             this.lbl_targetName.AutoSize = true;
+            this.lbl_targetName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_targetName.Location = new System.Drawing.Point(8, 156);
             this.lbl_targetName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_targetName.Name = "lbl_targetName";
-            this.lbl_targetName.Size = new System.Drawing.Size(103, 16);
+            this.lbl_targetName.Size = new System.Drawing.Size(85, 13);
             this.lbl_targetName.TabIndex = 12;
             this.lbl_targetName.Text = "Name: unknown";
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.pBar_playerExperience);
             this.groupBox2.Controls.Add(this.pBar_playerMana);
             this.groupBox2.Controls.Add(this.pBar_playerHealth);
             this.groupBox2.Controls.Add(this.lbl_playerSubZone);
@@ -277,60 +285,66 @@ namespace ZzukBot.Forms
             // lbl_playerAccountName
             // 
             this.lbl_playerAccountName.AutoSize = true;
-            this.lbl_playerAccountName.Location = new System.Drawing.Point(8, 156);
+            this.lbl_playerAccountName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_playerAccountName.Location = new System.Drawing.Point(8, 166);
             this.lbl_playerAccountName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_playerAccountName.Name = "lbl_playerAccountName";
-            this.lbl_playerAccountName.Size = new System.Drawing.Size(114, 16);
+            this.lbl_playerAccountName.Size = new System.Drawing.Size(97, 13);
             this.lbl_playerAccountName.TabIndex = 13;
             this.lbl_playerAccountName.Text = "Account: unknown";
             // 
             // lbl_playerRealm
             // 
             this.lbl_playerRealm.AutoSize = true;
-            this.lbl_playerRealm.Location = new System.Drawing.Point(8, 140);
+            this.lbl_playerRealm.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_playerRealm.Location = new System.Drawing.Point(8, 150);
             this.lbl_playerRealm.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_playerRealm.Name = "lbl_playerRealm";
-            this.lbl_playerRealm.Size = new System.Drawing.Size(106, 16);
+            this.lbl_playerRealm.Size = new System.Drawing.Size(87, 13);
             this.lbl_playerRealm.TabIndex = 12;
             this.lbl_playerRealm.Text = "Realm: unknown";
             // 
             // lbl_playerNickName
             // 
             this.lbl_playerNickName.AutoSize = true;
-            this.lbl_playerNickName.Location = new System.Drawing.Point(8, 124);
+            this.lbl_playerNickName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_playerNickName.Location = new System.Drawing.Point(8, 134);
             this.lbl_playerNickName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_playerNickName.Name = "lbl_playerNickName";
-            this.lbl_playerNickName.Size = new System.Drawing.Size(103, 16);
+            this.lbl_playerNickName.Size = new System.Drawing.Size(85, 13);
             this.lbl_playerNickName.TabIndex = 11;
             this.lbl_playerNickName.Text = "Name: unknown";
             // 
             // lbl_playerZ
             // 
             this.lbl_playerZ.AutoSize = true;
+            this.lbl_playerZ.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_playerZ.Location = new System.Drawing.Point(8, 52);
             this.lbl_playerZ.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_playerZ.Name = "lbl_playerZ";
-            this.lbl_playerZ.Size = new System.Drawing.Size(29, 16);
+            this.lbl_playerZ.Size = new System.Drawing.Size(26, 13);
             this.lbl_playerZ.TabIndex = 8;
             this.lbl_playerZ.Text = "Z: 0";
             // 
             // lbl_playerY
             // 
             this.lbl_playerY.AutoSize = true;
+            this.lbl_playerY.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_playerY.Location = new System.Drawing.Point(8, 36);
             this.lbl_playerY.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_playerY.Name = "lbl_playerY";
-            this.lbl_playerY.Size = new System.Drawing.Size(30, 16);
+            this.lbl_playerY.Size = new System.Drawing.Size(26, 13);
             this.lbl_playerY.TabIndex = 7;
             this.lbl_playerY.Text = "Y: 0";
             // 
             // lbl_playerX
             // 
             this.lbl_playerX.AutoSize = true;
+            this.lbl_playerX.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_playerX.Location = new System.Drawing.Point(8, 20);
             this.lbl_playerX.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_playerX.Name = "lbl_playerX";
-            this.lbl_playerX.Size = new System.Drawing.Size(29, 16);
+            this.lbl_playerX.Size = new System.Drawing.Size(26, 13);
             this.lbl_playerX.TabIndex = 6;
             this.lbl_playerX.Text = "X: 0";
             // 
@@ -527,7 +541,7 @@ namespace ZzukBot.Forms
             this.dgNotifications.Name = "dgNotifications";
             this.dgNotifications.ReadOnly = true;
             this.dgNotifications.RowHeadersVisible = false;
-            this.dgNotifications.Size = new System.Drawing.Size(374, 462);
+            this.dgNotifications.Size = new System.Drawing.Size(374, 465);
             this.dgNotifications.TabIndex = 5;
             // 
             // dataGridViewTextBoxColumn2
@@ -635,6 +649,24 @@ namespace ZzukBot.Forms
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // pBar_targetHealth
+            // 
+            this.pBar_targetHealth.BackColor = System.Drawing.SystemColors.Control;
+            this.pBar_targetHealth.ForeColor = System.Drawing.Color.Green;
+            this.pBar_targetHealth.Location = new System.Drawing.Point(11, 82);
+            this.pBar_targetHealth.Name = "pBar_targetHealth";
+            this.pBar_targetHealth.Size = new System.Drawing.Size(146, 14);
+            this.pBar_targetHealth.TabIndex = 19;
+            // 
+            // pBar_playerExperience
+            // 
+            this.pBar_playerExperience.BackColor = System.Drawing.SystemColors.Control;
+            this.pBar_playerExperience.ForeColor = System.Drawing.Color.Yellow;
+            this.pBar_playerExperience.Location = new System.Drawing.Point(11, 114);
+            this.pBar_playerExperience.Name = "pBar_playerExperience";
+            this.pBar_playerExperience.Size = new System.Drawing.Size(146, 14);
+            this.pBar_playerExperience.TabIndex = 18;
+            // 
             // pBar_playerMana
             // 
             this.pBar_playerMana.Location = new System.Drawing.Point(11, 98);
@@ -650,15 +682,6 @@ namespace ZzukBot.Forms
             this.pBar_playerHealth.Name = "pBar_playerHealth";
             this.pBar_playerHealth.Size = new System.Drawing.Size(146, 14);
             this.pBar_playerHealth.TabIndex = 16;
-            // 
-            // pBar_targetHealth
-            // 
-            this.pBar_targetHealth.BackColor = System.Drawing.SystemColors.Control;
-            this.pBar_targetHealth.ForeColor = System.Drawing.Color.Green;
-            this.pBar_targetHealth.Location = new System.Drawing.Point(11, 82);
-            this.pBar_targetHealth.Name = "pBar_targetHealth";
-            this.pBar_targetHealth.Size = new System.Drawing.Size(146, 14);
-            this.pBar_targetHealth.TabIndex = 19;
             // 
             // GraphicalMainForm
             // 
@@ -751,6 +774,7 @@ namespace ZzukBot.Forms
         internal Helpers.NewProgressBar pBar_playerMana;
         internal Helpers.NewProgressBar pBar_playerHealth;
         internal Helpers.NewProgressBar pBar_targetHealth;
+        internal Helpers.NewProgressBar pBar_playerExperience;
     }
 }
 
