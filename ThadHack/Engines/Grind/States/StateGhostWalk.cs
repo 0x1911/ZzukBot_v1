@@ -18,6 +18,9 @@ namespace ZzukBot.Engines.Grind.States
 
         internal override void Run()
         {
+            //lets sprinkle in a random jump once in while, maybe?
+            Shared.RandomJump();
+
             if (!Wait.For("StartGhostWalk", 5000, false))
             {
                 return;

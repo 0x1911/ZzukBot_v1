@@ -218,6 +218,9 @@
     <Compile Include="Helpers\IrcDotNet\TextUtilities.cs" />
     <Compile Include="Helpers\IrcDotNet\TwitchIrcClient.cs" />
     <Compile Include="Helpers\IrcMonitor.cs" />
+    <Compile Include="Helpers\NewProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Helpers\Wait.cs" />
     <Compile Include="Engines\Grind\Info.cs" />
     <Compile Include="Engines\Grind\Info\Combat.cs" />

@@ -11,6 +11,7 @@ using ZzukBot.Helpers;
 using ZzukBot.Hooks;
 using ZzukBot.Mem;
 using ZzukBot.Settings;
+using System.Runtime.InteropServices;
 
 namespace ZzukBot.Engines.Grind
 {
@@ -214,7 +215,7 @@ namespace ZzukBot.Engines.Grind
                             GuiCore.MainForm.lbl_targetY.Text = "Z: " + target.Position.Y.ToString();
                             GuiCore.MainForm.lbl_targetZ.Text = "Y: " + target.Position.Z.ToString();
 
-                            GuiCore.MainForm.lbl_targetLife.Text = "Life: " + target.HealthPercent.ToString() + "%";
+                            GuiCore.MainForm.pBar_targetHealth.Value = target.HealthPercent;
                             GuiCore.MainForm.lbl_targetFaction.Text = "Faction: " + target.FactionID.ToString();
                             GuiCore.MainForm.lbl_targetId.Text = "Id: " + target.NpcID.ToString();
 
@@ -227,7 +228,7 @@ namespace ZzukBot.Engines.Grind
                             GuiCore.MainForm.lbl_targetY.Text = "Z: 0";
                             GuiCore.MainForm.lbl_targetZ.Text = "Y: 0";
 
-                            GuiCore.MainForm.lbl_targetLife.Text = "Life: 0";
+                            GuiCore.MainForm.pBar_targetHealth.Value = 0;
                             GuiCore.MainForm.lbl_targetFaction.Text = "Faction: 0";
                             GuiCore.MainForm.lbl_targetId.Text = "Id: 0";
 
@@ -242,10 +243,10 @@ namespace ZzukBot.Engines.Grind
                             GuiCore.MainForm.lbl_playerY.Text = "Z: " + player.Position.Y.ToString();
                             GuiCore.MainForm.lbl_playerZ.Text = "Y: " + player.Position.Z.ToString();
 
-                            GuiCore.MainForm.lbl_playerLife.Text = "Life: " + player.HealthPercent.ToString() + "%";
-                            if(player.MaxMana > 0) { GuiCore.MainForm.lbl_playerMana.Text = "Mana: " + player.ManaPercent.ToString() + "%"; }
-                            else if (player.Class == Constants.Enums.ClassIds.Rogue) { GuiCore.MainForm.lbl_playerMana.Text = "Energy: " + player.Energy.ToString(); }
-                            else if (player.Class == Constants.Enums.ClassIds.Warrior) { GuiCore.MainForm.lbl_playerMana.Text = "Rage: " + player.Rage.ToString(); }
+                            GuiCore.MainForm.pBar_playerHealth.Value = player.HealthPercent;
+                            if (player.MaxMana > 0) { GuiCore.MainForm.pBar_playerMana.Value = player.ManaPercent; GuiCore.MainForm.pBar_playerMana.ForeColor = System.Drawing.Color.Blue; }
+                            else if (player.Class == Constants.Enums.ClassIds.Rogue) { GuiCore.MainForm.pBar_playerMana.Value = player.Energy; GuiCore.MainForm.pBar_playerMana.ForeColor = System.Drawing.Color.Yellow; }
+                            else if (player.Class == Constants.Enums.ClassIds.Warrior) { GuiCore.MainForm.pBar_playerMana.Value = player.Rage; GuiCore.MainForm.pBar_playerMana.ForeColor = System.Drawing.Color.Red; }
 
                             GuiCore.MainForm.lbl_playerZone.Text = "Zone: " + player.GetMapID;
                             GuiCore.MainForm.lbl_playerSubZone.Text = "Sub-Zone: " + player.MinimapZoneText.ToString();
@@ -268,7 +269,7 @@ namespace ZzukBot.Engines.Grind
             {
                 Logger.Append(e.Message, "Exceptions.txt");
             }
-        }
+        }        
 
         private void StopGrinder(ref int FrameCounter, bool IsIngame)
         {
