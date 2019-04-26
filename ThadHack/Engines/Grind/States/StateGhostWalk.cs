@@ -50,32 +50,23 @@ namespace ZzukBot.Engines.Grind.States
             }
 
             if (Grinder.Access.Info.SpiritWalk.DistanceToCorpse <= 40)
-            {
-                if (Grinder.Access.Info.SpiritWalk.DistanceToCorpse >= 5 &&
-                    !Grinder.Access.Info.SpiritWalk.ArrivedAtCorpse)
+            {               
+                Grinder.Access.Info.SpiritWalk.ArrivedAtCorpse = true;
+                if (Grinder.Access.Info.PathSafeGhostwalk.FindSafePath())
                 {
-                    var to = Grinder.Access.Info.PathToPosition.ToPos(ObjectManager.Player.CorpsePosition);
-                    ObjectManager.Player.CtmTo(to);
-                }
-                else
-                {
-                    Grinder.Access.Info.SpiritWalk.ArrivedAtCorpse = true;
-                    if (Grinder.Access.Info.PathSafeGhostwalk.FindSafePath())
+                    var poi = Grinder.Access.Info.PathSafeGhostwalk.NextSafeWaypoint;
+                    if (!poi.Item2)
                     {
-                        var poi = Grinder.Access.Info.PathSafeGhostwalk.NextSafeWaypoint;
-                        if (!poi.Item2)
-                        {
-                            ObjectManager.Player.CtmTo(poi.Item1);
-                        }
-                        else
-                        {
-                            Resurrect();
-                        }
+                        ObjectManager.Player.CtmTo(poi.Item1);
                     }
                     else
                     {
                         Resurrect();
                     }
+                }
+                else
+                {
+                     Resurrect();
                 }
             }
             else
@@ -84,6 +75,11 @@ namespace ZzukBot.Engines.Grind.States
                 ObjectManager.Player.CtmTo(to);
                 Grinder.Access.Info.SpiritWalk.ArrivedAtCorpse = false;
             }
+        }
+
+        public static float ToSingle(double value)
+        {
+            return (float)value;
         }
 
         private void Resurrect()

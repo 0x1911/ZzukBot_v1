@@ -58,6 +58,8 @@ namespace ZzukBot.Engines.Grind.Info.Path
             var pos = ObjectManager.Player.CorpsePosition;
             var mobs = ObjectManager.Npcs
                 .Where(i => i.Reaction == Enums.UnitReaction.Hostile &&
+                            Calc.Distance2D(pos, i.Position) < 40 ||
+                            i.Reaction == Enums.UnitReaction.Hostile2 &&
                             Calc.Distance2D(pos, i.Position) < 40).ToList();
 
             var attempts = 0;
