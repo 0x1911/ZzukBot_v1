@@ -15,9 +15,8 @@ namespace ZzukBot.Engines.Grind.States
         {
             Shared.RandomJump();
 
-            ObjectManager.Player.CtmTo(Grinder.Access.Info.PathToPosition.ToPos(
-                Grinder.Access.Info.Waypoints.CurrentWaypoint));
-            // Nothing to do here
+            var tu = Grinder.Access.Info.PathToPosition.ToPos(Grinder.Access.Info.Waypoints.CurrentWaypoint);
+            ObjectManager.Player.CtmTo(tu);           
         }
     }
 }
