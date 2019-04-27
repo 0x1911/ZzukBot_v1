@@ -69,6 +69,57 @@ namespace ZzukBot.Engines.Grind
             }
         }
 
+        internal void CheckForStuck()
+        {
+            if (Calc.Distance2D(oldPosition, ObjectManager.Player.Position) < 0.2f)
+            {
+                oldPosition = ObjectManager.Player.Position;
+                StuckAtPointSince = Environment.TickCount;
+                TryUnstuck();
+            }
+        }
+
+        internal void TryUnstuck()
+        {
+            Helpers.Logger.Append("Trying to unstuck ourself..");
+
+            EngineManager.StopCurrentEngine();
+            EngineManager.StartGrinder(true);
+          /*  ObjectManager.Player.StopMovement(Enums.ControlBits.All);
+            ObjectManager.Player.CtmStopMovement();
+            ObjectManager.Player.CtmSetToIdle();
+
+            var randomMethod = new Random().Next(1, 4);
+            var randomRunTime = new Random().Next(2000, 3000);
+            if (1 == randomMethod)
+            {
+                ObjectManager.Player.StartMovement(Enums.ControlBits.StrafeRight);                
+            }
+            if (2 == randomMethod)
+            {
+                ObjectManager.Player.StartMovement(Enums.ControlBits.StrafeLeft);       
+            }
+            if (3 == randomMethod)
+            {
+                ObjectManager.Player.StartMovement(Enums.ControlBits.StrafeLeft);
+                ObjectManager.Player.StartMovement(Enums.ControlBits.Back);
+            }
+            if (4 == randomMethod)
+            {
+                ObjectManager.Player.StartMovement(Enums.ControlBits.StrafeRight);
+                ObjectManager.Player.StartMovement(Enums.ControlBits.Back);
+            }
+
+            Shared.RandomJump();
+            var tmpTickCount = Environment.TickCount + 2000;
+            while(Environment.TickCount < tmpTickCount)
+            {
+                Shared.RandomJump();
+            }
+
+            ObjectManager.Player.StopMovement(Enums.ControlBits.All); */
+        }
+
         internal void Reset()
         {
             StuckAtPointSince = 0;
