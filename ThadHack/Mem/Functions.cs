@@ -127,12 +127,10 @@ namespace ZzukBot.Mem
             return GetLootSlotsFunction();
         }
 
-
         internal static void EnterWorld()
         {
-            //if (EnterWorldFunction == null)
-            //    EnterWorldFunction = Memory.Reader.RegisterDelegate<EnterWorldDelegate>(Offsets.Functions.EnterWorld);
-            //EnterWorldFunction();
+            if (ObjectManager.IsInGame) return;
+
             var str = "if CharSelectEnterWorldButton ~= nil then CharSelectEnterWorldButton:Click()  end";
             DoString(str);
         }

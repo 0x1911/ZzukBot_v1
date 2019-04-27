@@ -91,9 +91,9 @@ namespace ZzukBot.Mem
         {
             Random rand = new Random();
 
-            for (int i = 0; i < rand.Next(3, 6); i++)
+            for (int i = 0; i <= rand.Next(8, 12); i++)
             {
-                System.Threading.Thread.Sleep(1000);
+                System.Threading.Thread.Sleep(500);
             }
 
             if (Relog.LoginState == Enums.LoginState.charselect && !ObjectManager.IsInGame)

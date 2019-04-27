@@ -2,7 +2,7 @@
 {
     internal static class GameConstants
     {
-        internal const float MaxResurrectDistance = 28;
-        internal const int RezzDistanceToHostile = 17;
+        internal const float MaxResurrectDistance = 39;
+        internal const int RezzDistanceToHostile = 30;
     }
 }

@@ -9,12 +9,11 @@ namespace ZzukBot.Engines.Grind.States
 {
     internal class StateWalkToGather : State
     {
-        private int lastCheck;
-        private ulong oldResourceGuid;
-
         private readonly Random ran = new Random();
         private int randomOpenLootDelay;
         private int randomTakeLootDelay;
+
+        private float lastResourceDistance;
 
         internal override int Priority => 35;
 
@@ -24,71 +23,51 @@ namespace ZzukBot.Engines.Grind.States
 
         internal override void Run()
         {
-            WoWGameObject savedResource = Grinder.Access.Info.Gather.GetNearestResource();
+            WoWGameObject nextResource = Grinder.Access.Info.Gather.GetNearestResource();
 
-            if (savedResource == null) { Wait.Remove("Gathering"); return; }
+            if (nextResource == null || Grinder.Access.Info.Gather.IsOnGatherBlacklist(nextResource.Guid)) { Wait.Remove("Gathering"); return; }
 
-            //if (lastCheck + 10000 >= Environment.TickCount) { Wait.Remove("Gathering"); return; }
-            //lastCheck = Environment.TickCount;
+            float nextResourceDistance = Calc.Distance3D(nextResource.Position, ObjectManager.Player.Position);
+            Helpers.Logger.Append("Want to gather " + nextResource.Name + " in " + (int)nextResourceDistance);
 
-            Helpers.Logger.Append("Want to gather " + savedResource.Name + " in " + Calc.Distance3D(savedResource.Position, ObjectManager.Player.Position));
-
-            if (savedResource.Guid != oldResourceGuid)
+            if (nextResourceDistance > 5)
             {
-                oldResourceGuid = savedResource.Guid;
-                lastCheck = Environment.TickCount;
-                Wait.Remove("Gathering");
-            }
-            if (Calc.Distance3D(savedResource.Position, ObjectManager.Player.Position) > 5)
-            {
-                //lets sprinkle in a random jump once in while, maybe?
+                lastResourceDistance = nextResourceDistance;
+                //lets sprinkle in a random jump once in while
                 Shared.RandomJump();
 
-                var tu = Grinder.Access.Info.PathToPosition.ToPos(savedResource.Position);
+                var tu = Grinder.Access.Info.PathToPosition.ToPos(nextResource.Position);
                 ObjectManager.Player.CtmTo(tu);
 
-                if (Environment.TickCount - lastCheck >= 5000)
+               /* float prevDistance = nextResourceDistance;
+                if (Wait.For("TimeTillBlacklistCheck", 20000))
                 {
-                    Wait.Remove("Gathering");
-                }
-                lastCheck = Environment.TickCount;
-
-                if (Wait.For("Gathering", 20000))
-                {
-                    Grinder.Access.Info.Gather.AddToGatherBlacklist(savedResource.Guid);
-                }
-                Wait.Remove("Gathering");
-                randomOpenLootDelay = ran.Next(200, 550) + Grinder.Access.Info.Latency;
-                randomTakeLootDelay = ran.Next(50, 250) + Grinder.Access.Info.Latency;
+                    float newDistance = Calc.Distance3D(nextResource.Position, ObjectManager.Player.Position);
+                    if(prevDistance - newDistance < 0.2f)
+                    {
+                        Helpers.Logger.Append("Blacklisting resource " + nextResource.Name + " in " + (int)newDistance);
+                        Grinder.Access.Info.Gather.AddToGatherBlacklist(nextResource.Guid);
+                    }
+                }*/
             }
             else
             {
+                randomOpenLootDelay = ran.Next(200, 550) + Grinder.Access.Info.Latency;
+                randomTakeLootDelay = ran.Next(50, 250) + Grinder.Access.Info.Latency;
+
                 ObjectManager.Player.StopMovement(Enums.ControlBits.All);
                 ObjectManager.Player.CtmStopMovement();
 
                 if (!ObjectManager.Player.IsLooting)
                 {
-                    if (Wait.For("LootClick", randomOpenLootDelay))
-                        savedResource.Interact(false);
+                    if (Wait.For("LootClick", randomOpenLootDelay)) { nextResource.Interact(false); }                        
                 }
                 else
                 {
-                    if (Wait.For("LootTake12", randomTakeLootDelay))
-                    {
-                        ObjectManager.Player.LootAll();
-                        if (ObjectManager.Player.LootSlots == 0)
-                        {
-                           // Grinder.Access.Info.Gather.AddToGatherBlacklist(savedResource.Guid);
-                        }
-                           
-                        Wait.Remove("Gathering");
-                    }
+                    if (Wait.For("LootTake12", randomTakeLootDelay)) { ObjectManager.Player.LootAll(); }
                 }
-                if (Wait.For("Gathering", 5300))
-                {
-                   // Grinder.Access.Info.Gather.AddToGatherBlacklist(savedResource.Guid);
-                   // savedResource = null;
-                }
+
+                Wait.For("Gathering", 5300);               
             }
         }
     }

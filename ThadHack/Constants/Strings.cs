@@ -79,6 +79,7 @@
         internal const string UsePetFood2 = "') then PickupContainerItem(bag,slot) break end end end end";
 
         internal const string GetUnitRace = "zzRace = UnitRace('unit')";
+        internal const string GetPlayerRace = "zzRace = UnitRace('player')";
         internal const string GT_GetUnitRace = "zzRace";
 
         internal const string GetLatency = "_, _, zzDrei = GetNetStats()";

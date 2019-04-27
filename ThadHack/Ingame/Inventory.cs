@@ -23,7 +23,7 @@ namespace ZzukBot.Ingame
         {
             get
             {
-                // Itera through base bag
+                // Iterate through base bag
                 for (var i = 0; i < 16; i++)
                 {
                     // get guid of the item stored in current slot (i = slot number)
@@ -353,7 +353,7 @@ namespace ZzukBot.Ingame
         /// </summary>
         internal void EnchantMainhandItem(string itemName)
         {
-            UseItem(itemName);
+            UseItemByName(itemName);
             //Functions.DoString(Strings.EnchantMainhand);
         }
 
@@ -362,14 +362,14 @@ namespace ZzukBot.Ingame
         /// </summary>
         internal void EnchantOffhandItem(string itemName)
         {
-            UseItem(itemName);
+            UseItemByName(itemName);
             Functions.DoString(Strings.EnchantOffhand);
         }
 
         /// <summary>
         ///     Use an item
         /// </summary>
-        internal void UseItem(string Name)
+        internal void UseItemByName(string Name)
         {
             try
             {
@@ -404,7 +404,7 @@ namespace ZzukBot.Ingame
             }
         }
 
-        internal void UseItem(WoWItem Item)
+        internal void UseItemByObject(WoWItem Item)
         {
             try
             {

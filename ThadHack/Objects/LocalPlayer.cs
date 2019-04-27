@@ -252,7 +252,7 @@ namespace ZzukBot.Objects
             get
             {
                 string encrypted = Strings.GT_GetUnitRace.GenLuaVarName();
-                Functions.DoString(Strings.GetUnitRace.Replace(Strings.GT_GetUnitRace, encrypted));
+                Functions.DoString(Strings.GetPlayerRace.Replace(Strings.GT_GetUnitRace, encrypted));
                 return Functions.GetText(encrypted);
             }
         }
@@ -282,16 +282,19 @@ namespace ZzukBot.Objects
 
         internal int NextLevelXp => GetDescriptor<int>(Offsets.Descriptors.NextLevelXp);
 
-        internal string RealZoneText
-        {
-            get
-            {
-                var encrypted = "zzRealZone".GenLuaVarName();
-                Functions.DoString(encrypted + " = GetRealZoneText();");
-                return Functions.GetText(encrypted);
-            }
-        }
+        /// <summary>
+        ///     Zone text
+        /// </summary>
+        internal string RealZoneText => 0xB4B404.PointsTo().ReadString();
 
+        /// <summary>
+        ///     Continent text
+        /// </summary>
+        internal string ContinentText => Offsets.Player.ContinentText.ReadString();
+
+        /// <summary>
+        ///     Minimap text
+        /// </summary>
         internal string MinimapZoneText
         {
             get
@@ -338,6 +341,7 @@ namespace ZzukBot.Objects
         /// </summary>
         internal void CtmTo(XYZ parPosition)
         {
+          // Grinder.Access.StuckHelper.CheckForStuck();
             //float disX = Math.Abs(this.CtmX - parPosition.X);
             //float disY = Math.Abs(this.CtmY - parPosition.Y);
             //if (disX < 0.2f && disY < 0.2f) return;

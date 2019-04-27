@@ -99,6 +99,7 @@
     <Compile Include="Forms\GraphicalSettingsForm.Designer.cs">
       <DependentUpon>GraphicalSettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Game\Static\Consumeables.cs" />
     <Compile Include="GuiCore.cs" />
     <Compile Include="Constants\Enums.cs" />
     <Compile Include="Constants\GameConstants.cs" />

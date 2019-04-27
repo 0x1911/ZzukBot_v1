@@ -9,7 +9,6 @@ namespace ZzukBot.Engines.Grind.Info
 {
     internal class _Gather
     {
-        internal volatile bool BlacklistCurrentResource;
         private List<ulong> ResourceBlacklist { get; }
 
         internal _Gather()
@@ -33,7 +32,7 @@ namespace ZzukBot.Engines.Grind.Info
                 if (Settings.Options.Herb && tmpWoWObject.GatherInfo.Type == Constants.Enums.GatherType.Herbalism && HasEnoughSkill(Enums.Skills.HERBALISM, tmpWoWObject) ||
                     Settings.Options.Mine && tmpWoWObject.GatherInfo.Type == Constants.Enums.GatherType.Mining && HasEnoughSkill(Enums.Skills.MINING, tmpWoWObject))
                 {
-                    if(!Grinder.Access.Info.Gather.ResourceBlacklist.Contains(tmpWoWObject.Guid))
+                    if(!IsOnGatherBlacklist(tmpWoWObject.Guid))
                         return true;
                 }
             }
@@ -66,7 +65,8 @@ namespace ZzukBot.Engines.Grind.Info
            
             foreach (KeyValuePair<WoWGameObject, float> pair in items)
             {
-                return pair.Key;
+                if(!IsOnGatherBlacklist(pair.Key.Guid))
+                    return pair.Key;
             }
 
 
@@ -106,7 +106,16 @@ namespace ZzukBot.Engines.Grind.Info
         internal void AddToGatherBlacklist(ulong guid)
         {
             if (!ResourceBlacklist.Contains(guid))
+            {
                 ResourceBlacklist.Add(guid);
+            }               
+        }
+
+        internal bool IsOnGatherBlacklist(ulong guid)
+        {
+            if (ResourceBlacklist.Contains(guid)) { return true; }
+
+            return false;
         }
     }
 }

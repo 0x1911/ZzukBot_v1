@@ -48,8 +48,8 @@ namespace ZzukBot.Forms
             this.lbl_playerSubZone = new System.Windows.Forms.Label();
             this.lbl_playerZone = new System.Windows.Forms.Label();
             this.lbl_playerAccountName = new System.Windows.Forms.Label();
-            this.lbl_playerRealm = new System.Windows.Forms.Label();
-            this.lbl_playerNickName = new System.Windows.Forms.Label();
+            this.lbl_playerRace = new System.Windows.Forms.Label();
+            this.lbl_playerClass = new System.Windows.Forms.Label();
             this.lbl_playerZ = new System.Windows.Forms.Label();
             this.lbl_playerY = new System.Windows.Forms.Label();
             this.lbl_playerX = new System.Windows.Forms.Label();
@@ -82,6 +82,7 @@ namespace ZzukBot.Forms
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.dEVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lbl_playerLevel = new System.Windows.Forms.Label();
             this.tcMain.SuspendLayout();
             this.tpGrind.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -176,7 +177,7 @@ namespace ZzukBot.Forms
             // 
             this.pBar_targetHealth.BackColor = System.Drawing.SystemColors.Control;
             this.pBar_targetHealth.ForeColor = System.Drawing.Color.Green;
-            this.pBar_targetHealth.Location = new System.Drawing.Point(11, 82);
+            this.pBar_targetHealth.Location = new System.Drawing.Point(11, 74);
             this.pBar_targetHealth.Name = "pBar_targetHealth";
             this.pBar_targetHealth.Size = new System.Drawing.Size(146, 14);
             this.pBar_targetHealth.TabIndex = 19;
@@ -249,14 +250,15 @@ namespace ZzukBot.Forms
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lbl_playerLevel);
             this.groupBox2.Controls.Add(this.pBar_playerExperience);
             this.groupBox2.Controls.Add(this.pBar_playerMana);
             this.groupBox2.Controls.Add(this.pBar_playerHealth);
             this.groupBox2.Controls.Add(this.lbl_playerSubZone);
             this.groupBox2.Controls.Add(this.lbl_playerZone);
             this.groupBox2.Controls.Add(this.lbl_playerAccountName);
-            this.groupBox2.Controls.Add(this.lbl_playerRealm);
-            this.groupBox2.Controls.Add(this.lbl_playerNickName);
+            this.groupBox2.Controls.Add(this.lbl_playerRace);
+            this.groupBox2.Controls.Add(this.lbl_playerClass);
             this.groupBox2.Controls.Add(this.lbl_playerZ);
             this.groupBox2.Controls.Add(this.lbl_playerY);
             this.groupBox2.Controls.Add(this.lbl_playerX);
@@ -273,14 +275,14 @@ namespace ZzukBot.Forms
             // 
             this.pBar_playerExperience.BackColor = System.Drawing.SystemColors.Control;
             this.pBar_playerExperience.ForeColor = System.Drawing.Color.Yellow;
-            this.pBar_playerExperience.Location = new System.Drawing.Point(11, 114);
+            this.pBar_playerExperience.Location = new System.Drawing.Point(11, 106);
             this.pBar_playerExperience.Name = "pBar_playerExperience";
             this.pBar_playerExperience.Size = new System.Drawing.Size(146, 14);
             this.pBar_playerExperience.TabIndex = 18;
             // 
             // pBar_playerMana
             // 
-            this.pBar_playerMana.Location = new System.Drawing.Point(11, 98);
+            this.pBar_playerMana.Location = new System.Drawing.Point(11, 90);
             this.pBar_playerMana.Name = "pBar_playerMana";
             this.pBar_playerMana.Size = new System.Drawing.Size(146, 14);
             this.pBar_playerMana.TabIndex = 17;
@@ -289,7 +291,7 @@ namespace ZzukBot.Forms
             // 
             this.pBar_playerHealth.BackColor = System.Drawing.SystemColors.Control;
             this.pBar_playerHealth.ForeColor = System.Drawing.Color.Green;
-            this.pBar_playerHealth.Location = new System.Drawing.Point(11, 82);
+            this.pBar_playerHealth.Location = new System.Drawing.Point(11, 74);
             this.pBar_playerHealth.Name = "pBar_playerHealth";
             this.pBar_playerHealth.Size = new System.Drawing.Size(146, 14);
             this.pBar_playerHealth.TabIndex = 16;
@@ -320,34 +322,34 @@ namespace ZzukBot.Forms
             // 
             this.lbl_playerAccountName.AutoSize = true;
             this.lbl_playerAccountName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_playerAccountName.Location = new System.Drawing.Point(8, 166);
+            this.lbl_playerAccountName.Location = new System.Drawing.Point(8, 174);
             this.lbl_playerAccountName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_playerAccountName.Name = "lbl_playerAccountName";
-            this.lbl_playerAccountName.Size = new System.Drawing.Size(97, 13);
+            this.lbl_playerAccountName.Size = new System.Drawing.Size(99, 13);
             this.lbl_playerAccountName.TabIndex = 13;
-            this.lbl_playerAccountName.Text = "Account: unknown";
+            this.lbl_playerAccountName.Text = "Account: Unknown";
             // 
-            // lbl_playerRealm
+            // lbl_playerRace
             // 
-            this.lbl_playerRealm.AutoSize = true;
-            this.lbl_playerRealm.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_playerRealm.Location = new System.Drawing.Point(8, 150);
-            this.lbl_playerRealm.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_playerRealm.Name = "lbl_playerRealm";
-            this.lbl_playerRealm.Size = new System.Drawing.Size(87, 13);
-            this.lbl_playerRealm.TabIndex = 12;
-            this.lbl_playerRealm.Text = "Realm: unknown";
+            this.lbl_playerRace.AutoSize = true;
+            this.lbl_playerRace.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_playerRace.Location = new System.Drawing.Point(8, 158);
+            this.lbl_playerRace.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_playerRace.Name = "lbl_playerRace";
+            this.lbl_playerRace.Size = new System.Drawing.Size(85, 13);
+            this.lbl_playerRace.TabIndex = 12;
+            this.lbl_playerRace.Text = "Race: Unknown";
             // 
-            // lbl_playerNickName
+            // lbl_playerClass
             // 
-            this.lbl_playerNickName.AutoSize = true;
-            this.lbl_playerNickName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_playerNickName.Location = new System.Drawing.Point(8, 134);
-            this.lbl_playerNickName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_playerNickName.Name = "lbl_playerNickName";
-            this.lbl_playerNickName.Size = new System.Drawing.Size(85, 13);
-            this.lbl_playerNickName.TabIndex = 11;
-            this.lbl_playerNickName.Text = "Name: unknown";
+            this.lbl_playerClass.AutoSize = true;
+            this.lbl_playerClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_playerClass.Location = new System.Drawing.Point(8, 142);
+            this.lbl_playerClass.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_playerClass.Name = "lbl_playerClass";
+            this.lbl_playerClass.Size = new System.Drawing.Size(85, 13);
+            this.lbl_playerClass.TabIndex = 11;
+            this.lbl_playerClass.Text = "Race: Unknown";
             // 
             // lbl_playerZ
             // 
@@ -684,6 +686,17 @@ namespace ZzukBot.Forms
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // lbl_playerLevel
+            // 
+            this.lbl_playerLevel.AutoSize = true;
+            this.lbl_playerLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_playerLevel.Location = new System.Drawing.Point(8, 125);
+            this.lbl_playerLevel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_playerLevel.Name = "lbl_playerLevel";
+            this.lbl_playerLevel.Size = new System.Drawing.Size(42, 13);
+            this.lbl_playerLevel.TabIndex = 19;
+            this.lbl_playerLevel.Text = "Level 0";
+            // 
             // GraphicalMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -766,8 +779,8 @@ namespace ZzukBot.Forms
         internal System.Windows.Forms.Label lbl_playerSubZone;
         internal System.Windows.Forms.Label lbl_playerZone;
         internal System.Windows.Forms.Label lbl_playerAccountName;
-        internal System.Windows.Forms.Label lbl_playerRealm;
-        internal System.Windows.Forms.Label lbl_playerNickName;
+        internal System.Windows.Forms.Label lbl_playerRace;
+        internal System.Windows.Forms.Label lbl_playerClass;
         internal System.Windows.Forms.Label lbl_playerZ;
         internal System.Windows.Forms.Label lbl_playerY;
         internal System.Windows.Forms.Label lbl_playerX;
@@ -776,6 +789,7 @@ namespace ZzukBot.Forms
         internal Helpers.NewProgressBar pBar_targetHealth;
         internal Helpers.NewProgressBar pBar_playerExperience;
         internal System.Windows.Forms.CheckBox cbLoadLastProfile;
+        internal System.Windows.Forms.Label lbl_playerLevel;
     }
 }
 

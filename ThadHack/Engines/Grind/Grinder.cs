@@ -166,20 +166,24 @@ namespace ZzukBot.Engines.Grind
             }
         }
 
+        int exceptionThrown = 0;
         private void RunGrinder(ref int FrameCounter, bool IsIngame)
         {
             try
             {
                 if (FrameCounter%3 == 0)
                 {
+                    exceptionThrown = 1;
                     if (FrameCounter%15 == 0 && IsIngame)
                     {
+                        exceptionThrown = 2;
                         var dottedUnitsToRemove =
                            Info.Combat.UnitsDottedByPlayer.Where(kvp => Environment.TickCount - kvp.Value >= 40000).ToList();
                         foreach (var item in dottedUnitsToRemove)
                         {
                             Info.Combat.UnitsDottedByPlayer.Remove(item.Key);
                         }
+                        exceptionThrown = 3;
                         var target = ObjectManager.Target;
                         if (target != null)
                         {
@@ -190,6 +194,7 @@ namespace ZzukBot.Engines.Grind
                                     Info.Combat.UnitsDottedByPlayer.Add(target.Guid, Environment.TickCount);
                             }
                         }
+                        exceptionThrown = 4;
                     }
                     ObjectManager.Player.AntiAfk();
 
@@ -197,74 +202,86 @@ namespace ZzukBot.Engines.Grind
                     {
                         if (FrameCounter%300 == 0)
                         {
+                            exceptionThrown = 5;
                             RareCheck();
                             if (FrameCounter%1800 == 0)
                             {
                                 Refreshments();
+                                exceptionThrown = 6;
                             }
                         }
 
                         LastState = Engine.Pulse();
+                        exceptionThrown = 7;
                         GuiCore.MainForm.UpdateControl("State: " + LastState, GuiCore.MainForm.lGrindState);
-
+                        exceptionThrown = 8;
                         #region Update OverView labels
-                        var target = ObjectManager.Target;
-                        if (target != null)
+                        try
                         {
-                            GuiCore.MainForm.lbl_targetX.Text = "X: " + target.Position.X.ToString();
-                            GuiCore.MainForm.lbl_targetY.Text = "Z: " + target.Position.Y.ToString();
-                            GuiCore.MainForm.lbl_targetZ.Text = "Y: " + target.Position.Z.ToString();
-
-                            GuiCore.MainForm.pBar_targetHealth.Value = target.HealthPercent;
-                            GuiCore.MainForm.lbl_targetFaction.Text = "Faction: " + target.FactionID.ToString();
-                            GuiCore.MainForm.lbl_targetId.Text = "Id: " + target.NpcID.ToString();
-
-
-                            GuiCore.MainForm.lbl_targetName.Text = "Name: " + target.Name.ToString();
-                        }
-                        else
-                        {
-                            GuiCore.MainForm.lbl_targetX.Text = "X: 0";
-                            GuiCore.MainForm.lbl_targetY.Text = "Z: 0";
-                            GuiCore.MainForm.lbl_targetZ.Text = "Y: 0";
-
-                            GuiCore.MainForm.pBar_targetHealth.Value = 0;
-                            GuiCore.MainForm.lbl_targetFaction.Text = "Faction: 0";
-                            GuiCore.MainForm.lbl_targetId.Text = "Id: 0";
-
-
-                            GuiCore.MainForm.lbl_targetName.Text = "Name: Unknown";
-                        }
-                                                
-                        var player = ObjectManager.Player;
-                        if(player != null)
-                        {
-                            GuiCore.MainForm.lbl_playerX.Text = "X: " + player.Position.X.ToString();
-                            GuiCore.MainForm.lbl_playerY.Text = "Z: " + player.Position.Y.ToString();
-                            GuiCore.MainForm.lbl_playerZ.Text = "Y: " + player.Position.Z.ToString();
-
-                            GuiCore.MainForm.pBar_playerHealth.Value = player.HealthPercent;
-                            if (player.MaxMana > 0) { GuiCore.MainForm.pBar_playerMana.Value = player.ManaPercent; GuiCore.MainForm.pBar_playerMana.ForeColor = System.Drawing.Color.Blue; }
-                            else if (player.Class == Constants.Enums.ClassIds.Rogue) { GuiCore.MainForm.pBar_playerMana.Value = player.Energy; GuiCore.MainForm.pBar_playerMana.ForeColor = System.Drawing.Color.Yellow; }
-                            else if (player.Class == Constants.Enums.ClassIds.Warrior) { GuiCore.MainForm.pBar_playerMana.Value = player.Rage; GuiCore.MainForm.pBar_playerMana.ForeColor = System.Drawing.Color.Red; }
-
-                            if(player.Level < 60)
+                            var target = ObjectManager.Target;
+                            if (target != null)
                             {
-                                decimal tmpCurXp = player.CurrentXp;
-                                decimal tmpMaxXp = player.NextLevelXp;
-                                decimal lvlPercentDone = (tmpCurXp / tmpMaxXp) *100;
-                                GuiCore.MainForm.pBar_playerExperience.Value = (int)lvlPercentDone;
+                                GuiCore.MainForm.lbl_targetX.Text = "X: " + target.Position.X.ToString();
+                                GuiCore.MainForm.lbl_targetY.Text = "Z: " + target.Position.Y.ToString();
+                                GuiCore.MainForm.lbl_targetZ.Text = "Y: " + target.Position.Z.ToString();
+
+                                GuiCore.MainForm.pBar_targetHealth.Value = target.HealthPercent;
+                                GuiCore.MainForm.lbl_targetFaction.Text = "Faction: " + target.FactionID.ToString();
+                                GuiCore.MainForm.lbl_targetId.Text = "Id: " + target.NpcID.ToString();
+
+
+                                GuiCore.MainForm.lbl_targetName.Text = "Name: " + target.Name.ToString();
                             }
-                            else { GuiCore.MainForm.pBar_playerExperience.Visible = false;  }
+                            else
+                            {
+                                GuiCore.MainForm.lbl_targetX.Text = "X: 0";
+                                GuiCore.MainForm.lbl_targetY.Text = "Z: 0";
+                                GuiCore.MainForm.lbl_targetZ.Text = "Y: 0";
 
-                            GuiCore.MainForm.lbl_playerZone.Text = "Zone: " + player.GetMapID;
-                            GuiCore.MainForm.lbl_playerSubZone.Text = "Sub-Zone: " + player.MinimapZoneText.ToString();
+                                GuiCore.MainForm.pBar_targetHealth.Value = 0;
+                                GuiCore.MainForm.lbl_targetFaction.Text = "Faction: 0";
+                                GuiCore.MainForm.lbl_targetId.Text = "Id: 0";
+
+
+                                GuiCore.MainForm.lbl_targetName.Text = "Name: Unknown";
+                            }
+
+                            var player = ObjectManager.Player;
+                            if (player != null)
+                            {
+                                GuiCore.MainForm.lbl_playerX.Text = "X: " + player.Position.X.ToString();
+                                GuiCore.MainForm.lbl_playerY.Text = "Z: " + player.Position.Y.ToString();
+                                GuiCore.MainForm.lbl_playerZ.Text = "Y: " + player.Position.Z.ToString();
+
+                                GuiCore.MainForm.pBar_playerHealth.Value = player.HealthPercent;
+                                if (player.MaxMana > 0) { GuiCore.MainForm.pBar_playerMana.Value = player.ManaPercent; GuiCore.MainForm.pBar_playerMana.ForeColor = System.Drawing.Color.Blue; }
+                                else if (player.Class == Constants.Enums.ClassIds.Rogue) { GuiCore.MainForm.pBar_playerMana.Value = player.Energy; GuiCore.MainForm.pBar_playerMana.ForeColor = System.Drawing.Color.Yellow; }
+                                else if (player.Class == Constants.Enums.ClassIds.Warrior) { GuiCore.MainForm.pBar_playerMana.Value = player.Rage; GuiCore.MainForm.pBar_playerMana.ForeColor = System.Drawing.Color.Red; }
+
+                                if (player.Level < 60)
+                                {
+                                    decimal tmpCurXp = player.CurrentXp;
+                                    decimal tmpMaxXp = player.NextLevelXp;
+                                    decimal lvlPercentDone = (tmpCurXp / tmpMaxXp) * 100;
+                                    GuiCore.MainForm.pBar_playerExperience.Value = (int)lvlPercentDone;
+                                }
+                                else { GuiCore.MainForm.pBar_playerExperience.Visible = false; }
+
+                                GuiCore.MainForm.lbl_playerZone.Text = "Zone: " + player.RealZoneText.ToString();
+                                GuiCore.MainForm.lbl_playerSubZone.Text = "Sub-Zone: " + player.MinimapZoneText.ToString();
+                            }
+
+                            GuiCore.MainForm.lbl_playerLevel.Text = "Level: " + player.Level.ToString();
+                            GuiCore.MainForm.lbl_playerClass.Text = "Class: " + player.Class.ToString();
+                            GuiCore.MainForm.lbl_playerRace.Text = "Race: " + player.Race.ToString();
+                            GuiCore.MainForm.lbl_playerAccountName.Text = "Account: " + Options.AccountName;
                         }
-
-                        //GuiCore.MainForm.lbl_playerRealm.Text = "Realm: " + player.
-                        //GuiCore.MainForm.lbl_playerNickName.Text = "Nick: " + player.
-                        GuiCore.MainForm.lbl_playerAccountName.Text = "Account: " + Options.AccountName;
+                        catch(Exception crap)
+                        {
+                            Logger.Append("Update OverView labels: " + crap.Message + "\r\n", "Exceptions.txt");
+                        }
                         #endregion
+                        exceptionThrown = 9;
                     }
                     else
                     {
@@ -276,7 +293,7 @@ namespace ZzukBot.Engines.Grind
             }
             catch (Exception e)
             {
-                Logger.Append(e.Message, "Exceptions.txt");
+                Logger.Append("Grinder frame: " + FrameCounter + " at " + exceptionThrown + " || message: " + e.Message + "\r\n", "Exceptions.txt");
             }
         }        
 

@@ -924,6 +924,10 @@ namespace ZzukBot.Constants
         /// </summary>
         internal static class Player
         {
+            internal static int RealZoneText = 0xB4B404;
+            internal static IntPtr ContinentText = (IntPtr)0x00C961A0;
+            internal static IntPtr MinimapZoneText = (IntPtr)0xB4DA28;
+
             internal static IntPtr Class = (IntPtr) 0xC27E81;
             internal static IntPtr IsInGame = (IntPtr) 0xB4B424;
             internal static IntPtr IsGhost = (IntPtr) 0x835A48;

@@ -82,10 +82,8 @@ namespace ZzukBot.Engines.Grind
         internal void TryUnstuck()
         {
             Helpers.Logger.Append("Trying to unstuck ourself..");
-
-            EngineManager.StopCurrentEngine();
-            EngineManager.StartGrinder(true);
-          /*  ObjectManager.Player.StopMovement(Enums.ControlBits.All);
+                       
+            ObjectManager.Player.StopMovement(Enums.ControlBits.All);
             ObjectManager.Player.CtmStopMovement();
             ObjectManager.Player.CtmSetToIdle();
 
@@ -117,7 +115,7 @@ namespace ZzukBot.Engines.Grind
                 Shared.RandomJump();
             }
 
-            ObjectManager.Player.StopMovement(Enums.ControlBits.All); */
+            ObjectManager.Player.StopMovement(Enums.ControlBits.All);
         }
 
         internal void Reset()

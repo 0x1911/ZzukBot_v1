@@ -145,7 +145,7 @@ namespace ZzukBot.Engines.CustomClass.Objects
                     if (ObjectManager.Player.Inventory.ItemCount(parFoodName) != 0)
                     {
                         if (Wait.For("EatTimeout", 100))
-                            ObjectManager.Player.Inventory.UseItem(parFoodName);
+                            ObjectManager.Player.Inventory.UseItemByName(parFoodName);
                     }
                 }
             }
@@ -168,7 +168,7 @@ namespace ZzukBot.Engines.CustomClass.Objects
                     if (ObjectManager.Player.Inventory.ItemCount(parDrinkName) != 0)
                     {
                         if (Wait.For("DrinkTimeout", 100))
-                            ObjectManager.Player.Inventory.UseItem(parDrinkName);
+                            ObjectManager.Player.Inventory.UseItemByName(parDrinkName);
                     }
                 }
             }
@@ -483,7 +483,7 @@ namespace ZzukBot.Engines.CustomClass.Objects
         /// <param name="parName">Name of the item</param>
         public void UseItem(string parName)
         {
-            ObjectManager.Player.Inventory.UseItem(parName);
+            ObjectManager.Player.Inventory.UseItemByName(parName);
         }
 
 
@@ -519,7 +519,7 @@ namespace ZzukBot.Engines.CustomClass.Objects
                     if (ObjectManager.Player.Inventory.ItemCount(Options.Food) != 0)
                     {
                         if (Wait.For("EatTimeout", 100))
-                            ObjectManager.Player.Inventory.UseItem(Options.Food);
+                            ObjectManager.Player.Inventory.UseItemByName(Options.Food);
                     }
                 }
             }
@@ -541,7 +541,7 @@ namespace ZzukBot.Engines.CustomClass.Objects
                     if (ObjectManager.Player.Inventory.ItemCount(Options.Drink) != 0)
                     {
                         if (Wait.For("DrinkTimeout", 100))
-                            ObjectManager.Player.Inventory.UseItem(Options.Drink);
+                            ObjectManager.Player.Inventory.UseItemByName(Options.Drink);
                     }
                 }
             }

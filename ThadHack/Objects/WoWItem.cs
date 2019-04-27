@@ -28,6 +28,11 @@ namespace ZzukBot.Objects
         internal IntPtr UseItemPointer => IntPtr.Add(ItemCachePointer, Offsets.Item.UseItemPtr1);
 
         /// <summary>
+        ///     ID of the object
+        /// </summary>
+        public int Id => ReadRelative<int>(0x354);
+
+        /// <summary>
         ///     Get Item ID
         /// </summary>
         private int ItemId => GetDescriptor<int>(Offsets.Descriptors.ItemId);
