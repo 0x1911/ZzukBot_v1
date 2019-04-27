@@ -54,33 +54,46 @@ namespace ZzukBot.Mem
             ClearGlueDialogText();
         }
 
-        internal static BackgroundWorker backgroundWorker;
+        
         internal static void LoginHandling()
         {
-            backgroundWorker = new BackgroundWorker();
-            backgroundWorker.WorkerSupportsCancellation = true;
-            backgroundWorker.DoWork += BackgroundWorker_DoWork;
-            backgroundWorker.RunWorkerCompleted += BackgroundWorker_RunWorkerCompleted;
-            backgroundWorker.RunWorkerAsync();
+            BackgroundWorker bgWorker_Login;
+            bgWorker_Login = new BackgroundWorker();
+            bgWorker_Login.WorkerSupportsCancellation = true;
+            bgWorker_Login.DoWork += bgWorker_Login_DoWork;
+            bgWorker_Login.RunWorkerCompleted += bgWorker_Login_RunWorkerCompleted;
+            bgWorker_Login.RunWorkerAsync();
         }
-
-        private static void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            Helpers.Logger.Append("bgworker completed");
-
-            if (EngineManager.CurrentEngineType != Engines.Engines.None) return;
-
-            EngineManager.StartGrinder(GuiCore.MainForm.cbLoadLastProfile.Checked);
-        }
-
-        private static void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        private static void bgWorker_Login_DoWork(object sender, DoWorkEventArgs e)
         {
             Random rand = new Random();
+
             if (Relog.LoginState == Enums.LoginState.login && !ObjectManager.IsInGame)
             {
                 Helpers.Logger.Append("Logging in..");
                 Relog.Login();
-                while (Relog.LoginState == Enums.LoginState.login) { System.Threading.Thread.Sleep(100); }
+            }
+        }
+        private static void bgWorker_Login_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (EngineManager.CurrentEngineType != Engines.Engines.None) return;
+
+            Helpers.Logger.Append("login worker completed");
+
+            BackgroundWorker bgWorker_EnterWorld;
+            bgWorker_EnterWorld = new BackgroundWorker();
+            bgWorker_EnterWorld.WorkerSupportsCancellation = true;
+            bgWorker_EnterWorld.DoWork += bgWorker_EnterWorld_DoWork;
+            bgWorker_EnterWorld.RunWorkerCompleted += bgWorker_EnterWorld_RunWorkerCompleted;
+            bgWorker_EnterWorld.RunWorkerAsync();
+        }
+        private static void bgWorker_EnterWorld_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Random rand = new Random();
+
+            for (int i = 0; i < rand.Next(3, 6); i++)
+            {
+                System.Threading.Thread.Sleep(1000);
             }
 
             if (Relog.LoginState == Enums.LoginState.charselect && !ObjectManager.IsInGame)
@@ -90,7 +103,6 @@ namespace ZzukBot.Mem
                 {
                     Helpers.Logger.Append("Entering world..");
                     Relog.EnterWorld();
-                    SleepWhileNotIngame();
                 }
                 else if (Relog.NumCharacterCount > 1)
                 {
@@ -104,31 +116,25 @@ namespace ZzukBot.Mem
                         {
                             Helpers.Logger.Append("Entering world with " + tmpCharName);
                             Relog.EnterWorld();
-                            SleepWhileNotIngame();
                         }
                     }
                 }
             }
         }
-
-        internal static bool SleepWhileNotIngame()
+        private static void bgWorker_EnterWorld_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            while (!ObjectManager.IsInGame)
-            {
-                System.Threading.Thread.Sleep(100);
-            }
+            if (EngineManager.CurrentEngineType != Engines.Engines.None) return;
 
-            return true;
+            Helpers.Logger.Append("enter world worker completed");
+
+            EngineManager.StartGrinder(GuiCore.MainForm.cbLoadLastProfile.Checked);
         }
+               
 
-        internal static bool Login()
+
+        internal static void Login()
         {
             Functions.DoString("DefaultServerLogin('" + Options.AccountName + "', '" + Options.AccountPassword + "');");
-            
-            if (LoginState == Enums.LoginState.charselect)
-                return true;
-
-            return false;
         }
 
         internal static void EnterWorld()
