@@ -13,23 +13,28 @@ namespace ZzukBot.Engines.Grind.States
 
         internal override void Run()
         {
-            //lets sprinkle in a random jump once in while, maybe?
             Shared.RandomJump();
 
-            if (Grinder.Access.Info.Vendor.RegenerateSubPath)
-            {
-                Grinder.Access.Info.PathManager.GrindToVendor.RegenerateSubPath();
-                Grinder.Access.Info.Vendor.RegenerateSubPath = false;
-            }
+            var tu = Grinder.Access.Info.PathToPosition.ToPos(Grinder.Access.Info.Waypoints.CurrentWaypoint);
+            ObjectManager.Player.CtmTo(tu);
 
-            var to = Grinder.Access.Info.PathManager.VendorToGrind.NextWaypoint;
-            ObjectManager.Player.CtmTo(to);
+            /*   //lets sprinkle in a random jump once in while, maybe?
+               Shared.RandomJump();
 
-            if (Grinder.Access.Info.PathManager.VendorToGrind.ArrivedAtDestination)
-            {
-                Grinder.Access.Info.Vendor.GoBackToGrindAfterVendor = false;
-                Grinder.Access.Info.Waypoints.ResetGrindPath();
-            }
+               if (Grinder.Access.Info.Vendor.RegenerateSubPath)
+               {
+                   Grinder.Access.Info.PathManager.GrindToVendor.RegenerateSubPath();
+                   Grinder.Access.Info.Vendor.RegenerateSubPath = false;
+               }
+
+               var to = Grinder.Access.Info.PathManager.VendorToGrind.NextWaypoint;
+               ObjectManager.Player.CtmTo(to);
+
+               if (Grinder.Access.Info.PathManager.VendorToGrind.ArrivedAtDestination)
+               {
+                   Grinder.Access.Info.Vendor.GoBackToGrindAfterVendor = false;
+                   Grinder.Access.Info.Waypoints.ResetGrindPath();
+               } */
         }
     }
 }
