@@ -34,7 +34,6 @@ namespace ZzukBot.Forms
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.pBar_targetHealth = new ZzukBot.Helpers.NewProgressBar();
             this.lbl_targetId = new System.Windows.Forms.Label();
             this.lbl_targetFaction = new System.Windows.Forms.Label();
             this.lbl_targetZ = new System.Windows.Forms.Label();
@@ -42,9 +41,7 @@ namespace ZzukBot.Forms
             this.lbl_targetX = new System.Windows.Forms.Label();
             this.lbl_targetName = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.pBar_playerExperience = new ZzukBot.Helpers.NewProgressBar();
-            this.pBar_playerMana = new ZzukBot.Helpers.NewProgressBar();
-            this.pBar_playerHealth = new ZzukBot.Helpers.NewProgressBar();
+            this.lbl_playerLevel = new System.Windows.Forms.Label();
             this.lbl_playerSubZone = new System.Windows.Forms.Label();
             this.lbl_playerZone = new System.Windows.Forms.Label();
             this.lbl_playerAccountName = new System.Windows.Forms.Label();
@@ -82,7 +79,13 @@ namespace ZzukBot.Forms
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.dEVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.lbl_playerLevel = new System.Windows.Forms.Label();
+            this.rtb_MainLog = new System.Windows.Forms.RichTextBox();
+            this.rtb_DebugLog = new System.Windows.Forms.RichTextBox();
+            this.rtb_ExceptionLog = new System.Windows.Forms.RichTextBox();
+            this.pBar_targetHealth = new ZzukBot.Helpers.NewProgressBar();
+            this.pBar_playerExperience = new ZzukBot.Helpers.NewProgressBar();
+            this.pBar_playerMana = new ZzukBot.Helpers.NewProgressBar();
+            this.pBar_playerHealth = new ZzukBot.Helpers.NewProgressBar();
             this.tcMain.SuspendLayout();
             this.tpGrind.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -90,6 +93,9 @@ namespace ZzukBot.Forms
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tC_Log.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.tp_InGameChat.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgChat)).BeginInit();
@@ -172,15 +178,6 @@ namespace ZzukBot.Forms
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Target";
-            // 
-            // pBar_targetHealth
-            // 
-            this.pBar_targetHealth.BackColor = System.Drawing.SystemColors.Control;
-            this.pBar_targetHealth.ForeColor = System.Drawing.Color.Green;
-            this.pBar_targetHealth.Location = new System.Drawing.Point(11, 74);
-            this.pBar_targetHealth.Name = "pBar_targetHealth";
-            this.pBar_targetHealth.Size = new System.Drawing.Size(146, 14);
-            this.pBar_targetHealth.TabIndex = 19;
             // 
             // lbl_targetId
             // 
@@ -271,30 +268,16 @@ namespace ZzukBot.Forms
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Player";
             // 
-            // pBar_playerExperience
+            // lbl_playerLevel
             // 
-            this.pBar_playerExperience.BackColor = System.Drawing.SystemColors.Control;
-            this.pBar_playerExperience.ForeColor = System.Drawing.Color.Yellow;
-            this.pBar_playerExperience.Location = new System.Drawing.Point(11, 106);
-            this.pBar_playerExperience.Name = "pBar_playerExperience";
-            this.pBar_playerExperience.Size = new System.Drawing.Size(146, 14);
-            this.pBar_playerExperience.TabIndex = 18;
-            // 
-            // pBar_playerMana
-            // 
-            this.pBar_playerMana.Location = new System.Drawing.Point(11, 90);
-            this.pBar_playerMana.Name = "pBar_playerMana";
-            this.pBar_playerMana.Size = new System.Drawing.Size(146, 14);
-            this.pBar_playerMana.TabIndex = 17;
-            // 
-            // pBar_playerHealth
-            // 
-            this.pBar_playerHealth.BackColor = System.Drawing.SystemColors.Control;
-            this.pBar_playerHealth.ForeColor = System.Drawing.Color.Green;
-            this.pBar_playerHealth.Location = new System.Drawing.Point(11, 74);
-            this.pBar_playerHealth.Name = "pBar_playerHealth";
-            this.pBar_playerHealth.Size = new System.Drawing.Size(146, 14);
-            this.pBar_playerHealth.TabIndex = 16;
+            this.lbl_playerLevel.AutoSize = true;
+            this.lbl_playerLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_playerLevel.Location = new System.Drawing.Point(8, 125);
+            this.lbl_playerLevel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_playerLevel.Name = "lbl_playerLevel";
+            this.lbl_playerLevel.Size = new System.Drawing.Size(42, 13);
+            this.lbl_playerLevel.TabIndex = 19;
+            this.lbl_playerLevel.Text = "Level 0";
             // 
             // lbl_playerSubZone
             // 
@@ -432,6 +415,7 @@ namespace ZzukBot.Forms
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage1.Controls.Add(this.rtb_MainLog);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
@@ -443,6 +427,7 @@ namespace ZzukBot.Forms
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage2.Controls.Add(this.rtb_DebugLog);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
@@ -454,6 +439,7 @@ namespace ZzukBot.Forms
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage3.Controls.Add(this.rtb_ExceptionLog);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
@@ -578,7 +564,7 @@ namespace ZzukBot.Forms
             this.dgNotifications.Name = "dgNotifications";
             this.dgNotifications.ReadOnly = true;
             this.dgNotifications.RowHeadersVisible = false;
-            this.dgNotifications.Size = new System.Drawing.Size(374, 462);
+            this.dgNotifications.Size = new System.Drawing.Size(374, 465);
             this.dgNotifications.TabIndex = 5;
             // 
             // dataGridViewTextBoxColumn2
@@ -637,6 +623,7 @@ namespace ZzukBot.Forms
             // 
             // stopToolStripMenuItem
             // 
+            this.stopToolStripMenuItem.Enabled = false;
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
             this.stopToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.stopToolStripMenuItem.Text = "Stop";
@@ -686,16 +673,75 @@ namespace ZzukBot.Forms
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // lbl_playerLevel
+            // rtb_MainLog
             // 
-            this.lbl_playerLevel.AutoSize = true;
-            this.lbl_playerLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_playerLevel.Location = new System.Drawing.Point(8, 125);
-            this.lbl_playerLevel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_playerLevel.Name = "lbl_playerLevel";
-            this.lbl_playerLevel.Size = new System.Drawing.Size(42, 13);
-            this.lbl_playerLevel.TabIndex = 19;
-            this.lbl_playerLevel.Text = "Level 0";
+            this.rtb_MainLog.BackColor = System.Drawing.SystemColors.Control;
+            this.rtb_MainLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtb_MainLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtb_MainLog.Location = new System.Drawing.Point(4, 4);
+            this.rtb_MainLog.Name = "rtb_MainLog";
+            this.rtb_MainLog.ReadOnly = true;
+            this.rtb_MainLog.Size = new System.Drawing.Size(348, 93);
+            this.rtb_MainLog.TabIndex = 0;
+            this.rtb_MainLog.Text = "";
+            // 
+            // rtb_DebugLog
+            // 
+            this.rtb_DebugLog.BackColor = System.Drawing.SystemColors.Control;
+            this.rtb_DebugLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtb_DebugLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtb_DebugLog.Location = new System.Drawing.Point(4, 4);
+            this.rtb_DebugLog.Name = "rtb_DebugLog";
+            this.rtb_DebugLog.ReadOnly = true;
+            this.rtb_DebugLog.Size = new System.Drawing.Size(348, 96);
+            this.rtb_DebugLog.TabIndex = 1;
+            this.rtb_DebugLog.Text = "";
+            // 
+            // rtb_ExceptionLog
+            // 
+            this.rtb_ExceptionLog.BackColor = System.Drawing.SystemColors.Control;
+            this.rtb_ExceptionLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtb_ExceptionLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtb_ExceptionLog.Location = new System.Drawing.Point(0, 0);
+            this.rtb_ExceptionLog.Name = "rtb_ExceptionLog";
+            this.rtb_ExceptionLog.ReadOnly = true;
+            this.rtb_ExceptionLog.Size = new System.Drawing.Size(356, 104);
+            this.rtb_ExceptionLog.TabIndex = 1;
+            this.rtb_ExceptionLog.Text = "";
+            // 
+            // pBar_targetHealth
+            // 
+            this.pBar_targetHealth.BackColor = System.Drawing.SystemColors.Control;
+            this.pBar_targetHealth.ForeColor = System.Drawing.Color.Green;
+            this.pBar_targetHealth.Location = new System.Drawing.Point(11, 74);
+            this.pBar_targetHealth.Name = "pBar_targetHealth";
+            this.pBar_targetHealth.Size = new System.Drawing.Size(146, 14);
+            this.pBar_targetHealth.TabIndex = 19;
+            // 
+            // pBar_playerExperience
+            // 
+            this.pBar_playerExperience.BackColor = System.Drawing.SystemColors.Control;
+            this.pBar_playerExperience.ForeColor = System.Drawing.Color.Yellow;
+            this.pBar_playerExperience.Location = new System.Drawing.Point(11, 106);
+            this.pBar_playerExperience.Name = "pBar_playerExperience";
+            this.pBar_playerExperience.Size = new System.Drawing.Size(146, 14);
+            this.pBar_playerExperience.TabIndex = 18;
+            // 
+            // pBar_playerMana
+            // 
+            this.pBar_playerMana.Location = new System.Drawing.Point(11, 90);
+            this.pBar_playerMana.Name = "pBar_playerMana";
+            this.pBar_playerMana.Size = new System.Drawing.Size(146, 14);
+            this.pBar_playerMana.TabIndex = 17;
+            // 
+            // pBar_playerHealth
+            // 
+            this.pBar_playerHealth.BackColor = System.Drawing.SystemColors.Control;
+            this.pBar_playerHealth.ForeColor = System.Drawing.Color.Green;
+            this.pBar_playerHealth.Location = new System.Drawing.Point(11, 74);
+            this.pBar_playerHealth.Name = "pBar_playerHealth";
+            this.pBar_playerHealth.Size = new System.Drawing.Size(146, 14);
+            this.pBar_playerHealth.TabIndex = 16;
             // 
             // GraphicalMainForm
             // 
@@ -711,6 +757,7 @@ namespace ZzukBot.Forms
             this.MaximizeBox = false;
             this.Name = "GraphicalMainForm";
             this.Text = "ZzukBot";
+            this.Load += new System.EventHandler(this.GraphicalMainForm_Load);
             this.tcMain.ResumeLayout(false);
             this.tpGrind.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -721,6 +768,9 @@ namespace ZzukBot.Forms
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tC_Log.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
             this.tp_InGameChat.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgChat)).EndInit();
@@ -790,6 +840,9 @@ namespace ZzukBot.Forms
         internal Helpers.NewProgressBar pBar_playerExperience;
         internal System.Windows.Forms.CheckBox cbLoadLastProfile;
         internal System.Windows.Forms.Label lbl_playerLevel;
+        internal System.Windows.Forms.RichTextBox rtb_MainLog;
+        internal System.Windows.Forms.RichTextBox rtb_DebugLog;
+        internal System.Windows.Forms.RichTextBox rtb_ExceptionLog;
     }
 }
 

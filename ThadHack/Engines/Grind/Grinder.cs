@@ -278,7 +278,7 @@ namespace ZzukBot.Engines.Grind
                         }
                         catch(Exception crap)
                         {
-                            Logger.Append("Update OverView labels: " + crap.Message + "\r\n", "Exceptions.txt");
+                            Logger.Append("Update OverView labels: " + crap.Message + "\r\n", Logger.LogType.Console, "Exceptions.txt");
                         }
                         #endregion
                         exceptionThrown = 9;
@@ -293,7 +293,7 @@ namespace ZzukBot.Engines.Grind
             }
             catch (Exception e)
             {
-                Logger.Append("Grinder frame: " + FrameCounter + " at " + exceptionThrown + " || message: " + e.Message + "\r\n", "Exceptions.txt");
+                Logger.Append("Grinder frame: " + FrameCounter + " at " + exceptionThrown + " || message: " + e.Message + "\r\n", Logger.LogType.Console, "Exceptions.txt");
             }
         }        
 

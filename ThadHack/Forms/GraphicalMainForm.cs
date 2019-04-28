@@ -275,11 +275,18 @@ namespace ZzukBot.Forms
         {
             if (EngineManager.CurrentEngineType != Engines.Engines.None) return;
 
+            GuiCore.MainForm.runToolStripMenuItem.Enabled = false;
+            GuiCore.MainForm.stopToolStripMenuItem.Enabled = true;
+
+            Helpers.Logger.Append("Starting up", Logger.LogType.Info);
             Relog.LoginHandling();
         }        
 
         private void stopToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            GuiCore.MainForm.runToolStripMenuItem.Enabled = true;
+            GuiCore.MainForm.stopToolStripMenuItem.Enabled = false;
+
             if (EngineManager.CurrentEngineType != Engines.Engines.Grind) return;
             EngineManager.StopCurrentEngine();
             lGrindLoadProfile.Text = "Profile: ";
@@ -302,6 +309,16 @@ namespace ZzukBot.Forms
         {
             var tmpDevForm = new Forms.GraphicalDEVForm();
             tmpDevForm.Show();
+        }
+
+        private void GraphicalMainForm_Load(object sender, EventArgs e)
+        {
+            GuiCore.MainForm.dEVToolStripMenuItem.Visible = false;
+            GuiCore.MainForm.dEVToolStripMenuItem.Enabled = false;
+#if DEBUG
+            GuiCore.MainForm.dEVToolStripMenuItem.Visible = true;
+            GuiCore.MainForm.dEVToolStripMenuItem.Enabled = true;
+#endif
         }
     }
 }

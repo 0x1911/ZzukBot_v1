@@ -104,7 +104,7 @@ namespace ZzukBot
                 }
                 catch (Exception e)
                 {
-                    Logger.Append("Startup: " + e.Message + "\r\n", "Exceptions.txt");
+                    Logger.Append("Startup: " + e.Message + "\r\n", Logger.LogType.Console, "Exceptions.txt");
                 }
             }
             Environment.Exit(0);
