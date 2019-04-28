@@ -1,5 +1,4 @@
 ﻿using System;
-using ZzukBot.Constants;
 using ZzukBot.Helpers;
 using ZzukBot.Mem;
 
@@ -22,10 +21,7 @@ namespace ZzukBot.Engines.Grind
                 var ranNumber = ran.Next(1, 10);
                 if(ranNumber == 5)
                 {
-                    ObjectManager.Player.CtmStopMovement();
-                    ObjectManager.Player.StartMovement(Enums.ControlBits.Front);
                     Functions.DoString("Jump()");
-                    ObjectManager.Player.StopMovement(Enums.ControlBits.Front);
                 }
             }
         }

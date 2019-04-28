@@ -57,6 +57,8 @@ namespace ZzukBot.Mem
         
         internal static void LoginHandling()
         {
+            if(ObjectManager.IsInGame) { return; }
+
             BackgroundWorker bgWorker_Login;
             bgWorker_Login = new BackgroundWorker();
             bgWorker_Login.WorkerSupportsCancellation = true;
@@ -66,8 +68,6 @@ namespace ZzukBot.Mem
         }
         private static void bgWorker_Login_DoWork(object sender, DoWorkEventArgs e)
         {
-            Random rand = new Random();
-
             if (Relog.LoginState == Enums.LoginState.login && !ObjectManager.IsInGame)
             {
                 Helpers.Logger.Append("Logging in..");
@@ -76,7 +76,7 @@ namespace ZzukBot.Mem
         }
         private static void bgWorker_Login_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (EngineManager.CurrentEngineType != Engines.Engines.None) return;
+            if (EngineManager.CurrentEngineType != Engines.Engines.None) { return; }
 
             Helpers.Logger.Append("login worker completed");
 

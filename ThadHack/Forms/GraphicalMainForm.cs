@@ -273,6 +273,8 @@ namespace ZzukBot.Forms
         #region Top menu tool strip        
         private void runToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (EngineManager.CurrentEngineType != Engines.Engines.None) return;
+
             Relog.LoginHandling();
         }        
 

@@ -6,7 +6,6 @@ using ZzukBot.Engines.Grind;
 using ZzukBot.Helpers;
 using ZzukBot.Ingame;
 using ZzukBot.Mem;
-using Ptr = ZzukBot.Constants.Offsets;
 
 namespace ZzukBot.Objects
 {
@@ -339,15 +338,29 @@ namespace ZzukBot.Objects
         /// <summary>
         ///     Start a ctm movement towards
         /// </summary>
+        private XYZ lastPlayerPosition;
         internal void CtmTo(XYZ parPosition)
         {
-          // Grinder.Access.StuckHelper.CheckForStuck();
-            //float disX = Math.Abs(this.CtmX - parPosition.X);
-            //float disY = Math.Abs(this.CtmY - parPosition.Y);
-            //if (disX < 0.2f && disY < 0.2f) return;
+            if (lastPlayerPosition == null)
+                lastPlayerPosition = ObjectManager.Player.Position;
 
+            #region wiggling around
+            float disX = Math.Abs(lastPlayerPosition.X - parPosition.X);
+            float disY = Math.Abs(lastPlayerPosition.Y - parPosition.Y);
+            if (disX < 1f && disY < 1f)
+            {
+                Helpers.Logger.Append("Looks like we haven't moved since the last click.. Wiggling");
+                int tmpRandomStepChange = new Random().Next(-2, 2);
+                XYZ tmpParPosition = parPosition;
+                tmpParPosition.X = tmpParPosition.X + tmpRandomStepChange;
+                tmpParPosition.Y = tmpParPosition.Y + tmpRandomStepChange;
+                OnCtmActionEvent(new CtmAction(Enums.CtmType.Move, tmpParPosition));
+                Functions.Ctm(Pointer, Enums.CtmType.Move, tmpParPosition);
+                return;
+            }
+            #endregion
             OnCtmActionEvent(new CtmAction(Enums.CtmType.Move, parPosition));
-            Functions.Ctm(Pointer, Enums.CtmType.Move, parPosition, 0);
+            Functions.Ctm(Pointer, Enums.CtmType.Move, parPosition);
             //SendMovementUpdate((int)Enums.MovementOpCodes.setFacing);
         }
 
@@ -360,7 +373,7 @@ namespace ZzukBot.Objects
                 CtmState != 12) //&& CtmState != (int)Enums.CtmType.Face)
             {
                 OnCtmActionEvent(new CtmAction(Enums.CtmType.None, new XYZ(0, 0, 0)));
-                Functions.Ctm(Pointer, Enums.CtmType.None, ObjectManager.Player.Position, 0);
+                Functions.Ctm(Pointer, Enums.CtmType.None, ObjectManager.Player.Position);
             }
             else if (Shared.StartedMovement && ObjectManager.Player.MovementState != 0)
             {

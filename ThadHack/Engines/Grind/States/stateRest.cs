@@ -53,7 +53,8 @@ namespace ZzukBot.Engines.Grind.States
                             Game.Static.Consumeables.FoodsDictionary.TryGetValue(tmpItem.Id, out tmpFoodLevel);
                             if (tmpPlayer.Level >= tmpFoodLevel)
                             {
-                                tmpPlayer.Inventory.UseItemByObject(tmpItem);
+                                    tmpPlayer.Inventory.UseItemByObject(tmpItem);
+
                                 Helpers.Logger.Append("Eating " + tmpItem.Name);
                                 break;
                             }
@@ -74,7 +75,8 @@ namespace ZzukBot.Engines.Grind.States
 
                             if (tmpPlayer.Level >= tmpDrinkLevel)
                             {
-                                tmpPlayer.Inventory.UseItemByObject(tmpItem);
+                                    tmpPlayer.Inventory.UseItemByObject(tmpItem);
+
                                 Helpers.Logger.Append("Drinking " + tmpItem.Name);
                                 break;
                             }

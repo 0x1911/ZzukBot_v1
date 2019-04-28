@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using System.Text;
 using ZzukBot.Constants;
 using ZzukBot.Helpers;
 using static ZzukBot.Constants.Offsets;
@@ -267,7 +266,7 @@ namespace ZzukBot.Mem
             UseItemFunction(ptr, ref zeroPtr, 0);
         }
 
-        internal static void Ctm(IntPtr parPlayerPtr, Enums.CtmType parType, XYZ parPosition, ulong parGuid)
+        internal static void Ctm(IntPtr parPlayerPtr, Enums.CtmType parType, XYZ parPosition, ulong parGuid = 0)
         {
             if (CtmFunction == null)
                 CtmFunction = Memory.Reader.RegisterDelegate<CtmDelegate>(funcs.ClickToMove);

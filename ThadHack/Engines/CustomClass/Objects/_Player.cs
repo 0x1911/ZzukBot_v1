@@ -251,9 +251,9 @@ namespace ZzukBot.Engines.CustomClass.Objects
         {
             if (GetSpellRank(parName) != 0 && CanUse(parName))
             {
-                Cast(parName);
-                return true;
+                    return Cast(parName);
             }
+
             return false;
         }
 
