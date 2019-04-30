@@ -274,8 +274,7 @@ namespace ZzukBot.Forms
         private void runToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (EngineManager.CurrentEngineType != Engines.Engines.None) return;
-
-          
+                     
 
             Relog.LoginHandling();
 

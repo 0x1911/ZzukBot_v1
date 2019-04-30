@@ -56,6 +56,8 @@ namespace ZzukBot.Engines.Grind
                             Col.Apply();
                             Col3.Apply();
                         }
+
+                        CheckForStuck();
                     }
                     break;
 
@@ -69,22 +71,35 @@ namespace ZzukBot.Engines.Grind
             }
         }
 
+        XYZ lastPlayerPosition = new XYZ(0, 0, 0);
+        int PossiblyStuckFrameCounter = 0;
         internal void CheckForStuck()
         {
-            if (Calc.Distance2D(oldPosition, ObjectManager.Player.Position) < 0.3f)
+            float distance2d = Calc.Distance2D(lastPlayerPosition, ObjectManager.Player.Position);
+            if (distance2d <= 0.3f)
             {
-                oldPosition = ObjectManager.Player.Position;
-                StuckAtPointSince = Environment.TickCount;
-                TryUnstuck();
+                Helpers.Logger.Append("We are stuck maybe.. " + PossiblyStuckFrameCounter);
+                PossiblyStuckFrameCounter++;
             }
+            else
+            {
+                PossiblyStuckFrameCounter = 0;
+            }
+
+
+            if (PossiblyStuckFrameCounter > 100)
+            {
+                TryUnstuck();
+            }            
+
+            lastPlayerPosition = ObjectManager.Player.Position;
         }
 
         internal void TryUnstuck()
         {
             Helpers.Logger.Append("Trying to unstuck ourself..");
 
-            EngineManager.StopCurrentEngine();
-            EngineManager.StartGrinder(true);
+            EngineManager.RestartOutOfEngine();
         }
 
         internal void Reset()

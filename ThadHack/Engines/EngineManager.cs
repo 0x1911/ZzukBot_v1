@@ -1,4 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.ComponentModel;
+using System.Windows.Forms;
 using ZzukBot.Engines.Grind;
 using ZzukBot.Engines.ProfileCreation;
 using ZzukBot.Forms;
@@ -43,6 +45,26 @@ namespace ZzukBot.Engines
             return (T) _Engine;
         }
 
+        internal static void RestartOutOfEngine()
+        {
+            BackgroundWorker bgWorker_EngineRestart;
+            bgWorker_EngineRestart = new BackgroundWorker();
+            bgWorker_EngineRestart.WorkerSupportsCancellation = true;
+            bgWorker_EngineRestart.DoWork += bgWorker_EngineRestart_DoWork;
+            bgWorker_EngineRestart.RunWorkerAsync();
+        }
+        private static void bgWorker_EngineRestart_DoWork(object sender, DoWorkEventArgs e)
+        {
+            int  StartTickCount = Environment.TickCount + 3000;
+
+            while(StartTickCount >= Environment.TickCount)
+            {
+                EngineManager.StopCurrentEngine();
+            }
+            
+
+            EngineManager.StartGrinder(true);
+        }
         internal static void StartProfileCreation(Forms.GraphicalProfileCreationForm targetForm)
         {
             GuiCore.MainForm.Invoke(new MethodInvoker(delegate

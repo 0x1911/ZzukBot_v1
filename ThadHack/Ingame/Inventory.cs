@@ -42,7 +42,8 @@ namespace ZzukBot.Ingame
 
                         var itemName = Options.ProtectedItems.FirstOrDefault(x => x.StartsWith("*") && tmp.Name.Contains(x.TrimStart('*')));
 
-                        if (string.IsNullOrEmpty(itemName) && !Options.ProtectedItems.Contains(tmp.Name))
+                        //don't sell protected items or food & drinks
+                        if (string.IsNullOrEmpty(itemName) && !Options.ProtectedItems.Contains(tmp.Name) && !Game.Static.Consumeables.DrinksDictionary.ContainsKey(tmp.Id) && !Game.Static.Consumeables.FoodsDictionary.ContainsKey(tmp.Id))
                         {
                             if (tmp.Quality < Options.KeepItemsFromQuality)
                             {
