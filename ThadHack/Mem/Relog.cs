@@ -80,12 +80,12 @@ namespace ZzukBot.Mem
 
             Helpers.Logger.Append("login worker completed");
 
-            BackgroundWorker bgWorker_EnterWorld;
+         /*   BackgroundWorker bgWorker_EnterWorld;
             bgWorker_EnterWorld = new BackgroundWorker();
             bgWorker_EnterWorld.WorkerSupportsCancellation = true;
             bgWorker_EnterWorld.DoWork += bgWorker_EnterWorld_DoWork;
             bgWorker_EnterWorld.RunWorkerCompleted += bgWorker_EnterWorld_RunWorkerCompleted;
-            bgWorker_EnterWorld.RunWorkerAsync();
+            bgWorker_EnterWorld.RunWorkerAsync(); */
         }
         private static void bgWorker_EnterWorld_DoWork(object sender, DoWorkEventArgs e)
         {

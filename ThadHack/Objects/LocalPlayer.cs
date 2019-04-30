@@ -338,30 +338,16 @@ namespace ZzukBot.Objects
         /// <summary>
         ///     Start a ctm movement towards
         /// </summary>
-        private XYZ lastPlayerPosition;
+        private XYZ lastParPosition;
         internal void CtmTo(XYZ parPosition)
         {
-            if (lastPlayerPosition == null)
-                lastPlayerPosition = ObjectManager.Player.Position;
+            if (lastParPosition == null)
+                lastParPosition = parPosition;
 
-            #region wiggling around
-            float disX = Math.Abs(lastPlayerPosition.X - parPosition.X);
-            float disY = Math.Abs(lastPlayerPosition.Y - parPosition.Y);
-            if (disX < 1f && disY < 1f)
-            {
-                Helpers.Logger.Append("Looks like we haven't moved since the last click.. Wiggling");
-                int tmpRandomStepChange = new Random().Next(-2, 2);
-                XYZ tmpParPosition = parPosition;
-                tmpParPosition.X = tmpParPosition.X + tmpRandomStepChange;
-                tmpParPosition.Y = tmpParPosition.Y + tmpRandomStepChange;
-                OnCtmActionEvent(new CtmAction(Enums.CtmType.Move, tmpParPosition));
-                Functions.Ctm(Pointer, Enums.CtmType.Move, tmpParPosition);
-                return;
-            }
-            #endregion
+            Grinder.Access.StuckHelper.CheckForStuck();
+
             OnCtmActionEvent(new CtmAction(Enums.CtmType.Move, parPosition));
             Functions.Ctm(Pointer, Enums.CtmType.Move, parPosition);
-            //SendMovementUpdate((int)Enums.MovementOpCodes.setFacing);
         }
 
         /// <summary>
@@ -380,11 +366,6 @@ namespace ZzukBot.Objects
                 ObjectManager.Player.StopMovement(Enums.ControlBits.All);
                 Shared.StartedMovement = false;
             }
-
-            //if (CtmState == 12) return;
-            //CtmState = 12;
-            //StartMovement(Enums.ControlBits.Front);
-            //StopMovement(Enums.ControlBits.Front);
         }
 
         internal void CtmSetToIdle()

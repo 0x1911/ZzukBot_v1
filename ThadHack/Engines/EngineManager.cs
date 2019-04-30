@@ -2,6 +2,7 @@
 using ZzukBot.Engines.Grind;
 using ZzukBot.Engines.ProfileCreation;
 using ZzukBot.Forms;
+using ZzukBot.Helpers;
 using ZzukBot.Settings;
 
 namespace ZzukBot.Engines
@@ -17,7 +18,6 @@ namespace ZzukBot.Engines
     {
         private static object _Engine;
 
-        private static volatile bool IsWaitingForGeneration;
         private static Grinder tmpGrind;
 
         private static bool IsEngineRunning => _Engine != null;
@@ -58,7 +58,7 @@ namespace ZzukBot.Engines
             string tmpProfileName;
             if (parLoadLast && Options.LastProfileFileName != "")
             {
-                tmpProfileName = Options.LastProfileFileName;
+                tmpProfileName = Paths.ProfileFolder + Options.LastProfileFileName;
             }
             else
             {
@@ -80,16 +80,17 @@ namespace ZzukBot.Engines
                 }
             }
             tmpGrind = new Grinder();
-            if (!IsWaitingForGeneration && tmpGrind.Prepare(tmpProfileName, Callback))
+            if (tmpGrind.Prepare(tmpProfileName, Callback))
             {
                 GuiCore.MainForm.Invoke(new MethodInvoker(delegate
                 {
                     GuiCore.MainForm.lGrindState.Text = "State: Loading mmaps";
-                    IsWaitingForGeneration = true;
                     string profileFileName = tmpProfileName.Replace(Paths.ProfileFolder, "");
                     Options.LastProfileFileName = profileFileName;
                 }));
             }
+
+            Helpers.Logger.Append("Grinder starting up", Logger.LogType.Info);
         }
 
         private static void Callback()
@@ -100,7 +101,6 @@ namespace ZzukBot.Engines
                 {
                     GuiCore.MainForm.lGrindLoadProfile.Text = "Profile: " + Options.LastProfileFileName + " Loaded";
                     _Engine = tmpGrind;
-                    IsWaitingForGeneration = false;
                 }));
             }
         }
@@ -115,12 +115,18 @@ namespace ZzukBot.Engines
             if (_Engine.GetType() == typeof (Grinder))
             {
                 EngineAs<Grinder>().Stop();
-                IsWaitingForGeneration = false;
-                tmpGrind = null;
+
+                if (tmpGrind != null)
+                {
+                    tmpGrind.Stop();
+                    tmpGrind = null;
+                }
             }
 
             if (dispose)
                 _Engine = null;
+
+            Helpers.Logger.Append("Stopped all.", Logger.LogType.Info);
         }
     }
 }

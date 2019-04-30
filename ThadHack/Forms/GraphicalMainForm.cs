@@ -278,8 +278,9 @@ namespace ZzukBot.Forms
             GuiCore.MainForm.runToolStripMenuItem.Enabled = false;
             GuiCore.MainForm.stopToolStripMenuItem.Enabled = true;
 
-            Helpers.Logger.Append("Starting up", Logger.LogType.Info);
             Relog.LoginHandling();
+
+            EngineManager.StartGrinder(GuiCore.MainForm.cbLoadLastProfile.Checked);
         }        
 
         private void stopToolStripMenuItem_Click(object sender, EventArgs e)

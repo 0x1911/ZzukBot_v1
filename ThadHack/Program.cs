@@ -88,6 +88,7 @@ namespace ZzukBot
             else
             {
 #if DEBUG
+                Debugger.Launch();
                 WinImports.AllocConsole();
                 Logger.Append("DEBUG BUILD");
                 DebugAssist.Init();
