@@ -275,8 +275,7 @@ namespace ZzukBot.Forms
         {
             if (EngineManager.CurrentEngineType != Engines.Engines.None) return;
 
-            GuiCore.MainForm.runToolStripMenuItem.Enabled = false;
-            GuiCore.MainForm.stopToolStripMenuItem.Enabled = true;
+          
 
             Relog.LoginHandling();
 
@@ -285,13 +284,7 @@ namespace ZzukBot.Forms
 
         private void stopToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GuiCore.MainForm.runToolStripMenuItem.Enabled = true;
-            GuiCore.MainForm.stopToolStripMenuItem.Enabled = false;
-
-            if (EngineManager.CurrentEngineType != Engines.Engines.Grind) return;
             EngineManager.StopCurrentEngine();
-            lGrindLoadProfile.Text = "Profile: ";
-            lGrindState.Text = "State: ";
         }        
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)

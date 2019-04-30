@@ -54,6 +54,10 @@ namespace ZzukBot.Engines
 
         internal static void StartGrinder(bool parLoadLast)
         {
+            Helpers.Logger.Append("Grinder starting up", Logger.LogType.Info);
+            GuiCore.MainForm.runToolStripMenuItem.Enabled = false;
+            GuiCore.MainForm.stopToolStripMenuItem.Enabled = true;
+
             if (IsEngineRunning) return;
             string tmpProfileName;
             if (parLoadLast && Options.LastProfileFileName != "")
@@ -89,8 +93,6 @@ namespace ZzukBot.Engines
                     Options.LastProfileFileName = profileFileName;
                 }));
             }
-
-            Helpers.Logger.Append("Grinder starting up", Logger.LogType.Info);
         }
 
         private static void Callback()
@@ -107,6 +109,11 @@ namespace ZzukBot.Engines
 
         internal static void StopCurrentEngine()
         {
+            GuiCore.MainForm.runToolStripMenuItem.Enabled = true;
+            GuiCore.MainForm.stopToolStripMenuItem.Enabled = false;
+            GuiCore.MainForm.lGrindLoadProfile.Text = "Profile: ";
+            GuiCore.MainForm.lGrindState.Text = "State: ";
+
             var dispose = true;
             if (!IsEngineRunning) return;
             if (_Engine.GetType() == typeof (ProfileCreator))
@@ -126,7 +133,7 @@ namespace ZzukBot.Engines
             if (dispose)
                 _Engine = null;
 
-            Helpers.Logger.Append("Stopped all.", Logger.LogType.Info);
+            Helpers.Logger.Append("Stopped all.", Logger.LogType.Info);            
         }
     }
 }

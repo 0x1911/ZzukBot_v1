@@ -795,8 +795,6 @@ namespace ZzukBot.Forms
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripMenuItem runToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem stopToolStripMenuItem;
         private System.Windows.Forms.TabPage tp_InGameChat;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgChat;
@@ -843,6 +841,8 @@ namespace ZzukBot.Forms
         internal System.Windows.Forms.RichTextBox rtb_MainLog;
         internal System.Windows.Forms.RichTextBox rtb_DebugLog;
         internal System.Windows.Forms.RichTextBox rtb_ExceptionLog;
+        internal System.Windows.Forms.ToolStripMenuItem runToolStripMenuItem;
+        internal System.Windows.Forms.ToolStripMenuItem stopToolStripMenuItem;
     }
 }
 

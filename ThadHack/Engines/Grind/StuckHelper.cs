@@ -83,37 +83,6 @@ namespace ZzukBot.Engines.Grind
         {
             Helpers.Logger.Append("Trying to unstuck ourself..");
 
-            /*   ObjectManager.Player.StopMovement(Enums.ControlBits.All);
-               ObjectManager.Player.CtmStopMovement();
-               ObjectManager.Player.CtmSetToIdle();
-
-               var randomMethod = new Random().Next(1, 4);
-               if (1 == randomMethod)
-               {
-                   ObjectManager.Player.StartMovement(Enums.ControlBits.StrafeRight);
-                   Shared.RandomJump();
-                   ObjectManager.Player.StopMovement(Enums.ControlBits.All);
-               }
-               if (2 == randomMethod)
-               {
-                   ObjectManager.Player.StartMovement(Enums.ControlBits.StrafeLeft);
-                   Shared.RandomJump();
-                   ObjectManager.Player.StopMovement(Enums.ControlBits.All);
-               }
-               if (3 == randomMethod)
-               {
-                   ObjectManager.Player.StartMovement(Enums.ControlBits.StrafeLeft);
-                   ObjectManager.Player.StartMovement(Enums.ControlBits.Back);
-                   Shared.RandomJump();
-                   ObjectManager.Player.StopMovement(Enums.ControlBits.All);
-               }
-               if (4 == randomMethod)
-               {
-                   ObjectManager.Player.StartMovement(Enums.ControlBits.StrafeRight);
-                   ObjectManager.Player.StartMovement(Enums.ControlBits.Back);
-                   Shared.RandomJump();
-                   ObjectManager.Player.StopMovement(Enums.ControlBits.All);
-               } */
             EngineManager.StopCurrentEngine();
             EngineManager.StartGrinder(true);
         }
