@@ -3,7 +3,6 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using ZzukBot.Engines.Grind;
 using ZzukBot.Engines.ProfileCreation;
-using ZzukBot.Forms;
 using ZzukBot.Helpers;
 using ZzukBot.Settings;
 

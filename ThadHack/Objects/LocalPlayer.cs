@@ -24,7 +24,7 @@ namespace ZzukBot.Objects
         internal XYZ Position { get; }
     }
 
-    internal class LocalPlayer : WoWUnit
+    public class LocalPlayer : WoWUnit
     {
         /// <summary>
         ///     facing with coordinates instead of a passed unit
@@ -39,7 +39,7 @@ namespace ZzukBot.Objects
         internal volatile Spells Spells;
 
         internal IntPtr SkillField => Pointer.Add(8).ReadAs<IntPtr>().Add(0xB38);
-        internal List<Game.Static.Skills.Skill> Skills = new List<Game.Static.Skills.Skill>();
+        internal List<Game.Static.Classes.Skill> Skills = new List<Game.Static.Classes.Skill>();
         /// <summary>
         ///     Constructor
         /// </summary>
@@ -208,9 +208,9 @@ namespace ZzukBot.Objects
         internal bool IsDrinking => GotAura("Drink");
 
         /// <summary>
-        ///     the toons class
+        ///     The toons class
         /// </summary>
-        internal Enums.ClassIds Class => (Enums.ClassIds) Offsets.Player.Class.ReadAs<Byte>();
+        public Enums.ClassIds Class => (Enums.ClassIds) Offsets.Player.Class.ReadAs<Byte>();
 
         internal bool IsStealth
         {
@@ -343,8 +343,6 @@ namespace ZzukBot.Objects
         {
             if (lastParPosition == null)
                 lastParPosition = parPosition;
-
-            Grinder.Access.StuckHelper.CheckForStuck();
 
             OnCtmActionEvent(new CtmAction(Enums.CtmType.Move, parPosition));
             Functions.Ctm(Pointer, Enums.CtmType.Move, parPosition);
@@ -522,5 +520,41 @@ namespace ZzukBot.Objects
         {
             Spells = new Spells();
         }
+
+        #region Talents - free points, talent tree, point spending
+        /// <summary>
+        /// Get the talent tree for the current player character
+        /// </summary>
+        /// <returns>IList<Game.Static.Classes.Talent></returns>
+        public IList<Game.Static.Classes.Talent> TalentTreeList()
+        {
+            Game.Static.TalentTree tmpTalentTree = new Game.Static.TalentTree();
+            IList<Game.Static.Classes.Talent> TalentsList = tmpTalentTree.GetTalents();
+
+
+            return TalentsList;
+        }
+        /// <summary>
+        /// Return the available, not yet spent talent points for the player character
+        /// </summary>
+        /// <returns></returns>
+        public int TalentPointsAvailable()
+        {
+            Game.Static.TalentTree tmpTalentTree = new Game.Static.TalentTree();
+
+            return tmpTalentTree.GetUnspentPointsCount();
+        }
+        /// <summary>
+        /// Learn new talents according to a given string.
+        /// Can be generated from http://rpgworld.altervista.org/classic_vanilla_talent/ for your class
+        /// </summary>
+        /// <param name="talentStrings"></param>
+        public void TalentsLearnByString(string[] targetTalentTreeString)
+        {
+            Game.Static.TalentTree tmpTalentTree = new Game.Static.TalentTree();
+
+            tmpTalentTree.LearnTalents(targetTalentTreeString);
+        }
+        #endregion
     }
 }

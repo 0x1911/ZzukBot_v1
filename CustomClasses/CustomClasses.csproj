@@ -41,10 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Magust.cs" />
+    <Compile Include="MiniPriest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ThadHack\ZzukBot.csproj">
+    <ProjectReference Include="..\ThadHack\BClient.csproj">
       <Project>{8a82b3fa-ae80-471c-ba85-d0f12bc67c8d}</Project>
       <Name>ZzukBot</Name>
     </ProjectReference>

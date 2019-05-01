@@ -9,7 +9,7 @@ using Ptr = ZzukBot.Constants.Offsets;
 
 namespace ZzukBot.Objects
 {
-    internal class WoWUnit : WoWObject
+    public class WoWUnit : WoWObject
     {
         /// <summary>
         ///     Constructor taking guid aswell Ptr to object

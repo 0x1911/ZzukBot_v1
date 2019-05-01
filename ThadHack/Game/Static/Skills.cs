@@ -12,17 +12,6 @@ namespace ZzukBot.Game.Static
     /// </summary>
     public class Skills
     {
-        /// <summary>
-        /// Represents a skill
-        /// </summary>
-        public class Skill
-        {
-            internal Skill() { }
-            internal Enums.Skills Id { get; set; }
-            public int CurrentLevel { get; set; }
-            public int MaxLevel { get; set; }
-        }
-
         private static readonly Lazy<Skills> _instance = new Lazy<Skills>(() => new Skills());
         public Skills()
         {
@@ -32,11 +21,11 @@ namespace ZzukBot.Game.Static
         /// Returns all skills the player has learned
         /// </summary>
         /// <returns></returns>
-        public List<Skill> GetAllPlayerSkills()
+        public List<Game.Static.Classes.Skill> GetAllPlayerSkills()
         {
-            if (!ObjectManager.IsInGame) return new List<Skill>();
+            if (!ObjectManager.IsInGame) return new List<Game.Static.Classes.Skill>();
             var start = ObjectManager.Player.SkillField;
-            var list = new List<Skill>();
+            var list = new List<Game.Static.Classes.Skill>();
             var maxSkills = 0x00B700B4.ReadAs<int>();
             for (var i = 0; i < maxSkills + 5; i++)
             {
@@ -48,7 +37,7 @@ namespace ZzukBot.Game.Static
                 }
                 var minMax = curPointer.Add(4).ReadAs<int>();
 
-                list.Add(new Skill
+                list.Add(new Game.Static.Classes.Skill
                 {
                     Id = id,
                     CurrentLevel = minMax & 0xFFFF,

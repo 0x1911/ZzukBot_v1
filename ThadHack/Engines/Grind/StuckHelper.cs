@@ -78,7 +78,6 @@ namespace ZzukBot.Engines.Grind
             float distance2d = Calc.Distance2D(lastPlayerPosition, ObjectManager.Player.Position);
             if (distance2d <= 0.3f)
             {
-                Helpers.Logger.Append("We are stuck maybe.. " + PossiblyStuckFrameCounter);
                 PossiblyStuckFrameCounter++;
             }
             else
@@ -89,19 +88,12 @@ namespace ZzukBot.Engines.Grind
 
             if (PossiblyStuckFrameCounter > 100)
             {
-                TryUnstuck();
+                EngineManager.RestartOutOfEngine();
             }            
 
             lastPlayerPosition = ObjectManager.Player.Position;
         }
-
-        internal void TryUnstuck()
-        {
-            Helpers.Logger.Append("Trying to unstuck ourself..");
-
-            EngineManager.RestartOutOfEngine();
-        }
-
+        
         internal void Reset()
         {
             StuckAtPointSince = 0;

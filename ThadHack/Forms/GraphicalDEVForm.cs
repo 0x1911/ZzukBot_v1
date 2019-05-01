@@ -1,5 +1,4 @@
 ﻿using System;
-using ZzukBot.FSM;
 using ZzukBot.Helpers;
 using ZzukBot.Mem;
 using ZzukBot.Constants;
@@ -70,6 +69,28 @@ namespace ZzukBot.Forms
             Helpers.Logger.Append("teeeeeeeest neu", Logger.LogType.Info);
             Helpers.Logger.Append("teeeeeeeest alt", Logger.LogType.Info);
 
+        }
+
+        private void btn_Talents_Click(object sender, EventArgs e)
+        {
+            if (!ObjectManager.IsInGame) { return; }
+
+            Game.Static.TalentTree tmpTalentTree = new Game.Static.TalentTree();
+
+            Helpers.Logger.Append("We got " + tmpTalentTree.GetUnspentPointsCount() + " unspent talent points.");
+
+            IList<Game.Static.Classes.Talent> TalentsList = tmpTalentTree.GetTalents();
+            foreach (Game.Static.Classes.Talent tmpTalent in TalentsList)
+            {
+                Helpers.Logger.Append(tmpTalent.Name + " [" + tmpTalent.CurrentRank + "/ " + tmpTalent.MaxRank + "] I: " + tmpTalent.Index);
+            }
+
+            /*
+            string[] targetTalentTree =
+            {
+            "05000000000000000000000000000005002520103511051"
+            };
+            tmpTalentTree.LearnTalents(targetTalentTree); */
         }
     }
 }

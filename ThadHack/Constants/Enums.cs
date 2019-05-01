@@ -3,7 +3,7 @@ using ZzukBot.Settings;
 
 namespace ZzukBot.Constants
 {
-    internal static class Enums
+    public static class Enums
     {
         internal enum WoWObjectTypes : byte
         {
@@ -136,7 +136,7 @@ namespace ZzukBot.Constants
             Hostile2 = 0
         }
 
-        internal enum ClassIds : byte
+        public enum ClassIds : byte
         {
             Warrior = 1,
             Paladin = 2,

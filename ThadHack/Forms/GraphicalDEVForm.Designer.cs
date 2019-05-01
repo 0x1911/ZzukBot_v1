@@ -32,8 +32,9 @@
             this.btn_travelToVendor = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_Inventory = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_Talents = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -41,7 +42,7 @@
             // 
             // btn_Skills
             // 
-            this.btn_Skills.Location = new System.Drawing.Point(6, 19);
+            this.btn_Skills.Location = new System.Drawing.Point(9, 19);
             this.btn_Skills.Name = "btn_Skills";
             this.btn_Skills.Size = new System.Drawing.Size(75, 23);
             this.btn_Skills.TabIndex = 0;
@@ -80,21 +81,22 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button1
+            // btn_Inventory
             // 
-            this.button1.Location = new System.Drawing.Point(6, 48);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Bag Content";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_Inventory.Location = new System.Drawing.Point(9, 48);
+            this.btn_Inventory.Name = "btn_Inventory";
+            this.btn_Inventory.Size = new System.Drawing.Size(75, 23);
+            this.btn_Inventory.TabIndex = 4;
+            this.btn_Inventory.Text = "Inventory";
+            this.btn_Inventory.UseVisualStyleBackColor = true;
+            this.btn_Inventory.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btn_Talents);
             this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.btn_Skills);
-            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.btn_Inventory);
             this.groupBox2.Location = new System.Drawing.Point(204, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(97, 222);
@@ -102,11 +104,21 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Print to Console";
             // 
+            // btn_Talents
+            // 
+            this.btn_Talents.Location = new System.Drawing.Point(9, 77);
+            this.btn_Talents.Name = "btn_Talents";
+            this.btn_Talents.Size = new System.Drawing.Size(75, 23);
+            this.btn_Talents.TabIndex = 8;
+            this.btn_Talents.Text = "Talents";
+            this.btn_Talents.UseVisualStyleBackColor = true;
+            this.btn_Talents.Click += new System.EventHandler(this.btn_Talents_Click);
+            // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(6, 173);
+            this.button3.Location = new System.Drawing.Point(9, 173);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(85, 23);
+            this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 7;
             this.button3.Text = "test action";
             this.button3.UseVisualStyleBackColor = true;
@@ -132,9 +144,10 @@
         private System.Windows.Forms.Button btn_Skills;
         private System.Windows.Forms.Button btn_travelToVendor;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_Inventory;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_Talents;
     }
 }

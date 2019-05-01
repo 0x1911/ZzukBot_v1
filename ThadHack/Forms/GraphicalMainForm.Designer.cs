@@ -291,7 +291,7 @@ namespace ZzukBot.Forms
             // pBar_playerExperience
             // 
             this.pBar_playerExperience.BackColor = System.Drawing.SystemColors.Control;
-            this.pBar_playerExperience.ForeColor = System.Drawing.Color.Yellow;
+            this.pBar_playerExperience.ForeColor = System.Drawing.Color.Khaki;
             this.pBar_playerExperience.Location = new System.Drawing.Point(11, 106);
             this.pBar_playerExperience.Name = "pBar_playerExperience";
             this.pBar_playerExperience.Size = new System.Drawing.Size(146, 14);
