@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using ZzukBot.AntiWarden;
 using ZzukBot.Constants;
 using ZzukBot.Helpers;
 using ZzukBot.Mem;
 using ZzukBot.Objects;
 
-namespace ZzukBot.Ingame
+namespace ZzukBot.Game.Static
 {
     internal partial class Spells
     {

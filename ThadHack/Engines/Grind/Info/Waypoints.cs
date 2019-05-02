@@ -1,6 +1,6 @@
 ﻿using System;
 using ZzukBot.Helpers;
-using ZzukBot.Ingame;
+using ZzukBot.Game.Static;
 using ZzukBot.Mem;
 using ZzukBot.Settings;
 

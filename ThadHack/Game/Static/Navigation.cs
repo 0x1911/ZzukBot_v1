@@ -6,7 +6,7 @@ using ZzukBot.Constants;
 using ZzukBot.Helpers;
 using ZzukBot.Mem;
 
-namespace ZzukBot.Ingame
+namespace ZzukBot.Game.Static
 {
     internal static class Navigation
     {

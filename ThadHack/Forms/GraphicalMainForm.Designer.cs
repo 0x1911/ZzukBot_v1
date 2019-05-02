@@ -86,6 +86,7 @@ namespace ZzukBot.Forms
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.dEVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lbl_Runtime = new System.Windows.Forms.ToolStripStatusLabel();
             this.tcMain.SuspendLayout();
             this.tpGrind.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -103,6 +104,7 @@ namespace ZzukBot.Forms
             ((System.ComponentModel.ISupportInitialize)(this.dgNotifications)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tcMain
@@ -291,7 +293,7 @@ namespace ZzukBot.Forms
             // pBar_playerExperience
             // 
             this.pBar_playerExperience.BackColor = System.Drawing.SystemColors.Control;
-            this.pBar_playerExperience.ForeColor = System.Drawing.Color.Khaki;
+            this.pBar_playerExperience.ForeColor = System.Drawing.Color.Gold;
             this.pBar_playerExperience.Location = new System.Drawing.Point(11, 106);
             this.pBar_playerExperience.Name = "pBar_playerExperience";
             this.pBar_playerExperience.Size = new System.Drawing.Size(146, 14);
@@ -736,12 +738,19 @@ namespace ZzukBot.Forms
             // 
             // statusStrip1
             // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lbl_Runtime});
             this.statusStrip1.Location = new System.Drawing.Point(0, 537);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
             this.statusStrip1.Size = new System.Drawing.Size(390, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lbl_Runtime
+            // 
+            this.lbl_Runtime.Name = "lbl_Runtime";
+            this.lbl_Runtime.Size = new System.Drawing.Size(0, 17);
             // 
             // GraphicalMainForm
             // 
@@ -780,6 +789,8 @@ namespace ZzukBot.Forms
             this.tableLayoutPanel1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -843,6 +854,7 @@ namespace ZzukBot.Forms
         internal System.Windows.Forms.RichTextBox rtb_ExceptionLog;
         internal System.Windows.Forms.ToolStripMenuItem runToolStripMenuItem;
         internal System.Windows.Forms.ToolStripMenuItem stopToolStripMenuItem;
+        internal System.Windows.Forms.ToolStripStatusLabel lbl_Runtime;
     }
 }
 

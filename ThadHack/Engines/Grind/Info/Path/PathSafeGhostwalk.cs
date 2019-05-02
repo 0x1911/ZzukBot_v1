@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ZzukBot.Constants;
 using ZzukBot.Helpers;
-using ZzukBot.Ingame;
+using ZzukBot.Game.Static;
 using ZzukBot.Mem;
 
 namespace ZzukBot.Engines.Grind.Info.Path

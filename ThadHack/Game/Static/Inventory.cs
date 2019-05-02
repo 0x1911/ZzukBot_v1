@@ -6,7 +6,7 @@ using ZzukBot.Mem;
 using ZzukBot.Objects;
 using ZzukBot.Settings;
 
-namespace ZzukBot.Ingame
+namespace ZzukBot.Game.Static
 {
     internal class Inventory
     {

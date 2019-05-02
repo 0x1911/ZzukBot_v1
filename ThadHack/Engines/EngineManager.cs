@@ -23,6 +23,8 @@ namespace ZzukBot.Engines
 
         private static bool IsEngineRunning => _Engine != null;
 
+        public static long StartTick = 0;
+        
         internal static Engines CurrentEngineType
         {
             get
@@ -114,6 +116,8 @@ namespace ZzukBot.Engines
                     Options.LastProfileFileName = profileFileName;
                 }));
             }
+
+            StartTick = DateTime.Now.Ticks;
         }
 
         private static void Callback()

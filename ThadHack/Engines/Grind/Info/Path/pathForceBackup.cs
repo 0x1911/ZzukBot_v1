@@ -2,7 +2,7 @@
 using System.Linq;
 using ZzukBot.Constants;
 using ZzukBot.Helpers;
-using ZzukBot.Ingame;
+using ZzukBot.Game.Static;
 using ZzukBot.Mem;
 using ZzukBot.Objects;
 

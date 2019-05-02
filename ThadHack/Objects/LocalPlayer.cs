@@ -4,7 +4,7 @@ using System.Linq;
 using ZzukBot.Constants;
 using ZzukBot.Engines.Grind;
 using ZzukBot.Helpers;
-using ZzukBot.Ingame;
+using ZzukBot.Game.Static;
 using ZzukBot.Mem;
 
 namespace ZzukBot.Objects

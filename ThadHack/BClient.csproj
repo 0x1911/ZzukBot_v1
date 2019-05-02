@@ -265,11 +265,11 @@
     <Compile Include="Mem\DirectX.cs" />
     <Compile Include="Hooks\ErrorEnumHook.cs" />
     <Compile Include="AntiWarden\HookWardenMemScan.cs" />
-    <Compile Include="Ingame\Inventory.cs" />
-    <Compile Include="Ingame\Spells.cs" />
+    <Compile Include="Game\Static\Inventory.cs" />
+    <Compile Include="Game\Static\Spells.cs" />
     <Compile Include="Mem\Hacks.cs" />
     <Compile Include="Mem\Memory.cs" />
-    <Compile Include="Ingame\Navigation.cs" />
+    <Compile Include="Game\Static\Navigation.cs" />
     <Compile Include="Mem\ObjectManager.cs" />
     <Compile Include="Mem\WindowProcHook.cs" />
     <Compile Include="ObfuscationSettings.cs" />

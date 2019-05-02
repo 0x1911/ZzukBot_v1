@@ -77,6 +77,10 @@ namespace ZzukBot.Engines.Grind
             {
                 Access.Info.Loot.BlacklistCurrentLoot = true;
             }
+            else if (e.Message.Contains("that while moving"))
+            {
+                ObjectManager.Player.StopMovement(Constants.Enums.ControlBits.All);
+            }
         }
 
         /// <summary>
@@ -275,6 +279,8 @@ namespace ZzukBot.Engines.Grind
                             GuiCore.MainForm.lbl_playerClass.Text = "Class: " + player.Class.ToString();
                             GuiCore.MainForm.lbl_playerRace.Text = "Race: " + player.Race.ToString();
                             GuiCore.MainForm.lbl_playerAccountName.Text = "Account: " + Options.AccountName;
+
+                            GuiCore.MainForm.lbl_Runtime.Text = API.BMain.RuntimeTicks.ToString(); 
                         }
                         catch(Exception crap)
                         {
@@ -370,6 +376,7 @@ namespace ZzukBot.Engines.Grind
             tmpStates.Sort();
 
             Engine = new _Engine(tmpStates);
+
             return true;
         }
 
