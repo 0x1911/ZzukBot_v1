@@ -280,7 +280,7 @@ namespace ZzukBot.Engines.Grind
                             GuiCore.MainForm.lbl_playerRace.Text = "Race: " + player.Race.ToString();
                             GuiCore.MainForm.lbl_playerAccountName.Text = "Account: " + Options.AccountName;
 
-                            GuiCore.MainForm.lbl_Runtime.Text = API.BMain.RuntimeTicks.ToString(); 
+                            GuiCore.MainForm.lbl_Runtime.Text = "runtime: " + API.BMain.RunTimeSpan();
                         }
                         catch(Exception crap)
                         {
