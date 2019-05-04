@@ -11,7 +11,7 @@ namespace ZzukBot.Helpers
         internal static void Append(string parMessage, LogType logType = LogType.Console, string toFile = "")
         {
             //dont want to spam the same message over and over
-            if (parMessage == previousMsg && GuiCore.MainForm == null) { return; }
+            if (parMessage == previousMsg || GuiCore.MainForm == null) { return; }
 
             string dateTimeString = "[" + DateTime.Now.ToString("HH:mm:ss") + "] ";
             var msg = dateTimeString + parMessage;

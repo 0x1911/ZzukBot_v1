@@ -12,7 +12,6 @@ namespace ZzukBot.Engines.Grind.States
         private readonly Random ran = new Random();
         private int randomOpenLootDelay;
         private int randomTakeLootDelay;
-
         private float lastResourceDistance;
 
         internal override int Priority => 35;
@@ -25,30 +24,29 @@ namespace ZzukBot.Engines.Grind.States
         {
             WoWGameObject nextResource = Grinder.Access.Info.Gather.GetNearestResource();
 
-            if (nextResource == null || Grinder.Access.Info.Gather.IsOnGatherBlacklist(nextResource.Guid)) { Wait.Remove("Gathering"); return; }
+            if(!ObjectManager.Player.DiscoveredResources.ContainsKey(nextResource)) { ObjectManager.Player.DiscoveredResources.Add(nextResource, TimeSpan.FromTicks(DateTime.Now.Ticks));  }
 
+            if (nextResource == null || Grinder.Access.Info.Gather.IsOnGatherBlacklist(nextResource.Guid)) { if (Wait.For("GatherTimeout", 5000)) Wait.Remove("Gathering"); return; }
+            
             float nextResourceDistance = Calc.Distance3D(nextResource.Position, ObjectManager.Player.Position);
-            Helpers.Logger.Append("Want to gather " + nextResource.Name + " in " + (int)nextResourceDistance);
-
+          //  Helpers.Logger.Append("Want to gather " + nextResource.Name + " in " + (int)nextResourceDistance);
             if (nextResourceDistance > 4)
             {
-                lastResourceDistance = nextResourceDistance;
                 //lets sprinkle in a random jump once in while
                 Shared.RandomJump();
 
                 var tu = Grinder.Access.Info.PathToPosition.ToPos(nextResource.Position);
                 ObjectManager.Player.CtmTo(tu);
 
-               /* float prevDistance = nextResourceDistance;
-                if (Wait.For("TimeTillBlacklistCheck", 20000))
+                if (ObjectManager.Player.DiscoveredResources.ContainsKey(nextResource))
                 {
-                    float newDistance = Calc.Distance3D(nextResource.Position, ObjectManager.Player.Position);
-                    if(prevDistance - newDistance < 0.2f)
+                    TimeSpan tmpResource = ObjectManager.Player.DiscoveredResources[nextResource];
+                    if(tmpResource.TotalSeconds + 20 < TimeSpan.FromTicks(DateTime.Now.Ticks).TotalSeconds)
                     {
-                        Helpers.Logger.Append("Blacklisting resource " + nextResource.Name + " in " + (int)newDistance);
+                        Helpers.Logger.Append("Blacklisting resource " + nextResource.Name + " guid: " + nextResource.Guid);
                         Grinder.Access.Info.Gather.AddToGatherBlacklist(nextResource.Guid);
                     }
-                }*/
+                }
             }
             else
             {

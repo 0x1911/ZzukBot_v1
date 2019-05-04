@@ -26,6 +26,7 @@ namespace ZzukBot.Objects
 
     public class LocalPlayer : WoWUnit
     {
+        internal Dictionary<WoWGameObject, TimeSpan> DiscoveredResources = new Dictionary<WoWGameObject, TimeSpan>();
         /// <summary>
         ///     facing with coordinates instead of a passed unit
         /// </summary>

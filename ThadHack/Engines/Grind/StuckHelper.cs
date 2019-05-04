@@ -86,9 +86,10 @@ namespace ZzukBot.Engines.Grind
             }
 
 
-            if (PossiblyStuckFrameCounter > 500)
+            if (PossiblyStuckFrameCounter > 700)
             {
                 EngineManager.RestartOutOfEngine();
+                PossiblyStuckFrameCounter = 0;
             }            
 
             lastPlayerPosition = ObjectManager.Player.Position;

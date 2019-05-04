@@ -13,12 +13,7 @@ namespace ZzukBot.Engines.Grind.States
 
         internal override void Run()
         {
-            Shared.RandomJump();
-
-            var tu = Grinder.Access.Info.PathToPosition.ToPos(Grinder.Access.Info.Waypoints.CurrentWaypoint);
-            ObjectManager.Player.CtmTo(tu);
-
-            /*   //lets sprinkle in a random jump once in while, maybe?
+              //lets sprinkle in a random jump once in while, maybe?
                Shared.RandomJump();
 
                if (Grinder.Access.Info.Vendor.RegenerateSubPath)
@@ -34,7 +29,7 @@ namespace ZzukBot.Engines.Grind.States
                {
                    Grinder.Access.Info.Vendor.GoBackToGrindAfterVendor = false;
                    Grinder.Access.Info.Waypoints.ResetGrindPath();
-               } */
+               } 
         }
     }
 }

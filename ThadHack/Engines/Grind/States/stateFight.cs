@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using ZzukBot.Constants;
 using ZzukBot.Engines.CustomClass;
@@ -52,6 +53,9 @@ namespace ZzukBot.Engines.Grind.States
             if (target != null)
             {
                 var player = ObjectManager.Player;
+                //reset resources so they dont get blacklisted because of a fight
+                player.DiscoveredResources = new Dictionary<WoWGameObject, TimeSpan>();
+
                 var IsCasting = !(player.Casting == 0 && player.Channeling == 0);
                 var targetIsMoving = (target.MovementState & 0x1) == 0x1;
                 var playerIsMoving = (player.MovementState & 0x1) == 0x1;
