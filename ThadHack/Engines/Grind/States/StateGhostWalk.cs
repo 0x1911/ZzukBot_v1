@@ -25,7 +25,31 @@ namespace ZzukBot.Engines.Grind.States
             {
                 return;
             }
-            
+
+            if (Grinder.Access.Info.SpiritWalk.GeneratePath)
+            {
+                var waypoints = new List<Waypoint>();
+                if (Grinder.Access.Profile.GhostHotspots != null
+                    && Grinder.Access.Profile.GhostHotspots.Length != 0)
+                {
+                    //if (Calc.Distance2D(Grinder.Access.Profile.GhostHotspots[0].Position,
+                    //    ObjectManager.Player.Position) <= 10)
+                    {
+                        waypoints.AddRange(Grinder.Access.Profile.GhostHotspots);
+                    }
+                }
+                var tmp = new Waypoint
+                {
+                    Position = ObjectManager.Player.CorpsePosition,
+                    Type = Enums.PositionType.Hotspot
+                };
+                waypoints.Add(tmp);
+
+                Grinder.Access.Info.PathManager.Ghostwalk = new BasePath(waypoints);
+                Grinder.Access.Info.SpiritWalk.GeneratePath = false;
+                Grinder.Access.Info.PathSafeGhostwalk.Reset();
+            }
+
             if (Grinder.Access.Info.SpiritWalk.DistanceToCorpse <= 40)
             {               
                 Grinder.Access.Info.SpiritWalk.ArrivedAtCorpse = true;

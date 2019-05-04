@@ -47,7 +47,7 @@ namespace ZzukBot.Game.Static
                         {
                             if (tmp.Quality < Options.KeepItemsFromQuality)
                             {
-                                if (!VendorExclude.Contains(tmp.Guid))
+                                if (!VendorExclude.Contains(tmp.Guid) || Game.Static.Consumeables.DrinksDictionary.ContainsKey(tmp.Id) || Game.Static.Consumeables.FoodsDictionary.ContainsKey(tmp.Id))
                                 {
                                     VendorExclude.Add(tmp.Guid);
                                     return Tuple.Create(0, i + 1);

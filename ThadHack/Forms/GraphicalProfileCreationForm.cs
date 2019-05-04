@@ -12,6 +12,7 @@ namespace ZzukBot.Forms
         private bool _shouldRecord;
         private bool _recordingGrind;
         private bool _recordingGhost;
+        private bool _recordingVendor;
 
         public GraphicalProfileCreationForm()
         {
@@ -160,7 +161,36 @@ namespace ZzukBot.Forms
         }
 
         #endregion
-                
+
+        #region Vendor Waypoints
+        private void btn_VendorAutoRecord_Click(object sender, EventArgs e)
+        {
+            if (!_recordingVendor)
+            {
+                Helpers.Logger.Append("Started auto recording vendor waypoints");
+                _recordingVendor = true;
+                RestartRecorder();
+            }
+            else
+            {
+                Helpers.Logger.Append("Stopped auto recording vendor waypoints");
+                _recordingVendor = false;
+            }
+        }
+
+        private void btn_AddVendorWaypoint_Click(object sender, EventArgs e)
+        {
+            if (EngineManager.CurrentEngineType != Engines.Engines.ProfileCreation) return;
+            EngineManager.EngineAs<ProfileCreator>().AddVendorWaypoint();
+        }
+
+        private void btn_ClearVendorWaypoints_Click(object sender, EventArgs e)
+        {
+            if (EngineManager.CurrentEngineType != Engines.Engines.ProfileCreation) return;
+            EngineManager.EngineAs<ProfileCreator>().ClearVendorWaypoints();
+        }
+        #endregion
+
         private void RestartRecorder()
         {
             _shouldRecord = true;
@@ -189,10 +219,13 @@ namespace ZzukBot.Forms
         private void SetButtonsCaption()
         {
             if(_recordingGrind) { grp_Hotspots.Text = "Grind Hotspots - Auto recording.."; }
-            else { grp_Hotspots.Text = "Grind Hotspots"; }
+            else if (grp_Hotspots.Text != "Grind Hotspots") { grp_Hotspots.Text = "Grind Hotspots"; }
 
             if (_recordingGhost) { grp_Ghost.Text = "Ghost Waypoints - Auto recording.."; }
-            else { grp_Ghost.Text = "Ghost Waypoints"; }
+            else if (grp_Ghost.Text != "Ghost Waypoints") { grp_Ghost.Text = "Ghost Waypoints"; }
+
+            if (_recordingVendor) { grp_Vendor.Text = "Vendor Waypoints - Auto recording.."; }
+            else if (grp_Vendor.Text != "Vendor Waypoints") { grp_Vendor.Text = "Vendor Waypoints"; }
         }
 
         #region recorder bgworker DoWork
@@ -223,6 +256,12 @@ namespace ZzukBot.Forms
                     {
                         EngineManager.EngineAs<ProfileCreator>().AddGhostWaypoint();
                         Helpers.Logger.Append("Added ghost waypoint " + currentLocation.X + " :: " + currentLocation.Y + " :: " + currentLocation.Z);
+                    }
+
+                    if (_recordingVendor)
+                    {
+                        EngineManager.EngineAs<ProfileCreator>().AddVendorWaypoint();
+                        Helpers.Logger.Append("Added vendor waypoint " + currentLocation.X + " :: " + currentLocation.Y + " :: " + currentLocation.Z);
                     }
                 }
 

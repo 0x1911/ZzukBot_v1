@@ -30,7 +30,7 @@ namespace ZzukBot.Engines.Grind.States
             float nextResourceDistance = Calc.Distance3D(nextResource.Position, ObjectManager.Player.Position);
             Helpers.Logger.Append("Want to gather " + nextResource.Name + " in " + (int)nextResourceDistance);
 
-            if (nextResourceDistance > 5)
+            if (nextResourceDistance > 4)
             {
                 lastResourceDistance = nextResourceDistance;
                 //lets sprinkle in a random jump once in while

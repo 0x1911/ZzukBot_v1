@@ -69,11 +69,18 @@
             this.lGhostHotspotCount = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.bgWorker_Recording = new System.ComponentModel.BackgroundWorker();
+            this.grp_Vendor = new System.Windows.Forms.GroupBox();
+            this.btn_VendorAutoRecord = new System.Windows.Forms.Button();
+            this.btn_ClearVendorWaypoints = new System.Windows.Forms.Button();
+            this.tbVendorWaypoints = new System.Windows.Forms.TextBox();
+            this.btn_AddVendorWaypoint = new System.Windows.Forms.Button();
+            this.lbl_VendorWaypointsCount = new System.Windows.Forms.Label();
             this.gbVendor.SuspendLayout();
             this.gbFaction.SuspendLayout();
             this.grp_Hotspots.SuspendLayout();
             this.grp_Ghost.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.grp_Vendor.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbIgnoreZ
@@ -502,12 +509,75 @@
             // 
             this.bgWorker_Recording.WorkerSupportsCancellation = true;
             // 
+            // grp_Vendor
+            // 
+            this.grp_Vendor.Controls.Add(this.btn_VendorAutoRecord);
+            this.grp_Vendor.Controls.Add(this.btn_ClearVendorWaypoints);
+            this.grp_Vendor.Controls.Add(this.tbVendorWaypoints);
+            this.grp_Vendor.Controls.Add(this.btn_AddVendorWaypoint);
+            this.grp_Vendor.Controls.Add(this.lbl_VendorWaypointsCount);
+            this.grp_Vendor.Location = new System.Drawing.Point(283, 330);
+            this.grp_Vendor.Name = "grp_Vendor";
+            this.grp_Vendor.Size = new System.Drawing.Size(256, 124);
+            this.grp_Vendor.TabIndex = 33;
+            this.grp_Vendor.TabStop = false;
+            this.grp_Vendor.Text = "Vendor Waypoints";
+            // 
+            // btn_VendorAutoRecord
+            // 
+            this.btn_VendorAutoRecord.Location = new System.Drawing.Point(6, 97);
+            this.btn_VendorAutoRecord.Name = "btn_VendorAutoRecord";
+            this.btn_VendorAutoRecord.Size = new System.Drawing.Size(78, 20);
+            this.btn_VendorAutoRecord.TabIndex = 13;
+            this.btn_VendorAutoRecord.Text = "Auto Record";
+            this.btn_VendorAutoRecord.UseVisualStyleBackColor = true;
+            this.btn_VendorAutoRecord.Click += new System.EventHandler(this.btn_VendorAutoRecord_Click);
+            // 
+            // btn_ClearVendorWaypoints
+            // 
+            this.btn_ClearVendorWaypoints.Location = new System.Drawing.Point(142, 97);
+            this.btn_ClearVendorWaypoints.Name = "btn_ClearVendorWaypoints";
+            this.btn_ClearVendorWaypoints.Size = new System.Drawing.Size(44, 20);
+            this.btn_ClearVendorWaypoints.TabIndex = 8;
+            this.btn_ClearVendorWaypoints.Text = "Clear";
+            this.btn_ClearVendorWaypoints.UseVisualStyleBackColor = true;
+            this.btn_ClearVendorWaypoints.Click += new System.EventHandler(this.btn_ClearVendorWaypoints_Click);
+            // 
+            // tbVendorWaypoints
+            // 
+            this.tbVendorWaypoints.Enabled = false;
+            this.tbVendorWaypoints.Location = new System.Drawing.Point(6, 19);
+            this.tbVendorWaypoints.Multiline = true;
+            this.tbVendorWaypoints.Name = "tbVendorWaypoints";
+            this.tbVendorWaypoints.Size = new System.Drawing.Size(243, 72);
+            this.tbVendorWaypoints.TabIndex = 9;
+            // 
+            // btn_AddVendorWaypoint
+            // 
+            this.btn_AddVendorWaypoint.Location = new System.Drawing.Point(92, 97);
+            this.btn_AddVendorWaypoint.Name = "btn_AddVendorWaypoint";
+            this.btn_AddVendorWaypoint.Size = new System.Drawing.Size(44, 20);
+            this.btn_AddVendorWaypoint.TabIndex = 7;
+            this.btn_AddVendorWaypoint.Text = "Add";
+            this.btn_AddVendorWaypoint.UseVisualStyleBackColor = true;
+            this.btn_AddVendorWaypoint.Click += new System.EventHandler(this.btn_AddVendorWaypoint_Click);
+            // 
+            // lbl_VendorWaypointsCount
+            // 
+            this.lbl_VendorWaypointsCount.AutoSize = true;
+            this.lbl_VendorWaypointsCount.Location = new System.Drawing.Point(190, 101);
+            this.lbl_VendorWaypointsCount.Name = "lbl_VendorWaypointsCount";
+            this.lbl_VendorWaypointsCount.Size = new System.Drawing.Size(38, 13);
+            this.lbl_VendorWaypointsCount.TabIndex = 10;
+            this.lbl_VendorWaypointsCount.Text = "Count:";
+            // 
             // GraphicalProfileCreationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(552, 461);
+            this.Controls.Add(this.grp_Vendor);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.grp_Ghost);
             this.Controls.Add(this.grp_Hotspots);
@@ -530,6 +600,8 @@
             this.grp_Ghost.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.grp_Vendor.ResumeLayout(false);
+            this.grp_Vendor.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -578,5 +650,11 @@
         internal System.Windows.Forms.Button btn_WaypointsAutoRecord;
         internal System.Windows.Forms.Button btn_GhostAutoRecord;
         private System.ComponentModel.BackgroundWorker bgWorker_Recording;
+        private System.Windows.Forms.GroupBox grp_Vendor;
+        internal System.Windows.Forms.Button btn_VendorAutoRecord;
+        internal System.Windows.Forms.Button btn_ClearVendorWaypoints;
+        internal System.Windows.Forms.TextBox tbVendorWaypoints;
+        internal System.Windows.Forms.Button btn_AddVendorWaypoint;
+        internal System.Windows.Forms.Label lbl_VendorWaypointsCount;
     }
 }

@@ -84,6 +84,7 @@ namespace ZzukBot.Engines.ProfileCreation
         private void StopIt()
         {
             usedProfileForm.tbHotspots.Text = "";
+            usedProfileForm.tbVendorWaypoints.Text = "";
             usedProfileForm.tbGhostHotspots.Text = "";
             usedProfileForm.tbFactions.Text = "";
             usedProfileForm.tbRepair.Text = "";
@@ -94,6 +95,7 @@ namespace ZzukBot.Engines.ProfileCreation
             usedProfileForm.lHotspotCount.Text = "Count: ";
             usedProfileForm.lFactionCount.Text = "Count: ";
             usedProfileForm.lGhostHotspotCount.Text = "Count: ";
+            usedProfileForm.lbl_VendorWaypointsCount.Text = "Count: ";
             usedProfileForm.lRecording.Visible = false;
             usedProfileForm.Text = "Recording stopped!";
             DirectX.StopRunning();
@@ -165,9 +167,24 @@ namespace ZzukBot.Engines.ProfileCreation
             }));
         }
 
+        internal void ClearVendorWaypoints()
+        {
+            GuiCore.MainForm.Invoke(new MethodInvoker(delegate
+            {
+                listGhostHotspots.Clear();
+                usedProfileForm.tbVendorWaypoints.Text = "";
+                usedProfileForm.lbl_VendorWaypointsCount.Text = "Count: ";
+            }));
+        }
+
         internal void AddGhostWaypoint()
         {
             boolAddGhostWaypoint = true;
+        }
+
+        internal void AddVendorWaypoint()
+        {
+            boolAddVendorWaypoint = true;
         }
 
         internal void AddWaypoint()
@@ -239,6 +256,13 @@ namespace ZzukBot.Engines.ProfileCreation
                         usedProfileForm.tbGhostHotspots.Text += tmpVec + Environment.NewLine;
                         usedProfileForm.lGhostHotspotCount.Text = "Count: " + listGhostHotspots.Count;
                         boolAddGhostWaypoint = false;
+                        break;
+
+                    case HotspotType.VendorHotspot:
+                        listVendorHotspots.Add(Tuple.Create(tmpVec, pos, posType));
+                        usedProfileForm.tbVendor.Text += tmpVec + Environment.NewLine;
+                        usedProfileForm.lbl_VendorWaypointsCount.Text = "Count: " + listGhostHotspots.Count;
+                        boolAddVendorWaypoint = false;
                         break;
                 }
             }));
@@ -449,6 +473,22 @@ namespace ZzukBot.Engines.ProfileCreation
                     foreach (var vec in listGhostHotspots)
                     {
                         writer.WriteStartElement("GhostHotspot");
+                        writer.WriteComment(" Pos: " + vec.Item2 + " ");
+                        writer.WriteElementString("X", vec.Item1.X.ToString());
+                        writer.WriteElementString("Y", vec.Item1.Y.ToString());
+                        writer.WriteElementString("Z", vec.Item1.Z.ToString());
+                        writer.WriteElementString("Type", vec.Item3.ToString());
+                        writer.WriteEndElement();
+                    }
+                    writer.WriteEndElement();
+                }
+
+                if (listVendorHotspots.Count > 0)
+                {
+                    writer.WriteStartElement("VendorHotspots");
+                    foreach (var vec in listVendorHotspots)
+                    {
+                        writer.WriteStartElement("VendorHotspot");
                         writer.WriteComment(" Pos: " + vec.Item2 + " ");
                         writer.WriteElementString("X", vec.Item1.X.ToString());
                         writer.WriteElementString("Y", vec.Item1.Y.ToString());
