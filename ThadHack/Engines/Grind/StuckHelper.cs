@@ -86,7 +86,7 @@ namespace ZzukBot.Engines.Grind
             }
 
 
-            if (PossiblyStuckFrameCounter > 300)
+            if (PossiblyStuckFrameCounter > 100)
             {
                 EngineManager.RestartOutOfEngine();
             }            
