@@ -7,5 +7,8 @@ namespace ZzukBot.Constants
         internal static string[] WardenLoadDetour;
 
         internal static string[] WardenMemCpyDetour;
+
+        internal static string[] EventSignal0;
+        internal static string[] EventSignal;
     }
 }

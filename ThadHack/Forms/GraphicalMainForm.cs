@@ -63,10 +63,39 @@ namespace ZzukBot.Forms
             "POP EDI[|]" +
             "POP ESI[|]" +
             "jmp [|addr|][|]";
-
+                var eventSignal0 =
+            "PUSH ESI[|]" +
+            "CALL 0x007040D0[|]" +
+            "pushfd[|]" +
+            "pushad[|]" +
+            "mov EDI, [EDI][|]" +
+            "push EDI[|]" +
+            "call [|addr|][|]" +
+            "popad[|]" +
+            "popfd[|]" +
+            "jmp [|addr|][|]";
+                var eventSignal =
+            "PUSH EBX[|]" +
+            "PUSH ESI[|]" +
+            "CALL 0x007040D0[|]" +
+            "pushfd[|]" +
+            "pushad[|]" +
+            "mov EAX, EBP[|]" +
+            "ADD EAX, 0x10[|]" +
+            "push eax[|]" +
+            "mov EAX, [EBP + 0xC][|]" +
+            "push EAX[|]" +
+            "mov EDI, [EDI][|]" +
+            "push EDI[|]" +
+            "call [|addr|][|]" +
+            "popad[|]" +
+            "popfd[|]" +
+            "jmp [|addr|][|]";
 
                 Constants.Warden.WardenLoadDetour = loadDetour.Split(new string[] { "[|]" }, StringSplitOptions.RemoveEmptyEntries);
                 Constants.Warden.WardenMemCpyDetour = memcpyDetour.Split(new string[] { "[|]" }, StringSplitOptions.RemoveEmptyEntries);
+                Constants.Warden.EventSignal0 = eventSignal0.Split(new string[] { "[|]" }, StringSplitOptions.RemoveEmptyEntries);
+                Constants.Warden.EventSignal = eventSignal.Split(new string[] { "[|]" }, StringSplitOptions.RemoveEmptyEntries);
             }
             catch
             {

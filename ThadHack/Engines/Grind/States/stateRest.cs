@@ -55,7 +55,7 @@ namespace ZzukBot.Engines.Grind.States
                             {
                                     tmpPlayer.Inventory.UseItemByObject(tmpItem);
 
-                                Helpers.Logger.Append("Eating " + tmpItem.Name);
+                               // Helpers.Logger.Append("Eating " + tmpItem.Name);
                                 break;
                             }
                         }
@@ -77,7 +77,7 @@ namespace ZzukBot.Engines.Grind.States
                             {
                                     tmpPlayer.Inventory.UseItemByObject(tmpItem);
 
-                                Helpers.Logger.Append("Drinking " + tmpItem.Name);
+                               // Helpers.Logger.Append("Drinking " + tmpItem.Name);
                                 break;
                             }
                         }

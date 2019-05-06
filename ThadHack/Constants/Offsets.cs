@@ -991,9 +991,11 @@ namespace ZzukBot.Constants
 
         internal static class Hooks
         {
-            internal static IntPtr ChatMessage = (IntPtr) 0x0049A7C9;
-            internal static IntPtr ErrorEnum = (IntPtr) 0x00496807;
-            internal static IntPtr UpdateSpells = (IntPtr) 0x004B302A;
+            internal static IntPtr ChatMessage = (IntPtr)0x0049A7C9;
+            internal static IntPtr ErrorEnum = (IntPtr)0x00496807;
+            internal static IntPtr UpdateSpells = (IntPtr)0x004B302A;
+            internal static IntPtr SignalEvent_0 = (IntPtr)0x00703E72;
+            internal static IntPtr SignalEvent = (IntPtr)0x00703F76;
         }
 
         internal static class Functions
