@@ -33,8 +33,9 @@ namespace ZzukBot.Engines.Grind.Info
                     .Where(i =>
                         i.IsMob && i.Health != 0 && i.Reaction != Enums.UnitReaction.Friendly &&
                         (i.TargetGuid == ObjectManager.Player.Guid || (ObjectManager.Player.HasPet && i.TargetGuid == ObjectManager.Player.Pet.Guid) ||
-                            (i.IsInCombat && i.TappedByMe && (((i.Debuffs.Count > 0 || i.IsCrowdControlled) && UnitsDottedByPlayer.ContainsKey(i.Guid) && !ObjectManager.Player.IsEating && !ObjectManager.Player.IsDrinking) || ObjectManager.Player.TargetGuid == i.Guid))) && !i.IsPlayerPet
-                    || i.IsMob && i.Health != 0 && i.Reaction != Enums.UnitReaction.Friendly && i.IsInCombat && i.TappedByMe).ToList();
+                            (i.IsInCombat && i.TappedByMe && (((i.Debuffs.Count > 0 || i.IsCrowdControlled || i.IsFleeing) && UnitsDottedByPlayer.ContainsKey(i.Guid) && !ObjectManager.Player.IsEating && !ObjectManager.Player.IsDrinking) || ObjectManager.Player.TargetGuid == i.Guid))) && !i.IsPlayerPet
+                    ).ToList();
+
                 return mobs;
             }
         }

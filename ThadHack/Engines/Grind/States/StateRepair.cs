@@ -75,7 +75,7 @@ namespace ZzukBot.Engines.Grind.States
             }
             catch(Exception crap)
             {
-                Helpers.Logger.Append("StateRepair Exception message: " + crap.Message);
+                Helpers.Logger.Append(Name + " " + crap.Message);
             }
         }
     }

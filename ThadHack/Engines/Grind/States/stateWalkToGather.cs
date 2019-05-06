@@ -41,7 +41,7 @@ namespace ZzukBot.Engines.Grind.States
                 if (ObjectManager.Player.DiscoveredResources.ContainsKey(nextResource))
                 {
                     TimeSpan tmpResource = ObjectManager.Player.DiscoveredResources[nextResource];
-                    if(tmpResource.TotalSeconds + 20 < TimeSpan.FromTicks(DateTime.Now.Ticks).TotalSeconds)
+                    if(tmpResource.TotalSeconds + 40 < TimeSpan.FromTicks(DateTime.Now.Ticks).TotalSeconds)
                     {
                         Helpers.Logger.Append("Blacklisting resource " + nextResource.Name + " guid: " + nextResource.Guid);
                         Grinder.Access.Info.Gather.AddToGatherBlacklist(nextResource.Guid);

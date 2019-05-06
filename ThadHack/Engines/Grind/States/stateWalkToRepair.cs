@@ -1,4 +1,5 @@
-﻿using ZzukBot.FSM;
+﻿using System;
+using ZzukBot.FSM;
 using ZzukBot.Helpers;
 using ZzukBot.Mem;
 
@@ -14,27 +15,34 @@ namespace ZzukBot.Engines.Grind.States
 
         internal override void Run()
         {
-            //do we have a repair NPC saved?
-            if (Grinder.Access.Profile.RepairNPC == null)
+            try
             {
-                //there is nothing we can do without the proper data..
-                Grinder.Access.Info.Vendor.TravelingToVendor = false;
-                return;
+                //do we have a repair NPC saved?
+                if (Grinder.Access.Profile.RepairNPC == null)
+                {
+                    //there is nothing we can do without the proper data..
+                    Grinder.Access.Info.Vendor.TravelingToVendor = false;
+                    return;
+                }
+
+
+                XYZ tmpNpcCoords = Grinder.Access.Profile.RepairNPC.Coordinates;
+                if (Calc.Distance3D(tmpNpcCoords, ObjectManager.Player.Position) > 4)
+                {
+                    //lets sprinkle in a random jump once in while
+                    Shared.RandomJump();
+
+                    var to = Grinder.Access.Info.PathToPosition.ToPos(tmpNpcCoords);
+                    ObjectManager.Player.CtmTo(to);
+                }
+                else
+                {
+                    Grinder.Access.Info.Vendor.TravelingToVendor = false;
+                }
             }
-
-
-            XYZ tmpNpcCoords = Grinder.Access.Profile.RepairNPC.Coordinates;
-            if (Calc.Distance3D(tmpNpcCoords, ObjectManager.Player.Position) > 4)
+            catch(Exception crap)
             {
-                //lets sprinkle in a random jump once in while
-                Shared.RandomJump();
-
-                var to = Grinder.Access.Info.PathToPosition.ToPos(tmpNpcCoords);
-                ObjectManager.Player.CtmTo(to);
-            }
-            else
-            {
-                Grinder.Access.Info.Vendor.TravelingToVendor = false;
+                Helpers.Logger.Append(Name + " " + crap.Message);
             }
         }
     }
