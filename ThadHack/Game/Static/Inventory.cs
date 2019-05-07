@@ -120,8 +120,10 @@ namespace ZzukBot.Game.Static
         {
             get
             {
-                // 0x798 = descriptor to the equipped head item
-                var offset = 0x798;
+                try
+                {
+                    // 0x798 = descriptor to the equipped head item
+                    var offset = 0x798;
                 var inventoryGuids = new List<ulong>();
 
                 // We got 19 equipped items
@@ -135,8 +137,7 @@ namespace ZzukBot.Game.Static
                 // calculate durability of equipped items in percentage
                 var duraAll = 0;
                 var duraMaxAll = 0;
-                try
-                {
+                
                     var tmpItems = ObjectManager.Items.Where(i => inventoryGuids.Contains(i.Guid)).ToList();
                     foreach (var x in tmpItems)
                     {
@@ -146,12 +147,14 @@ namespace ZzukBot.Game.Static
                         duraAll += tmpDura;
                         duraMaxAll += tmpDuraMax;
                     }
+
+                    if (duraMaxAll == 0) return 100;
+                    return (int)(duraAll / (float)duraMaxAll * 100);
                 }
                 catch
                 {
+                    return 100;
                 }
-                if (duraMaxAll == 0) return 100;
-                return (int) (duraAll/(float) duraMaxAll*100);
             }
         }
 

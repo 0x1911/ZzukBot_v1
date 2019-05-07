@@ -66,8 +66,8 @@ namespace ZzukBot.Forms
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Helpers.Logger.Append("teeeeeeeest neu", Logger.LogType.Info);
-            Helpers.Logger.Append("teeeeeeeest alt", Logger.LogType.Info);
+            Helpers.Logger.Append("teeeeeeeest neu");
+            Helpers.Logger.Append("teeeeeeeest alt");
 
         }
 

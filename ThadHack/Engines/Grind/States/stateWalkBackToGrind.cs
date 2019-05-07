@@ -29,7 +29,9 @@ namespace ZzukBot.Engines.Grind.States
                {
                    Grinder.Access.Info.Vendor.GoBackToGrindAfterVendor = false;
                    Grinder.Access.Info.Waypoints.ResetGrindPath();
-               } 
+               }
+
+            API.Helper.StayOnWaterTop();
         }
     }
 }

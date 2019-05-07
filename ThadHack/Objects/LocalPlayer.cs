@@ -278,6 +278,8 @@ namespace ZzukBot.Objects
             }
         }
 
+        public int Level => GetDescriptor<int>(Offsets.Descriptors.Level);
+
         internal int CurrentXp => GetDescriptor<int>(Offsets.Descriptors.CurrentXp);
 
         internal int NextLevelXp => GetDescriptor<int>(Offsets.Descriptors.NextLevelXp);

@@ -39,6 +39,8 @@ namespace ZzukBot.Engines.Grind.States
                 {
                     Grinder.Access.Info.Vendor.TravelingToVendor = false;
                 }
+
+                API.Helper.StayOnWaterTop();
             }
             catch(Exception crap)
             {

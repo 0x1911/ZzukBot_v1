@@ -261,7 +261,7 @@ namespace ZzukBot.Engines.ProfileCreation
                     case HotspotType.VendorHotspot:
                         listVendorHotspots.Add(Tuple.Create(tmpVec, pos, posType));
                         usedProfileForm.tbVendor.Text += tmpVec + Environment.NewLine;
-                        usedProfileForm.lbl_VendorWaypointsCount.Text = "Count: " + listGhostHotspots.Count;
+                        usedProfileForm.lbl_VendorWaypointsCount.Text = "Count: " + listVendorHotspots.Count;
                         boolAddVendorWaypoint = false;
                         break;
                 }

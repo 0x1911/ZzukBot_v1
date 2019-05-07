@@ -40,8 +40,7 @@ namespace ZzukBot.Engines.Grind.States
                 ObjectManager.Player.CtmTo(Grinder.Access.Info.Waypoints.CurrentWaypoint);
             }
 
-            //if we are swimming make sure we stay above the water
-            if(ObjectManager.Player.IsSwimming) { Functions.DoString("Jump()"); }
+            API.Helper.StayOnWaterTop();
         }
     }
 }

@@ -25,13 +25,7 @@ namespace ZzukBot.Engines.Grind.States
 
         internal override void Run()
         {
-            //move out of a campfire
-            if(ObjectManager.Player.IsInCampfire)
-            {
-                ObjectManager.Player.StartMovement(Enums.ControlBits.StrafeLeft);
-                Functions.DoString("Jump()");
-                ObjectManager.Player.StopMovement(Enums.ControlBits.StrafeLeft);
-            }
+            API.Helper.MoveOutOfCampfire();
 
 
             if (Grinder.Access.Info.Vendor.GoBackToGrindAfterVendor

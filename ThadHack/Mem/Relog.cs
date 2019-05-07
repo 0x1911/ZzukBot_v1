@@ -70,7 +70,7 @@ namespace ZzukBot.Mem
         {
             if (Relog.LoginState == Enums.LoginState.login && !ObjectManager.IsInGame)
             {
-                Helpers.Logger.Append("Logging in..", Helpers.Logger.LogType.Info);
+                Helpers.Logger.Append("Logging in..");
                 Relog.Login();
             }
         }
@@ -98,7 +98,7 @@ namespace ZzukBot.Mem
 
             if (Relog.LoginState == Enums.LoginState.charselect && !ObjectManager.IsInGame)
             {
-                Helpers.Logger.Append("Entering world..", Helpers.Logger.LogType.Info);
+                Helpers.Logger.Append("Entering world..");
                 Relog.EnterWorld();
                 //only one char on the account? simply enter the world on that one
                 /*  if (Relog.NumCharacterCount == 1)

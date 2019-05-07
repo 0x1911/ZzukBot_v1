@@ -57,13 +57,6 @@ namespace ZzukBot.Forms
             this.lGrindLoadProfile = new System.Windows.Forms.Label();
             this.cbLoadLastProfile = new System.Windows.Forms.CheckBox();
             this.lGrindState = new System.Windows.Forms.Label();
-            this.tC_Log = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.rtb_MainLog = new System.Windows.Forms.RichTextBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.rtb_DebugLog = new System.Windows.Forms.RichTextBox();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.rtb_ExceptionLog = new System.Windows.Forms.RichTextBox();
             this.tp_InGameChat = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgChat = new System.Windows.Forms.DataGridView();
@@ -93,10 +86,6 @@ namespace ZzukBot.Forms
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.tC_Log.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
             this.tp_InGameChat.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgChat)).BeginInit();
@@ -117,7 +106,7 @@ namespace ZzukBot.Forms
             this.tcMain.Margin = new System.Windows.Forms.Padding(4);
             this.tcMain.Name = "tcMain";
             this.tcMain.SelectedIndex = 0;
-            this.tcMain.Size = new System.Drawing.Size(382, 491);
+            this.tcMain.Size = new System.Drawing.Size(382, 350);
             this.tcMain.TabIndex = 0;
             // 
             // tpGrind
@@ -129,7 +118,7 @@ namespace ZzukBot.Forms
             this.tpGrind.Margin = new System.Windows.Forms.Padding(4);
             this.tpGrind.Name = "tpGrind";
             this.tpGrind.Padding = new System.Windows.Forms.Padding(1);
-            this.tpGrind.Size = new System.Drawing.Size(374, 462);
+            this.tpGrind.Size = new System.Drawing.Size(374, 321);
             this.tpGrind.TabIndex = 0;
             this.tpGrind.Text = "Overview";
             // 
@@ -138,15 +127,14 @@ namespace ZzukBot.Forms
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.tC_Log, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(1, 1);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(372, 460);
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(372, 319);
             this.tableLayoutPanel2.TabIndex = 8;
             // 
             // panel1
@@ -160,7 +148,7 @@ namespace ZzukBot.Forms
             this.panel1.Location = new System.Drawing.Point(4, 4);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(364, 314);
+            this.panel1.Size = new System.Drawing.Size(364, 311);
             this.panel1.TabIndex = 1;
             // 
             // groupBox3
@@ -435,90 +423,6 @@ namespace ZzukBot.Forms
             this.lGrindState.TabIndex = 6;
             this.lGrindState.Text = "State: ";
             // 
-            // tC_Log
-            // 
-            this.tC_Log.Controls.Add(this.tabPage1);
-            this.tC_Log.Controls.Add(this.tabPage2);
-            this.tC_Log.Controls.Add(this.tabPage3);
-            this.tC_Log.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tC_Log.Location = new System.Drawing.Point(4, 326);
-            this.tC_Log.Margin = new System.Windows.Forms.Padding(4);
-            this.tC_Log.Name = "tC_Log";
-            this.tC_Log.SelectedIndex = 0;
-            this.tC_Log.Size = new System.Drawing.Size(364, 130);
-            this.tC_Log.TabIndex = 2;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage1.Controls.Add(this.rtb_MainLog);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Size = new System.Drawing.Size(356, 101);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Log";
-            // 
-            // rtb_MainLog
-            // 
-            this.rtb_MainLog.BackColor = System.Drawing.SystemColors.Control;
-            this.rtb_MainLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtb_MainLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtb_MainLog.Location = new System.Drawing.Point(4, 4);
-            this.rtb_MainLog.Name = "rtb_MainLog";
-            this.rtb_MainLog.ReadOnly = true;
-            this.rtb_MainLog.Size = new System.Drawing.Size(348, 93);
-            this.rtb_MainLog.TabIndex = 0;
-            this.rtb_MainLog.Text = "";
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage2.Controls.Add(this.rtb_DebugLog);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage2.Size = new System.Drawing.Size(356, 101);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Debug";
-            // 
-            // rtb_DebugLog
-            // 
-            this.rtb_DebugLog.BackColor = System.Drawing.SystemColors.Control;
-            this.rtb_DebugLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtb_DebugLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtb_DebugLog.Location = new System.Drawing.Point(4, 4);
-            this.rtb_DebugLog.Name = "rtb_DebugLog";
-            this.rtb_DebugLog.ReadOnly = true;
-            this.rtb_DebugLog.Size = new System.Drawing.Size(348, 93);
-            this.rtb_DebugLog.TabIndex = 1;
-            this.rtb_DebugLog.Text = "";
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage3.Controls.Add(this.rtb_ExceptionLog);
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(356, 101);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Exception";
-            // 
-            // rtb_ExceptionLog
-            // 
-            this.rtb_ExceptionLog.BackColor = System.Drawing.SystemColors.Control;
-            this.rtb_ExceptionLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtb_ExceptionLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtb_ExceptionLog.Location = new System.Drawing.Point(0, 0);
-            this.rtb_ExceptionLog.Name = "rtb_ExceptionLog";
-            this.rtb_ExceptionLog.ReadOnly = true;
-            this.rtb_ExceptionLog.Size = new System.Drawing.Size(356, 101);
-            this.rtb_ExceptionLog.TabIndex = 1;
-            this.rtb_ExceptionLog.Text = "";
-            // 
             // tp_InGameChat
             // 
             this.tp_InGameChat.BackColor = System.Drawing.SystemColors.Control;
@@ -668,7 +572,7 @@ namespace ZzukBot.Forms
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(390, 559);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(390, 418);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // menuStrip1
@@ -740,7 +644,7 @@ namespace ZzukBot.Forms
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lbl_Runtime});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 537);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 396);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
             this.statusStrip1.Size = new System.Drawing.Size(390, 22);
@@ -756,7 +660,7 @@ namespace ZzukBot.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(390, 559);
+            this.ClientSize = new System.Drawing.Size(390, 418);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -776,10 +680,6 @@ namespace ZzukBot.Forms
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.tC_Log.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
             this.tp_InGameChat.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgChat)).EndInit();
@@ -818,12 +718,8 @@ namespace ZzukBot.Forms
         private System.Windows.Forms.Panel panel1;
         internal System.Windows.Forms.Label lGrindLoadProfile;
         internal System.Windows.Forms.Label lGrindState;
-        private System.Windows.Forms.TabControl tC_Log;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.ToolStripMenuItem newsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem dEVToolStripMenuItem;
@@ -849,9 +745,6 @@ namespace ZzukBot.Forms
         internal Helpers.NewProgressBar pBar_playerExperience;
         internal System.Windows.Forms.CheckBox cbLoadLastProfile;
         internal System.Windows.Forms.Label lbl_playerLevel;
-        internal System.Windows.Forms.RichTextBox rtb_MainLog;
-        internal System.Windows.Forms.RichTextBox rtb_DebugLog;
-        internal System.Windows.Forms.RichTextBox rtb_ExceptionLog;
         internal System.Windows.Forms.ToolStripMenuItem runToolStripMenuItem;
         internal System.Windows.Forms.ToolStripMenuItem stopToolStripMenuItem;
         internal System.Windows.Forms.ToolStripStatusLabel lbl_Runtime;

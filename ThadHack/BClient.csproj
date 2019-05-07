@@ -84,6 +84,7 @@
     <Compile Include="API\BMain.cs" />
     <Compile Include="API\BPreWorld.cs" />
     <Compile Include="API\Enums\LoginState.cs" />
+    <Compile Include="API\Helper.cs" />
     <Compile Include="Forms\GraphicalDEVForm.cs">
       <SubType>Form</SubType>
     </Compile>

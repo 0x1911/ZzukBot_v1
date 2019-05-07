@@ -119,7 +119,6 @@ namespace ZzukBot.Forms
             {
                 Helpers.Logger.Append("Stopped auto recording grind waypoints");
                 _recordingGrind = false;
-                SetButtonsCaption();
             }
         }
         private void bAddHotspots_Click(object sender, EventArgs e)
@@ -215,19 +214,7 @@ namespace ZzukBot.Forms
 
             return false;
         }
-
-        private void SetButtonsCaption()
-        {
-            if(_recordingGrind) { grp_Hotspots.Text = "Grind Hotspots - Auto recording.."; }
-            else if (grp_Hotspots.Text != "Grind Hotspots") { grp_Hotspots.Text = "Grind Hotspots"; }
-
-            if (_recordingGhost) { grp_Ghost.Text = "Ghost Waypoints - Auto recording.."; }
-            else if (grp_Ghost.Text != "Ghost Waypoints") { grp_Ghost.Text = "Ghost Waypoints"; }
-
-            if (_recordingVendor) { grp_Vendor.Text = "Vendor Waypoints - Auto recording.."; }
-            else if (grp_Vendor.Text != "Vendor Waypoints") { grp_Vendor.Text = "Vendor Waypoints"; }
-        }
-
+        
         #region recorder bgworker DoWork
         private void BgWorker_Recording_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
@@ -264,8 +251,6 @@ namespace ZzukBot.Forms
                         Helpers.Logger.Append("Added vendor waypoint " + currentLocation.X + " :: " + currentLocation.Y + " :: " + currentLocation.Z);
                     }
                 }
-
-                SetButtonsCaption();
             }
         }
         #endregion

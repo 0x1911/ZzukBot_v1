@@ -6,7 +6,9 @@ using ZzukBot.API;
 /*
 CHANGELOG:
 ---
-1 of May ^ by 0x1911: 
+7. of May ^by 0x1911
+- kicked Mind Flay usage.. too much mana wasted for less effect
+1. of May ^ by 0x1911: 
 - Removed Rest() Logic -> bot logic can handle the drink selecting by itself
 * Talentpoint spending will be handled by the internal bot logic now, just the talentstring needs to be given
 ---
@@ -140,15 +142,12 @@ namespace MiniPriest
             {
                 if (this.Player.ManaPercent < 10 || this.Target.HealthPercent < healthP)
                 {
-                    if (this.Player.IsChanneling != "Mind Flay" && this.Player.IsCasting != "Mind Flay")
+                    if (debug == true)
                     {
-                        if (debug == true)
-                        {
-                            this.Player.DoString("OutPut1 = 'Starting to Wand'");
-                            this.Player.DoString("DEFAULT_CHAT_FRAME:AddMessage('trying to start wanding with shadowform')");
-                        }
-                        this.Player.StartWand();
+                        this.Player.DoString("OutPut1 = 'Starting to Wand'");
+                        this.Player.DoString("DEFAULT_CHAT_FRAME:AddMessage('trying to start wanding with shadowform')");
                     }
+                    this.Player.StartWand();
                 }
             }
             if (debug == true)
@@ -305,15 +304,6 @@ namespace MiniPriest
                     }
                 }
             }
-
-            if (this.Player.GetSpellRank("Mind Flay") != 0)
-            {
-                if (this.Player.CanUse("Mind Flay") && this.Target.HealthPercent >= healthP && this.Player.IsChanneling != "Mind Flay" && this.Player.IsCasting != "Mind Flay" && this.Player.ManaPercent >= 10)
-                {
-                    this.Player.StopWand();
-                    this.Player.CastWait("Mind Flay", 2500);
-                }
-            }
         }
 
         public void DefensiveSpells()
@@ -334,7 +324,7 @@ namespace MiniPriest
                 }
                 if (this.Player.GetSpellRank("Power Word: Shield") != 0)
                 {
-                    if (!this.Player.GotBuff("Power Word: Shield") && !this.Player.GotDebuff("Weakened Soul") && this.Player.IsChanneling != "Mind Flay" && this.Player.IsCasting != "Mind Flay" && this.Player.ManaPercent >= 10)
+                    if (!this.Player.GotBuff("Power Word: Shield") && !this.Player.GotDebuff("Weakened Soul") && this.Player.ManaPercent >= 10)
                     {
 
                         this.Player.Cast("Power Word: Shield");

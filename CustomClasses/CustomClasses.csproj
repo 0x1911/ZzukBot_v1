@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Magust.cs" />
+    <Compile Include="MiniHunter.cs" />
     <Compile Include="MiniPriest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

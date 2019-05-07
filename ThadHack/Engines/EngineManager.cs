@@ -77,7 +77,7 @@ namespace ZzukBot.Engines
 
         internal static void StartGrinder(bool parLoadLast)
         {
-            Helpers.Logger.Append("Grinder starting up", Logger.LogType.Info);
+            Helpers.Logger.Append("Grinder starting up");
             GuiCore.MainForm.runToolStripMenuItem.Enabled = false;
             GuiCore.MainForm.stopToolStripMenuItem.Enabled = true;
 
@@ -158,7 +158,7 @@ namespace ZzukBot.Engines
             if (dispose)
                 _Engine = null;
 
-            Helpers.Logger.Append("Stopped all.", Logger.LogType.Info);            
+            Helpers.Logger.Append("Stopped all.");            
         }
     }
 }

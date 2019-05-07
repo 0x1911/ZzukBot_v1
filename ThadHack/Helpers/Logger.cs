@@ -16,11 +16,7 @@ namespace ZzukBot.Helpers
             string dateTimeString = "[" + DateTime.Now.ToString("HH:mm:ss") + "] ";
             var msg = dateTimeString + parMessage;
 
-            if (logType == LogType.Info) { GuiCore.MainForm.Invoke(new MethodInvoker(delegate { GuiCore.MainForm.rtb_MainLog.Text = GuiCore.MainForm.rtb_MainLog.Text.Insert(0, msg + "\n"); })); }
-            if (logType == LogType.Debug) { GuiCore.MainForm.Invoke(new MethodInvoker(delegate { GuiCore.MainForm.rtb_DebugLog.Text = GuiCore.MainForm.rtb_MainLog.Text.Insert(0, msg + "\n"); })); }
-
-            if (logType == LogType.Exception) { GuiCore.MainForm.Invoke(new MethodInvoker(delegate { GuiCore.MainForm.rtb_ExceptionLog.Text = GuiCore.MainForm.rtb_MainLog.Text.Insert(0, msg + "\n"); })); }
-
+           
 #if DEBUG
             //write to debug console
             Console.WriteLine(msg);
