@@ -48,15 +48,20 @@ namespace ZzukBot.Engines
 
         internal static void RestartOutOfEngine()
         {
-            if(API.BMain.Me.IsDead)
-            {
-                Grinder.Access.Info.SpiritWalk.GeneratePath = true;
-            }
-            else
-            {
-                Grinder.Access.Info.Vendor.RegenerateSubPath = true;
-                Grinder.Access.Info.PathAfterFightToWaypoint.AdjustPath();
-            }
+            Helpers.Logger.Append("Looks like we are Stuck.. Reseting most of the path stuff");
+            Grinder.Access.Info.Vendor.RegenerateSubPath = true;
+            Grinder.Access.Info.Vendor.HotspotsToVendor = null;
+            Grinder.Access.Info.PathAfterFightToWaypoint.AdjustPath();
+            Grinder.Access.Info.PathToPosition = new Grind.Info.Path._PathToPosition();
+            Grinder.Access.Info.PathAfterFightToWaypoint = new Grind.Info.Path._PathAfterFightToWaypoint();
+            Grinder.Access.Info.PathManager = new Grind.Info.Path._PathManager();
+            Grinder.Access.Info.PathToObject = new Grind.Info.Path._PathToObject();
+            Grinder.Access.Info.PathToUnit = new Grind.Info.Path._PathToUnit();
+            Grinder.Access.Info.PathSafeGhostwalk = new Grind.Info.Path._PathSafeGhostwalk();
+            Grinder.Access.Info.Waypoints = new Grind.Info._Waypoints();
+            Grinder.Access.Info.Vendor = new Grind.Info._Vendor();
+            Grinder.Access.Info.PathToPosition = new Grind.Info.Path._PathToPosition();
+
             /*  BackgroundWorker bgWorker_EngineRestart;
               bgWorker_EngineRestart = new BackgroundWorker();
               bgWorker_EngineRestart.WorkerSupportsCancellation = true;
