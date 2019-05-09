@@ -18,23 +18,7 @@ namespace ZzukBot.Settings
         private static XDocument doc;
 
         private static string ProtectedItems => Paths.Root + "\\Settings\\ProtectedItems.ini";
-
-        internal static bool SaveZzukPassword
-        {
-            get
-            {
-                var element = doc.Element("Settings");
-                var tmp = element.Element("ZzukSavePassword");
-                if (tmp == null)
-                {
-                    element.Add(new XElement("ZzukSavePassword", false));
-                }
-
-                doc.Save(Paths.Settings);
-                return (bool) element.Element("ZzukSavePassword");
-            }
-        }
-
+        
         /// <summary>
         ///     Set the path to the xml file and the form
         /// </summary>
@@ -235,44 +219,6 @@ namespace ZzukBot.Settings
 
 
             UpdateProtectedItems();
-        }
-
-        internal static string LoadZzukLogin()
-        {
-            return GetEmail() + ";" + GetEmailPassword();
-        }
-
-        internal static void SaveZzukLogin(string parEmail, string parPass, bool parSavePw)
-        {
-            SaveElement("ZzukAccountEmail", parEmail);
-            SaveElement("ZzukAccountPassword", parSavePw ? parPass : "");
-            SaveElement("ZzukSavePassword", parSavePw);
-        }
-
-        private static string GetEmail()
-        {
-            var element = doc.Element("Settings");
-            var tmp = element.Element("ZzukAccountEmail");
-            if (tmp == null)
-            {
-                element.Add(new XElement("ZzukAccountEmail", Options.ZzukAccountMail));
-            }
-
-            doc.Save(Paths.Settings);
-            return (string) element.Element("ZzukAccountEmail");
-        }
-
-        private static string GetEmailPassword()
-        {
-            var element = doc.Element("Settings");
-            var tmp = element.Element("ZzukAccountPassword");
-            if (tmp == null)
-            {
-                element.Add(new XElement("ZzukAccountPassword", Options.ZzukAccountPassword));
-            }
-
-            doc.Save(Paths.Settings);
-            return (string) element.Element("ZzukAccountPassword");
         }
 
         /// <summary>
