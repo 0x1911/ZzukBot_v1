@@ -25,7 +25,37 @@ namespace ZzukBot.API
         {
             if (Mem.ObjectManager.Player.IsSwimming)
             {
+                Mem.ObjectManager.Player.StartMovement(Constants.Enums.ControlBits.Front);
                 Mem.Functions.DoString("Jump()");
+            }
+        }
+
+        /// <summary>
+        /// Fix facing towards our current target
+        /// </summary>
+        public static void FixFacing(Objects.WoWUnit target)
+        {
+            if (Mem.ObjectManager.Player.IsFacing(target.Position))
+            {
+                if (!Mem.ObjectManager.Player.IsCtmIdle)
+                {
+                    Mem.ObjectManager.Player.CtmStopMovement();
+                }
+                else
+                {
+                    if (Mem.ObjectManager.Player.MovementState != 0x2)
+                        Mem.ObjectManager.Player.StartMovement(Constants.Enums.ControlBits.Back);
+                }
+            }
+            else
+            {
+                Engines.Grind.Grinder.Access.Info.Target.FixFacing = false;
+                Mem.ObjectManager.Player.StopMovement(Constants.Enums.ControlBits.Back);
+            }
+            if (Helpers.Wait.For("FixFacingTimer", 1000))
+            {
+                Engines.Grind.Grinder.Access.Info.Target.FixFacing = false;
+                Mem.ObjectManager.Player.StopMovement(Constants.Enums.ControlBits.Back);
             }
         }
     }

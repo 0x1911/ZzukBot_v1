@@ -32,15 +32,25 @@ namespace ZzukBot.Engines.Grind.States
             // ReSharper disable once ConvertIfStatementToConditionalTernaryExpression
             if (Grinder.Access.Info.PathAfterFightToWaypoint.AfterFightMovement)
             {
+                if (Mem.ObjectManager.Player.IsSwimming)
+                {
+                    API.Helper.StayOnWaterTop();
+                    return;
+                }
+
                 ObjectManager.Player.CtmTo(
-                    Grinder.Access.Info.PathToPosition.ToPos(Grinder.Access.Info.Waypoints.CurrentWaypoint));
+                   Grinder.Access.Info.PathToPosition.ToPos(Grinder.Access.Info.Waypoints.CurrentWaypoint));
+
             }
             else
             {
+                if (Mem.ObjectManager.Player.IsSwimming)
+                {
+                    API.Helper.StayOnWaterTop();
+                    return;
+                }
                 ObjectManager.Player.CtmTo(Grinder.Access.Info.Waypoints.CurrentWaypoint);
-            }
-
-            API.Helper.StayOnWaterTop();
+            }            
         }
     }
 }

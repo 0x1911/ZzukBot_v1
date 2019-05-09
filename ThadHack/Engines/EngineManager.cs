@@ -48,11 +48,20 @@ namespace ZzukBot.Engines
 
         internal static void RestartOutOfEngine()
         {
-            BackgroundWorker bgWorker_EngineRestart;
-            bgWorker_EngineRestart = new BackgroundWorker();
-            bgWorker_EngineRestart.WorkerSupportsCancellation = true;
-            bgWorker_EngineRestart.DoWork += bgWorker_EngineRestart_DoWork;
-            bgWorker_EngineRestart.RunWorkerAsync();
+            if(API.BMain.Me.IsDead)
+            {
+                Grinder.Access.Info.SpiritWalk.GeneratePath = true;
+            }
+            else
+            {
+                Grinder.Access.Info.Vendor.RegenerateSubPath = true;
+                Grinder.Access.Info.PathAfterFightToWaypoint.AdjustPath();
+            }
+            /*  BackgroundWorker bgWorker_EngineRestart;
+              bgWorker_EngineRestart = new BackgroundWorker();
+              bgWorker_EngineRestart.WorkerSupportsCancellation = true;
+              bgWorker_EngineRestart.DoWork += bgWorker_EngineRestart_DoWork;
+              bgWorker_EngineRestart.RunWorkerAsync(); */
         }
         private static void bgWorker_EngineRestart_DoWork(object sender, DoWorkEventArgs e)
         {

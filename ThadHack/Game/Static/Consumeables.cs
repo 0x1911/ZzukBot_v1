@@ -23,12 +23,13 @@ namespace ZzukBot.Game.Static
 
         public static Dictionary<int, int> FoodsDictionary = new Dictionary<int, int>()
         {
+            { 7097, 0 },    //Leg Meat
             { 2681, 0 },    //Roasted Boar Meat
             { 2679, 0 },    //Charred Wolf Meat
             { 5349, 0 },    //Conjured Muffin
             { 4536, 0 },    //Shiny Red Apple
             { 2070, 0 },    //Darnassian Bleu
-            { 787, 0 },      //Slitherskin Mackerel
+            { 787, 0 },     //Slitherskin Mackerel
             { 4540, 0 },    //Tough Hunk of Bread
             { 117, 0 },     //Tough Jerky
             { 4604, 0 },    //Forest Mushroom Cap

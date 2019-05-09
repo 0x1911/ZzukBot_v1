@@ -28,7 +28,7 @@ namespace ZzukBot.Engines.Grind.Info
         {
             get
             {
-                var mobs = ObjectManager.Npcs;
+                var attackers = ObjectManager.Npcs;
                 /*  mobs = mobs
                       .Where(i =>
                           i.IsMob && i.Health != 0 && i.Reaction != Enums.UnitReaction.Friendly &&
@@ -37,13 +37,17 @@ namespace ZzukBot.Engines.Grind.Info
                       ).ToList();
                       */
 
-                mobs = mobs
+                #region PvE Mobs
+                attackers = attackers
                     .Where(i =>
                         i.IsMob && i.Health != 0 && i.Reaction != Enums.UnitReaction.Friendly &&
                         (i.TargetGuid == ObjectManager.Player.Guid || (ObjectManager.Player.HasPet && i.TargetGuid == ObjectManager.Player.Pet.Guid) ||
                             (i.IsInCombat && !i.TappedByOther && (((i.Debuffs.Count > 0 || i.IsCrowdControlled || i.IsFleeing) && UnitsDottedByPlayer.ContainsKey(i.Guid) && !ObjectManager.Player.IsEating && !ObjectManager.Player.IsDrinking) || ObjectManager.Player.TargetGuid == i.Guid))) && !i.IsPlayerPet
                     ).ToList();
-                return mobs;
+                #endregion
+
+
+                return attackers;
             }
         }
 

@@ -182,7 +182,6 @@
     </Compile>
     <Compile Include="Helpers\Calc.cs" />
     <Compile Include="Helpers\DebugAssist.cs" />
-    <Compile Include="Helpers\HardwareId.cs" />
     <Compile Include="Helpers\IrcDotNet\CircularBufferStream.cs" />
     <Compile Include="Helpers\IrcDotNet\Collections\CollectionsUtilities.cs" />
     <Compile Include="Helpers\IrcDotNet\Collections\ReadOnlyDictionary.cs" />
