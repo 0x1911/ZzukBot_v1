@@ -26,7 +26,7 @@
 
         internal static string LastProfileFileName = "";
 
-        internal static int CapFpsTo = 60;
+        //internal static int CapFpsTo = 60;
 
         internal static bool StopOnRare = false;
         internal static bool NotifyOnRare = false;

@@ -34,8 +34,10 @@
             this.button2 = new System.Windows.Forms.Button();
             this.btn_Inventory = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_Party = new System.Windows.Forms.Button();
             this.btn_Talents = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.btn_FishingTest = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -62,6 +64,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btn_FishingTest);
             this.groupBox1.Controls.Add(this.btn_travelToVendor);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -93,6 +96,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btn_Party);
             this.groupBox2.Controls.Add(this.btn_Talents);
             this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.btn_Skills);
@@ -103,6 +107,16 @@
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Print to Console";
+            // 
+            // btn_Party
+            // 
+            this.btn_Party.Location = new System.Drawing.Point(9, 106);
+            this.btn_Party.Name = "btn_Party";
+            this.btn_Party.Size = new System.Drawing.Size(75, 23);
+            this.btn_Party.TabIndex = 9;
+            this.btn_Party.Text = "party details";
+            this.btn_Party.UseVisualStyleBackColor = true;
+            this.btn_Party.Click += new System.EventHandler(this.btn_Party_Click);
             // 
             // btn_Talents
             // 
@@ -123,6 +137,16 @@
             this.button3.Text = "test action";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // btn_FishingTest
+            // 
+            this.btn_FishingTest.Location = new System.Drawing.Point(11, 100);
+            this.btn_FishingTest.Name = "btn_FishingTest";
+            this.btn_FishingTest.Size = new System.Drawing.Size(153, 23);
+            this.btn_FishingTest.TabIndex = 7;
+            this.btn_FishingTest.Text = "Fishing Test";
+            this.btn_FishingTest.UseVisualStyleBackColor = true;
+            this.btn_FishingTest.Click += new System.EventHandler(this.btn_FishingTest_Click);
             // 
             // GraphicalDEVForm
             // 
@@ -149,5 +173,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btn_Talents;
+        private System.Windows.Forms.Button btn_Party;
+        private System.Windows.Forms.Button btn_FishingTest;
     }
 }

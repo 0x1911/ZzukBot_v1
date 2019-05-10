@@ -326,7 +326,7 @@ namespace ZzukBot.Game.Static
             }
             catch
             {
-                return 100;
+                return 0;
             }
         }
 
@@ -358,7 +358,7 @@ namespace ZzukBot.Game.Static
         internal void EnchantMainhandItem(string itemName)
         {
             UseItemByName(itemName);
-            //Functions.DoString(Strings.EnchantMainhand);
+            Functions.DoString(Strings.EnchantMainhand);
         }
 
         /// <summary>
@@ -425,6 +425,19 @@ namespace ZzukBot.Game.Static
         internal void RepairAll()
         {
             Functions.DoString(Strings.RepairAll);
+        }
+
+        /// <summary>
+        ///     Get an item equipped at a specific equipment slot
+        /// </summary>
+        /// <param name="parSlot">The slot</param>
+        /// <returns>null or the item represented as WoWItem</returns>
+        internal WoWItem GetEquippedItem(Enums.EquipSlot parSlot)
+        {
+            var slot = (int)parSlot;
+            var guid = ObjectManager.Player.ReadRelative<ulong>(0x2508 + (slot - 1) * 0x8);
+            if (guid == 0) return null;
+            return ObjectManager.Items.FirstOrDefault(i => i.Guid == guid);
         }
     }
 }

@@ -92,5 +92,70 @@ namespace ZzukBot.Forms
             };
             tmpTalentTree.LearnTalents(targetTalentTree); */
         }
+
+        private void btn_Party_Click(object sender, EventArgs e)
+        {
+            if (!API.BMain.Me.IsInParty)
+            {
+                Helpers.Logger.Append("We are not in a party..");
+                return;
+            }
+
+            if (API.BMain.Me.IsPartyLeader)
+            {
+                Helpers.Logger.Append("I am the great party leader!");
+            }
+
+            var tmpPartyMemberList = API.BParty.GetMembers();
+
+            foreach(Objects.WoWUnit tmpMember in tmpPartyMemberList)
+            {
+                Helpers.Logger.Append(tmpMember.Name + ", " + tmpMember.Level + ", " + tmpMember.HealthPercent + "% HP");
+            }
+        }
+
+        private void btn_FishingTest_Click(object sender, EventArgs e)
+        {
+            var tmpInventory = new Game.Static.Inventory();
+            Objects.WoWItem tmpMainHandItem = tmpInventory.GetEquippedItem(Enums.EquipSlot.MainHand);
+            
+
+            if (tmpMainHandItem == null) { return; }
+
+            Helpers.Logger.Append("Equipped in main hand: " + tmpMainHandItem.Name + ", id: " + tmpMainHandItem.Id);
+
+            foreach(Game.Static.Items.FishingPole tmpFPole in Game.Static.Items.Fishing.FishingPoleList)
+            {
+                if(tmpFPole.Id == tmpMainHandItem.Id)
+                {
+                    Helpers.Logger.Append(tmpFPole.Name + " is giving us +" + tmpFPole.SkillEnhancement + " fishing skill");
+                    break;
+                }
+            }
+
+            var player = ObjectManager.Player;
+            int currentFishingSkill = 0;
+            int maxFishingSkill = 0;
+            #region gathering fishing skill info
+            //update the skills, just in case
+            player.Skills = new Game.Static.Skills().GetAllPlayerSkills();
+
+            foreach (var tmpPlayerSkill in player.Skills)
+            {
+                if (tmpPlayerSkill.Id == Enums.Skills.FISHING)
+                {
+                    currentFishingSkill = tmpPlayerSkill.CurrentLevel;
+                    maxFishingSkill = tmpPlayerSkill.MaxLevel;
+                    break;
+                }
+            }
+            #endregion
+            string fishingSpellNameString = "Fishing";
+            int fishingRank = ObjectManager.Player.Spells.GetSpellRank(fishingSpellNameString);
+            if (fishingRank > 0 && currentFishingSkill > 0)
+            {
+                Helpers.Logger.Append("We do have the fishing spell and a current skill of " + currentFishingSkill + "/ " + maxFishingSkill);
+            }
+        }
     }
 }

@@ -82,9 +82,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\BMain.cs" />
+    <Compile Include="API\BParty.cs" />
     <Compile Include="API\BPreWorld.cs" />
     <Compile Include="API\Enums\LoginState.cs" />
     <Compile Include="API\Helper.cs" />
+    <Compile Include="Engines\Grind\States\stateFishing.cs" />
     <Compile Include="Forms\GraphicalDEVForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +108,7 @@
     <Compile Include="Game\Static\Classes\Skill.cs" />
     <Compile Include="Game\Static\Classes\Talent.cs" />
     <Compile Include="Game\Static\Consumeables.cs" />
+    <Compile Include="Game\Static\Items\Fishing.cs" />
     <Compile Include="Game\Static\TalentTree.cs" />
     <Compile Include="GuiCore.cs" />
     <Compile Include="Constants\Enums.cs" />

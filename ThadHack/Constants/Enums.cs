@@ -377,5 +377,31 @@ namespace ZzukBot.Constants
             PET_SERPENT = 768,
             INTERNAL = 769,
         }
+
+        /// <summary>
+        ///     Character equipment slots
+        /// </summary>
+        public enum EquipSlot
+        {
+            Head = 1,
+            Neck = 2,
+            Shoulders = 3,
+            Back = 15,
+            Chest = 5,
+            Shirt = 4,
+            Tabard = 19,
+            Wrist = 9,
+            MainHand = 16,
+            OffHand = 17,
+            Ranged = 18,
+            Hands = 10,
+            Waist = 6,
+            Legs = 7,
+            Feet = 8,
+            Finger1 = 11,
+            Finger2 = 12,
+            Trinket1 = 13,
+            Trinket2 = 14
+        }
     }
 }

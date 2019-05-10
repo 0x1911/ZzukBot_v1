@@ -215,7 +215,7 @@ namespace ZzukBot.Settings
             SaveElement("Herb", Options.Herb);
             SaveElement("Mine", Options.Mine);
 
-            SaveElement("CapFps", Options.CapFpsTo);
+            //SaveElement("CapFps", Options.CapFpsTo);
 
 
             UpdateProtectedItems();

@@ -342,6 +342,7 @@ namespace ZzukBot.Engines.Grind
 
             var tmpStates = new List<State>
             {
+                new StateFishing(),
                 new StateIdle(),
                 new StateLoadNextHotspot(),
                 new StateLoadNextWaypoint(),

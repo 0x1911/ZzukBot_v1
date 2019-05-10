@@ -15,6 +15,8 @@ namespace ZzukBot.Engines.Grind.States
         private bool CanceledLogout = true;
         private readonly Random ran = new Random();
 
+        private WoWUnit target;
+
         internal override int Priority => 50;
 
         internal override bool NeedToRun => Grinder.Access.Info.Combat.Attackers.Count != 0;
@@ -23,38 +25,20 @@ namespace ZzukBot.Engines.Grind.States
 
         internal override void Run()
         {
-
-            #region do we have a target? get one
-            WoWUnit target = ObjectManager.Target;
-            if (target == null)
-            {
-                var tmp = Grinder.Access.Info.Combat.Attackers.OrderBy(i => i.Health).FirstOrDefault();
-                if (tmp == null) return;
-                ObjectManager.Player.SetTarget(tmp);
-                return;
-            }
-            #endregion
-            
-            var player = ObjectManager.Player;
-            var IsCasting = !(player.Casting == 0 && player.Channeling == 0);
-            var targetIsMoving = (target.MovementState & 0x1) == 0x1;
-            var playerIsMoving = (player.MovementState & 0x1) == 0x1;
-            var distanceToTarget = Calc.Distance3D(player.Position, target.Position);
-            //reset resources so they dont get blacklisted because of a fight
-            player.DiscoveredResources = new Dictionary<WoWGameObject, TimeSpan>();
-
-            //move out of the campfire if we are standing in one
             API.Helper.MoveOutOfCampfire();
 
-            //do we need to repair or empty out our bags?
-            if (Grinder.Access.Info.Vendor.GoBackToGrindAfterVendor || Grinder.Access.Info.Vendor.TravelingToVendor) { Grinder.Access.Info.Vendor.RegenerateSubPath = true; }
+
+            if (Grinder.Access.Info.Vendor.GoBackToGrindAfterVendor
+                || Grinder.Access.Info.Vendor.TravelingToVendor)
+            {
+                Grinder.Access.Info.Vendor.RegenerateSubPath = true;
+            }
 
             Grinder.Access.Info.PathAfterFightToWaypoint.SetAfterFightMovement();
             Grinder.Access.Info.Combat.LastFightTick = Environment.TickCount + ran.Next(50, 100);
             Grinder.Access.Info.Loot.RemoveRespawnedMobsFromBlacklist(Grinder.Access.Info.Combat.Attackers);
             Grinder.Access.Info.Target.SearchDirect = true;
 
-            #region Is it break/pause time?
             if (Grinder.Access.Info.BreakHelper.NeedToBreak)
             {
                 if (CanceledLogout)
@@ -63,53 +47,113 @@ namespace ZzukBot.Engines.Grind.States
                     CanceledLogout = false;
                 }
             }
-            else { CanceledLogout = true; }
-            #endregion
+            else
+            {
+                CanceledLogout = true;
+            }
 
-            #region set the correct target, or target overall if we dont have one yet
-            if (!Grinder.Access.Info.Combat.IsAttacker(target.Guid))
+            target = ObjectManager.Target;
+            if (target != null)
+            {
+                var player = ObjectManager.Player;
+                //reset resources so they dont get blacklisted because of a fight
+                player.DiscoveredResources = new Dictionary<WoWGameObject, TimeSpan>();
+
+                var IsCasting = !(player.Casting == 0 && player.Channeling == 0);
+                var targetIsMoving = (target.MovementState & 0x1) == 0x1;
+                var playerIsMoving = (player.MovementState & 0x1) == 0x1;
+                var distanceToTarget =
+                    Calc.Distance3D(player.Position, target.Position);
+
+                if (!Grinder.Access.Info.Combat.IsAttacker(target.Guid))
+                {
+                    var tmp = Grinder.Access.Info.Combat.Attackers.OrderBy(i => i.Health).FirstOrDefault();
+                    if (tmp == null) return;
+                    ObjectManager.Player.SetTarget(tmp);
+                    ObjectManager.Player.Spells.StopCasting();
+                    return;
+                }
+
+                if (ObjectManager.Player.IsCtmIdle &&
+                    (ObjectManager.Player.MovementState & (uint)Enums.MovementFlags.Back) != (uint)Enums.MovementFlags.Back
+                    && ObjectManager.Player.MovementState != 0)
+                {
+                    ObjectManager.Player.StopMovement(Enums.ControlBits.All);
+                    ObjectManager.Player.CtmStopMovement();
+                }
+
+                if (distanceToTarget >= Grinder.Access.Info.Target.CombatDistance && ((!IsCasting
+                                                                                       &&
+                                                                                       !Grinder.Access.Info.Combat
+                                                                                           .IsMoving) ||
+                                                                                      !Grinder.Access.Info.Target
+                                                                                          .InSightWithTarget))
+                {
+                    var tu = Grinder.Access.Info.PathToUnit.ToUnit(target);
+                    if (tu.Item1)
+                        player.CtmTo(tu.Item2);
+                }
+                else
+                {
+                    if (!Grinder.Access.Info.Combat.IsMoving)
+                    {
+                        if (playerIsMoving)
+                        {
+                            if (!(Grinder.Access.Info.Target.CombatDistance < 4 && IsCasting && targetIsMoving))
+                                player.CtmStopMovement();
+                        }
+                        else
+                        {
+                            ObjectManager.Player.CtmSetToIdle();
+                            player.Face(target);
+                        }
+                        Wait.Remove("FixFacingTimer");
+                    }
+                    else
+                    {
+                        if (Grinder.Access.Info.Combat.IsMovingBack)
+                        {
+                        }
+                        else if (Grinder.Access.Info.Target.FixFacing)
+                        {
+                            FixFacing();
+                        }
+                    }
+                    CCManager.FightPulse(ref target);
+                }
+            }
+            else
             {
                 var tmp = Grinder.Access.Info.Combat.Attackers.OrderBy(i => i.Health).FirstOrDefault();
                 if (tmp == null) return;
                 ObjectManager.Player.SetTarget(tmp);
-                ObjectManager.Player.Spells.StopCasting();
-                return;
             }
-            #endregion
+        }
 
-            #region Stop Movement, Face Target
-            if (Grinder.Access.Info.Combat.IsMoving || playerIsMoving || Grinder.Access.Info.Combat.IsMovingBack)
+        private void FixFacing()
+        {
+            if (ObjectManager.Player.IsFacing(target.Position))
             {
-                player.CtmStopMovement();
-                player.StopMovement(Enums.ControlBits.All);
-                API.Helper.FixFacing(target);
+                if (!ObjectManager.Player.IsCtmIdle)
+                {
+                    ObjectManager.Player.CtmStopMovement();
+                }
+                else
+                {
+                    if (ObjectManager.Player.MovementState != 0x2)
+                        ObjectManager.Player.StartMovement(Enums.ControlBits.Back);
+                }
             }
             else
             {
-                ObjectManager.Player.CtmSetToIdle();
-                player.Face(target);
+                Grinder.Access.Info.Target.FixFacing = false;
+                ObjectManager.Player.StopMovement(Enums.ControlBits.Back);
             }
-
-            if (Grinder.Access.Info.Target.FixFacing)
+            if (Wait.For("FixFacingTimer", 1000))
             {
-                API.Helper.FixFacing(target);
+                Grinder.Access.Info.Target.FixFacing = false;
+                ObjectManager.Player.StopMovement(Enums.ControlBits.Back);
             }
-            #endregion
-            
-            #region move back into combat distance range or 'Line of Sight'
-            if (distanceToTarget >= Grinder.Access.Info.Target.CombatDistance && 
-                ((!IsCasting && !Grinder.Access.Info.Combat.IsMoving) ||
-                !Grinder.Access.Info.Target.InSightWithTarget))
-            {
-                var tu = Grinder.Access.Info.PathToUnit.ToUnit(target);
-                if (tu.Item1)
-                    player.CtmTo(tu.Item2);
-            }
-            #endregion
-
-
-            //hand the control over to the CustomClass
-            CCManager.FightPulse(ref target);
         }
     }
 }

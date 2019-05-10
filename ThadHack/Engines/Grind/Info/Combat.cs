@@ -37,6 +37,20 @@ namespace ZzukBot.Engines.Grind.Info
                       ).ToList();
                       */
 
+                #region Party PvE Mobs
+                if(API.BMain.Me.IsInParty)
+                {
+                    attackers = attackers
+                    .Where(i =>
+                        i.IsMob && i.Health != 0 && i.Reaction != Enums.UnitReaction.Friendly &&
+                        (i.TargetGuid == ObjectManager.Player.Guid || API.BParty.IsMobTargetingPartyMember(i.TargetGuid) || (ObjectManager.Player.HasPet && i.TargetGuid == ObjectManager.Player.Pet.Guid) ||
+                            (i.IsInCombat && (((i.Debuffs.Count > 0 || i.IsCrowdControlled || i.IsFleeing) && UnitsDottedByPlayer.ContainsKey(i.Guid) && !ObjectManager.Player.IsEating && !ObjectManager.Player.IsDrinking) || ObjectManager.Player.TargetGuid == i.Guid))) && !i.IsPlayerPet
+                    ).ToList();
+
+                    return attackers;
+                }
+                #endregion
+
                 #region PvE Mobs
                 attackers = attackers
                     .Where(i =>

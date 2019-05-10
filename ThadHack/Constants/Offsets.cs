@@ -969,14 +969,14 @@ namespace ZzukBot.Constants
             internal static IntPtr LoginState = (IntPtr) 0xB41478;
         }
 
-        //internal enum PartyStuff : uint
-        //{
-        //    leaderGuid = 0x00BC75F8,
-        //    party1Guid = 0x00BC6F48,
-        //    party2Guid = 0x00BC6F50,
-        //    party3Guid = 0x00BC6F58,
-        //    party4Guid = 0x00BC6F60,
-        //}
+        internal enum Party : uint
+        {
+            leaderGuid = 0x00BC75F8,
+            party1Guid = 0x00BC6F48,
+            party2Guid = 0x00BC6F50,
+            party3Guid = 0x00BC6F58,
+            party4Guid = 0x00BC6F60,
+        }
 
         internal static class Misc
         {

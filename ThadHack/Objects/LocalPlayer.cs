@@ -50,8 +50,12 @@ namespace ZzukBot.Objects
             Inventory = new Inventory();
             Spells = new Spells();
         }
-        
-        
+
+        internal bool IsInParty => API.BParty.IsInParty();
+
+        internal bool IsPartyLeader => API.BParty.IsPartyLeader();
+
+
         /// <summary>
         ///     Position of corpse
         /// </summary>
