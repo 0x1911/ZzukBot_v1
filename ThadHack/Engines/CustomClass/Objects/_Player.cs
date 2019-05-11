@@ -582,6 +582,27 @@ namespace ZzukBot.Engines.CustomClass.Objects
             }
             return false;
         }
+        public bool SetTargetTo(ZzukBot.Objects.WoWUnit parUnit, bool parStopCastingOnChange = false)
+        {
+            try
+            {
+                if (parUnit == null) return false;
+
+                if (!Grinder.Access.Info.Combat.IsMoving &&
+                    CanChangeTarget && (CCManager._Target.IsNull || CCManager._Target.Guid != parUnit.Guid))
+                {
+                    ObjectManager.Player.SetTarget(parUnit);
+                    CanChangeTarget = false;
+                    if (parStopCastingOnChange)
+                        StopCasting();
+                    return true;
+                }
+            }
+            catch
+            {
+            }
+            return false;
+        }
 
         /// <summary>
         ///     Checks if there are any non-blacklisted lootable corpses nearby which would trigger the loot state.

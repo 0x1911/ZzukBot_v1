@@ -19,7 +19,7 @@ namespace ZzukBot.Engines.Grind.States
 
         internal override int Priority => 50;
 
-        internal override bool NeedToRun => Grinder.Access.Info.Combat.Attackers.Count != 0;
+        internal override bool NeedToRun => Grinder.Access.Info.Combat.Attackers.Count != 0 && !API.BMain.Me.IsEating && !API.BMain.Me.IsDrinking;
 
         internal override string Name => "Fight";
 

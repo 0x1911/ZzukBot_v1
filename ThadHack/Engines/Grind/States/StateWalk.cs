@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using ZzukBot.Constants;
 using ZzukBot.FSM;
+using ZzukBot.Helpers;
 using ZzukBot.Mem;
 
 namespace ZzukBot.Engines.Grind.States
@@ -29,6 +31,14 @@ namespace ZzukBot.Engines.Grind.States
             Shared.RandomJump();
             Grinder.Access.Info.PathAfterFightToWaypoint.AdjustPath();
 
+            #region party walking
+            if(API.BParty.IsInParty() && !API.BParty.IsPartyLeader())
+            {
+                //stay near the leader
+                API.BParty.MoveNearLeader();
+                return;
+            }
+            #endregion
             // ReSharper disable once ConvertIfStatementToConditionalTernaryExpression
             if (Grinder.Access.Info.PathAfterFightToWaypoint.AfterFightMovement)
             {

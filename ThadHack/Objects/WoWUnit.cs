@@ -254,7 +254,7 @@ namespace ZzukBot.Objects
 
         internal int MaxHealth => GetDescriptor<int>(Offsets.Descriptors.MaxHealth);
 
-        internal int HealthPercent => (int) (Health/(float) MaxHealth*100);
+        public int HealthPercent => (int) (Health/(float) MaxHealth*100);
 
         /// <summary>
         ///     Mana
@@ -383,7 +383,7 @@ namespace ZzukBot.Objects
         /// <summary>
         ///     Got buff?
         /// </summary>
-        internal bool GotAura(string parName)
+        public bool GotAura(string parName)
         {
             var tmpAuras = Auras;
             return tmpAuras.Select(i => string.Equals(ObjectManager.Player.Spells.GetName(i), parName, StringComparison.OrdinalIgnoreCase)).Any(tmpBool => tmpBool);
@@ -392,7 +392,7 @@ namespace ZzukBot.Objects
         /// <summary>
         ///     Got debuff?
         /// </summary>
-        internal bool GotDebuff(string parName)
+        public bool GotDebuff(string parName)
         {
             var tmpAuras = Debuffs;
             return tmpAuras.Select(i => string.Equals(ObjectManager.Player.Spells.GetName(i), parName, StringComparison.OrdinalIgnoreCase)).Any(tmpBool => tmpBool);

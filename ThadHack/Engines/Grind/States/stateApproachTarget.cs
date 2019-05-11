@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using ZzukBot.Engines.CustomClass;
 using ZzukBot.FSM;
 using ZzukBot.Helpers;
@@ -20,6 +21,15 @@ namespace ZzukBot.Engines.Grind.States
 
         internal override void Run()
         {
+            #region party walking
+            if (API.BParty.IsInParty() && !API.BParty.IsPartyLeader())
+            {
+                //stay near the leader
+                API.BParty.MoveNearLeader();
+                return;
+            }
+            #endregion
+
             target = ObjectManager.Target;
             if (target == null) return;
             if (Grinder.Access.Info.Combat.IsBlacklisted(target)) return;

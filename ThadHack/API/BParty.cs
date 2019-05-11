@@ -1,12 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using ZzukBot.Engines.Grind;
+using ZzukBot.Helpers;
 using ZzukBot.Mem;
 
 namespace ZzukBot.API
 {
     public static class BParty
     {
-        internal static List<Objects.WoWUnit> GetMembers()
+        public static List<Objects.WoWUnit> GetMembers()
         {
             List<Objects.WoWUnit> tmpMemberList = new List<Objects.WoWUnit>();
 
@@ -27,7 +30,7 @@ namespace ZzukBot.API
             return tmpMemberList;
         }
 
-        internal static bool IsMobTargetingPartyMember(ulong targetGuid)
+        public static bool IsMobTargetingPartyMember(ulong targetGuid)
         {
             foreach (Objects.WoWUnit tmpMember in API.BParty.GetMembers())
             {
@@ -40,8 +43,8 @@ namespace ZzukBot.API
 
             return false;
         }
-
-        internal static bool IsPartyLeader()
+                
+        public static bool IsPartyLeader()
         {
             if (PartyLeader != null) { return PartyLeader.Guid == ObjectManager.Player.Guid; }
 
@@ -49,7 +52,32 @@ namespace ZzukBot.API
             return false;
         }
 
-        internal static bool IsInParty()
+       
+        public static void MoveNearLeader()
+        {
+            Random rand = new Random();
+            float distanceToLeader = Calc.Distance3D(PartyLeader.Position, ObjectManager.Player.Position);
+            if (distanceToLeader > 20)
+            {
+                var tuu = Grinder.Access.Info.PathToPosition.ToPos(new XYZ(PartyLeader.Position.X + rand.Next(1,5), PartyLeader.Position.Y + rand.Next(1,5), PartyLeader.Position.Z));
+                ObjectManager.Player.CtmTo(tuu);
+            }
+        }
+
+        public static bool IsLeaderNextToVendor()
+        {
+            Random rand = new Random();
+            float LeaderDistanceToVendor = Calc.Distance3D(PartyLeader.Position, Grinder.Access.Profile.RepairNPC.Coordinates);
+            if (LeaderDistanceToVendor <= 10)
+            {
+                return true;
+            }
+
+
+            return false;
+        }
+
+        public static bool IsInParty()
         {
             if(GetMembers().Count > 0) { return true; }
 

@@ -2,6 +2,7 @@
 using System.Linq;
 using ZzukBot.Engines.CustomClass;
 using ZzukBot.API;
+using System.Collections.Generic;
 
 /*
 CHANGELOG:
@@ -312,7 +313,44 @@ namespace MiniPriest
             {
                 this.Player.CastWait("Renew", 1000);
             }
+            #region party healing
+            if (ZzukBot.API.BParty.IsInParty())
+            {
+                List<ZzukBot.Objects.WoWUnit> tmpPartyMemberList = BParty.GetMembers();
 
+                foreach (ZzukBot.Objects.WoWUnit tmpMember in tmpPartyMemberList)
+                {
+                    if(tmpMember.HealthPercent <= 1) { continue; }
+
+                    //healing dot
+                    if (!tmpMember.GotAura("Renew") && tmpMember.HealthPercent <= 90 && this.Player.GetSpellRank("Renew") != 0)
+                    {
+                        this.Player.SetTargetTo(tmpMember, true);
+                        this.Player.Cast("Renew");
+                    }
+                    //shield
+                    if (this.Player.GetSpellRank("Power Word: Shield") != 0 && tmpMember.HealthPercent <= 99)
+                    {
+                        if (!tmpMember.GotAura("Power Word: Shield") && !tmpMember.GotDebuff("Weakened Soul") && this.Player.ManaPercent >= 10)
+                        {
+                            this.Player.SetTargetTo(tmpMember, true);
+                            this.Player.Cast("Power Word: Shield");
+                        }
+                    }
+                    //healing
+                    if (this.Player.GetSpellRank("Heal") != 0 && tmpMember.HealthPercent <= 40)
+                    {
+                        this.Player.SetTargetTo(tmpMember, true);
+                        this.Player.CastWait("Heal", 1000);
+                    }
+                    else if (this.Player.GetSpellRank("Lesser Heal") != 0 && tmpMember.HealthPercent <= 50)
+                    {
+                        this.Player.SetTargetTo(tmpMember, true);
+                        this.Player.CastWait("Lesser Heal", 1000);
+                    }
+                }
+            }
+            #endregion
             if ((!this.Player.GotBuff("Power Word: Shield") && !this.Player.GotDebuff("Weakened Soul")) ||
                 this.Player.HealthPercent <= 40 ||
                 !this.Player.GotBuff("Inner Fire"))
@@ -438,6 +476,24 @@ namespace MiniPriest
                         return false;
                     }
                 }
+                #region party buffing
+                if (ZzukBot.API.BParty.IsInParty())
+                {
+                    List<ZzukBot.Objects.WoWUnit> tmpPartyMemberList = BParty.GetMembers();
+
+                    foreach (ZzukBot.Objects.WoWUnit tmpMember in tmpPartyMemberList)
+                    {
+                        if (tmpMember.HealthPercent <= 1) { continue; }
+
+                        if (!tmpMember.GotAura("Power Word: Fortitude") && this.Player.GetSpellRank("Power Word: Fortitude") != 0)
+                        {
+                            this.Player.SetTargetTo(tmpMember);
+                            this.Player.Cast("Power Word: Fortitude");
+                            return false;
+                        }
+                    }
+                }
+                #endregion
                 if (this.Player.GetSpellRank("Divine Spirit") != 0)
                 {
                     if (!this.Player.GotBuff("Divine Spirit"))

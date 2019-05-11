@@ -16,7 +16,8 @@ namespace ZzukBot.Engines.Grind.States
         internal override int Priority => 40;
 
         internal override bool NeedToRun => Grinder.Access.Info.Vendor.NeedToVendor
-                                            || ObjectManager.Player.Inventory.DurabilityPercentage < 30;
+                                            || ObjectManager.Player.Inventory.DurabilityPercentage < 30 
+                                            || API.BParty.IsLeaderNextToVendor();
 
         internal override string Name => "Vendoring / Repairing";
 
