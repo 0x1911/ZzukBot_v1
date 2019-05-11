@@ -31,6 +31,7 @@
             this.btn_Skills = new System.Windows.Forms.Button();
             this.btn_travelToVendor = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnToggleRender = new System.Windows.Forms.Button();
             this.btn_FishingTest = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btn_Inventory = new System.Windows.Forms.Button();
@@ -38,7 +39,7 @@
             this.btn_Party = new System.Windows.Forms.Button();
             this.btn_Talents = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.btnToggleRender = new System.Windows.Forms.Button();
+            this.btn_ResizeWindow = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -75,6 +76,16 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Logic Actions";
+            // 
+            // btnToggleRender
+            // 
+            this.btnToggleRender.Location = new System.Drawing.Point(6, 164);
+            this.btnToggleRender.Name = "btnToggleRender";
+            this.btnToggleRender.Size = new System.Drawing.Size(153, 23);
+            this.btnToggleRender.TabIndex = 8;
+            this.btnToggleRender.Text = "Toggle World Render";
+            this.btnToggleRender.UseVisualStyleBackColor = true;
+            this.btnToggleRender.Click += new System.EventHandler(this.btnToggleRender_Click);
             // 
             // btn_FishingTest
             // 
@@ -150,21 +161,22 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // btnToggleRender
+            // btn_ResizeWindow
             // 
-            this.btnToggleRender.Location = new System.Drawing.Point(6, 164);
-            this.btnToggleRender.Name = "btnToggleRender";
-            this.btnToggleRender.Size = new System.Drawing.Size(153, 23);
-            this.btnToggleRender.TabIndex = 8;
-            this.btnToggleRender.Text = "Toggle World Render";
-            this.btnToggleRender.UseVisualStyleBackColor = true;
-            this.btnToggleRender.Click += new System.EventHandler(this.btnToggleRender_Click);
+            this.btn_ResizeWindow.Location = new System.Drawing.Point(213, 287);
+            this.btn_ResizeWindow.Name = "btn_ResizeWindow";
+            this.btn_ResizeWindow.Size = new System.Drawing.Size(153, 23);
+            this.btn_ResizeWindow.TabIndex = 9;
+            this.btn_ResizeWindow.Text = "Resize Window";
+            this.btn_ResizeWindow.UseVisualStyleBackColor = true;
+            this.btn_ResizeWindow.Click += new System.EventHandler(this.btn_ResizeWindow_Click);
             // 
             // GraphicalDEVForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(593, 450);
+            this.Controls.Add(this.btn_ResizeWindow);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "GraphicalDEVForm";
@@ -188,5 +200,6 @@
         private System.Windows.Forms.Button btn_Party;
         private System.Windows.Forms.Button btn_FishingTest;
         private System.Windows.Forms.Button btnToggleRender;
+        private System.Windows.Forms.Button btn_ResizeWindow;
     }
 }

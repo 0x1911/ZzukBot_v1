@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using ZzukBot.Engines.Grind;
 using ZzukBot.AntiWarden;
+using System.Drawing;
 
 namespace ZzukBot.Forms
 {
@@ -182,6 +183,33 @@ namespace ZzukBot.Forms
 
             renderWorld.Remove();
             #endregion
+        }
+
+        private void btn_ResizeWindow_Click(object sender, EventArgs e)
+        {
+            const short SWP_NOMOVE = 0X2;
+            const short SWP_NOSIZE = 1;
+            const short SWP_NOZORDER = 0X4;
+            const int SWP_SHOWWINDOW = 0x0040;
+
+            if (Mem.WindowProcHook.HWnD != IntPtr.Zero && Mem.WindowProcHook.HWnD != null)
+            {
+                Size cSize = new Size();
+                var tmpRect = new WinImports.RECT();
+                WinImports.GetWindowRect(Mem.WindowProcHook.HWnD, out tmpRect);
+
+                cSize.Width = tmpRect.Right - tmpRect.Left;
+                cSize.Height = tmpRect.Bottom - tmpRect.Top;
+
+                int targetWidth = 407;
+                int targetHeight = 316;
+
+                //set wow window to location and resize
+                WinImports.SetWindowPos(Mem.WindowProcHook.HWnD, 0, 1, 1, targetWidth, targetHeight, SWP_NOZORDER | SWP_SHOWWINDOW);
+
+                //set bot mainform to a location below
+                GuiCore.MainForm.Location = new Point(1, 1+targetHeight);
+            }
         }
     }
 }
