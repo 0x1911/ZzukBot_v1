@@ -5,6 +5,7 @@ using ZzukBot.Engines;
 using ZzukBot.Engines.CustomClass;
 using ZzukBot.Settings;
 using ZzukBot.Helpers;
+using System.Drawing;
 
 namespace ZzukBot.Forms
 {
@@ -92,6 +93,9 @@ namespace ZzukBot.Forms
 
             if (EngineManager.CurrentEngineType != Engines.Engines.None) { EngineManager.StopCurrentEngine(); }
 
+
+            tmpNewProfileForm.StartPosition = FormStartPosition.Manual;
+            tmpNewProfileForm.Location = new Point(GuiCore.MainForm.Location.X, GuiCore.MainForm.Location.Y);
 
             EngineManager.StartProfileCreation(tmpNewProfileForm);
             tmpNewProfileForm.Show();

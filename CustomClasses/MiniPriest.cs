@@ -329,7 +329,7 @@ namespace MiniPriest
                         this.Player.Cast("Renew");
                     }
                     //shield
-                    if (this.Player.GetSpellRank("Power Word: Shield") != 0 && tmpMember.HealthPercent <= 99)
+                    if (this.Player.GetSpellRank("Power Word: Shield") != 0 && tmpMember.HealthPercent <= 90)
                     {
                         if (!tmpMember.GotAura("Power Word: Shield") && !tmpMember.GotDebuff("Weakened Soul") && this.Player.ManaPercent >= 10)
                         {

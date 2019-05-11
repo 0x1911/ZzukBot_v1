@@ -322,6 +322,9 @@ namespace ZzukBot.Forms
                 GuiCore.SettingsForm = new Forms.GraphicalSettingsForm();
             }
 
+            GuiCore.SettingsForm.StartPosition = FormStartPosition.Manual;
+            GuiCore.SettingsForm.Location = new Point(GuiCore.MainForm.Location.X, GuiCore.MainForm.Location.Y);
+            
             GuiCore.SettingsForm.Show();
             GuiCore.SettingsForm.BringToFront();
         }
@@ -330,6 +333,10 @@ namespace ZzukBot.Forms
         private void dEVToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var tmpDevForm = new Forms.GraphicalDEVForm();
+            
+            tmpDevForm.StartPosition = FormStartPosition.Manual;
+            tmpDevForm.Location = new Point(GuiCore.MainForm.Location.X, GuiCore.MainForm.Location.Y);
+
             tmpDevForm.Show();
         }
 
