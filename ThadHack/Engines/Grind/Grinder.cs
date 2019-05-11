@@ -250,6 +250,8 @@ namespace ZzukBot.Engines.Grind
 
 
                                 GuiCore.MainForm.lbl_targetName.Text = "Name: Unknown";
+                                GuiCore.MainForm.lbl_TargetLevel.Text = "Level: 0";
+                                GuiCore.MainForm.lbl_TargetCreatureType.Text = "Type: Unknown";
                             }
 
                             var player = ObjectManager.Player;
