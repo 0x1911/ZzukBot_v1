@@ -17,19 +17,19 @@ namespace ZzukBot.Constants
             OT_CORPSE = 7
         }
 
-        internal static class CreatureType
+        internal enum CreatureType
         {
-            internal static int Beast = 1;
-            internal static int Dragonkin = 2;
-            internal static int Demon = 3;
-            internal static int Elemental = 4;
-            internal static int Giant = 5;
-            internal static int Undead = 6;
-            internal static int Humanoid = 7;
-            internal static int Critter = 8;
-            internal static int Mechanical = 9;
-            internal static int NotSpecified = 10;
-            internal static int Totem = 11;
+            Beast = 1,
+            Dragonkin = 2,
+            Demon = 3,
+            Elemental = 4,
+            Giant = 5,
+            Undead = 6,
+            Humanoid = 7,
+            Critter = 8,
+            Mechanical = 9,
+            NotSpecified = 10,
+            Totem = 11
         }
 
 
@@ -42,10 +42,6 @@ namespace ZzukBot.Constants
             internal static uint Untouched = 0x0;
             internal static int AuraBase = 0xBC;
             internal static int NextAura = 4;
-            //internal static uint CanBeLooted = 0xD;
-            //internal static uint TappedByMe = 0xC;
-            //internal static uint TappedByOther = 0x4;
-            //internal static uint Untouched = 0x0;
 
             internal static void AdjustToRealm()
             {

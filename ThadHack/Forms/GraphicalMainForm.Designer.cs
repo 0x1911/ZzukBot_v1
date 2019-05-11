@@ -80,6 +80,8 @@ namespace ZzukBot.Forms
             this.dEVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lbl_Runtime = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lbl_TargetLevel = new System.Windows.Forms.Label();
+            this.lbl_TargetCreatureType = new System.Windows.Forms.Label();
             this.tcMain.SuspendLayout();
             this.tpGrind.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -133,7 +135,7 @@ namespace ZzukBot.Forms
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 319F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(372, 319);
             this.tableLayoutPanel2.TabIndex = 8;
             // 
@@ -153,6 +155,8 @@ namespace ZzukBot.Forms
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.lbl_TargetCreatureType);
+            this.groupBox3.Controls.Add(this.lbl_TargetLevel);
             this.groupBox3.Controls.Add(this.pBar_targetHealth);
             this.groupBox3.Controls.Add(this.lbl_targetId);
             this.groupBox3.Controls.Add(this.lbl_targetFaction);
@@ -431,7 +435,7 @@ namespace ZzukBot.Forms
             this.tp_InGameChat.Location = new System.Drawing.Point(4, 25);
             this.tp_InGameChat.Margin = new System.Windows.Forms.Padding(4);
             this.tp_InGameChat.Name = "tp_InGameChat";
-            this.tp_InGameChat.Size = new System.Drawing.Size(374, 462);
+            this.tp_InGameChat.Size = new System.Drawing.Size(374, 321);
             this.tp_InGameChat.TabIndex = 7;
             this.tp_InGameChat.Text = "Chat";
             // 
@@ -517,7 +521,7 @@ namespace ZzukBot.Forms
             this.tpNotifications.Location = new System.Drawing.Point(4, 25);
             this.tpNotifications.Margin = new System.Windows.Forms.Padding(4);
             this.tpNotifications.Name = "tpNotifications";
-            this.tpNotifications.Size = new System.Drawing.Size(374, 462);
+            this.tpNotifications.Size = new System.Drawing.Size(374, 321);
             this.tpNotifications.TabIndex = 3;
             this.tpNotifications.Text = "Notifications";
             // 
@@ -540,7 +544,7 @@ namespace ZzukBot.Forms
             this.dgNotifications.Name = "dgNotifications";
             this.dgNotifications.ReadOnly = true;
             this.dgNotifications.RowHeadersVisible = false;
-            this.dgNotifications.Size = new System.Drawing.Size(374, 462);
+            this.dgNotifications.Size = new System.Drawing.Size(374, 321);
             this.dgNotifications.TabIndex = 5;
             // 
             // dataGridViewTextBoxColumn2
@@ -656,6 +660,28 @@ namespace ZzukBot.Forms
             this.lbl_Runtime.Name = "lbl_Runtime";
             this.lbl_Runtime.Size = new System.Drawing.Size(0, 17);
             // 
+            // lbl_TargetLevel
+            // 
+            this.lbl_TargetLevel.AutoSize = true;
+            this.lbl_TargetLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_TargetLevel.Location = new System.Drawing.Point(8, 169);
+            this.lbl_TargetLevel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_TargetLevel.Name = "lbl_TargetLevel";
+            this.lbl_TargetLevel.Size = new System.Drawing.Size(45, 13);
+            this.lbl_TargetLevel.TabIndex = 20;
+            this.lbl_TargetLevel.Text = "Level: 0";
+            // 
+            // lbl_TargetCreatureType
+            // 
+            this.lbl_TargetCreatureType.AutoSize = true;
+            this.lbl_TargetCreatureType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_TargetCreatureType.Location = new System.Drawing.Point(8, 182);
+            this.lbl_TargetCreatureType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_TargetCreatureType.Name = "lbl_TargetCreatureType";
+            this.lbl_TargetCreatureType.Size = new System.Drawing.Size(34, 13);
+            this.lbl_TargetCreatureType.TabIndex = 21;
+            this.lbl_TargetCreatureType.Text = "Type:";
+            // 
             // GraphicalMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -748,6 +774,8 @@ namespace ZzukBot.Forms
         internal System.Windows.Forms.ToolStripMenuItem runToolStripMenuItem;
         internal System.Windows.Forms.ToolStripMenuItem stopToolStripMenuItem;
         internal System.Windows.Forms.ToolStripStatusLabel lbl_Runtime;
+        internal System.Windows.Forms.Label lbl_TargetLevel;
+        internal System.Windows.Forms.Label lbl_TargetCreatureType;
     }
 }
 

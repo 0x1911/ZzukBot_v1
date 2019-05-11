@@ -65,7 +65,7 @@ namespace ZzukBot.Mem
             DirectX.Init();
             // Init the object manager
             ObjectManager.Init();
-
+                       
             // Apply no collision hack with trees
             var DisableCollision = new Hack(Hacks.DisableCollision, new byte[] {0x0F, 0x85, 0x1B, 0x01, 0x00, 0x00},
                 "Collision");
@@ -90,7 +90,7 @@ namespace ZzukBot.Mem
             HookWardenMemScan.AddHack(LootPatch);
             LootPatch.Apply();
 
-            // Ctm Hide
+            #region Ctm Hide
             var CtmHide = new Hack(Player.CtmState, new byte[] {0x0, 0x0, 0x0, 0x0}, new byte[] {0x0C, 0x00, 0x00, 0x00},
                 "CtmHideHack") {DynamicHide = true};
             HookWardenMemScan.AddHack(CtmHide);
@@ -106,6 +106,7 @@ namespace ZzukBot.Mem
             var CtmHideZ = new Hack(Player.CtmZ, new byte[] {0x0, 0x0, 0x0, 0x0}, new byte[] {0x00, 0x00, 0x00, 0x00},
                 "CtmHideHackZ") {DynamicHide = true};
             HookWardenMemScan.AddHack(CtmHideZ);
+            #endregion
 
 
             // Lua Unlock

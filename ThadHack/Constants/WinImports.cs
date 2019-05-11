@@ -130,6 +130,9 @@ namespace ZzukBot.Constants
         internal static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
 
         [DllImport("user32.dll")]
+        internal static extern bool SetWindowText(IntPtr hWnd, string text);
+
+        [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         internal static extern bool IsWindowVisible(IntPtr hWnd);
 

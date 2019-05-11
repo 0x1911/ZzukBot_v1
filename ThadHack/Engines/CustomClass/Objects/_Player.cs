@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Reflection;
 using ZzukBot.Constants;
 using ZzukBot.Engines.Grind;
@@ -484,6 +485,9 @@ namespace ZzukBot.Engines.CustomClass.Objects
         public void UseItem(string parName)
         {
             ObjectManager.Player.Inventory.UseItemByName(parName);
+
+            Random random = new Random();
+            Wait.For("WaitForItemUsage", random.Next(1111, 2222));
         }
 
 

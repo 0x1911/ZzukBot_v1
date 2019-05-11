@@ -235,6 +235,8 @@ namespace ZzukBot.Engines.Grind
 
 
                                 GuiCore.MainForm.lbl_targetName.Text = "Name: " + target.Name.ToString();
+                                GuiCore.MainForm.lbl_TargetLevel.Text = "Level: " + target.Level.ToString();
+                                GuiCore.MainForm.lbl_TargetCreatureType.Text = "Type: " + ((Constants.Enums.CreatureType)target.CreatureType).ToString();
                             }
                             else
                             {
@@ -281,6 +283,16 @@ namespace ZzukBot.Engines.Grind
                             GuiCore.MainForm.lbl_playerAccountName.Text = "Account: " + Options.AccountName;
 
                             GuiCore.MainForm.lbl_Runtime.Text = "runtime: " + API.BMain.RunTimeSpan();
+
+                            if(Mem.WindowProcHook.HWnD != IntPtr.Zero && Mem.WindowProcHook.HWnD != null)
+                            {
+                                string wantedWindowTitleString = "[" + player.Race.ToString() + " " + player.Class + "] - " + player.Name + " - Lvl: " + player.Level;
+                                string currentWindowTitleString = Mem.WindowProcHook.GetWindowTitle();
+                                if (currentWindowTitleString != string.Empty && currentWindowTitleString != wantedWindowTitleString)
+                                {
+                                    Mem.WindowProcHook.SetWindowTitle(wantedWindowTitleString);
+                                }
+                            } 
                         }
                         catch(Exception crap)
                         {

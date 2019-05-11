@@ -5,6 +5,7 @@ using ZzukBot.Constants;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using ZzukBot.Engines.Grind;
+using ZzukBot.AntiWarden;
 
 namespace ZzukBot.Forms
 {
@@ -156,6 +157,31 @@ namespace ZzukBot.Forms
             {
                 Helpers.Logger.Append("We do have the fishing spell and a current skill of " + currentFishingSkill + "/ " + maxFishingSkill);
             }
+        }
+
+        private void btnToggleRender_Click(object sender, EventArgs e)
+        {
+            Hack renderWorld = HookWardenMemScan.GetHack("RenderWorlObjectsPatch");
+
+            //setup render world patch if unknown to us
+            if (renderWorld == null)
+            {
+                var RenderWorldPatch = new Hack(ZzukBot.Constants.Offsets.Hacks.RenderDisable, new byte[] { 0x00 }, "RenderWorlObjectsPatch");
+                HookWardenMemScan.AddHack(RenderWorldPatch);
+
+                renderWorld = HookWardenMemScan.GetHack("RenderWorlObjectsPatch");
+            }
+
+            #region toggle render world
+            if (!renderWorld.IsActivated)
+            {
+                renderWorld.Apply();
+                return;
+            }
+
+
+            renderWorld.Remove();
+            #endregion
         }
     }
 }

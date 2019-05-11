@@ -15,7 +15,7 @@ namespace ZzukBot.Mem
         // ReSharper disable once UnusedMember.Local
         private const int WM_DESTROY = 0x0002;
 
-        private static IntPtr _hWnd = IntPtr.Zero;
+        public static IntPtr HWnD = IntPtr.Zero;
         private static IntPtr _oldCallback;
         private static WinImports.WindowProc _newCallback;
         private static bool Applied;
@@ -35,7 +35,7 @@ namespace ZzukBot.Mem
                         WinImports.GetWindowText(hWnd, builder, builder.Capacity);
                         if (builder.ToString() == "World of Warcraft")
                         {
-                            _hWnd = hWnd;
+                            HWnD = hWnd;
                         }
                     }
                 }
@@ -43,12 +43,49 @@ namespace ZzukBot.Mem
             return true;
         }
 
+        public static string GetWindowTitle()
+        {
+            int procId;
+            WinImports.GetWindowThreadProcessId(HWnD, out procId);
+            if (procId == Memory.Reader.Process.Id)
+            {
+                if (WinImports.IsWindowVisible(HWnD))
+                {
+                    var l = WinImports.GetWindowTextLength(HWnD);
+                    if (l != 0)
+                    {
+                        var builder = new StringBuilder(l + 1);
+                        WinImports.GetWindowText(HWnD, builder, builder.Capacity);
+                        if (!string.IsNullOrEmpty(builder.ToString()))
+                        {
+                            return builder.ToString();
+                        }
+                    }
+                }
+            }
+
+            return string.Empty;
+        }
+
+        public static void SetWindowTitle(string targetTitle)
+        {
+            int procId;
+            WinImports.GetWindowThreadProcessId(HWnD, out procId);
+            if (procId == Memory.Reader.Process.Id)
+            {
+                if (WinImports.IsWindowVisible(HWnD))
+                {
+                    Constants.WinImports.SetWindowText(HWnD, targetTitle);
+                }
+            }        
+        }
+
         public static void Init()
         {
             if (Applied) return;
             WinImports.EnumWindows(WindowProc, IntPtr.Zero);
             _newCallback = WndProc; // Pins WndProc - will not be garbage collected.
-            _oldCallback = WinImports.SetWindowLong(_hWnd, GWL_WNDPROC,
+            _oldCallback = WinImports.SetWindowLong(HWnD, GWL_WNDPROC,
                 Marshal.GetFunctionPointerForDelegate(_newCallback));
             Applied = true;
         }
@@ -57,16 +94,16 @@ namespace ZzukBot.Mem
         {
             var tmpThr = new Thread(delegate()
             {
-                WinImports.SendMessage((int) _hWnd, (uint) Action.WM_KEYDOWN, (int) parKey, 0);
+                WinImports.SendMessage((int) HWnD, (uint) Action.WM_KEYDOWN, (int) parKey, 0);
                 Thread.Sleep(100);
-                WinImports.SendMessage((int) _hWnd, (uint) Action.WM_KEYUP, (int) parKey, 0);
+                WinImports.SendMessage((int) HWnD, (uint) Action.WM_KEYUP, (int) parKey, 0);
             });
             tmpThr.Start();
         }
 
         internal static void Send(Action parAction, Keys parKey)
         {
-            WinImports.SendMessage((int) _hWnd, (uint) parAction, (int) parKey, 0);
+            WinImports.SendMessage((int) HWnD, (uint) parAction, (int) parKey, 0);
         }
 
 

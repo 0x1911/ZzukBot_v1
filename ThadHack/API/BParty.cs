@@ -32,6 +32,8 @@ namespace ZzukBot.API
 
         public static bool IsMobTargetingPartyMember(ulong targetGuid)
         {
+            if (!IsInParty() || IsPartyLeader()) { return false; }
+
             foreach (Objects.WoWUnit tmpMember in API.BParty.GetMembers())
             {
                 if (tmpMember.Guid == targetGuid)
@@ -55,9 +57,12 @@ namespace ZzukBot.API
        
         public static void MoveNearLeader()
         {
+            if(!IsInParty() || IsPartyLeader()) { return; }
+
+
             Random rand = new Random();
             float distanceToLeader = Calc.Distance3D(PartyLeader.Position, ObjectManager.Player.Position);
-            if (distanceToLeader > 20)
+            if (distanceToLeader > rand.Next(5, 25))
             {
                 var tuu = Grinder.Access.Info.PathToPosition.ToPos(new XYZ(PartyLeader.Position.X + rand.Next(1,5), PartyLeader.Position.Y + rand.Next(1,5), PartyLeader.Position.Z));
                 ObjectManager.Player.CtmTo(tuu);
@@ -66,6 +71,9 @@ namespace ZzukBot.API
 
         public static bool IsLeaderNextToVendor()
         {
+            if (!IsInParty() || IsPartyLeader()) { return false; }
+
+
             Random rand = new Random();
             float LeaderDistanceToVendor = Calc.Distance3D(PartyLeader.Position, Grinder.Access.Profile.RepairNPC.Coordinates);
             if (LeaderDistanceToVendor <= 10)

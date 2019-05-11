@@ -309,9 +309,9 @@ namespace ZzukBot.Objects
         internal float Facing => ReadRelative<float>(0x9C4);
 
         // Is the unit a critter?
-        internal bool IsCritter => Enums.CreatureType.Critter == CreatureType;
+        internal bool IsCritter => Enums.CreatureType.Critter == (Enums.CreatureType)CreatureType;
 
-        internal bool IsTotem => Enums.CreatureType.Totem == CreatureType;
+        internal bool IsTotem => Enums.CreatureType.Totem == (Enums.CreatureType)CreatureType;
 
 
         private int CreatureRank => Functions.GetCreatureRank(Pointer);

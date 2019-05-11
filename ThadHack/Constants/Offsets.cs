@@ -1168,6 +1168,7 @@ namespace ZzukBot.Constants
             internal static IntPtr Collision3 = (IntPtr) 0x006ABF13;
             internal static IntPtr LootPatch = (IntPtr) 0x004C21C0;
             internal static IntPtr LuaUnlock = (IntPtr)0x494A50;
+            internal static IntPtr RenderDisable = (IntPtr)0x00C7B2A4;
         }
     }
 }

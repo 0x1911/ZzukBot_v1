@@ -213,6 +213,14 @@ namespace MiniPriest
                 this.Player.UseItem("Minor Mana Potion");
         }
 
+        public void SelectHelpfulPotion()
+        {
+            string WeakTrollBloodPotion = "Weak Troll's Blood Potion";
+            if (!this.Player.GotBuff("Regeneration") && this.Player.ItemCount(WeakTrollBloodPotion) != 0)
+                this.Player.UseItem(WeakTrollBloodPotion);
+
+        }
+
         public void SilenceEnemy()
         {   
             //I will be using this condition until I can figure out why Silence is sometimes used at random.
@@ -420,6 +428,7 @@ namespace MiniPriest
             MultiDotting();
             SelectMPotion();
             SelectHPotion();
+            SelectHelpfulPotion();
 
             if (useSilence == true)
             {
