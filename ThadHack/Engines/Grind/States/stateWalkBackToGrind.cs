@@ -16,7 +16,7 @@ namespace ZzukBot.Engines.Grind.States
               //lets sprinkle in a random jump once in while, maybe?
                Shared.RandomJump();
 
-               if (Grinder.Access.Info.Vendor.RegenerateSubPath)
+               if (Grinder.Access.Info.PathManager.GrindToVendor != null && Grinder.Access.Info.Vendor.RegenerateSubPath)
                {
                    Grinder.Access.Info.PathManager.GrindToVendor.RegenerateSubPath();
                    Grinder.Access.Info.Vendor.RegenerateSubPath = false;
