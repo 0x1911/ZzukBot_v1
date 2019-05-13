@@ -165,23 +165,11 @@ namespace ZzukBot.Forms
                 //window size
                 GuiCore.SettingsForm.txt_WowWindowWidth.Text = cSize.Width.ToString();
                 GuiCore.SettingsForm.txt_WowWindowHeigth.Text = cSize.Height.ToString();
-                 int targetWidth = 407;
-                 int targetHeight = 316;
-
-                //set wow window to location and resize
-                 WinImports.SetWindowPos(Mem.WindowProcHook.HWnD, 0, 1, 1, targetWidth, targetHeight, SWP_NOZORDER | SWP_SHOWWINDOW);
-
-                //set bot mainform to a location below
-                GuiCore.MainForm.Location = new Point(1, 1 + targetHeight);
             }
         }
 
         private void btn_GetBotWindow_Click(object sender, EventArgs e)
         {
-        /*    Size cSize = new Size();
-            cSize.Width = GuiCore.MainForm.Size.Width - GuiCore.MainForm.Location.X;
-            cSize.Height = GuiCore.MainForm.Size.Height - GuiCore.MainForm.Location.Y; */
-
             GuiCore.SettingsForm.txt_BotWindowX.Text = GuiCore.MainForm.Location.X.ToString();
             GuiCore.SettingsForm.txt_BotWindowY.Text = GuiCore.MainForm.Location.Y.ToString();
         }
