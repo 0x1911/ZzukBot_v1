@@ -127,7 +127,12 @@ namespace ZzukBot.Forms
             CCManager.LoadCCs();
             Memory.Init();
             OptionManager.LoadSettings();
-          
+
+            #region set wow & bot window location and size
+            Helpers.WindowInteraction.SetWowWindow();
+            Helpers.WindowInteraction.SetBotWindow();
+            #endregion
+
             IrcMonitor.Instance.MessageReceived += ChannelMessageRecieved;
             GuiCore.SettingsForm.SetupIrc();
             Enums.DynamicFlags.AdjustToRealm();
@@ -347,7 +352,7 @@ namespace ZzukBot.Forms
 #if DEBUG
             GuiCore.MainForm.dEVToolStripMenuItem.Visible = true;
             GuiCore.MainForm.dEVToolStripMenuItem.Enabled = true;
-#endif
+#endif           
         }
     }
 }

@@ -68,6 +68,20 @@ namespace ZzukBot.Forms
             Options.Mine = GuiCore.SettingsForm.cbMine.Checked;
             Options.LootUnits = GuiCore.SettingsForm.cbLootUnits.Checked;
 
+            #region settings - windows tabpage
+            //wow window location
+            Options.WowWindowX = GuiCore.SettingsForm.txt_WowWindowX.Text;
+            Options.WowWindowY = GuiCore.SettingsForm.txt_WowWindowY.Text;
+
+            //wow window size
+            Options.WowWindowWidth = GuiCore.SettingsForm.txt_WowWindowWidth.Text;
+            Options.WowWindowHeight = GuiCore.SettingsForm.txt_WowWindowHeigth.Text;
+
+            //bot window location
+            Options.BotWindowX = GuiCore.SettingsForm.txt_BotWindowX.Text;
+            Options.BotWindowY = GuiCore.SettingsForm.txt_BotWindowY.Text;
+            #endregion
+
             OptionManager.SaveSettings();
 
             SetupIrc();
@@ -127,5 +141,50 @@ namespace ZzukBot.Forms
             else
                 GuiCore.SettingsForm.cbIRCConnect.Checked = false;
         }
+
+        private void btn_GetWowWindow_Click(object sender, EventArgs e)
+        {
+            const short SWP_NOMOVE = 0X2;
+            const short SWP_NOSIZE = 1;
+            const short SWP_NOZORDER = 0X4;
+            const int SWP_SHOWWINDOW = 0x0040;
+
+            if (Mem.WindowProcHook.HWnD != IntPtr.Zero && Mem.WindowProcHook.HWnD != null)
+            {
+                Size cSize = new Size();
+                var tmpRect = new WinImports.RECT();
+                WinImports.GetWindowRect(Mem.WindowProcHook.HWnD, out tmpRect);
+
+                cSize.Width = tmpRect.Right - tmpRect.Left;
+                cSize.Height = tmpRect.Bottom - tmpRect.Top;
+
+                //window location
+                GuiCore.SettingsForm.txt_WowWindowX.Text = tmpRect.Left.ToString();
+                GuiCore.SettingsForm.txt_WowWindowY.Text = tmpRect.Top.ToString();
+
+                //window size
+                GuiCore.SettingsForm.txt_WowWindowWidth.Text = cSize.Width.ToString();
+                GuiCore.SettingsForm.txt_WowWindowHeigth.Text = cSize.Height.ToString();
+                 int targetWidth = 407;
+                 int targetHeight = 316;
+
+                //set wow window to location and resize
+                 WinImports.SetWindowPos(Mem.WindowProcHook.HWnD, 0, 1, 1, targetWidth, targetHeight, SWP_NOZORDER | SWP_SHOWWINDOW);
+
+                //set bot mainform to a location below
+                GuiCore.MainForm.Location = new Point(1, 1 + targetHeight);
+            }
+        }
+
+        private void btn_GetBotWindow_Click(object sender, EventArgs e)
+        {
+        /*    Size cSize = new Size();
+            cSize.Width = GuiCore.MainForm.Size.Width - GuiCore.MainForm.Location.X;
+            cSize.Height = GuiCore.MainForm.Size.Height - GuiCore.MainForm.Location.Y; */
+
+            GuiCore.SettingsForm.txt_BotWindowX.Text = GuiCore.MainForm.Location.X.ToString();
+            GuiCore.SettingsForm.txt_BotWindowY.Text = GuiCore.MainForm.Location.Y.ToString();
+        }
+        
     }
 }

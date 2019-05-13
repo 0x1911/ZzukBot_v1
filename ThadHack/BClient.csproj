@@ -84,6 +84,8 @@
     <Compile Include="API\BMain.cs" />
     <Compile Include="API\BParty.cs" />
     <Compile Include="API\BPreWorld.cs" />
+    <Compile Include="API\Enums\ClassType.cs" />
+    <Compile Include="API\Enums\CreatureType.cs" />
     <Compile Include="API\Enums\LoginState.cs" />
     <Compile Include="API\Helper.cs" />
     <Compile Include="Engines\Grind\States\stateFishing.cs" />
@@ -137,7 +139,6 @@
     <Compile Include="GreyMagic\Native\PeHeaderParser.cs" />
     <Compile Include="GreyMagic\SafeMemoryHandle.cs" />
     <Compile Include="GreyMagic\Utilities.cs" />
-    <Compile Include="Engines\CustomClass\CreatureType.cs" />
     <Compile Include="Engines\CustomClass\Objects\_Pet.cs" />
     <Compile Include="Engines\CustomClass\Objects\_Target.cs" />
     <Compile Include="Engines\CustomClass\Objects\_Unit.cs" />
@@ -145,7 +146,6 @@
     <Compile Include="Engines\CustomClass\CodeCompiler.cs" />
     <Compile Include="Engines\CustomClass\CustomClass.cs" />
     <Compile Include="Engines\CustomClass\Objects\_Player.cs" />
-    <Compile Include="Engines\CustomClass\PlayerClass.cs" />
     <Compile Include="Engines\Grind\Grinder.cs" />
     <Compile Include="Engines\Grind\GrindProfile.cs" />
     <Compile Include="Engines\Grind\Info\BreakHelper.cs" />
@@ -258,6 +258,7 @@
     <Compile Include="Engines\Grind\States\stateWalkToRepair.cs" />
     <Compile Include="Helpers\Logger.cs" />
     <Compile Include="Helpers\Waypoint.cs" />
+    <Compile Include="Helpers\WindowInteraction.cs" />
     <Compile Include="Hooks\ChatHook.cs" />
     <Compile Include="Mem\Extensions.cs" />
     <Compile Include="Mem\GetEndScene.cs" />

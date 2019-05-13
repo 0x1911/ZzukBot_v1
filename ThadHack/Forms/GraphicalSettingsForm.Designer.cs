@@ -83,18 +83,35 @@
             this.tbAccount = new System.Windows.Forms.TextBox();
             this.lAccount = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btn_ConnectIrc = new System.Windows.Forms.Button();
             this.lIRCDescription = new System.Windows.Forms.Label();
             this.tbIRCBotChannel = new System.Windows.Forms.TextBox();
             this.tbIRCBotNickname = new System.Windows.Forms.TextBox();
             this.cbIRCConnect = new System.Windows.Forms.CheckBox();
             this.lIrcBotname = new System.Windows.Forms.Label();
             this.lIrcChannel = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_GetBotWindow = new System.Windows.Forms.Button();
+            this.txt_BotWindowY = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txt_BotWindowX = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txt_WowWindowHeigth = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txt_WowWindowWidth = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btn_GetWowWindow = new System.Windows.Forms.Button();
+            this.txt_WowWindowY = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txt_WowWindowX = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btn_ConnectIrc = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.gbMisc.SuspendLayout();
@@ -114,6 +131,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudDrinkAt)).BeginInit();
             this.gbRelog.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -122,6 +142,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(3, 27);
             this.tabControl1.Name = "tabControl1";
@@ -146,7 +167,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(613, 360);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "General";
+            this.tabPage1.Text = "Bot";
             // 
             // gbMisc
             // 
@@ -764,6 +785,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "IRC";
             // 
+            // btn_ConnectIrc
+            // 
+            this.btn_ConnectIrc.Location = new System.Drawing.Point(22, 88);
+            this.btn_ConnectIrc.Name = "btn_ConnectIrc";
+            this.btn_ConnectIrc.Size = new System.Drawing.Size(75, 23);
+            this.btn_ConnectIrc.TabIndex = 12;
+            this.btn_ConnectIrc.Text = "Connect";
+            this.btn_ConnectIrc.UseVisualStyleBackColor = true;
+            this.btn_ConnectIrc.Click += new System.EventHandler(this.btn_ConnectIrc_Click);
+            // 
             // lIRCDescription
             // 
             this.lIRCDescription.AutoSize = true;
@@ -818,6 +849,171 @@
             this.lIrcChannel.TabIndex = 6;
             this.lIrcChannel.Text = "Channel:";
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.groupBox2);
+            this.tabPage3.Controls.Add(this.groupBox1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(613, 360);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Windows";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btn_GetBotWindow);
+            this.groupBox2.Controls.Add(this.txt_BotWindowY);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.txt_BotWindowX);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Location = new System.Drawing.Point(15, 164);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(166, 80);
+            this.groupBox2.TabIndex = 16;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Bot Window";
+            // 
+            // btn_GetBotWindow
+            // 
+            this.btn_GetBotWindow.Location = new System.Drawing.Point(45, 50);
+            this.btn_GetBotWindow.Name = "btn_GetBotWindow";
+            this.btn_GetBotWindow.Size = new System.Drawing.Size(78, 23);
+            this.btn_GetBotWindow.TabIndex = 16;
+            this.btn_GetBotWindow.Text = "Get Current";
+            this.btn_GetBotWindow.UseVisualStyleBackColor = true;
+            this.btn_GetBotWindow.Click += new System.EventHandler(this.btn_GetBotWindow_Click);
+            // 
+            // txt_BotWindowY
+            // 
+            this.txt_BotWindowY.Location = new System.Drawing.Point(100, 19);
+            this.txt_BotWindowY.Name = "txt_BotWindowY";
+            this.txt_BotWindowY.Size = new System.Drawing.Size(37, 20);
+            this.txt_BotWindowY.TabIndex = 2;
+            this.txt_BotWindowY.Text = "0";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(82, 22);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(14, 13);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "Y";
+            // 
+            // txt_BotWindowX
+            // 
+            this.txt_BotWindowX.Location = new System.Drawing.Point(32, 19);
+            this.txt_BotWindowX.Name = "txt_BotWindowX";
+            this.txt_BotWindowX.Size = new System.Drawing.Size(37, 20);
+            this.txt_BotWindowX.TabIndex = 0;
+            this.txt_BotWindowX.Text = "0";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(16, 22);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(14, 13);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "X";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txt_WowWindowHeigth);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.txt_WowWindowWidth);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.btn_GetWowWindow);
+            this.groupBox1.Controls.Add(this.txt_WowWindowY);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.txt_WowWindowX);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Location = new System.Drawing.Point(15, 14);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(166, 144);
+            this.groupBox1.TabIndex = 15;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "WoW Window";
+            // 
+            // txt_WowWindowHeigth
+            // 
+            this.txt_WowWindowHeigth.Location = new System.Drawing.Point(77, 78);
+            this.txt_WowWindowHeigth.Name = "txt_WowWindowHeigth";
+            this.txt_WowWindowHeigth.Size = new System.Drawing.Size(37, 20);
+            this.txt_WowWindowHeigth.TabIndex = 19;
+            this.txt_WowWindowHeigth.Text = "0";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(33, 81);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 13);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "Height:";
+            // 
+            // txt_WowWindowWidth
+            // 
+            this.txt_WowWindowWidth.Location = new System.Drawing.Point(77, 52);
+            this.txt_WowWindowWidth.Name = "txt_WowWindowWidth";
+            this.txt_WowWindowWidth.Size = new System.Drawing.Size(37, 20);
+            this.txt_WowWindowWidth.TabIndex = 17;
+            this.txt_WowWindowWidth.Text = "0";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(33, 55);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(38, 13);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Width:";
+            // 
+            // btn_GetWowWindow
+            // 
+            this.btn_GetWowWindow.Location = new System.Drawing.Point(36, 112);
+            this.btn_GetWowWindow.Name = "btn_GetWowWindow";
+            this.btn_GetWowWindow.Size = new System.Drawing.Size(78, 23);
+            this.btn_GetWowWindow.TabIndex = 16;
+            this.btn_GetWowWindow.Text = "Get Current";
+            this.btn_GetWowWindow.UseVisualStyleBackColor = true;
+            this.btn_GetWowWindow.Click += new System.EventHandler(this.btn_GetWowWindow_Click);
+            // 
+            // txt_WowWindowY
+            // 
+            this.txt_WowWindowY.Location = new System.Drawing.Point(100, 19);
+            this.txt_WowWindowY.Name = "txt_WowWindowY";
+            this.txt_WowWindowY.Size = new System.Drawing.Size(37, 20);
+            this.txt_WowWindowY.TabIndex = 2;
+            this.txt_WowWindowY.Text = "0";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(82, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(14, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Y";
+            // 
+            // txt_WowWindowX
+            // 
+            this.txt_WowWindowX.Location = new System.Drawing.Point(32, 19);
+            this.txt_WowWindowX.Name = "txt_WowWindowX";
+            this.txt_WowWindowX.Size = new System.Drawing.Size(37, 20);
+            this.txt_WowWindowX.TabIndex = 0;
+            this.txt_WowWindowX.Text = "0";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(16, 22);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(14, 13);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "X";
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
@@ -867,16 +1063,6 @@
             this.newProfileToolStripMenuItem.Text = "New Profile";
             this.newProfileToolStripMenuItem.Click += new System.EventHandler(this.newProfileToolStripMenuItem_Click);
             // 
-            // btn_ConnectIrc
-            // 
-            this.btn_ConnectIrc.Location = new System.Drawing.Point(22, 88);
-            this.btn_ConnectIrc.Name = "btn_ConnectIrc";
-            this.btn_ConnectIrc.Size = new System.Drawing.Size(75, 23);
-            this.btn_ConnectIrc.TabIndex = 12;
-            this.btn_ConnectIrc.Text = "Connect";
-            this.btn_ConnectIrc.UseVisualStyleBackColor = true;
-            this.btn_ConnectIrc.Click += new System.EventHandler(this.btn_ConnectIrc_Click);
-            // 
             // GraphicalSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -916,6 +1102,11 @@
             this.gbRelog.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -992,5 +1183,22 @@
         private System.Windows.Forms.ToolStripMenuItem reloadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newProfileToolStripMenuItem;
         private System.Windows.Forms.Button btn_ConnectIrc;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btn_GetBotWindow;
+        internal System.Windows.Forms.TextBox txt_BotWindowY;
+        private System.Windows.Forms.Label label7;
+        internal System.Windows.Forms.TextBox txt_BotWindowX;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.GroupBox groupBox1;
+        internal System.Windows.Forms.TextBox txt_WowWindowHeigth;
+        private System.Windows.Forms.Label label2;
+        internal System.Windows.Forms.TextBox txt_WowWindowWidth;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btn_GetWowWindow;
+        internal System.Windows.Forms.TextBox txt_WowWindowY;
+        private System.Windows.Forms.Label label1;
+        internal System.Windows.Forms.TextBox txt_WowWindowX;
+        private System.Windows.Forms.Label label3;
     }
 }

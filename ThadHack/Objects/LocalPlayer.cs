@@ -215,7 +215,7 @@ namespace ZzukBot.Objects
         /// <summary>
         ///     The toons class
         /// </summary>
-        public Enums.ClassIds Class => (Enums.ClassIds) Offsets.Player.Class.ReadAs<Byte>();
+        public API.Enums.ClassType Class => (API.Enums.ClassType) Offsets.Player.Class.ReadAs<Byte>();
 
         internal bool IsStealth
         {
@@ -223,8 +223,8 @@ namespace ZzukBot.Objects
             {
                 switch (Class)
                 {
-                    case Enums.ClassIds.Rogue:
-                    case Enums.ClassIds.Druid:
+                    case API.Enums.ClassType.Rogue:
+                    case API.Enums.ClassType.Druid:
                         return (PlayerBytes & 0x02000000) == 0x02000000;
                 }
                 return false;
@@ -237,7 +237,7 @@ namespace ZzukBot.Objects
             {
                 switch (Class)
                 {
-                    case Enums.ClassIds.Druid:
+                    case API.Enums.ClassType.Druid:
                         return (PlayerBytes & 0x000FEE00) != 0x0000EE00;
                 }
                 return false;

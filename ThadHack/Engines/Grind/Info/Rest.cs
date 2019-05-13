@@ -51,8 +51,8 @@ namespace ZzukBot.Engines.Grind.Info
                 // We are warrior or rogue? never need to rest manag!
                 // just return true
                 var tmp = ObjectManager.Player.Class;
-                if (tmp == Enums.ClassIds.Rogue ||
-                    tmp == Enums.ClassIds.Warrior) return false;
+                if (tmp == API.Enums.ClassType.Rogue ||
+                    tmp == API.Enums.ClassType.Warrior) return false;
 
                 // mana percent dropped below the resting threshold
                 if (ObjectManager.Player.ManaPercent < Options.RestManaAt + ran.Next(-1, 3))

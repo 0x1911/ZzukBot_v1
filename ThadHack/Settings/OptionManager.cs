@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using ZzukBot.Constants;
 using ZzukBot.Forms;
 
 namespace ZzukBot.Settings
@@ -33,7 +35,7 @@ namespace ZzukBot.Settings
         internal static void LoadSettings()
         {
             LoadFromXml();
-            AppendProtectedItemsFromFile(GuiCore.SettingsForm.tbProtectedItems);
+            AppendProtectedItemsFromFile(GuiCore.SettingsForm.tbProtectedItems);           
         }
 
         private static void AppendProtectedItemsFromFile(TextBox parTb)
@@ -172,6 +174,31 @@ namespace ZzukBot.Settings
                 ref Options.Mine,
                 GuiCore.SettingsForm.cbMine);
 
+            GetElement("WowWindowX",
+                ref Options.WowWindowX,
+                GuiCore.SettingsForm.txt_WowWindowX);
+
+            GetElement("WowWindowY",
+                ref Options.WowWindowY,
+                GuiCore.SettingsForm.txt_WowWindowY);
+
+            GetElement("WowWindowWidth",
+                ref Options.WowWindowWidth,
+                GuiCore.SettingsForm.txt_WowWindowWidth);
+
+            GetElement("WowWindowHeight",
+                ref Options.WowWindowHeight,
+                GuiCore.SettingsForm.txt_WowWindowHeigth);
+
+            GetElement("BotWindowX",
+                ref Options.BotWindowX,
+                GuiCore.SettingsForm.txt_BotWindowX);
+
+            GetElement("BotWindowY",
+                ref Options.BotWindowY,
+                GuiCore.SettingsForm.txt_BotWindowY);
+
+
             //GetProtectedItems(ref Options.ProtectedItems, Main.MainForm.tbProtectedItems);
         }
 
@@ -216,6 +243,14 @@ namespace ZzukBot.Settings
             SaveElement("Mine", Options.Mine);
 
             //SaveElement("CapFps", Options.CapFpsTo);
+            SaveElement("WowWindowX", Options.WowWindowX);
+            SaveElement("WowWindowY", Options.WowWindowY);
+
+            SaveElement("WowWindowWidth", Options.WowWindowWidth);
+            SaveElement("WowWindowHeight", Options.WowWindowHeight);
+
+            SaveElement("BotWindowX", Options.BotWindowX);
+            SaveElement("BotWindowY", Options.BotWindowY);
 
 
             UpdateProtectedItems();

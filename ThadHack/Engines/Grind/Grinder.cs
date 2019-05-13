@@ -236,7 +236,7 @@ namespace ZzukBot.Engines.Grind
 
                                 GuiCore.MainForm.lbl_targetName.Text = "Name: " + target.Name.ToString();
                                 GuiCore.MainForm.lbl_TargetLevel.Text = "Level: " + target.Level.ToString();
-                                GuiCore.MainForm.lbl_TargetCreatureType.Text = "Type: " + ((Constants.Enums.CreatureType)target.CreatureType).ToString();
+                                GuiCore.MainForm.lbl_TargetCreatureType.Text = "Type: " + ((API.Enums.CreatureType)target.CreatureType).ToString();
                             }
                             else
                             {
@@ -263,8 +263,8 @@ namespace ZzukBot.Engines.Grind
 
                                 GuiCore.MainForm.pBar_playerHealth.Value = player.HealthPercent;
                                 if (player.MaxMana > 0) { GuiCore.MainForm.pBar_playerMana.Value = player.ManaPercent; GuiCore.MainForm.pBar_playerMana.ForeColor = System.Drawing.Color.Blue; }
-                                else if (player.Class == Constants.Enums.ClassIds.Rogue) { GuiCore.MainForm.pBar_playerMana.Value = player.Energy; GuiCore.MainForm.pBar_playerMana.ForeColor = System.Drawing.Color.Yellow; }
-                                else if (player.Class == Constants.Enums.ClassIds.Warrior) { GuiCore.MainForm.pBar_playerMana.Value = player.Rage; GuiCore.MainForm.pBar_playerMana.ForeColor = System.Drawing.Color.Red; }
+                                else if (player.Class == API.Enums.ClassType.Rogue) { GuiCore.MainForm.pBar_playerMana.Value = player.Energy; GuiCore.MainForm.pBar_playerMana.ForeColor = System.Drawing.Color.Yellow; }
+                                else if (player.Class == API.Enums.ClassType.Warrior) { GuiCore.MainForm.pBar_playerMana.Value = player.Rage; GuiCore.MainForm.pBar_playerMana.ForeColor = System.Drawing.Color.Red; }
 
                                 if (player.Level < 60)
                                 {

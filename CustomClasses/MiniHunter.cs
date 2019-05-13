@@ -13,7 +13,6 @@ namespace OrionHunter
         public static readonly Version Release = new Version(0, 1);
 
         public const string Name = "MiniHunter";
-        public const byte Class = PlayerClass.Hunter;
 
         /* http://rpgworld.altervista.org/classic_vanilla_talent/hunter.php */
         public static readonly string[] TalentStrings =
@@ -38,7 +37,7 @@ namespace OrionHunter
 
         public override byte DesignedForClass
         {
-            get { return Constants.Class; }
+            get { return (int)ZzukBot.API.Enums.ClassType.Hunter; }           
         }
 
         public override void Fight()
@@ -344,7 +343,7 @@ namespace OrionHunter
 
         public static readonly Spell SerpentSting = new Spell("Serpent Sting", 799, false, true, isInstant: true,
             isWanted:
-                () => (Target.CreatureType != CreatureType.Elemental && Target.CreatureType != CreatureType.Mechanical) && Target.HealthPercent > 35 && Me.ManaPercent > 30 && !Target.GotDebuff("Serpent Sting") && !Me.ToCloseForRanged && Me.CanUse("Serpent Sting"));
+                () => (Target.CreatureType != (int)ZzukBot.API.Enums.CreatureType.Elemental && Target.CreatureType != (int)ZzukBot.API.Enums.CreatureType.Mechanical) && Target.HealthPercent > 35 && Me.ManaPercent > 30 && !Target.GotDebuff("Serpent Sting") && !Me.ToCloseForRanged && Me.CanUse("Serpent Sting"));
 
         public static readonly Spell ArcaneShot = new Spell("Arcane Shot", 950, false, true, isChanneled: false, isInstant: true,
             isWanted:

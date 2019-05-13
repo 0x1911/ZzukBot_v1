@@ -54,10 +54,7 @@ namespace MiniMage
         //Mage Class
         public override byte DesignedForClass
         {
-            get
-            {
-                return PlayerClass.Mage;
-            }
+            get { return (int)ZzukBot.API.Enums.ClassType.Mage; }
         }
 
 
@@ -66,7 +63,7 @@ namespace MiniMage
         {
             get
             {
-                return "Bokutox V2 Scroll Test";
+                return "MiniMage";
             }
         }
 

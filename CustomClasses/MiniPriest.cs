@@ -53,17 +53,14 @@ namespace MiniPriest
 
         public override byte DesignedForClass
         {
-            get
-            {
-                return PlayerClass.Priest;
-            }
+            get { return (int)ZzukBot.API.Enums.ClassType.Priest; }
         }
 
         public override string CustomClassName
         {
             get
             {
-                return "MiniPriest 1.3.0";
+                return "MiniPriest";
             }
         }
 

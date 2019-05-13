@@ -31,6 +31,7 @@
             this.btn_Skills = new System.Windows.Forms.Button();
             this.btn_travelToVendor = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_ToggleWallClimb = new System.Windows.Forms.Button();
             this.btnToggleRender = new System.Windows.Forms.Button();
             this.btn_FishingTest = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -40,8 +41,12 @@
             this.btn_Talents = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.btn_ResizeWindow = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_Skills
@@ -66,10 +71,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnToggleRender);
-            this.groupBox1.Controls.Add(this.btn_FishingTest);
             this.groupBox1.Controls.Add(this.btn_travelToVendor);
-            this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(174, 222);
@@ -77,29 +79,39 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Logic Actions";
             // 
+            // btn_ToggleWallClimb
+            // 
+            this.btn_ToggleWallClimb.Location = new System.Drawing.Point(6, 77);
+            this.btn_ToggleWallClimb.Name = "btn_ToggleWallClimb";
+            this.btn_ToggleWallClimb.Size = new System.Drawing.Size(153, 23);
+            this.btn_ToggleWallClimb.TabIndex = 9;
+            this.btn_ToggleWallClimb.Text = "Toggle \'Wall Climb\'";
+            this.btn_ToggleWallClimb.UseVisualStyleBackColor = true;
+            this.btn_ToggleWallClimb.Click += new System.EventHandler(this.btn_ToggleWallClimb_Click);
+            // 
             // btnToggleRender
             // 
-            this.btnToggleRender.Location = new System.Drawing.Point(6, 164);
+            this.btnToggleRender.Location = new System.Drawing.Point(6, 29);
             this.btnToggleRender.Name = "btnToggleRender";
             this.btnToggleRender.Size = new System.Drawing.Size(153, 23);
             this.btnToggleRender.TabIndex = 8;
-            this.btnToggleRender.Text = "Toggle World Render";
+            this.btnToggleRender.Text = "Toggle \'World Render\'";
             this.btnToggleRender.UseVisualStyleBackColor = true;
             this.btnToggleRender.Click += new System.EventHandler(this.btnToggleRender_Click);
             // 
             // btn_FishingTest
             // 
-            this.btn_FishingTest.Location = new System.Drawing.Point(6, 106);
+            this.btn_FishingTest.Location = new System.Drawing.Point(9, 135);
             this.btn_FishingTest.Name = "btn_FishingTest";
-            this.btn_FishingTest.Size = new System.Drawing.Size(153, 23);
+            this.btn_FishingTest.Size = new System.Drawing.Size(75, 23);
             this.btn_FishingTest.TabIndex = 7;
-            this.btn_FishingTest.Text = "Fishing Test";
+            this.btn_FishingTest.Text = "Fishing";
             this.btn_FishingTest.UseVisualStyleBackColor = true;
             this.btn_FishingTest.Click += new System.EventHandler(this.btn_FishingTest_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(6, 193);
+            this.button2.Location = new System.Drawing.Point(6, 78);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(153, 23);
             this.button2.TabIndex = 6;
@@ -119,6 +131,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btn_FishingTest);
             this.groupBox2.Controls.Add(this.btn_Party);
             this.groupBox2.Controls.Add(this.btn_Talents);
             this.groupBox2.Controls.Add(this.button3);
@@ -163,7 +176,7 @@
             // 
             // btn_ResizeWindow
             // 
-            this.btn_ResizeWindow.Location = new System.Drawing.Point(213, 287);
+            this.btn_ResizeWindow.Location = new System.Drawing.Point(6, 28);
             this.btn_ResizeWindow.Name = "btn_ResizeWindow";
             this.btn_ResizeWindow.Size = new System.Drawing.Size(153, 23);
             this.btn_ResizeWindow.TabIndex = 9;
@@ -171,18 +184,43 @@
             this.btn_ResizeWindow.UseVisualStyleBackColor = true;
             this.btn_ResizeWindow.Click += new System.EventHandler(this.btn_ResizeWindow_Click);
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btn_ToggleWallClimb);
+            this.groupBox3.Controls.Add(this.btnToggleRender);
+            this.groupBox3.Location = new System.Drawing.Point(328, 12);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(171, 222);
+            this.groupBox3.TabIndex = 10;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Patches/ Hacks";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.btn_ResizeWindow);
+            this.groupBox4.Controls.Add(this.button2);
+            this.groupBox4.Location = new System.Drawing.Point(12, 240);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(174, 198);
+            this.groupBox4.TabIndex = 11;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Other";
+            // 
             // GraphicalDEVForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(593, 450);
-            this.Controls.Add(this.btn_ResizeWindow);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "GraphicalDEVForm";
             this.Text = "GraphicalDEVForm";
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -201,5 +239,8 @@
         private System.Windows.Forms.Button btn_FishingTest;
         private System.Windows.Forms.Button btnToggleRender;
         private System.Windows.Forms.Button btn_ResizeWindow;
+        private System.Windows.Forms.Button btn_ToggleWallClimb;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox4;
     }
 }

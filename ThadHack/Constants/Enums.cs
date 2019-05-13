@@ -17,20 +17,7 @@ namespace ZzukBot.Constants
             OT_CORPSE = 7
         }
 
-        internal enum CreatureType
-        {
-            Beast = 1,
-            Dragonkin = 2,
-            Demon = 3,
-            Elemental = 4,
-            Giant = 5,
-            Undead = 6,
-            Humanoid = 7,
-            Critter = 8,
-            Mechanical = 9,
-            NotSpecified = 10,
-            Totem = 11
-        }
+
 
 
         internal static class DynamicFlags
@@ -131,19 +118,7 @@ namespace ZzukBot.Constants
             Hostile = 1,
             Hostile2 = 0
         }
-
-        public enum ClassIds : byte
-        {
-            Warrior = 1,
-            Paladin = 2,
-            Hunter = 3,
-            Rogue = 4,
-            Priest = 5,
-            Shaman = 7,
-            Mage = 8,
-            Warlock = 9,
-            Druid = 11
-        }
+        
 
         internal enum MovementOpCodes : uint
         {

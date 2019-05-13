@@ -49,5 +49,12 @@
         internal static bool LootUnits = true;
         internal static bool Herb = false;
         internal static bool Mine = false;
+
+        internal static string WowWindowX = "0";
+        internal static string WowWindowY = "0";
+        internal static string WowWindowWidth = "0";
+        internal static string WowWindowHeight = "0";
+        internal static string BotWindowX = "0";
+        internal static string BotWindowY = "0";
     }
 }

@@ -211,5 +211,31 @@ namespace ZzukBot.Forms
                 GuiCore.MainForm.Location = new Point(1, 1+targetHeight);
             }
         }
+
+        private void btn_ToggleWallClimb_Click(object sender, EventArgs e)
+        {
+            Hack wallClimb = HookWardenMemScan.GetHack("WallClimbPatch");
+
+            //setup wall climb patch if unknown to us
+            if (wallClimb == null)
+            {
+                float wc = 0.5f;
+                var wallClimbPatch = new Hack(ZzukBot.Constants.Offsets.Hacks.Wallclimb, BitConverter.GetBytes(wc), "WallClimbPatch");
+                HookWardenMemScan.AddHack(wallClimbPatch);
+
+                wallClimb = HookWardenMemScan.GetHack("WallClimbPatch");
+            }
+
+            #region toggle wall climb
+            if (!wallClimb.IsActivated)
+            {
+                wallClimb.Apply();
+                return;
+            }
+
+
+            wallClimb.Remove();
+            #endregion
+        }
     }
 }
