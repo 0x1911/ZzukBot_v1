@@ -45,13 +45,23 @@ namespace ZzukBot.Settings
 
             var tmpItems = new List<string>();
             parTb.Clear();
+            //get the list items from file
             foreach (var x in File.ReadAllLines(ProtectedItems))
             {
                 var tmp = x.Trim();
                 if (string.IsNullOrWhiteSpace(tmp)) continue;
                 tmpItems.Add(tmp);
-                parTb.Text += tmp + Environment.NewLine;
             }
+
+            // ascending sort
+            tmpItems.Sort((a, b) => a.CompareTo(b)); 
+
+            //add to control
+            foreach(var listEntry in tmpItems)
+            {
+                parTb.Text += listEntry + Environment.NewLine;
+            }
+
             Options.ProtectedItems = tmpItems.ToArray();
         }
 
@@ -197,9 +207,6 @@ namespace ZzukBot.Settings
             GetElement("BotWindowY",
                 ref Options.BotWindowY,
                 GuiCore.SettingsForm.txt_BotWindowY);
-
-
-            //GetProtectedItems(ref Options.ProtectedItems, Main.MainForm.tbProtectedItems);
         }
 
         /// <summary>

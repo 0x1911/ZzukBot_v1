@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GraphicalSettingsForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tP_Behaviour = new System.Windows.Forms.TabPage();
             this.gbMisc = new System.Windows.Forms.GroupBox();
             this.cbNinjaSkin = new System.Windows.Forms.CheckBox();
             this.cbLootUnits = new System.Windows.Forms.CheckBox();
@@ -50,8 +50,6 @@
             this.lForceBreak = new System.Windows.Forms.Label();
             this.nudWaypointModifier = new System.Windows.Forms.NumericUpDown();
             this.lWaypointModifier = new System.Windows.Forms.Label();
-            this.tbProtectedItems = new System.Windows.Forms.TextBox();
-            this.lProtectedItems = new System.Windows.Forms.Label();
             this.gbVendoring = new System.Windows.Forms.GroupBox();
             this.cbKeepQuality = new System.Windows.Forms.ComboBox();
             this.nudFreeSlots = new System.Windows.Forms.NumericUpDown();
@@ -75,14 +73,7 @@
             this.lFood = new System.Windows.Forms.Label();
             this.tbDrink = new System.Windows.Forms.TextBox();
             this.lDrink = new System.Windows.Forms.Label();
-            this.gbRelog = new System.Windows.Forms.GroupBox();
-            this.txt_Character = new System.Windows.Forms.TextBox();
-            this.lbl_desc3489 = new System.Windows.Forms.Label();
-            this.tbPassword = new System.Windows.Forms.TextBox();
-            this.lPassword = new System.Windows.Forms.Label();
-            this.tbAccount = new System.Windows.Forms.TextBox();
-            this.lAccount = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tP_Irc = new System.Windows.Forms.TabPage();
             this.btn_ConnectIrc = new System.Windows.Forms.Button();
             this.lIRCDescription = new System.Windows.Forms.Label();
             this.tbIRCBotChannel = new System.Windows.Forms.TextBox();
@@ -90,7 +81,7 @@
             this.cbIRCConnect = new System.Windows.Forms.CheckBox();
             this.lIrcBotname = new System.Windows.Forms.Label();
             this.lIrcChannel = new System.Windows.Forms.Label();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tP_Windows = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btn_GetBotWindow = new System.Windows.Forms.Button();
             this.txt_BotWindowY = new System.Windows.Forms.TextBox();
@@ -112,8 +103,18 @@
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tP_General = new System.Windows.Forms.TabPage();
+            this.gbRelog = new System.Windows.Forms.GroupBox();
+            this.txt_Character = new System.Windows.Forms.TextBox();
+            this.lbl_desc3489 = new System.Windows.Forms.Label();
+            this.tbPassword = new System.Windows.Forms.TextBox();
+            this.lPassword = new System.Windows.Forms.Label();
+            this.tbAccount = new System.Windows.Forms.TextBox();
+            this.lAccount = new System.Windows.Forms.Label();
+            this.grp_ProtectedItems = new System.Windows.Forms.GroupBox();
+            this.tbProtectedItems = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tP_Behaviour.SuspendLayout();
             this.gbMisc.SuspendLayout();
             this.gbChat.SuspendLayout();
             this.gbOther.SuspendLayout();
@@ -129,20 +130,23 @@
             this.gbRest.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudEatAt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDrinkAt)).BeginInit();
-            this.gbRelog.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
+            this.tP_Irc.SuspendLayout();
+            this.tP_Windows.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.tP_General.SuspendLayout();
+            this.gbRelog.SuspendLayout();
+            this.grp_ProtectedItems.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tP_General);
+            this.tabControl1.Controls.Add(this.tP_Behaviour);
+            this.tabControl1.Controls.Add(this.tP_Windows);
+            this.tabControl1.Controls.Add(this.tP_Irc);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(3, 27);
             this.tabControl1.Name = "tabControl1";
@@ -150,24 +154,22 @@
             this.tabControl1.Size = new System.Drawing.Size(621, 386);
             this.tabControl1.TabIndex = 0;
             // 
-            // tabPage1
+            // tP_Behaviour
             // 
-            this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage1.Controls.Add(this.gbMisc);
-            this.tabPage1.Controls.Add(this.gbChat);
-            this.tabPage1.Controls.Add(this.gbOther);
-            this.tabPage1.Controls.Add(this.tbProtectedItems);
-            this.tabPage1.Controls.Add(this.lProtectedItems);
-            this.tabPage1.Controls.Add(this.gbVendoring);
-            this.tabPage1.Controls.Add(this.gbDistances);
-            this.tabPage1.Controls.Add(this.gbRest);
-            this.tabPage1.Controls.Add(this.gbRelog);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(613, 360);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Bot";
+            this.tP_Behaviour.BackColor = System.Drawing.SystemColors.Control;
+            this.tP_Behaviour.Controls.Add(this.grp_ProtectedItems);
+            this.tP_Behaviour.Controls.Add(this.gbMisc);
+            this.tP_Behaviour.Controls.Add(this.gbChat);
+            this.tP_Behaviour.Controls.Add(this.gbOther);
+            this.tP_Behaviour.Controls.Add(this.gbVendoring);
+            this.tP_Behaviour.Controls.Add(this.gbDistances);
+            this.tP_Behaviour.Controls.Add(this.gbRest);
+            this.tP_Behaviour.Location = new System.Drawing.Point(4, 22);
+            this.tP_Behaviour.Name = "tP_Behaviour";
+            this.tP_Behaviour.Padding = new System.Windows.Forms.Padding(3);
+            this.tP_Behaviour.Size = new System.Drawing.Size(613, 360);
+            this.tP_Behaviour.TabIndex = 0;
+            this.tP_Behaviour.Text = "Behaviour";
             // 
             // gbMisc
             // 
@@ -307,7 +309,7 @@
             this.gbOther.Controls.Add(this.lForceBreak);
             this.gbOther.Controls.Add(this.nudWaypointModifier);
             this.gbOther.Controls.Add(this.lWaypointModifier);
-            this.gbOther.Location = new System.Drawing.Point(228, 194);
+            this.gbOther.Location = new System.Drawing.Point(160, 168);
             this.gbOther.Name = "gbOther";
             this.gbOther.Size = new System.Drawing.Size(187, 119);
             this.gbOther.TabIndex = 22;
@@ -387,23 +389,6 @@
             this.lWaypointModifier.Size = new System.Drawing.Size(92, 13);
             this.lWaypointModifier.TabIndex = 1;
             this.lWaypointModifier.Text = "Waypoint Modifier";
-            // 
-            // tbProtectedItems
-            // 
-            this.tbProtectedItems.Location = new System.Drawing.Point(9, 132);
-            this.tbProtectedItems.Multiline = true;
-            this.tbProtectedItems.Name = "tbProtectedItems";
-            this.tbProtectedItems.Size = new System.Drawing.Size(136, 108);
-            this.tbProtectedItems.TabIndex = 20;
-            // 
-            // lProtectedItems
-            // 
-            this.lProtectedItems.AutoSize = true;
-            this.lProtectedItems.Location = new System.Drawing.Point(21, 109);
-            this.lProtectedItems.Name = "lProtectedItems";
-            this.lProtectedItems.Size = new System.Drawing.Size(81, 13);
-            this.lProtectedItems.TabIndex = 19;
-            this.lProtectedItems.Text = "Protected Items";
             // 
             // gbVendoring
             // 
@@ -704,86 +689,22 @@
             this.lDrink.TabIndex = 1;
             this.lDrink.Text = "Drink";
             // 
-            // gbRelog
+            // tP_Irc
             // 
-            this.gbRelog.Controls.Add(this.txt_Character);
-            this.gbRelog.Controls.Add(this.lbl_desc3489);
-            this.gbRelog.Controls.Add(this.tbPassword);
-            this.gbRelog.Controls.Add(this.lPassword);
-            this.gbRelog.Controls.Add(this.tbAccount);
-            this.gbRelog.Controls.Add(this.lAccount);
-            this.gbRelog.Location = new System.Drawing.Point(17, 6);
-            this.gbRelog.Name = "gbRelog";
-            this.gbRelog.Size = new System.Drawing.Size(136, 100);
-            this.gbRelog.TabIndex = 14;
-            this.gbRelog.TabStop = false;
-            this.gbRelog.Text = "Relog";
-            // 
-            // txt_Character
-            // 
-            this.txt_Character.Location = new System.Drawing.Point(57, 69);
-            this.txt_Character.Name = "txt_Character";
-            this.txt_Character.Size = new System.Drawing.Size(71, 20);
-            this.txt_Character.TabIndex = 5;
-            // 
-            // lbl_desc3489
-            // 
-            this.lbl_desc3489.AutoSize = true;
-            this.lbl_desc3489.Location = new System.Drawing.Point(4, 72);
-            this.lbl_desc3489.Name = "lbl_desc3489";
-            this.lbl_desc3489.Size = new System.Drawing.Size(53, 13);
-            this.lbl_desc3489.TabIndex = 4;
-            this.lbl_desc3489.Text = "Character";
-            // 
-            // tbPassword
-            // 
-            this.tbPassword.Location = new System.Drawing.Point(57, 43);
-            this.tbPassword.Name = "tbPassword";
-            this.tbPassword.Size = new System.Drawing.Size(71, 20);
-            this.tbPassword.TabIndex = 2;
-            this.tbPassword.UseSystemPasswordChar = true;
-            // 
-            // lPassword
-            // 
-            this.lPassword.AutoSize = true;
-            this.lPassword.Location = new System.Drawing.Point(4, 46);
-            this.lPassword.Name = "lPassword";
-            this.lPassword.Size = new System.Drawing.Size(53, 13);
-            this.lPassword.TabIndex = 3;
-            this.lPassword.Text = "Password";
-            // 
-            // tbAccount
-            // 
-            this.tbAccount.Location = new System.Drawing.Point(57, 17);
-            this.tbAccount.Name = "tbAccount";
-            this.tbAccount.Size = new System.Drawing.Size(71, 20);
-            this.tbAccount.TabIndex = 0;
-            // 
-            // lAccount
-            // 
-            this.lAccount.AutoSize = true;
-            this.lAccount.Location = new System.Drawing.Point(4, 20);
-            this.lAccount.Name = "lAccount";
-            this.lAccount.Size = new System.Drawing.Size(47, 13);
-            this.lAccount.TabIndex = 1;
-            this.lAccount.Text = "Account";
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage2.Controls.Add(this.btn_ConnectIrc);
-            this.tabPage2.Controls.Add(this.lIRCDescription);
-            this.tabPage2.Controls.Add(this.tbIRCBotChannel);
-            this.tabPage2.Controls.Add(this.tbIRCBotNickname);
-            this.tabPage2.Controls.Add(this.cbIRCConnect);
-            this.tabPage2.Controls.Add(this.lIrcBotname);
-            this.tabPage2.Controls.Add(this.lIrcChannel);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(613, 360);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "IRC";
+            this.tP_Irc.BackColor = System.Drawing.SystemColors.Control;
+            this.tP_Irc.Controls.Add(this.btn_ConnectIrc);
+            this.tP_Irc.Controls.Add(this.lIRCDescription);
+            this.tP_Irc.Controls.Add(this.tbIRCBotChannel);
+            this.tP_Irc.Controls.Add(this.tbIRCBotNickname);
+            this.tP_Irc.Controls.Add(this.cbIRCConnect);
+            this.tP_Irc.Controls.Add(this.lIrcBotname);
+            this.tP_Irc.Controls.Add(this.lIrcChannel);
+            this.tP_Irc.Location = new System.Drawing.Point(4, 22);
+            this.tP_Irc.Name = "tP_Irc";
+            this.tP_Irc.Padding = new System.Windows.Forms.Padding(3);
+            this.tP_Irc.Size = new System.Drawing.Size(613, 360);
+            this.tP_Irc.TabIndex = 1;
+            this.tP_Irc.Text = "IRC";
             // 
             // btn_ConnectIrc
             // 
@@ -849,16 +770,16 @@
             this.lIrcChannel.TabIndex = 6;
             this.lIrcChannel.Text = "Channel:";
             // 
-            // tabPage3
+            // tP_Windows
             // 
-            this.tabPage3.Controls.Add(this.groupBox2);
-            this.tabPage3.Controls.Add(this.groupBox1);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(613, 360);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Windows";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tP_Windows.Controls.Add(this.groupBox2);
+            this.tP_Windows.Controls.Add(this.groupBox1);
+            this.tP_Windows.Location = new System.Drawing.Point(4, 22);
+            this.tP_Windows.Name = "tP_Windows";
+            this.tP_Windows.Size = new System.Drawing.Size(613, 360);
+            this.tP_Windows.TabIndex = 2;
+            this.tP_Windows.Text = "Windows";
+            this.tP_Windows.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -1063,6 +984,101 @@
             this.newProfileToolStripMenuItem.Text = "New Profile";
             this.newProfileToolStripMenuItem.Click += new System.EventHandler(this.newProfileToolStripMenuItem_Click);
             // 
+            // tP_General
+            // 
+            this.tP_General.BackColor = System.Drawing.SystemColors.Control;
+            this.tP_General.Controls.Add(this.gbRelog);
+            this.tP_General.Location = new System.Drawing.Point(4, 22);
+            this.tP_General.Name = "tP_General";
+            this.tP_General.Size = new System.Drawing.Size(613, 360);
+            this.tP_General.TabIndex = 3;
+            this.tP_General.Text = "General";
+            // 
+            // gbRelog
+            // 
+            this.gbRelog.Controls.Add(this.txt_Character);
+            this.gbRelog.Controls.Add(this.lbl_desc3489);
+            this.gbRelog.Controls.Add(this.tbPassword);
+            this.gbRelog.Controls.Add(this.lPassword);
+            this.gbRelog.Controls.Add(this.tbAccount);
+            this.gbRelog.Controls.Add(this.lAccount);
+            this.gbRelog.Location = new System.Drawing.Point(5, 12);
+            this.gbRelog.Name = "gbRelog";
+            this.gbRelog.Size = new System.Drawing.Size(136, 100);
+            this.gbRelog.TabIndex = 15;
+            this.gbRelog.TabStop = false;
+            this.gbRelog.Text = "Relog";
+            // 
+            // txt_Character
+            // 
+            this.txt_Character.Enabled = false;
+            this.txt_Character.Location = new System.Drawing.Point(57, 69);
+            this.txt_Character.Name = "txt_Character";
+            this.txt_Character.Size = new System.Drawing.Size(71, 20);
+            this.txt_Character.TabIndex = 5;
+            // 
+            // lbl_desc3489
+            // 
+            this.lbl_desc3489.AutoSize = true;
+            this.lbl_desc3489.Location = new System.Drawing.Point(4, 72);
+            this.lbl_desc3489.Name = "lbl_desc3489";
+            this.lbl_desc3489.Size = new System.Drawing.Size(53, 13);
+            this.lbl_desc3489.TabIndex = 4;
+            this.lbl_desc3489.Text = "Character";
+            // 
+            // tbPassword
+            // 
+            this.tbPassword.Location = new System.Drawing.Point(57, 43);
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.Size = new System.Drawing.Size(71, 20);
+            this.tbPassword.TabIndex = 2;
+            this.tbPassword.UseSystemPasswordChar = true;
+            // 
+            // lPassword
+            // 
+            this.lPassword.AutoSize = true;
+            this.lPassword.Location = new System.Drawing.Point(4, 46);
+            this.lPassword.Name = "lPassword";
+            this.lPassword.Size = new System.Drawing.Size(53, 13);
+            this.lPassword.TabIndex = 3;
+            this.lPassword.Text = "Password";
+            // 
+            // tbAccount
+            // 
+            this.tbAccount.Location = new System.Drawing.Point(57, 17);
+            this.tbAccount.Name = "tbAccount";
+            this.tbAccount.Size = new System.Drawing.Size(71, 20);
+            this.tbAccount.TabIndex = 0;
+            // 
+            // lAccount
+            // 
+            this.lAccount.AutoSize = true;
+            this.lAccount.Location = new System.Drawing.Point(4, 20);
+            this.lAccount.Name = "lAccount";
+            this.lAccount.Size = new System.Drawing.Size(47, 13);
+            this.lAccount.TabIndex = 1;
+            this.lAccount.Text = "Account";
+            // 
+            // grp_ProtectedItems
+            // 
+            this.grp_ProtectedItems.Controls.Add(this.tbProtectedItems);
+            this.grp_ProtectedItems.Location = new System.Drawing.Point(6, 6);
+            this.grp_ProtectedItems.Name = "grp_ProtectedItems";
+            this.grp_ProtectedItems.Size = new System.Drawing.Size(148, 234);
+            this.grp_ProtectedItems.TabIndex = 26;
+            this.grp_ProtectedItems.TabStop = false;
+            this.grp_ProtectedItems.Text = "Protected Items";
+            // 
+            // tbProtectedItems
+            // 
+            this.tbProtectedItems.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbProtectedItems.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbProtectedItems.Location = new System.Drawing.Point(3, 16);
+            this.tbProtectedItems.Multiline = true;
+            this.tbProtectedItems.Name = "tbProtectedItems";
+            this.tbProtectedItems.Size = new System.Drawing.Size(142, 215);
+            this.tbProtectedItems.TabIndex = 21;
+            // 
             // GraphicalSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1075,8 +1091,7 @@
             this.Text = "Settings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GraphicalSettingsForm_FormClosing);
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.tP_Behaviour.ResumeLayout(false);
             this.gbMisc.ResumeLayout(false);
             this.gbMisc.PerformLayout();
             this.gbChat.ResumeLayout(false);
@@ -1098,11 +1113,9 @@
             this.gbRest.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudEatAt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDrinkAt)).EndInit();
-            this.gbRelog.ResumeLayout(false);
-            this.gbRelog.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
+            this.tP_Irc.ResumeLayout(false);
+            this.tP_Irc.PerformLayout();
+            this.tP_Windows.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -1111,6 +1124,11 @@
             this.tableLayoutPanel1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.tP_General.ResumeLayout(false);
+            this.gbRelog.ResumeLayout(false);
+            this.gbRelog.PerformLayout();
+            this.grp_ProtectedItems.ResumeLayout(false);
+            this.grp_ProtectedItems.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1118,8 +1136,8 @@
         #endregion
 
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tP_Behaviour;
+        private System.Windows.Forms.TabPage tP_Irc;
         private System.Windows.Forms.Label lIRCDescription;
         internal System.Windows.Forms.TextBox tbIRCBotChannel;
         internal System.Windows.Forms.TextBox tbIRCBotNickname;
@@ -1145,8 +1163,6 @@
         private System.Windows.Forms.Label lForceBreak;
         internal System.Windows.Forms.NumericUpDown nudWaypointModifier;
         private System.Windows.Forms.Label lWaypointModifier;
-        internal System.Windows.Forms.TextBox tbProtectedItems;
-        private System.Windows.Forms.Label lProtectedItems;
         private System.Windows.Forms.GroupBox gbVendoring;
         internal System.Windows.Forms.ComboBox cbKeepQuality;
         internal System.Windows.Forms.NumericUpDown nudFreeSlots;
@@ -1170,20 +1186,13 @@
         private System.Windows.Forms.Label lFood;
         internal System.Windows.Forms.TextBox tbDrink;
         private System.Windows.Forms.Label lDrink;
-        private System.Windows.Forms.GroupBox gbRelog;
-        internal System.Windows.Forms.TextBox txt_Character;
-        private System.Windows.Forms.Label lbl_desc3489;
-        internal System.Windows.Forms.TextBox tbPassword;
-        private System.Windows.Forms.Label lPassword;
-        internal System.Windows.Forms.TextBox tbAccount;
-        private System.Windows.Forms.Label lAccount;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reloadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newProfileToolStripMenuItem;
         private System.Windows.Forms.Button btn_ConnectIrc;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tP_Windows;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btn_GetBotWindow;
         internal System.Windows.Forms.TextBox txt_BotWindowY;
@@ -1200,5 +1209,15 @@
         private System.Windows.Forms.Label label1;
         internal System.Windows.Forms.TextBox txt_WowWindowX;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TabPage tP_General;
+        private System.Windows.Forms.GroupBox gbRelog;
+        internal System.Windows.Forms.TextBox txt_Character;
+        private System.Windows.Forms.Label lbl_desc3489;
+        internal System.Windows.Forms.TextBox tbPassword;
+        private System.Windows.Forms.Label lPassword;
+        internal System.Windows.Forms.TextBox tbAccount;
+        private System.Windows.Forms.Label lAccount;
+        private System.Windows.Forms.GroupBox grp_ProtectedItems;
+        internal System.Windows.Forms.TextBox tbProtectedItems;
     }
 }
