@@ -426,7 +426,6 @@ namespace MiniMage
             }
 
 
-            SelectHelpfulPotion();
         }
 
         //Buffs
@@ -544,14 +543,6 @@ namespace MiniMage
 
             //True means we are done buffing, or cannot buff
             return true;
-        }
-
-        public void SelectHelpfulPotion()
-        {
-            string WeakTrollBloodPotion = "Weak Troll's Blood Potion";
-            if (!this.Player.GotBuff("Regeneration") && this.Player.ItemCount(WeakTrollBloodPotion) != 0)
-                this.Player.UseItem(WeakTrollBloodPotion);
-
         }
 
         //buff with any scrolls that you have

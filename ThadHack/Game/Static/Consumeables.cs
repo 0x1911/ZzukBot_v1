@@ -4,6 +4,27 @@ namespace ZzukBot.Game.Static
 {
     public static class Consumeables
     {
+        public static void SelectHelpfulPotion()
+        {
+            string WeakTrollBloodPotion = "Weak Troll's Blood Potion";
+            if (!API.BMain.Me.GotAura("Regeneration") && API.BMain.Me.Inventory.ItemCount(WeakTrollBloodPotion) != 0)
+            {
+                API.BMain.Me.Inventory.UseItemByName(WeakTrollBloodPotion);
+            }
+
+            string LionsStrengthElixir = "Elixir of Lion's Strength";
+            if (!API.BMain.Me.GotAura("Lesser Strength") && API.BMain.Me.Inventory.ItemCount(LionsStrengthElixir) != 0)
+            {
+                API.BMain.Me.Inventory.UseItemByName(LionsStrengthElixir);
+            }
+
+            string MinorDefenseElixir = "Elixir of Minor Defense";
+            if (!API.BMain.Me.GotAura("Lesser Armor") && API.BMain.Me.Inventory.ItemCount(MinorDefenseElixir) != 0)
+            {
+                API.BMain.Me.Inventory.UseItemByName(MinorDefenseElixir);
+            }
+        }
+
         public static Dictionary<int, int> DrinksDictionary = new Dictionary<int, int>()
         {
             { 159, 0 },     //Refreshing Spring Water

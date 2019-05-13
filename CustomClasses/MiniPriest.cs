@@ -210,13 +210,6 @@ namespace MiniPriest
                 this.Player.UseItem("Minor Mana Potion");
         }
 
-        public void SelectHelpfulPotion()
-        {
-            string WeakTrollBloodPotion = "Weak Troll's Blood Potion";
-            if (!this.Player.GotBuff("Regeneration") && this.Player.ItemCount(WeakTrollBloodPotion) != 0)
-                this.Player.UseItem(WeakTrollBloodPotion);
-
-        }
 
         public void SilenceEnemy()
         {   
@@ -425,7 +418,6 @@ namespace MiniPriest
             MultiDotting();
             SelectMPotion();
             SelectHPotion();
-            SelectHelpfulPotion();
 
             if (useSilence == true)
             {
@@ -455,6 +447,7 @@ namespace MiniPriest
 
         public override bool Buff()
         {
+
             try
             {
 

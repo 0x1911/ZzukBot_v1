@@ -248,6 +248,8 @@ namespace ZzukBot.Engines.CustomClass
 
         internal static void PreFightPulse(ref WoWUnit parTarget)
         {
+            Game.Static.Consumeables.SelectHelpfulPotion();
+
             try
             {
                 if (DoActions())
