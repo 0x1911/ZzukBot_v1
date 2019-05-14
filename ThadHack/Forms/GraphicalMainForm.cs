@@ -162,6 +162,9 @@ namespace ZzukBot.Forms
 
         internal void updateChat(ChatMessage e)
         {
+            if(!API.BMain.IsInGame || ObjectManager.Player == null) { return; }
+
+
             Invoke(new MethodInvoker(delegate
             {
                 if (e.Type == (int) Enums.ChatType.Channel)

@@ -19,11 +19,11 @@ namespace ZzukBot.Forms
 
         private void btn_Skills_Click(object sender, EventArgs e)
         {
-            if (!ObjectManager.IsInGame) { return; }
+            if (!API.BMain.IsInGame) { return; }
 
             var player = ObjectManager.Player;
 
-            if(!ObjectManager.IsInGame) { return; }
+            if(!API.BMain.IsInGame) { return; }
             //List<Game.Static.Skills.Skill> Skills = new Game.Static.Skills().GetAllPlayerSkills();
             player.Skills = new Game.Static.Skills().GetAllPlayerSkills();
 
@@ -36,7 +36,7 @@ namespace ZzukBot.Forms
 
         private void btn_travelToVendor_Click(object sender, EventArgs e)
         {
-            if (!ObjectManager.IsInGame) { return; }
+            if (!API.BMain.IsInGame) { return; }
 
             if (Grinder.Access.Info.Vendor.TravelingToVendor == false)
             {
@@ -50,7 +50,7 @@ namespace ZzukBot.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!ObjectManager.IsInGame) { return; }
+            if (!API.BMain.IsInGame) { return; }
 
             List<Objects.WoWItem> tmpAllItemsList = ObjectManager.Items;
 
@@ -68,14 +68,18 @@ namespace ZzukBot.Forms
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Helpers.Logger.Append("teeeeeeeest neu");
-            Helpers.Logger.Append("teeeeeeeest alt");
+            if (!API.BMain.IsInGame) { return; }
 
+            var target = ObjectManager.Target;
+
+            Helpers.Logger.Append("-- Target details print --");
+            Helpers.Logger.Append($"Name: {target.Name}");
+            Helpers.Logger.Append($"{ target.Position.X}; { target.Position.Y }; { target.Position.Z }");
         }
 
         private void btn_Talents_Click(object sender, EventArgs e)
         {
-            if (!ObjectManager.IsInGame) { return; }
+            if (!API.BMain.IsInGame) { return; }
 
             Game.Static.TalentTree tmpTalentTree = new Game.Static.TalentTree();
 
@@ -237,5 +241,6 @@ namespace ZzukBot.Forms
             wallClimb.Remove();
             #endregion
         }
+
     }
 }

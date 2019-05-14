@@ -53,7 +53,7 @@
             // 
             this.btn_Skills.Location = new System.Drawing.Point(9, 19);
             this.btn_Skills.Name = "btn_Skills";
-            this.btn_Skills.Size = new System.Drawing.Size(75, 23);
+            this.btn_Skills.Size = new System.Drawing.Size(82, 23);
             this.btn_Skills.TabIndex = 0;
             this.btn_Skills.Text = "Skills";
             this.btn_Skills.UseVisualStyleBackColor = true;
@@ -103,7 +103,7 @@
             // 
             this.btn_FishingTest.Location = new System.Drawing.Point(9, 135);
             this.btn_FishingTest.Name = "btn_FishingTest";
-            this.btn_FishingTest.Size = new System.Drawing.Size(75, 23);
+            this.btn_FishingTest.Size = new System.Drawing.Size(82, 23);
             this.btn_FishingTest.TabIndex = 7;
             this.btn_FishingTest.Text = "Fishing";
             this.btn_FishingTest.UseVisualStyleBackColor = true;
@@ -111,7 +111,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(6, 78);
+            this.button2.Location = new System.Drawing.Point(6, 57);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(153, 23);
             this.button2.TabIndex = 6;
@@ -123,7 +123,7 @@
             // 
             this.btn_Inventory.Location = new System.Drawing.Point(9, 48);
             this.btn_Inventory.Name = "btn_Inventory";
-            this.btn_Inventory.Size = new System.Drawing.Size(75, 23);
+            this.btn_Inventory.Size = new System.Drawing.Size(82, 23);
             this.btn_Inventory.TabIndex = 4;
             this.btn_Inventory.Text = "Inventory";
             this.btn_Inventory.UseVisualStyleBackColor = true;
@@ -146,11 +146,11 @@
             // 
             // btn_Party
             // 
-            this.btn_Party.Location = new System.Drawing.Point(9, 106);
+            this.btn_Party.Location = new System.Drawing.Point(9, 164);
             this.btn_Party.Name = "btn_Party";
-            this.btn_Party.Size = new System.Drawing.Size(75, 23);
+            this.btn_Party.Size = new System.Drawing.Size(82, 23);
             this.btn_Party.TabIndex = 9;
-            this.btn_Party.Text = "party details";
+            this.btn_Party.Text = "Party details";
             this.btn_Party.UseVisualStyleBackColor = true;
             this.btn_Party.Click += new System.EventHandler(this.btn_Party_Click);
             // 
@@ -158,7 +158,7 @@
             // 
             this.btn_Talents.Location = new System.Drawing.Point(9, 77);
             this.btn_Talents.Name = "btn_Talents";
-            this.btn_Talents.Size = new System.Drawing.Size(75, 23);
+            this.btn_Talents.Size = new System.Drawing.Size(82, 23);
             this.btn_Talents.TabIndex = 8;
             this.btn_Talents.Text = "Talents";
             this.btn_Talents.UseVisualStyleBackColor = true;
@@ -166,11 +166,11 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(9, 173);
+            this.button3.Location = new System.Drawing.Point(9, 193);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(82, 23);
             this.button3.TabIndex = 7;
-            this.button3.Text = "test action";
+            this.button3.Text = "Target details";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -201,7 +201,7 @@
             this.groupBox4.Controls.Add(this.button2);
             this.groupBox4.Location = new System.Drawing.Point(12, 240);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(174, 198);
+            this.groupBox4.Size = new System.Drawing.Size(174, 159);
             this.groupBox4.TabIndex = 11;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Other";

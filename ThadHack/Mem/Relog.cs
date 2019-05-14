@@ -57,7 +57,7 @@ namespace ZzukBot.Mem
         
         internal static void LoginHandling()
         {
-            if(ObjectManager.IsInGame) { return; }
+            if(API.BMain.IsInGame) { return; }
 
             BackgroundWorker bgWorker_Login;
             bgWorker_Login = new BackgroundWorker();
@@ -68,7 +68,7 @@ namespace ZzukBot.Mem
         }
         private static void bgWorker_Login_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (Relog.LoginState == Enums.LoginState.login && !ObjectManager.IsInGame)
+            if (Relog.LoginState == Enums.LoginState.login && !API.BMain.IsInGame)
             {
                 Helpers.Logger.Append("Logging in..");
                 Relog.Login();
@@ -96,7 +96,7 @@ namespace ZzukBot.Mem
                 System.Threading.Thread.Sleep(500);
             }
 
-            if (Relog.LoginState == Enums.LoginState.charselect && !ObjectManager.IsInGame)
+            if (Relog.LoginState == Enums.LoginState.charselect && !API.BMain.IsInGame)
             {
                 Helpers.Logger.Append("Entering world..");
                 Relog.EnterWorld();

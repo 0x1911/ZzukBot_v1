@@ -34,6 +34,8 @@ namespace ZzukBot.Forms
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lbl_TargetCreatureType = new System.Windows.Forms.Label();
+            this.lbl_TargetLevel = new System.Windows.Forms.Label();
             this.pBar_targetHealth = new ZzukBot.Helpers.NewProgressBar();
             this.lbl_targetId = new System.Windows.Forms.Label();
             this.lbl_targetFaction = new System.Windows.Forms.Label();
@@ -80,8 +82,6 @@ namespace ZzukBot.Forms
             this.dEVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lbl_Runtime = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lbl_TargetLevel = new System.Windows.Forms.Label();
-            this.lbl_TargetCreatureType = new System.Windows.Forms.Label();
             this.tcMain.SuspendLayout();
             this.tpGrind.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -173,6 +173,28 @@ namespace ZzukBot.Forms
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Target";
             // 
+            // lbl_TargetCreatureType
+            // 
+            this.lbl_TargetCreatureType.AutoSize = true;
+            this.lbl_TargetCreatureType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_TargetCreatureType.Location = new System.Drawing.Point(8, 117);
+            this.lbl_TargetCreatureType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_TargetCreatureType.Name = "lbl_TargetCreatureType";
+            this.lbl_TargetCreatureType.Size = new System.Drawing.Size(34, 13);
+            this.lbl_TargetCreatureType.TabIndex = 21;
+            this.lbl_TargetCreatureType.Text = "Type:";
+            // 
+            // lbl_TargetLevel
+            // 
+            this.lbl_TargetLevel.AutoSize = true;
+            this.lbl_TargetLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_TargetLevel.Location = new System.Drawing.Point(8, 104);
+            this.lbl_TargetLevel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_TargetLevel.Name = "lbl_TargetLevel";
+            this.lbl_TargetLevel.Size = new System.Drawing.Size(45, 13);
+            this.lbl_TargetLevel.TabIndex = 20;
+            this.lbl_TargetLevel.Text = "Level: 0";
+            // 
             // pBar_targetHealth
             // 
             this.pBar_targetHealth.BackColor = System.Drawing.SystemColors.Control;
@@ -186,7 +208,7 @@ namespace ZzukBot.Forms
             // 
             this.lbl_targetId.AutoSize = true;
             this.lbl_targetId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_targetId.Location = new System.Drawing.Point(8, 112);
+            this.lbl_targetId.Location = new System.Drawing.Point(8, 158);
             this.lbl_targetId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_targetId.Name = "lbl_targetId";
             this.lbl_targetId.Size = new System.Drawing.Size(28, 13);
@@ -197,7 +219,7 @@ namespace ZzukBot.Forms
             // 
             this.lbl_targetFaction.AutoSize = true;
             this.lbl_targetFaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_targetFaction.Location = new System.Drawing.Point(8, 96);
+            this.lbl_targetFaction.Location = new System.Drawing.Point(8, 142);
             this.lbl_targetFaction.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_targetFaction.Name = "lbl_targetFaction";
             this.lbl_targetFaction.Size = new System.Drawing.Size(54, 13);
@@ -241,7 +263,7 @@ namespace ZzukBot.Forms
             // 
             this.lbl_targetName.AutoSize = true;
             this.lbl_targetName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_targetName.Location = new System.Drawing.Point(8, 156);
+            this.lbl_targetName.Location = new System.Drawing.Point(8, 91);
             this.lbl_targetName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_targetName.Name = "lbl_targetName";
             this.lbl_targetName.Size = new System.Drawing.Size(85, 13);
@@ -659,28 +681,6 @@ namespace ZzukBot.Forms
             // 
             this.lbl_Runtime.Name = "lbl_Runtime";
             this.lbl_Runtime.Size = new System.Drawing.Size(0, 17);
-            // 
-            // lbl_TargetLevel
-            // 
-            this.lbl_TargetLevel.AutoSize = true;
-            this.lbl_TargetLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_TargetLevel.Location = new System.Drawing.Point(8, 169);
-            this.lbl_TargetLevel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_TargetLevel.Name = "lbl_TargetLevel";
-            this.lbl_TargetLevel.Size = new System.Drawing.Size(45, 13);
-            this.lbl_TargetLevel.TabIndex = 20;
-            this.lbl_TargetLevel.Text = "Level: 0";
-            // 
-            // lbl_TargetCreatureType
-            // 
-            this.lbl_TargetCreatureType.AutoSize = true;
-            this.lbl_TargetCreatureType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_TargetCreatureType.Location = new System.Drawing.Point(8, 182);
-            this.lbl_TargetCreatureType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_TargetCreatureType.Name = "lbl_TargetCreatureType";
-            this.lbl_TargetCreatureType.Size = new System.Drawing.Size(34, 13);
-            this.lbl_TargetCreatureType.TabIndex = 21;
-            this.lbl_TargetCreatureType.Text = "Type:";
             // 
             // GraphicalMainForm
             // 

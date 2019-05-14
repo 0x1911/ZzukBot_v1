@@ -128,7 +128,7 @@ namespace ZzukBot.Mem
 
         internal static void EnterWorld()
         {
-            if (ObjectManager.IsInGame) return;
+            if (API.BMain.IsInGame) return;
 
             var str = "if CharSelectEnterWorldButton ~= nil then CharSelectEnterWorldButton:Click()  end";
             DoString(str);

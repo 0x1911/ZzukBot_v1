@@ -68,8 +68,6 @@ namespace ZzukBot.Mem
         internal static List<WoWItem> Items => Objects.OfType<WoWItem>()
             .ToList();
 
-        internal static bool IsInGame => Offsets.Player.IsInGame.ReadAs<byte>() == 1;
-
         /// <summary>
         ///     Initialise Object Manager
         /// </summary>
@@ -96,7 +94,7 @@ namespace ZzukBot.Mem
         /// </summary>
         internal static bool EnumObjects()
         {
-            if (!IsInGame) { return false; }           
+            if (!API.BMain.IsInGame) { return false; }           
 
             return _EnumObjects();
         }
