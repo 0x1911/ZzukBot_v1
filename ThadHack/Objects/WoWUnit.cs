@@ -33,7 +33,7 @@ namespace ZzukBot.Objects
             }
         }
 
-        internal float DistanceToPlayer => Calc.Distance3D(ObjectManager.Player.Position, Position);
+        public float DistanceToPlayer => Calc.Distance3D(ObjectManager.Player.Position, Position);
 
         /// <summary>
         ///     All auras on unit (only id)
@@ -112,7 +112,7 @@ namespace ZzukBot.Objects
             }
         }
 
-        private string PlayerName
+        public string PlayerName
         {
             get
             {

@@ -268,6 +268,8 @@ namespace ZzukBot.Engines.CustomClass
 
         internal static bool IsBuffed()
         {
+            Game.Static.Consumeables.SelectHelpfulPotion();
+
             try
             {
                 return ccs[toUse].Buff();

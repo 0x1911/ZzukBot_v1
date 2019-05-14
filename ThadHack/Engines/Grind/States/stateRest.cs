@@ -33,7 +33,11 @@ namespace ZzukBot.Engines.Grind.States
             Shared.ResetJumper();
 
             //don't just stand around like a bot.. At least sit down while resting!
-            ObjectManager.Player.DoString("DoEmote('sit');");
+            if (!ObjectManager.Player.IsInCombat)
+            {
+                ObjectManager.Player.DoString("DoEmote('sit');");
+            }
+            
 
             string FoodAuraString = "Food";
             string DrinkAuraString = "Drink";

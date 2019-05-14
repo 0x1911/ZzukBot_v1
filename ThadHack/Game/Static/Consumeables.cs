@@ -46,6 +46,7 @@ namespace ZzukBot.Game.Static
         {
             { 6290, 0 },    //Brilliant Smallfish
             { 6888, 0 },    //Herb Baked Egg
+            { 2680, 0 },    //Spiced Wolf Meat
             { 7097, 0 },    //Leg Meat
             { 2681, 0 },    //Roasted Boar Meat
             { 2679, 0 },    //Charred Wolf Meat

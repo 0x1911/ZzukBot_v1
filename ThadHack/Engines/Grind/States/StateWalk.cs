@@ -18,7 +18,8 @@ namespace ZzukBot.Engines.Grind.States
                                               != (int) Enums.MovementFlags.Front)
                                              || !Grinder.Access.Info.Waypoints.NeedToLoadNextWaypoint())
                                             && ObjectManager.Player.Casting == 0
-                                            && ObjectManager.Player.Channeling == 0;
+                                            && ObjectManager.Player.Channeling == 0 
+                                            && !API.BMain.Me.IsLooting;
 
         internal override string Name => "Walking";
 
@@ -48,8 +49,12 @@ namespace ZzukBot.Engines.Grind.States
                     return;
                 }
 
-                ObjectManager.Player.CtmTo(
-                   Grinder.Access.Info.PathToPosition.ToPos(Grinder.Access.Info.Waypoints.CurrentWaypoint));
+                var pointToMove = Grinder.Access.Info.Waypoints.CurrentWaypoint;
+                if(pointToMove != null)
+                {
+                    ObjectManager.Player.CtmTo(
+                       Grinder.Access.Info.PathToPosition.ToPos(Grinder.Access.Info.Waypoints.CurrentWaypoint));
+                }
 
             }
             else
@@ -59,7 +64,13 @@ namespace ZzukBot.Engines.Grind.States
                     API.Helper.StayOnWaterTop();
                     return;
                 }
-                ObjectManager.Player.CtmTo(Grinder.Access.Info.Waypoints.CurrentWaypoint);
+
+                var pointToMove = Grinder.Access.Info.Waypoints.CurrentWaypoint;
+                if (pointToMove != null)
+                {
+                    ObjectManager.Player.CtmTo(
+                       Grinder.Access.Info.PathToPosition.ToPos(Grinder.Access.Info.Waypoints.CurrentWaypoint));
+                }
             }            
         }
     }

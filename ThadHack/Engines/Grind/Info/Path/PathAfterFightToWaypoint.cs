@@ -36,6 +36,14 @@ namespace ZzukBot.Engines.Grind.Info.Path
 
         internal bool NeedToReturn()
         {
+            var pointToMove = Grinder.Access.Info.Waypoints.CurrentWaypoint;
+            if (pointToMove == null)
+            {
+                _AdjustWaypoints = true;
+
+                return ShouldReturn;
+            }
+
             var diff = Calc.Distance2D(Grinder.Access.Info.Waypoints.CurrentWaypoint,
                 ObjectManager.Player.Position);
             if (diff > Options.MaxDiffToWp)

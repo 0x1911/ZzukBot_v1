@@ -608,6 +608,28 @@ namespace ZzukBot.Engines.CustomClass.Objects
             return false;
         }
 
+        public bool TargetPartyMember(ZzukBot.Objects.WoWUnit parUnit, bool parStopCastingOnChange = false)
+        {
+            try
+            {
+                if (parUnit == null) return false;
+
+                if (!Grinder.Access.Info.Combat.IsMoving
+                    || CCManager._Target.Guid != parUnit.Guid)
+                {
+                    ObjectManager.Player.SetTarget(parUnit);
+
+                    if (parStopCastingOnChange)
+                        StopCasting();
+                    return true;
+                }
+            }
+            catch
+            {
+            }
+            return false;
+        }
+
         /// <summary>
         ///     Checks if there are any non-blacklisted lootable corpses nearby which would trigger the loot state.
         /// </summary>

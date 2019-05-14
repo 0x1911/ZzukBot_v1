@@ -23,7 +23,7 @@ namespace ZzukBot.Objects
         /// </summary>
         internal IntPtr Pointer { get; set; }
 
-        internal ulong Guid { get; private set; }
+        public ulong Guid { get; private set; }
 
         internal Enums.WoWObjectTypes WoWType { get; private set; }
 

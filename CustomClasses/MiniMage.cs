@@ -1,11 +1,6 @@
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using ZzukBot.Engines.CustomClass;
-    using ZzukBot.Engines.CustomClass.Objects;
+using System;
+using System.Collections.Generic;
+using ZzukBot.Engines.CustomClass;
 using ZzukBot.API;
 
 
@@ -492,13 +487,13 @@ namespace MiniMage
 
                 foreach(ZzukBot.Objects.WoWUnit tmpMember in tmpPartyMemberList)
                 {
-                    if (tmpMember.HealthPercent <= 1) { continue; }
+                    if (tmpMember.HealthPercent <= 1 || tmpMember.DistanceToPlayer > 28) { continue; }
 
 
                     if (!tmpMember.GotAura("Arcane Intellect") && this.Player.GetSpellRank("Arcane Intellect") != 0)
                     {
-                        this.Player.SetTargetTo(tmpMember);
-                        this.Player.Cast("Arcane Intellect");
+                        if (this.Player.TargetPartyMember(tmpMember))
+                            this.Player.Cast("Arcane Intellect");
                         return false;
                     }
                 }

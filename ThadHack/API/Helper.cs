@@ -3,6 +3,10 @@ namespace ZzukBot.API
 {
     public static class Helper
     {
+        public static void WriteLogToConsole(string message)
+        {
+            Helpers.Logger.Append(message);
+        }
         /// <summary>
         /// Move out of campfires to avoid periodic damage via a, hopefully, classy jump
         /// </summary>

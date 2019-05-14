@@ -30,7 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GraphicalSettingsForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tP_General = new System.Windows.Forms.TabPage();
+            this.gbRelog = new System.Windows.Forms.GroupBox();
+            this.txt_Character = new System.Windows.Forms.TextBox();
+            this.lbl_desc3489 = new System.Windows.Forms.Label();
+            this.tbPassword = new System.Windows.Forms.TextBox();
+            this.lPassword = new System.Windows.Forms.Label();
+            this.tbAccount = new System.Windows.Forms.TextBox();
+            this.lAccount = new System.Windows.Forms.Label();
             this.tP_Behaviour = new System.Windows.Forms.TabPage();
+            this.grp_ProtectedItems = new System.Windows.Forms.GroupBox();
+            this.tbProtectedItems = new System.Windows.Forms.TextBox();
             this.gbMisc = new System.Windows.Forms.GroupBox();
             this.cbNinjaSkin = new System.Windows.Forms.CheckBox();
             this.cbLootUnits = new System.Windows.Forms.CheckBox();
@@ -73,14 +83,6 @@
             this.lFood = new System.Windows.Forms.Label();
             this.tbDrink = new System.Windows.Forms.TextBox();
             this.lDrink = new System.Windows.Forms.Label();
-            this.tP_Irc = new System.Windows.Forms.TabPage();
-            this.btn_ConnectIrc = new System.Windows.Forms.Button();
-            this.lIRCDescription = new System.Windows.Forms.Label();
-            this.tbIRCBotChannel = new System.Windows.Forms.TextBox();
-            this.tbIRCBotNickname = new System.Windows.Forms.TextBox();
-            this.cbIRCConnect = new System.Windows.Forms.CheckBox();
-            this.lIrcBotname = new System.Windows.Forms.Label();
-            this.lIrcChannel = new System.Windows.Forms.Label();
             this.tP_Windows = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btn_GetBotWindow = new System.Windows.Forms.Button();
@@ -98,23 +100,24 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txt_WowWindowX = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.tP_Irc = new System.Windows.Forms.TabPage();
+            this.btn_ConnectIrc = new System.Windows.Forms.Button();
+            this.lIRCDescription = new System.Windows.Forms.Label();
+            this.tbIRCBotChannel = new System.Windows.Forms.TextBox();
+            this.tbIRCBotNickname = new System.Windows.Forms.TextBox();
+            this.cbIRCConnect = new System.Windows.Forms.CheckBox();
+            this.lIrcBotname = new System.Windows.Forms.Label();
+            this.lIrcChannel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tP_General = new System.Windows.Forms.TabPage();
-            this.gbRelog = new System.Windows.Forms.GroupBox();
-            this.txt_Character = new System.Windows.Forms.TextBox();
-            this.lbl_desc3489 = new System.Windows.Forms.Label();
-            this.tbPassword = new System.Windows.Forms.TextBox();
-            this.lPassword = new System.Windows.Forms.Label();
-            this.tbAccount = new System.Windows.Forms.TextBox();
-            this.lAccount = new System.Windows.Forms.Label();
-            this.grp_ProtectedItems = new System.Windows.Forms.GroupBox();
-            this.tbProtectedItems = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
+            this.tP_General.SuspendLayout();
+            this.gbRelog.SuspendLayout();
             this.tP_Behaviour.SuspendLayout();
+            this.grp_ProtectedItems.SuspendLayout();
             this.gbMisc.SuspendLayout();
             this.gbChat.SuspendLayout();
             this.gbOther.SuspendLayout();
@@ -130,15 +133,12 @@
             this.gbRest.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudEatAt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDrinkAt)).BeginInit();
-            this.tP_Irc.SuspendLayout();
             this.tP_Windows.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tP_Irc.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            this.tP_General.SuspendLayout();
-            this.gbRelog.SuspendLayout();
-            this.grp_ProtectedItems.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -153,6 +153,81 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(621, 386);
             this.tabControl1.TabIndex = 0;
+            // 
+            // tP_General
+            // 
+            this.tP_General.BackColor = System.Drawing.SystemColors.Control;
+            this.tP_General.Controls.Add(this.gbRelog);
+            this.tP_General.Location = new System.Drawing.Point(4, 22);
+            this.tP_General.Name = "tP_General";
+            this.tP_General.Size = new System.Drawing.Size(613, 360);
+            this.tP_General.TabIndex = 3;
+            this.tP_General.Text = "General";
+            // 
+            // gbRelog
+            // 
+            this.gbRelog.Controls.Add(this.txt_Character);
+            this.gbRelog.Controls.Add(this.lbl_desc3489);
+            this.gbRelog.Controls.Add(this.tbPassword);
+            this.gbRelog.Controls.Add(this.lPassword);
+            this.gbRelog.Controls.Add(this.tbAccount);
+            this.gbRelog.Controls.Add(this.lAccount);
+            this.gbRelog.Location = new System.Drawing.Point(5, 12);
+            this.gbRelog.Name = "gbRelog";
+            this.gbRelog.Size = new System.Drawing.Size(136, 100);
+            this.gbRelog.TabIndex = 15;
+            this.gbRelog.TabStop = false;
+            this.gbRelog.Text = "Relog";
+            // 
+            // txt_Character
+            // 
+            this.txt_Character.Enabled = false;
+            this.txt_Character.Location = new System.Drawing.Point(57, 69);
+            this.txt_Character.Name = "txt_Character";
+            this.txt_Character.Size = new System.Drawing.Size(71, 20);
+            this.txt_Character.TabIndex = 5;
+            // 
+            // lbl_desc3489
+            // 
+            this.lbl_desc3489.AutoSize = true;
+            this.lbl_desc3489.Location = new System.Drawing.Point(4, 72);
+            this.lbl_desc3489.Name = "lbl_desc3489";
+            this.lbl_desc3489.Size = new System.Drawing.Size(53, 13);
+            this.lbl_desc3489.TabIndex = 4;
+            this.lbl_desc3489.Text = "Character";
+            // 
+            // tbPassword
+            // 
+            this.tbPassword.Location = new System.Drawing.Point(57, 43);
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.Size = new System.Drawing.Size(71, 20);
+            this.tbPassword.TabIndex = 2;
+            this.tbPassword.UseSystemPasswordChar = true;
+            // 
+            // lPassword
+            // 
+            this.lPassword.AutoSize = true;
+            this.lPassword.Location = new System.Drawing.Point(4, 46);
+            this.lPassword.Name = "lPassword";
+            this.lPassword.Size = new System.Drawing.Size(53, 13);
+            this.lPassword.TabIndex = 3;
+            this.lPassword.Text = "Password";
+            // 
+            // tbAccount
+            // 
+            this.tbAccount.Location = new System.Drawing.Point(57, 17);
+            this.tbAccount.Name = "tbAccount";
+            this.tbAccount.Size = new System.Drawing.Size(71, 20);
+            this.tbAccount.TabIndex = 0;
+            // 
+            // lAccount
+            // 
+            this.lAccount.AutoSize = true;
+            this.lAccount.Location = new System.Drawing.Point(4, 20);
+            this.lAccount.Name = "lAccount";
+            this.lAccount.Size = new System.Drawing.Size(47, 13);
+            this.lAccount.TabIndex = 1;
+            this.lAccount.Text = "Account";
             // 
             // tP_Behaviour
             // 
@@ -170,6 +245,26 @@
             this.tP_Behaviour.Size = new System.Drawing.Size(613, 360);
             this.tP_Behaviour.TabIndex = 0;
             this.tP_Behaviour.Text = "Behaviour";
+            // 
+            // grp_ProtectedItems
+            // 
+            this.grp_ProtectedItems.Controls.Add(this.tbProtectedItems);
+            this.grp_ProtectedItems.Location = new System.Drawing.Point(6, 6);
+            this.grp_ProtectedItems.Name = "grp_ProtectedItems";
+            this.grp_ProtectedItems.Size = new System.Drawing.Size(148, 234);
+            this.grp_ProtectedItems.TabIndex = 26;
+            this.grp_ProtectedItems.TabStop = false;
+            this.grp_ProtectedItems.Text = "Protected Items";
+            // 
+            // tbProtectedItems
+            // 
+            this.tbProtectedItems.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbProtectedItems.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbProtectedItems.Location = new System.Drawing.Point(3, 16);
+            this.tbProtectedItems.Multiline = true;
+            this.tbProtectedItems.Name = "tbProtectedItems";
+            this.tbProtectedItems.Size = new System.Drawing.Size(142, 215);
+            this.tbProtectedItems.TabIndex = 21;
             // 
             // gbMisc
             // 
@@ -689,89 +784,9 @@
             this.lDrink.TabIndex = 1;
             this.lDrink.Text = "Drink";
             // 
-            // tP_Irc
-            // 
-            this.tP_Irc.BackColor = System.Drawing.SystemColors.Control;
-            this.tP_Irc.Controls.Add(this.btn_ConnectIrc);
-            this.tP_Irc.Controls.Add(this.lIRCDescription);
-            this.tP_Irc.Controls.Add(this.tbIRCBotChannel);
-            this.tP_Irc.Controls.Add(this.tbIRCBotNickname);
-            this.tP_Irc.Controls.Add(this.cbIRCConnect);
-            this.tP_Irc.Controls.Add(this.lIrcBotname);
-            this.tP_Irc.Controls.Add(this.lIrcChannel);
-            this.tP_Irc.Location = new System.Drawing.Point(4, 22);
-            this.tP_Irc.Name = "tP_Irc";
-            this.tP_Irc.Padding = new System.Windows.Forms.Padding(3);
-            this.tP_Irc.Size = new System.Drawing.Size(613, 360);
-            this.tP_Irc.TabIndex = 1;
-            this.tP_Irc.Text = "IRC";
-            // 
-            // btn_ConnectIrc
-            // 
-            this.btn_ConnectIrc.Location = new System.Drawing.Point(22, 88);
-            this.btn_ConnectIrc.Name = "btn_ConnectIrc";
-            this.btn_ConnectIrc.Size = new System.Drawing.Size(75, 23);
-            this.btn_ConnectIrc.TabIndex = 12;
-            this.btn_ConnectIrc.Text = "Connect";
-            this.btn_ConnectIrc.UseVisualStyleBackColor = true;
-            this.btn_ConnectIrc.Click += new System.EventHandler(this.btn_ConnectIrc_Click);
-            // 
-            // lIRCDescription
-            // 
-            this.lIRCDescription.AutoSize = true;
-            this.lIRCDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lIRCDescription.Location = new System.Drawing.Point(8, 114);
-            this.lIRCDescription.Name = "lIRCDescription";
-            this.lIRCDescription.Size = new System.Drawing.Size(409, 208);
-            this.lIRCDescription.TabIndex = 11;
-            this.lIRCDescription.Text = resources.GetString("lIRCDescription.Text");
-            // 
-            // tbIRCBotChannel
-            // 
-            this.tbIRCBotChannel.Location = new System.Drawing.Point(103, 35);
-            this.tbIRCBotChannel.Name = "tbIRCBotChannel";
-            this.tbIRCBotChannel.Size = new System.Drawing.Size(114, 20);
-            this.tbIRCBotChannel.TabIndex = 10;
-            // 
-            // tbIRCBotNickname
-            // 
-            this.tbIRCBotNickname.Location = new System.Drawing.Point(103, 9);
-            this.tbIRCBotNickname.Name = "tbIRCBotNickname";
-            this.tbIRCBotNickname.Size = new System.Drawing.Size(114, 20);
-            this.tbIRCBotNickname.TabIndex = 9;
-            // 
-            // cbIRCConnect
-            // 
-            this.cbIRCConnect.AutoCheck = false;
-            this.cbIRCConnect.AutoSize = true;
-            this.cbIRCConnect.Location = new System.Drawing.Point(8, 64);
-            this.cbIRCConnect.Name = "cbIRCConnect";
-            this.cbIRCConnect.Size = new System.Drawing.Size(99, 17);
-            this.cbIRCConnect.TabIndex = 8;
-            this.cbIRCConnect.Text = "Connect to IRC";
-            this.cbIRCConnect.UseVisualStyleBackColor = true;
-            this.cbIRCConnect.CheckedChanged += new System.EventHandler(this.cbIRCConnect_CheckedChanged);
-            // 
-            // lIrcBotname
-            // 
-            this.lIrcBotname.AutoSize = true;
-            this.lIrcBotname.Location = new System.Drawing.Point(8, 12);
-            this.lIrcBotname.Name = "lIrcBotname";
-            this.lIrcBotname.Size = new System.Drawing.Size(89, 13);
-            this.lIrcBotname.TabIndex = 7;
-            this.lIrcBotname.Text = "Nickname of Bot:";
-            // 
-            // lIrcChannel
-            // 
-            this.lIrcChannel.AutoSize = true;
-            this.lIrcChannel.Location = new System.Drawing.Point(8, 38);
-            this.lIrcChannel.Name = "lIrcChannel";
-            this.lIrcChannel.Size = new System.Drawing.Size(49, 13);
-            this.lIrcChannel.TabIndex = 6;
-            this.lIrcChannel.Text = "Channel:";
-            // 
             // tP_Windows
             // 
+            this.tP_Windows.BackColor = System.Drawing.SystemColors.Control;
             this.tP_Windows.Controls.Add(this.groupBox2);
             this.tP_Windows.Controls.Add(this.groupBox1);
             this.tP_Windows.Location = new System.Drawing.Point(4, 22);
@@ -779,7 +794,6 @@
             this.tP_Windows.Size = new System.Drawing.Size(613, 360);
             this.tP_Windows.TabIndex = 2;
             this.tP_Windows.Text = "Windows";
-            this.tP_Windows.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -935,6 +949,87 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "X";
             // 
+            // tP_Irc
+            // 
+            this.tP_Irc.BackColor = System.Drawing.SystemColors.Control;
+            this.tP_Irc.Controls.Add(this.btn_ConnectIrc);
+            this.tP_Irc.Controls.Add(this.lIRCDescription);
+            this.tP_Irc.Controls.Add(this.tbIRCBotChannel);
+            this.tP_Irc.Controls.Add(this.tbIRCBotNickname);
+            this.tP_Irc.Controls.Add(this.cbIRCConnect);
+            this.tP_Irc.Controls.Add(this.lIrcBotname);
+            this.tP_Irc.Controls.Add(this.lIrcChannel);
+            this.tP_Irc.Location = new System.Drawing.Point(4, 22);
+            this.tP_Irc.Name = "tP_Irc";
+            this.tP_Irc.Padding = new System.Windows.Forms.Padding(3);
+            this.tP_Irc.Size = new System.Drawing.Size(613, 360);
+            this.tP_Irc.TabIndex = 1;
+            this.tP_Irc.Text = "IRC";
+            // 
+            // btn_ConnectIrc
+            // 
+            this.btn_ConnectIrc.Location = new System.Drawing.Point(22, 88);
+            this.btn_ConnectIrc.Name = "btn_ConnectIrc";
+            this.btn_ConnectIrc.Size = new System.Drawing.Size(75, 23);
+            this.btn_ConnectIrc.TabIndex = 12;
+            this.btn_ConnectIrc.Text = "Connect";
+            this.btn_ConnectIrc.UseVisualStyleBackColor = true;
+            this.btn_ConnectIrc.Click += new System.EventHandler(this.btn_ConnectIrc_Click);
+            // 
+            // lIRCDescription
+            // 
+            this.lIRCDescription.AutoSize = true;
+            this.lIRCDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lIRCDescription.Location = new System.Drawing.Point(8, 114);
+            this.lIRCDescription.Name = "lIRCDescription";
+            this.lIRCDescription.Size = new System.Drawing.Size(409, 208);
+            this.lIRCDescription.TabIndex = 11;
+            this.lIRCDescription.Text = resources.GetString("lIRCDescription.Text");
+            // 
+            // tbIRCBotChannel
+            // 
+            this.tbIRCBotChannel.Location = new System.Drawing.Point(103, 35);
+            this.tbIRCBotChannel.Name = "tbIRCBotChannel";
+            this.tbIRCBotChannel.Size = new System.Drawing.Size(114, 20);
+            this.tbIRCBotChannel.TabIndex = 10;
+            // 
+            // tbIRCBotNickname
+            // 
+            this.tbIRCBotNickname.Location = new System.Drawing.Point(103, 9);
+            this.tbIRCBotNickname.Name = "tbIRCBotNickname";
+            this.tbIRCBotNickname.Size = new System.Drawing.Size(114, 20);
+            this.tbIRCBotNickname.TabIndex = 9;
+            // 
+            // cbIRCConnect
+            // 
+            this.cbIRCConnect.AutoCheck = false;
+            this.cbIRCConnect.AutoSize = true;
+            this.cbIRCConnect.Location = new System.Drawing.Point(8, 64);
+            this.cbIRCConnect.Name = "cbIRCConnect";
+            this.cbIRCConnect.Size = new System.Drawing.Size(99, 17);
+            this.cbIRCConnect.TabIndex = 8;
+            this.cbIRCConnect.Text = "Connect to IRC";
+            this.cbIRCConnect.UseVisualStyleBackColor = true;
+            this.cbIRCConnect.CheckedChanged += new System.EventHandler(this.cbIRCConnect_CheckedChanged);
+            // 
+            // lIrcBotname
+            // 
+            this.lIrcBotname.AutoSize = true;
+            this.lIrcBotname.Location = new System.Drawing.Point(8, 12);
+            this.lIrcBotname.Name = "lIrcBotname";
+            this.lIrcBotname.Size = new System.Drawing.Size(89, 13);
+            this.lIrcBotname.TabIndex = 7;
+            this.lIrcBotname.Text = "Nickname of Bot:";
+            // 
+            // lIrcChannel
+            // 
+            this.lIrcChannel.AutoSize = true;
+            this.lIrcChannel.Location = new System.Drawing.Point(8, 38);
+            this.lIrcChannel.Name = "lIrcChannel";
+            this.lIrcChannel.Size = new System.Drawing.Size(49, 13);
+            this.lIrcChannel.TabIndex = 6;
+            this.lIrcChannel.Text = "Channel:";
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
@@ -984,101 +1079,6 @@
             this.newProfileToolStripMenuItem.Text = "New Profile";
             this.newProfileToolStripMenuItem.Click += new System.EventHandler(this.newProfileToolStripMenuItem_Click);
             // 
-            // tP_General
-            // 
-            this.tP_General.BackColor = System.Drawing.SystemColors.Control;
-            this.tP_General.Controls.Add(this.gbRelog);
-            this.tP_General.Location = new System.Drawing.Point(4, 22);
-            this.tP_General.Name = "tP_General";
-            this.tP_General.Size = new System.Drawing.Size(613, 360);
-            this.tP_General.TabIndex = 3;
-            this.tP_General.Text = "General";
-            // 
-            // gbRelog
-            // 
-            this.gbRelog.Controls.Add(this.txt_Character);
-            this.gbRelog.Controls.Add(this.lbl_desc3489);
-            this.gbRelog.Controls.Add(this.tbPassword);
-            this.gbRelog.Controls.Add(this.lPassword);
-            this.gbRelog.Controls.Add(this.tbAccount);
-            this.gbRelog.Controls.Add(this.lAccount);
-            this.gbRelog.Location = new System.Drawing.Point(5, 12);
-            this.gbRelog.Name = "gbRelog";
-            this.gbRelog.Size = new System.Drawing.Size(136, 100);
-            this.gbRelog.TabIndex = 15;
-            this.gbRelog.TabStop = false;
-            this.gbRelog.Text = "Relog";
-            // 
-            // txt_Character
-            // 
-            this.txt_Character.Enabled = false;
-            this.txt_Character.Location = new System.Drawing.Point(57, 69);
-            this.txt_Character.Name = "txt_Character";
-            this.txt_Character.Size = new System.Drawing.Size(71, 20);
-            this.txt_Character.TabIndex = 5;
-            // 
-            // lbl_desc3489
-            // 
-            this.lbl_desc3489.AutoSize = true;
-            this.lbl_desc3489.Location = new System.Drawing.Point(4, 72);
-            this.lbl_desc3489.Name = "lbl_desc3489";
-            this.lbl_desc3489.Size = new System.Drawing.Size(53, 13);
-            this.lbl_desc3489.TabIndex = 4;
-            this.lbl_desc3489.Text = "Character";
-            // 
-            // tbPassword
-            // 
-            this.tbPassword.Location = new System.Drawing.Point(57, 43);
-            this.tbPassword.Name = "tbPassword";
-            this.tbPassword.Size = new System.Drawing.Size(71, 20);
-            this.tbPassword.TabIndex = 2;
-            this.tbPassword.UseSystemPasswordChar = true;
-            // 
-            // lPassword
-            // 
-            this.lPassword.AutoSize = true;
-            this.lPassword.Location = new System.Drawing.Point(4, 46);
-            this.lPassword.Name = "lPassword";
-            this.lPassword.Size = new System.Drawing.Size(53, 13);
-            this.lPassword.TabIndex = 3;
-            this.lPassword.Text = "Password";
-            // 
-            // tbAccount
-            // 
-            this.tbAccount.Location = new System.Drawing.Point(57, 17);
-            this.tbAccount.Name = "tbAccount";
-            this.tbAccount.Size = new System.Drawing.Size(71, 20);
-            this.tbAccount.TabIndex = 0;
-            // 
-            // lAccount
-            // 
-            this.lAccount.AutoSize = true;
-            this.lAccount.Location = new System.Drawing.Point(4, 20);
-            this.lAccount.Name = "lAccount";
-            this.lAccount.Size = new System.Drawing.Size(47, 13);
-            this.lAccount.TabIndex = 1;
-            this.lAccount.Text = "Account";
-            // 
-            // grp_ProtectedItems
-            // 
-            this.grp_ProtectedItems.Controls.Add(this.tbProtectedItems);
-            this.grp_ProtectedItems.Location = new System.Drawing.Point(6, 6);
-            this.grp_ProtectedItems.Name = "grp_ProtectedItems";
-            this.grp_ProtectedItems.Size = new System.Drawing.Size(148, 234);
-            this.grp_ProtectedItems.TabIndex = 26;
-            this.grp_ProtectedItems.TabStop = false;
-            this.grp_ProtectedItems.Text = "Protected Items";
-            // 
-            // tbProtectedItems
-            // 
-            this.tbProtectedItems.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbProtectedItems.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbProtectedItems.Location = new System.Drawing.Point(3, 16);
-            this.tbProtectedItems.Multiline = true;
-            this.tbProtectedItems.Name = "tbProtectedItems";
-            this.tbProtectedItems.Size = new System.Drawing.Size(142, 215);
-            this.tbProtectedItems.TabIndex = 21;
-            // 
             // GraphicalSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1091,7 +1091,12 @@
             this.Text = "Settings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GraphicalSettingsForm_FormClosing);
             this.tabControl1.ResumeLayout(false);
+            this.tP_General.ResumeLayout(false);
+            this.gbRelog.ResumeLayout(false);
+            this.gbRelog.PerformLayout();
             this.tP_Behaviour.ResumeLayout(false);
+            this.grp_ProtectedItems.ResumeLayout(false);
+            this.grp_ProtectedItems.PerformLayout();
             this.gbMisc.ResumeLayout(false);
             this.gbMisc.PerformLayout();
             this.gbChat.ResumeLayout(false);
@@ -1113,22 +1118,17 @@
             this.gbRest.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudEatAt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDrinkAt)).EndInit();
-            this.tP_Irc.ResumeLayout(false);
-            this.tP_Irc.PerformLayout();
             this.tP_Windows.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tP_Irc.ResumeLayout(false);
+            this.tP_Irc.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.tP_General.ResumeLayout(false);
-            this.gbRelog.ResumeLayout(false);
-            this.gbRelog.PerformLayout();
-            this.grp_ProtectedItems.ResumeLayout(false);
-            this.grp_ProtectedItems.PerformLayout();
             this.ResumeLayout(false);
 
         }
