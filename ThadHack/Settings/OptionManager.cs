@@ -19,14 +19,14 @@ namespace ZzukBot.Settings
         /// </summary>
         private static XDocument doc;
 
-        private static string ProtectedItems => Paths.Root + "\\Settings\\ProtectedItems.ini";
+        private static string ProtectedItems => Paths.WorkingDirectory + "\\Settings\\ProtectedItems.ini";
         
         /// <summary>
         ///     Set the path to the xml file and the form
         /// </summary>
         internal static void LoadXmlSettings()
         {
-            doc = XDocument.Load(Paths.Settings);
+            doc = XDocument.Load(Paths.SettingsFile);
         }
 
         /// <summary>
@@ -280,7 +280,7 @@ namespace ZzukBot.Settings
             object o = control;
             var x = (Control) o;
             GuiCore.MainForm.UpdateControl(Value, x);
-            doc.Save(Paths.Settings);
+            doc.Save(Paths.SettingsFile);
         }
 
         /// <summary>
@@ -293,7 +293,7 @@ namespace ZzukBot.Settings
             {
                 var element = doc.Element("Settings").Element(Name);
                 element.Value = Value.ToString();
-                doc.Save(Paths.Settings);
+                doc.Save(Paths.SettingsFile);
             }
             catch
             {

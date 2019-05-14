@@ -177,20 +177,20 @@ namespace ZzukBot
 
         private static void SetPaths()
         {
-            Paths.PathToWoW = Directory.GetCurrentDirectory();
+            Paths.WowDirectory = Directory.GetCurrentDirectory();
             // get all kind of paths the bot need to operate
             var strPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            Paths.Settings = Path.GetDirectoryName(strPath) + "\\Settings\\Settings.xml";
-            Paths.Root = Path.GetDirectoryName(strPath);
-            Paths.ProfileFolder = Path.GetDirectoryName(strPath) + "\\Profiles";
-            Paths.ThadHack = strPath + "\\ZzukBot.exe";
-            Paths.CCFolder = strPath + "\\CustomClasses";
-            Paths.Internal = strPath;
+            Paths.SettingsFile = Path.GetDirectoryName(strPath) + "\\Settings\\Settings.xml";
+            Paths.WorkingDirectory = Path.GetDirectoryName(strPath);
+            Paths.ProfilesDirectory = Path.GetDirectoryName(strPath) + "\\Profiles";
+            Paths.BotAssemblyFile = strPath + "\\ZzukBot.exe";
+            Paths.CustomClassesDirectory = strPath + "\\CustomClasses";
+            Paths.InternalDirectory = strPath;
         }
 
         private static void SetRealmlist()
         {
-            var rlmList = Paths.PathToWoW + "\\realmlist.wtf";
+            var rlmList = Paths.WowDirectory + "\\realmlist.wtf";
             var project = File.ReadAllLines(rlmList);
             var name = "";
             foreach (var x in project)

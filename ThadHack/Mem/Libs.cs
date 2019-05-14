@@ -12,7 +12,7 @@ namespace ZzukBot.Mem
 #if DEBUG
         internal const string FastCall = "FastCallDll.dll";
         internal const string Navigation = "Navigation.dll";
-        private static readonly string PathToLibs = Paths.Internal + "\\";
+        private static readonly string PathToLibs = Paths.InternalDirectory + "\\";
 #else
         internal const string FastCall = "037.mmap";
         internal const string Navigation = "038.mmap";

@@ -189,7 +189,7 @@ namespace ZzukBot.Mem
         /// <param name="parFile">The files name</param>
         public static void LogTo(this string value, string parFile)
         {
-            File.AppendAllText(Paths.Root + "\\" + parFile, value);
+            File.AppendAllText(Paths.WorkingDirectory + "\\" + parFile, value);
         }
 
         internal static void ExtUpdate(this Label value, string parFormat, params object[] parObjects)

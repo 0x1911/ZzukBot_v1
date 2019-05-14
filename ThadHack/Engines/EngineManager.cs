@@ -100,7 +100,7 @@ namespace ZzukBot.Engines
             string tmpProfileName;
             if (parLoadLast && Options.LastProfileFileName != "")
             {
-                tmpProfileName = Paths.ProfileFolder + Options.LastProfileFileName;
+                tmpProfileName = Paths.ProfilesDirectory + Options.LastProfileFileName;
             }
             else
             {
@@ -110,25 +110,26 @@ namespace ZzukBot.Engines
                     locateProfile.CheckPathExists = true;
                     locateProfile.Filter = "xml Profile (*.xml)|*.xml";
                     locateProfile.FilterIndex = 1;
-                    locateProfile.InitialDirectory = Paths.ProfileFolder;
+                    locateProfile.InitialDirectory = Paths.ProfilesDirectory;
                     if (locateProfile.ShowDialog() == DialogResult.OK)
                     {
                         tmpProfileName = locateProfile.FileName;
                     }
                     else
                     {
+                        StopCurrentEngine();
                         return;
                     }
                 }
             }
 
-            Helpers.Logger.Append("ccfolder: " + Paths.CCFolder.ToString());
-            Helpers.Logger.Append("internal: " + Paths.Internal.ToString());
-            Helpers.Logger.Append("wowPath: " + Paths.PathToWoW.ToString());
-            Helpers.Logger.Append("profiles: " + Paths.ProfileFolder.ToString());
-            Helpers.Logger.Append("root: " + Paths.Root.ToString());
-            Helpers.Logger.Append("settings: " + Paths.Settings.ToString());
-            Helpers.Logger.Append("thadhack exe: " + Paths.ThadHack.ToString());
+            Helpers.Logger.Append("cc directory: " + Paths.CustomClassesDirectory.ToString());
+            Helpers.Logger.Append("internal directory: " + Paths.InternalDirectory.ToString());
+            Helpers.Logger.Append("wow directory: " + Paths.WowDirectory.ToString());
+            Helpers.Logger.Append("profiles directory: " + Paths.ProfilesDirectory.ToString());
+            Helpers.Logger.Append("working directory: " + Paths.WorkingDirectory.ToString());
+            Helpers.Logger.Append("settings file: " + Paths.SettingsFile.ToString());
+            Helpers.Logger.Append("bot assembly file: " + Paths.BotAssemblyFile.ToString());
 
             tmpGrind = new Grinder();
             if (tmpGrind.Prepare(tmpProfileName, Callback))
@@ -136,7 +137,7 @@ namespace ZzukBot.Engines
                 GuiCore.MainForm.Invoke(new MethodInvoker(delegate
                 {
                     GuiCore.MainForm.lGrindState.Text = "State: Loading mmaps";
-                    string profileFileName = tmpProfileName.Replace(Paths.ProfileFolder, "");
+                    string profileFileName = tmpProfileName.Replace(Paths.ProfilesDirectory, "");
                     Options.LastProfileFileName = profileFileName;
                 }));
             }
@@ -171,6 +172,8 @@ namespace ZzukBot.Engines
                     EngineAs<Grinder>().Engine.IsPaused = true;
                     GuiCore.MainForm.pauseToolStripMenuItem.Enabled = false;
                     GuiCore.MainForm.runToolStripMenuItem.Text = "Resume";
+
+                    Helpers.Logger.Append("Engine paused!");
                     return true;
                 }                   
             }
@@ -194,6 +197,8 @@ namespace ZzukBot.Engines
                 {
                     EngineAs<Grinder>().Engine.IsPaused = false;
                     GuiCore.MainForm.pauseToolStripMenuItem.Enabled = true;
+
+                    Helpers.Logger.Append("Engine resumed!");
                     return true;
                 }
             }
@@ -204,6 +209,8 @@ namespace ZzukBot.Engines
         internal static void StopCurrentEngine()
         {
             GuiCore.MainForm.runToolStripMenuItem.Enabled = true;
+            GuiCore.MainForm.runToolStripMenuItem.Text = "Run";
+            GuiCore.MainForm.pauseToolStripMenuItem.Enabled = false;
             GuiCore.MainForm.stopToolStripMenuItem.Enabled = false;
             GuiCore.MainForm.lGrindLoadProfile.Text = "Profile: ";
             GuiCore.MainForm.lGrindState.Text = "State: ";

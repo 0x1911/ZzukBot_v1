@@ -49,15 +49,15 @@ namespace ZzukBot.Engines.CustomClass
         private static void GetCustomClasses()
         {
             ccs.Clear();
-            if (!Directory.Exists(Paths.CCFolder))
+            if (!Directory.Exists(Paths.CustomClassesDirectory))
             {
-                Directory.CreateDirectory(Paths.CCFolder);
+                Directory.CreateDirectory(Paths.CustomClassesDirectory);
                 return;
             }
-            if (Directory.Exists(Paths.CCFolder + "\\Compiled"))
-                Directory.Delete(Paths.CCFolder + "\\Compiled", true);
+            if (Directory.Exists(Paths.CustomClassesDirectory + "\\Compiled"))
+                Directory.Delete(Paths.CustomClassesDirectory + "\\Compiled", true);
 
-            var files = Directory.GetFiles(Paths.CCFolder);
+            var files = Directory.GetFiles(Paths.CustomClassesDirectory);
 
             try
             {

@@ -2,12 +2,12 @@
 {
     internal static class Paths
     {
-        internal static string ThadHack;
-        internal static string Root;
-        internal static string CCFolder;
-        internal static string Settings;
-        internal static string ProfileFolder;
-        internal static string Internal;
-        internal static string PathToWoW;
+        internal static string BotAssemblyFile;
+        internal static string WorkingDirectory;
+        internal static string CustomClassesDirectory;
+        internal static string SettingsFile;
+        internal static string ProfilesDirectory;
+        internal static string InternalDirectory;
+        internal static string WowDirectory;
     }
 }

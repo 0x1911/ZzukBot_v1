@@ -375,8 +375,8 @@ namespace ZzukBot.Engines.ProfileCreation
 
         private bool WriteToXmlProfile()
         {
-            if (!Directory.Exists(Paths.ProfileFolder))
-                Directory.CreateDirectory(Paths.ProfileFolder);
+            if (!Directory.Exists(Paths.ProfilesDirectory))
+                Directory.CreateDirectory(Paths.ProfilesDirectory);
 
             var settings = new XmlWriterSettings
             {
@@ -385,7 +385,7 @@ namespace ZzukBot.Engines.ProfileCreation
                 Indent = true,
                 IndentChars = "\t"
             };
-            var tmpProfilePath = Paths.ProfileFolder + "\\" + DateTime.Now.ToString("MMddHHmmss") + ".xml";
+            var tmpProfilePath = Paths.ProfilesDirectory + "\\" + DateTime.Now.ToString("MMddHHmmss") + ".xml";
             using (
                 var writer = XmlWriter.Create(tmpProfilePath, settings))
             {
