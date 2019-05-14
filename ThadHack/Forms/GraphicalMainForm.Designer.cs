@@ -82,6 +82,7 @@ namespace ZzukBot.Forms
             this.dEVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lbl_Runtime = new System.Windows.Forms.ToolStripStatusLabel();
+            this.pauseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tcMain.SuspendLayout();
             this.tpGrind.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -605,6 +606,7 @@ namespace ZzukBot.Forms
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.runToolStripMenuItem,
+            this.pauseToolStripMenuItem,
             this.stopToolStripMenuItem,
             this.settingsToolStripMenuItem,
             this.aboutToolStripMenuItem,
@@ -681,6 +683,14 @@ namespace ZzukBot.Forms
             // 
             this.lbl_Runtime.Name = "lbl_Runtime";
             this.lbl_Runtime.Size = new System.Drawing.Size(0, 17);
+            // 
+            // pauseToolStripMenuItem
+            // 
+            this.pauseToolStripMenuItem.Enabled = false;
+            this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
+            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.pauseToolStripMenuItem.Text = "Pause";
+            this.pauseToolStripMenuItem.Click += new System.EventHandler(this.pauseToolStripMenuItem_Click);
             // 
             // GraphicalMainForm
             // 
@@ -776,6 +786,7 @@ namespace ZzukBot.Forms
         internal System.Windows.Forms.ToolStripStatusLabel lbl_Runtime;
         internal System.Windows.Forms.Label lbl_TargetLevel;
         internal System.Windows.Forms.Label lbl_TargetCreatureType;
+        internal System.Windows.Forms.ToolStripMenuItem pauseToolStripMenuItem;
     }
 }
 

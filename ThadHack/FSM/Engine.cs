@@ -14,13 +14,15 @@ namespace ZzukBot.FSM
         internal List<State> States { get; }
         internal bool Running { get; }
 
+        internal bool IsPaused { get; set; }
+
         internal virtual string Pulse()
         {
             // This starts at the highest priority state,
             // and iterates its way to the lowest priority.
             foreach (var state in States)
             {
-                if (state.NeedToRun)
+                if (state.NeedToRun && !IsPaused)
                 {
                     state.Run();
                     return state.Name;

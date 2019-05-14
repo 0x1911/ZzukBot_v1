@@ -93,6 +93,7 @@ namespace ZzukBot.Engines
         {
             Helpers.Logger.Append("Grinder starting up");
             GuiCore.MainForm.runToolStripMenuItem.Enabled = false;
+            GuiCore.MainForm.pauseToolStripMenuItem.Enabled = true;
             GuiCore.MainForm.stopToolStripMenuItem.Enabled = true;
 
             if (IsEngineRunning) return;
@@ -120,6 +121,15 @@ namespace ZzukBot.Engines
                     }
                 }
             }
+
+            Helpers.Logger.Append("ccfolder: " + Paths.CCFolder.ToString());
+            Helpers.Logger.Append("internal: " + Paths.Internal.ToString());
+            Helpers.Logger.Append("wowPath: " + Paths.PathToWoW.ToString());
+            Helpers.Logger.Append("profiles: " + Paths.ProfileFolder.ToString());
+            Helpers.Logger.Append("root: " + Paths.Root.ToString());
+            Helpers.Logger.Append("settings: " + Paths.Settings.ToString());
+            Helpers.Logger.Append("thadhack exe: " + Paths.ThadHack.ToString());
+
             tmpGrind = new Grinder();
             if (tmpGrind.Prepare(tmpProfileName, Callback))
             {
@@ -144,6 +154,51 @@ namespace ZzukBot.Engines
                     _Engine = tmpGrind;
                 }));
             }
+        }
+
+        internal static bool PauseCurrentEngine()
+        {            
+            if(!IsEngineRunning || _Engine.GetType() == typeof(ProfileCreator)) { return false; }
+
+
+            GuiCore.MainForm.runToolStripMenuItem.Enabled = true;
+            GuiCore.MainForm.stopToolStripMenuItem.Enabled = true;
+
+            if (_Engine.GetType() == typeof(Grinder))
+            {
+                if(!EngineAs<Grinder>().Engine.IsPaused)
+                {
+                    EngineAs<Grinder>().Engine.IsPaused = true;
+                    GuiCore.MainForm.pauseToolStripMenuItem.Enabled = false;
+                    GuiCore.MainForm.runToolStripMenuItem.Text = "Resume";
+                    return true;
+                }                   
+            }
+
+
+            return false;
+        }
+
+        internal static bool ResumeCurrentEngine()
+        {
+            if (!IsEngineRunning || _Engine.GetType() == typeof(ProfileCreator)) { return false; }
+
+
+            GuiCore.MainForm.runToolStripMenuItem.Enabled = false;
+            GuiCore.MainForm.runToolStripMenuItem.Text = "Run";
+            GuiCore.MainForm.stopToolStripMenuItem.Enabled = true;
+
+            if (_Engine.GetType() == typeof(Grinder))
+            {
+                if (EngineAs<Grinder>().Engine.IsPaused)
+                {
+                    EngineAs<Grinder>().Engine.IsPaused = false;
+                    GuiCore.MainForm.pauseToolStripMenuItem.Enabled = true;
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         internal static void StopCurrentEngine()

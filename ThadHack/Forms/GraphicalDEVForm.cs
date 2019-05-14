@@ -68,7 +68,7 @@ namespace ZzukBot.Forms
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (!API.BMain.IsInGame) { return; }
+            if (!API.BMain.IsInGame || ObjectManager.Target == null) { return; }
 
             var target = ObjectManager.Target;
 

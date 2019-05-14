@@ -310,19 +310,23 @@ namespace ZzukBot.Forms
         #region Top menu tool strip        
         private void runToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            EngineManager.ResumeCurrentEngine();
+
             if (EngineManager.CurrentEngineType != Engines.Engines.None) return;
                      
 
             Relog.LoginHandling();
 
             EngineManager.StartGrinder(GuiCore.MainForm.cbLoadLastProfile.Checked);
-        }        
-
+        }
+        private void pauseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EngineManager.PauseCurrentEngine();
+        }
         private void stopToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EngineManager.StopCurrentEngine();
-        }        
-
+        }   
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if(GuiCore.SettingsForm == null)
@@ -336,8 +340,6 @@ namespace ZzukBot.Forms
             GuiCore.SettingsForm.Show();
             GuiCore.SettingsForm.BringToFront();
         }
-        #endregion
-
         private void dEVToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var tmpDevForm = new Forms.GraphicalDEVForm();
@@ -347,6 +349,7 @@ namespace ZzukBot.Forms
 
             tmpDevForm.Show();
         }
+        #endregion
 
         private void GraphicalMainForm_Load(object sender, EventArgs e)
         {
