@@ -113,6 +113,16 @@
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tP_Paths = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btn_ChooseWowExe = new System.Windows.Forms.Button();
+            this.txt_WowPath = new System.Windows.Forms.TextBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btn_chooseProfilesDirectory = new System.Windows.Forms.Button();
+            this.txt_ProfilesDirectory = new System.Windows.Forms.TextBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btn_ChooseCustomClassesDirectory = new System.Windows.Forms.Button();
+            this.txt_CCDirectory = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tP_General.SuspendLayout();
             this.gbRelog.SuspendLayout();
@@ -139,6 +149,10 @@
             this.tP_Irc.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.tP_Paths.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -147,6 +161,7 @@
             this.tabControl1.Controls.Add(this.tP_Behaviour);
             this.tabControl1.Controls.Add(this.tP_Windows);
             this.tabControl1.Controls.Add(this.tP_Irc);
+            this.tabControl1.Controls.Add(this.tP_Paths);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(3, 27);
             this.tabControl1.Name = "tabControl1";
@@ -1079,6 +1094,105 @@
             this.newProfileToolStripMenuItem.Text = "New Profile";
             this.newProfileToolStripMenuItem.Click += new System.EventHandler(this.newProfileToolStripMenuItem_Click);
             // 
+            // tP_Paths
+            // 
+            this.tP_Paths.BackColor = System.Drawing.SystemColors.Control;
+            this.tP_Paths.Controls.Add(this.groupBox5);
+            this.tP_Paths.Controls.Add(this.groupBox4);
+            this.tP_Paths.Controls.Add(this.groupBox3);
+            this.tP_Paths.Location = new System.Drawing.Point(4, 22);
+            this.tP_Paths.Name = "tP_Paths";
+            this.tP_Paths.Size = new System.Drawing.Size(613, 360);
+            this.tP_Paths.TabIndex = 4;
+            this.tP_Paths.Text = "Paths";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btn_ChooseWowExe);
+            this.groupBox3.Controls.Add(this.txt_WowPath);
+            this.groupBox3.Location = new System.Drawing.Point(7, 3);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(603, 58);
+            this.groupBox3.TabIndex = 17;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "World of Warcraft Assembly Location";
+            // 
+            // btn_ChooseWowExe
+            // 
+            this.btn_ChooseWowExe.Location = new System.Drawing.Point(568, 19);
+            this.btn_ChooseWowExe.Name = "btn_ChooseWowExe";
+            this.btn_ChooseWowExe.Size = new System.Drawing.Size(29, 23);
+            this.btn_ChooseWowExe.TabIndex = 16;
+            this.btn_ChooseWowExe.Text = "...";
+            this.btn_ChooseWowExe.UseVisualStyleBackColor = true;
+            this.btn_ChooseWowExe.Click += new System.EventHandler(this.btn_ChooseWowExe_Click);
+            // 
+            // txt_WowPath
+            // 
+            this.txt_WowPath.Location = new System.Drawing.Point(6, 21);
+            this.txt_WowPath.Name = "txt_WowPath";
+            this.txt_WowPath.ReadOnly = true;
+            this.txt_WowPath.Size = new System.Drawing.Size(556, 20);
+            this.txt_WowPath.TabIndex = 0;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.btn_chooseProfilesDirectory);
+            this.groupBox4.Controls.Add(this.txt_ProfilesDirectory);
+            this.groupBox4.Location = new System.Drawing.Point(7, 67);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(603, 58);
+            this.groupBox4.TabIndex = 18;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Bot Profiles Directory";
+            // 
+            // btn_chooseProfilesDirectory
+            // 
+            this.btn_chooseProfilesDirectory.Location = new System.Drawing.Point(568, 19);
+            this.btn_chooseProfilesDirectory.Name = "btn_chooseProfilesDirectory";
+            this.btn_chooseProfilesDirectory.Size = new System.Drawing.Size(29, 23);
+            this.btn_chooseProfilesDirectory.TabIndex = 16;
+            this.btn_chooseProfilesDirectory.Text = "...";
+            this.btn_chooseProfilesDirectory.UseVisualStyleBackColor = true;
+            this.btn_chooseProfilesDirectory.Click += new System.EventHandler(this.btn_chooseProfilesDirectory_Click);
+            // 
+            // txt_ProfilesPath
+            // 
+            this.txt_ProfilesDirectory.Location = new System.Drawing.Point(6, 21);
+            this.txt_ProfilesDirectory.Name = "txt_ProfilesPath";
+            this.txt_ProfilesDirectory.ReadOnly = true;
+            this.txt_ProfilesDirectory.Size = new System.Drawing.Size(556, 20);
+            this.txt_ProfilesDirectory.TabIndex = 0;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.btn_ChooseCustomClassesDirectory);
+            this.groupBox5.Controls.Add(this.txt_CCDirectory);
+            this.groupBox5.Location = new System.Drawing.Point(7, 131);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(603, 58);
+            this.groupBox5.TabIndex = 18;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Bot Custom Classes Directory";
+            // 
+            // btn_ChooseCustomClassesDirectory
+            // 
+            this.btn_ChooseCustomClassesDirectory.Location = new System.Drawing.Point(568, 19);
+            this.btn_ChooseCustomClassesDirectory.Name = "btn_ChooseCustomClassesDirectory";
+            this.btn_ChooseCustomClassesDirectory.Size = new System.Drawing.Size(29, 23);
+            this.btn_ChooseCustomClassesDirectory.TabIndex = 16;
+            this.btn_ChooseCustomClassesDirectory.Text = "...";
+            this.btn_ChooseCustomClassesDirectory.UseVisualStyleBackColor = true;
+            this.btn_ChooseCustomClassesDirectory.Click += new System.EventHandler(this.btn_ChooseCustomClassesDirectory_Click);
+            // 
+            // txt_CCPath
+            // 
+            this.txt_CCDirectory.Location = new System.Drawing.Point(6, 21);
+            this.txt_CCDirectory.Name = "txt_CCPath";
+            this.txt_CCDirectory.ReadOnly = true;
+            this.txt_CCDirectory.Size = new System.Drawing.Size(556, 20);
+            this.txt_CCDirectory.TabIndex = 0;
+            // 
             // GraphicalSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1129,6 +1243,13 @@
             this.tableLayoutPanel1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.tP_Paths.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1219,5 +1340,15 @@
         private System.Windows.Forms.Label lAccount;
         private System.Windows.Forms.GroupBox grp_ProtectedItems;
         internal System.Windows.Forms.TextBox tbProtectedItems;
+        internal System.Windows.Forms.TabPage tP_Paths;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Button btn_ChooseCustomClassesDirectory;
+        internal System.Windows.Forms.TextBox txt_CCDirectory;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button btn_chooseProfilesDirectory;
+        internal System.Windows.Forms.TextBox txt_ProfilesDirectory;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btn_ChooseWowExe;
+        internal System.Windows.Forms.TextBox txt_WowPath;
     }
 }

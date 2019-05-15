@@ -5,9 +5,6 @@
     /// </summary>
     internal static class Options
     {
-        internal static string ZzukAccountMail = "";
-        internal static string ZzukAccountPassword = "";
-
         internal static string AccountName = "";
         internal static string AccountPassword = "";
         internal static string CharacterName = string.Empty;
@@ -49,6 +46,10 @@
         internal static bool LootUnits = true;
         internal static bool Herb = false;
         internal static bool Mine = false;
+
+        internal static string WowExePath = string.Empty;
+        internal static string ProfilesDirectory = string.Empty;
+        internal static string CCDirectory = string.Empty;
 
         internal static string WowWindowX = "0";
         internal static string WowWindowY = "0";

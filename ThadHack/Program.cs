@@ -140,7 +140,7 @@ namespace ZzukBot
             } */
 
             // Do the settings exist?
-            if (!File.Exists("..\\Settings\\Settings.xml"))
+            if (!File.Exists(GuiCore.SettingsFilePath))
             {
                 while (true)
                 {
@@ -161,7 +161,9 @@ namespace ZzukBot
                         }
                         else
                         {
-                            OOP.Settings.Recreate(loc.FileName);
+                            Options.WowExePath = loc.FileName;
+                            //write minimal settings doc file to hdd
+                            OptionManager.InitialSetupSettingsFile();
                             break;
                         }
                     }
@@ -180,7 +182,7 @@ namespace ZzukBot
             Paths.WowDirectory = Directory.GetCurrentDirectory();
             // get all kind of paths the bot need to operate
             var strPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            Paths.SettingsFile = Path.GetDirectoryName(strPath) + "\\Settings\\Settings.xml";
+            Paths.SettingsFile = Path.GetDirectoryName(strPath) + GuiCore.SettingsFilePath;
             Paths.WorkingDirectory = Path.GetDirectoryName(strPath);
             Paths.ProfilesDirectory = Path.GetDirectoryName(strPath) + "\\Profiles";
             Paths.BotAssemblyFile = strPath + "\\ZzukBot.exe";

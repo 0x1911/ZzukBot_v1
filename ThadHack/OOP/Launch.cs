@@ -2,11 +2,9 @@
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using Binarysharp.Assemblers.Fasm;
 using GreyMagic;
 using ZzukBot.Constants;
 
@@ -14,31 +12,39 @@ namespace ZzukBot.OOP
 {
     internal static class Launch
     {
+        private static int? LaunchWowProcess()
+        {
+            var doc = XDocument.Load(GuiCore.SettingsFilePath);
+            var element = doc.Element("Settings");
+            var tmpPath = element.Element("WowExePath").Value;
+
+            var si = new WinImports.STARTUPINFO();
+            WinImports.PROCESS_INFORMATION pi;
+            WinImports.CreateProcess(tmpPath, null,
+                IntPtr.Zero, IntPtr.Zero, false,
+                WinImports.ProcessCreationFlags.CREATE_DEFAULT_ERROR_MODE,
+                IntPtr.Zero, null, ref si, out pi);
+
+            return (int)pi.dwProcessId;
+        }
+        
         internal static void Run(int? pId = null)
         {
+            int? tmpPiD = pId;
+
             try
             {
                 IntPtr? procHandle = null;
-                if (pId == null)
+                if (tmpPiD == null)
                 {
-                    var doc = XDocument.Load("..\\Settings\\Settings.xml");
-                    var element = doc.Element("Settings");
-                    var tmpPath = element.Element("Path").Value;
-
-                    var si = new WinImports.STARTUPINFO();
-                    WinImports.PROCESS_INFORMATION pi;
-                    WinImports.CreateProcess(tmpPath, null,
-                        IntPtr.Zero, IntPtr.Zero, false,
-                        WinImports.ProcessCreationFlags.CREATE_DEFAULT_ERROR_MODE,
-                        IntPtr.Zero, null, ref si, out pi);
-                    pId = (int) pi.dwProcessId;
-                    //MessageBox.Show("1");
+                    tmpPiD = LaunchWowProcess();
                 }
                 else
                 {
-                    procHandle = WinImports.OpenProcess(0x001F0FFF, false, pId.Value);
+                    procHandle = WinImports.OpenProcess(0x001F0FFF, false, tmpPiD.Value);
                 }
-                var proc = Process.GetProcessById(pId.Value);
+
+                var proc = Process.GetProcessById(tmpPiD.Value);
                 //MessageBox.Show("ID:" + proc.Id);
 
 

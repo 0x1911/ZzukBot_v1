@@ -6,6 +6,7 @@ using ZzukBot.Engines.CustomClass;
 using ZzukBot.Settings;
 using ZzukBot.Helpers;
 using System.Drawing;
+using System.Reflection;
 
 namespace ZzukBot.Forms
 {
@@ -173,6 +174,58 @@ namespace ZzukBot.Forms
             GuiCore.SettingsForm.txt_BotWindowX.Text = GuiCore.MainForm.Location.X.ToString();
             GuiCore.SettingsForm.txt_BotWindowY.Text = GuiCore.MainForm.Location.Y.ToString();
         }
-        
+
+        private void btn_ChooseWowExe_Click(object sender, EventArgs e)
+        {
+            var loc = new OpenFileDialog
+            {
+                CheckFileExists = true,
+                CheckPathExists = true,
+                Filter = "executable (*.exe)|*.exe",
+                FilterIndex = 1,
+                Title = "Locate the WoW 1.12.1 *.exe file you want the bot to use"
+            };
+            if (loc.ShowDialog() == DialogResult.OK)
+            {
+                if (loc.FileName == Assembly.GetExecutingAssembly().Location)
+                {
+                    MessageBox.Show(
+                        "We need the WoW *.exe not the bot *.exe file..");
+                }
+                else
+                {
+                    GuiCore.SettingsForm.txt_WowPath.Text = loc.FileName;
+                    Options.WowExePath = loc.FileName;
+                }
+            }
+        }
+
+        private void btn_chooseProfilesDirectory_Click(object sender, EventArgs e)
+        {
+            using (var fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
+
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    GuiCore.SettingsForm.txt_ProfilesDirectory.Text = fbd.SelectedPath;
+                    Options.ProfilesDirectory = fbd.SelectedPath;
+                }
+            }
+        }
+
+        private void btn_ChooseCustomClassesDirectory_Click(object sender, EventArgs e)
+        {
+            using (var fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
+
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    GuiCore.SettingsForm.txt_CCDirectory.Text = fbd.SelectedPath;
+                    Options.CCDirectory = fbd.SelectedPath;
+                }
+            }
+        }
     }
 }

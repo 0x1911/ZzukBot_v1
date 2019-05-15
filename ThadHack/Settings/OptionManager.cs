@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using System.Xml;
 using System.Xml.Linq;
-using ZzukBot.Constants;
-using ZzukBot.Forms;
 
 namespace ZzukBot.Settings
 {
@@ -17,7 +15,7 @@ namespace ZzukBot.Settings
         /// <summary>
         ///     Holding the path to the xml file
         /// </summary>
-        private static XDocument doc;
+        private static XDocument doc = new XDocument();
 
         private static string ProtectedItems => Paths.WorkingDirectory + "\\Settings\\ProtectedItems.ini";
         
@@ -183,6 +181,22 @@ namespace ZzukBot.Settings
             GetElement("Mine",
                 ref Options.Mine,
                 GuiCore.SettingsForm.cbMine);
+            
+            GetElement("WowExePath",
+               ref Options.WowExePath,
+               GuiCore.SettingsForm.txt_WowPath);
+
+            GetElement("ProfilesDirectory",
+               ref Options.ProfilesDirectory,
+               GuiCore.SettingsForm.txt_ProfilesDirectory);
+
+            GetElement("CCDirectory",
+               ref Options.CCDirectory,
+               GuiCore.SettingsForm.txt_CCDirectory);
+
+            GetElement("WowExePath",
+               ref Options.WowExePath,
+               GuiCore.SettingsForm.txt_WowPath);
 
             GetElement("WowWindowX",
                 ref Options.WowWindowX,
@@ -208,12 +222,37 @@ namespace ZzukBot.Settings
                 ref Options.BotWindowY,
                 GuiCore.SettingsForm.txt_BotWindowY);
         }
+        /// <summary>
+        /// First run settings setup
+        /// </summary>
+        internal static void InitialSetupSettingsFile()
+        {
+            string tmpSettingsDirectory = "..\\Settings";
+            if (!Directory.Exists(tmpSettingsDirectory))
+            {
+                Directory.CreateDirectory(tmpSettingsDirectory);
+            }
+            
+            string tmpSettingsFilePath = GuiCore.SettingsFilePath;
+            if (!File.Exists(tmpSettingsFilePath))
+            {
+                var tmpXmlDoc = new XmlDocument();
+                XmlNode settingsNode = tmpXmlDoc.CreateElement("Settings");
+                tmpXmlDoc.AppendChild(settingsNode);
 
+                XmlNode pathNode = tmpXmlDoc.CreateElement("WowExePath");
+                pathNode.InnerText = Options.WowExePath;
+                settingsNode.AppendChild(pathNode);
+
+                tmpXmlDoc.Save(tmpSettingsFilePath);
+            }
+        }
         /// <summary>
         ///     Save all settings
         /// </summary>
         internal static void SaveSettings()
         {
+            #region write all the settings to file
             SaveElement("AccountName", Options.AccountName);
             SaveElement("AccountPassword", Options.AccountPassword);
             SaveElement("CharacterName", Options.CharacterName);
@@ -250,6 +289,12 @@ namespace ZzukBot.Settings
             SaveElement("Mine", Options.Mine);
 
             //SaveElement("CapFps", Options.CapFpsTo);
+
+            
+            SaveElement("WowExePath", Options.WowExePath);
+            SaveElement("ProfilesDirectory", Options.ProfilesDirectory);
+            SaveElement("CCDirectory", Options.CCDirectory);
+
             SaveElement("WowWindowX", Options.WowWindowX);
             SaveElement("WowWindowY", Options.WowWindowY);
 
@@ -258,8 +303,9 @@ namespace ZzukBot.Settings
 
             SaveElement("BotWindowX", Options.BotWindowX);
             SaveElement("BotWindowY", Options.BotWindowY);
+            #endregion
 
-
+            //update our primitive sell protected items list
             UpdateProtectedItems();
         }
 
