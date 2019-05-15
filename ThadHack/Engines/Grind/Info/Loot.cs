@@ -24,7 +24,7 @@ namespace ZzukBot.Engines.Grind.Info
                 var mobs = ObjectManager.Npcs;
                 return mobs
                     .Where(i => (i.CanBeLooted && (i.TappedByMe || !i.TappedByOther) ||
-                                 (Settings.SkinUnits && i.IsSkinable && (Settings.NinjaSkin || i.TappedByMe || !i.TappedByOther))
+                                 (Settings.Settings.SkinUnits && i.IsSkinable && (Settings.Settings.NinjaSkin || i.TappedByMe || !i.TappedByOther))
                         )
                                 && !LootBlacklist.Contains(i.Guid)
                                 && !i.IsSwimming
