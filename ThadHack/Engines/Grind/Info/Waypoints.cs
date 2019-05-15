@@ -184,13 +184,13 @@ namespace ZzukBot.Engines.Grind.Info
         internal bool NeedToLoadNextWaypoint(XYZ parPoint, float disToPoint = 1.3f)
         {
             var dis = Calc.Distance2D(ObjectManager.Player.Position, parPoint);
-            return dis <= disToPoint + (float) Options.WaypointModifier;
+            return dis <= disToPoint + (float)Settings.Settings.WaypointModifier;
         }
 
         internal bool NeedToLoadNextWaypoint(float disToPoint = 1.3f)
         {
             var dis = Calc.Distance2D(ObjectManager.Player.Position, CurrentWaypoint);
-            return dis <= disToPoint + (float) Options.WaypointModifier;
+            return dis <= disToPoint + (float)Settings.Settings.WaypointModifier;
         }
 
         internal void ResetGrindPath()

@@ -29,75 +29,75 @@ namespace ZzukBot.Forms
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Options.BeepOnName = GuiCore.SettingsForm.cbBeepName.Checked;
-            Options.BeepOnSay = GuiCore.SettingsForm.cbBeepSay.Checked;
-            Options.BeepOnWhisper = GuiCore.SettingsForm.cbBeepWhisper.Checked;
-            Options.NotifyOnRare = GuiCore.SettingsForm.cbNotifyRare.Checked;
-            Options.StopOnRare = GuiCore.SettingsForm.cbStopOnRare.Checked;
+            Settings.Settings.BeepOnName = GuiCore.SettingsForm.cbBeepName.Checked;
+            Settings.Settings.BeepOnSay = GuiCore.SettingsForm.cbBeepSay.Checked;
+            Settings.Settings.BeepOnWhisper = GuiCore.SettingsForm.cbBeepWhisper.Checked;
+            Settings.Settings.NotifyOnRare = GuiCore.SettingsForm.cbNotifyRare.Checked;
+            Settings.Settings.StopOnRare = GuiCore.SettingsForm.cbStopOnRare.Checked;
 
-            Options.PetFood = GuiCore.SettingsForm.tbPetFood.Text;
-            Options.AccountName = GuiCore.SettingsForm.tbAccount.Text;
-            Options.AccountPassword = GuiCore.SettingsForm.tbPassword.Text;
-            Options.CharacterName = GuiCore.SettingsForm.txt_Character.Text;
-            Options.RestManaAt = (int)GuiCore.SettingsForm.nudDrinkAt.Value;
-            Options.Drink = GuiCore.SettingsForm.tbDrink.Text;
-            Options.RestHealthAt = (int)GuiCore.SettingsForm.nudEatAt.Value;
-            Options.Food = GuiCore.SettingsForm.tbFood.Text;
-            Options.MobSearchRange = (float)GuiCore.SettingsForm.nudMobSearchRange.Value;
-            Options.MaxDiffToWp = (float)GuiCore.SettingsForm.nudRoamFromWp.Value;
-            Options.CombatDistance = (float)GuiCore.SettingsForm.nudCombatRange.Value;
-            Options.MinFreeSlotsBeforeVendor = (int)GuiCore.SettingsForm.nudFreeSlots.Value;
-            Options.WaypointModifier = GuiCore.SettingsForm.nudWaypointModifier.Value;
-            Options.KeepItemsFromQuality =
+            Settings.Settings.PetFood = GuiCore.SettingsForm.tbPetFood.Text;
+            Settings.Settings.AccountName = GuiCore.SettingsForm.tbAccount.Text;
+            Settings.Settings.AccountPassword = GuiCore.SettingsForm.tbPassword.Text;
+            Settings.Settings.CharacterName = GuiCore.SettingsForm.txt_Character.Text;
+            Settings.Settings.RestManaAt = (int)GuiCore.SettingsForm.nudDrinkAt.Value;
+            Settings.Settings.Drink = GuiCore.SettingsForm.tbDrink.Text;
+            Settings.Settings.RestHealthAt = (int)GuiCore.SettingsForm.nudEatAt.Value;
+            Settings.Settings.Food = GuiCore.SettingsForm.tbFood.Text;
+            Settings.Settings.MobSearchRange = (float)GuiCore.SettingsForm.nudMobSearchRange.Value;
+            Settings.Settings.MaxDiffToWp = (float)GuiCore.SettingsForm.nudRoamFromWp.Value;
+            Settings.Settings.CombatDistance = (float)GuiCore.SettingsForm.nudCombatRange.Value;
+            Settings.Settings.MinFreeSlotsBeforeVendor = (int)GuiCore.SettingsForm.nudFreeSlots.Value;
+            Settings.Settings.WaypointModifier = GuiCore.SettingsForm.nudWaypointModifier.Value;
+            Settings.Settings.KeepItemsFromQuality =
                 (int)Enum.Parse(typeof(Enums.ItemQuality),
                     (string)GuiCore.SettingsForm.cbKeepQuality.SelectedItem);
 
-            Options.ForceBreakAfter = (int)GuiCore.SettingsForm.nudForceBreakAfter.Value;
-            Options.BreakFor = (int)GuiCore.SettingsForm.nudBreakFor.Value;
+            Settings.Settings.ForceBreakAfter = (int)GuiCore.SettingsForm.nudForceBreakAfter.Value;
+            Settings.Settings.BreakFor = (int)GuiCore.SettingsForm.nudBreakFor.Value;
 
-            Options.ProtectedItems = GuiCore.SettingsForm.tbProtectedItems.Text.Split(
+            Settings.Settings.ProtectedItems = GuiCore.SettingsForm.tbProtectedItems.Text.Split(
                 new[] { Environment.NewLine },
                 StringSplitOptions.None);
 
-            Options.IRCBotChannel = GuiCore.SettingsForm.tbIRCBotChannel.Text;
-            Options.IRCBotNickname = GuiCore.SettingsForm.tbIRCBotNickname.Text;
-            Options.UseIRC = GuiCore.SettingsForm.cbIRCConnect.Checked;
+            Settings.Settings.IRCBotChannel = GuiCore.SettingsForm.tbIRCBotChannel.Text;
+            Settings.Settings.IRCBotNickname = GuiCore.SettingsForm.tbIRCBotNickname.Text;
+            Settings.Settings.UseIRC = GuiCore.SettingsForm.cbIRCConnect.Checked;
 
-            Options.SkinUnits = GuiCore.SettingsForm.cbSkinUnits.Checked;
-            Options.NinjaSkin = GuiCore.SettingsForm.cbNinjaSkin.Checked;
-            Options.Herb = GuiCore.SettingsForm.cbHerb.Checked;
-            Options.Mine = GuiCore.SettingsForm.cbMine.Checked;
-            Options.LootUnits = GuiCore.SettingsForm.cbLootUnits.Checked;
+            Settings.Settings.SkinUnits = GuiCore.SettingsForm.cbSkinUnits.Checked;
+            Settings.Settings.NinjaSkin = GuiCore.SettingsForm.cbNinjaSkin.Checked;
+            Settings.Settings.Herb = GuiCore.SettingsForm.cbHerb.Checked;
+            Settings.Settings.Mine = GuiCore.SettingsForm.cbMine.Checked;
+            Settings.Settings.LootUnits = GuiCore.SettingsForm.cbLootUnits.Checked;
 
             #region settings - windows tabpage
             //wow window location
-            Options.WowWindowX = GuiCore.SettingsForm.txt_WowWindowX.Text;
-            Options.WowWindowY = GuiCore.SettingsForm.txt_WowWindowY.Text;
+            Settings.Settings.WowWindowX = GuiCore.SettingsForm.txt_WowWindowX.Text;
+            Settings.Settings.WowWindowY = GuiCore.SettingsForm.txt_WowWindowY.Text;
 
             //wow window size
-            Options.WowWindowWidth = GuiCore.SettingsForm.txt_WowWindowWidth.Text;
-            Options.WowWindowHeight = GuiCore.SettingsForm.txt_WowWindowHeigth.Text;
+            Settings.Settings.WowWindowWidth = GuiCore.SettingsForm.txt_WowWindowWidth.Text;
+            Settings.Settings.WowWindowHeight = GuiCore.SettingsForm.txt_WowWindowHeigth.Text;
 
             //bot window location
-            Options.BotWindowX = GuiCore.SettingsForm.txt_BotWindowX.Text;
-            Options.BotWindowY = GuiCore.SettingsForm.txt_BotWindowY.Text;
+            Settings.Settings.BotWindowX = GuiCore.SettingsForm.txt_BotWindowX.Text;
+            Settings.Settings.BotWindowY = GuiCore.SettingsForm.txt_BotWindowY.Text;
             #endregion
 
-            OptionManager.SaveSettings();
+            SettingsManager.SaveSettings();
 
             SetupIrc();
         }
         public void SetupIrc()
         {
-            if (Options.UseIRC)
+            if (Settings.Settings.UseIRC)
             {
-                IrcMonitor.Instance.Start(Options.IRCBotChannel, Options.IRCBotNickname);
+                IrcMonitor.Instance.Start(Settings.Settings.IRCBotChannel, Settings.Settings.IRCBotNickname);
             }
         }
 
         private void reloadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OptionManager.LoadSettings();
+            SettingsManager.LoadSettings();
             if (EngineManager.CurrentEngineType == Engines.Engines.None)
                 CCManager.LoadCCs();
         }
@@ -195,7 +195,7 @@ namespace ZzukBot.Forms
                 else
                 {
                     GuiCore.SettingsForm.txt_WowPath.Text = loc.FileName;
-                    Options.WowExePath = loc.FileName;
+                    Settings.Settings.WowExePath = loc.FileName;
                 }
             }
         }
@@ -209,7 +209,7 @@ namespace ZzukBot.Forms
                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
                 {
                     GuiCore.SettingsForm.txt_ProfilesDirectory.Text = fbd.SelectedPath;
-                    Options.ProfilesDirectory = fbd.SelectedPath;
+                    Settings.Settings.ProfilesDirectory = fbd.SelectedPath;
                 }
             }
         }
@@ -223,7 +223,7 @@ namespace ZzukBot.Forms
                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
                 {
                     GuiCore.SettingsForm.txt_CCDirectory.Text = fbd.SelectedPath;
-                    Options.CCDirectory = fbd.SelectedPath;
+                    Settings.Settings.CCDirectory = fbd.SelectedPath;
                 }
             }
         }

@@ -117,7 +117,7 @@ namespace ZzukBot.Forms
         {
            // GuiCore.MainForm = this;
             Enabled = false;
-            OptionManager.LoadXmlSettings();
+            SettingsManager.LoadXmlSettings();
             LoginBlock.Enable();
         }
 
@@ -125,7 +125,7 @@ namespace ZzukBot.Forms
         internal void EndLaunchPrepare()
         {            
             Memory.Init();
-            OptionManager.LoadSettings();
+            SettingsManager.LoadSettings();
             CCManager.LoadCCs();
 
             #region set wow & bot window location and size
@@ -174,9 +174,9 @@ namespace ZzukBot.Forms
                 }
 
                 if (
-                    e.Type == (int) Enums.ChatType.Say && Options.BeepOnSay ||
-                    e.Type == (int) Enums.ChatType.Whisper && Options.BeepOnWhisper ||
-                    e.Type == (int) Enums.ChatType.Channel && Options.BeepOnName
+                    e.Type == (int)Enums.ChatType.Say && Settings.Settings.BeepOnSay ||
+                    e.Type == (int)Enums.ChatType.Whisper && Settings.Settings.BeepOnWhisper ||
+                    e.Type == (int)Enums.ChatType.Channel && Settings.Settings.BeepOnName
                     )
                 {
                     PlayBeep();

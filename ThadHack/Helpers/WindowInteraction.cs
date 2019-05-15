@@ -16,11 +16,11 @@ namespace ZzukBot.Helpers
         /// </summary>
         public static void SetWowWindow()
         {
-            if (!string.IsNullOrEmpty(Options.WowWindowHeight) && Options.WowWindowHeight != "0" &&
-               !string.IsNullOrEmpty(Options.WowWindowWidth) && Options.WowWindowWidth != "0" &&
-               !string.IsNullOrEmpty(Options.WowWindowX) && !string.IsNullOrEmpty(Options.WowWindowY))
+            if (!string.IsNullOrEmpty(Settings.Settings.WowWindowHeight) && Settings.Settings.WowWindowHeight != "0" &&
+               !string.IsNullOrEmpty(Settings.Settings.WowWindowWidth) && Settings.Settings.WowWindowWidth != "0" &&
+               !string.IsNullOrEmpty(Settings.Settings.WowWindowX) && !string.IsNullOrEmpty(Settings.Settings.WowWindowY))
             {
-                WinImports.SetWindowPos(Mem.WindowProcHook.HWnD, 0, int.Parse(Options.WowWindowX), int.Parse(Options.WowWindowY), int.Parse(Options.WowWindowWidth), int.Parse(Options.WowWindowHeight), SWP_NOZORDER | SWP_SHOWWINDOW);
+                WinImports.SetWindowPos(Mem.WindowProcHook.HWnD, 0, int.Parse(Settings.Settings.WowWindowX), int.Parse(Settings.Settings.WowWindowY), int.Parse(Settings.Settings.WowWindowWidth), int.Parse(Settings.Settings.WowWindowHeight), SWP_NOZORDER | SWP_SHOWWINDOW);
             }            
         }
         /// <summary>
@@ -28,10 +28,10 @@ namespace ZzukBot.Helpers
         /// </summary>
         public static void SetBotWindow()
         {
-            if (!string.IsNullOrEmpty(Options.BotWindowX) && Options.BotWindowX != "0" &&
-               !string.IsNullOrEmpty(Options.BotWindowY) && Options.BotWindowY != "0")
+            if (!string.IsNullOrEmpty(Settings.Settings.BotWindowX) && Settings.Settings.BotWindowX != "0" &&
+               !string.IsNullOrEmpty(Settings.Settings.BotWindowY) && Settings.Settings.BotWindowY != "0")
             {
-                GuiCore.MainForm.Location = new Point(int.Parse(Options.BotWindowX), int.Parse(Options.BotWindowY));
+                GuiCore.MainForm.Location = new Point(int.Parse(Settings.Settings.BotWindowX), int.Parse(Settings.Settings.BotWindowY));
             }
         }
     }

@@ -25,7 +25,7 @@ namespace ZzukBot.Engines.Grind.Info
         {
             get
             {
-                if (!(Options.BreakFor != 0 && Options.ForceBreakAfter != 0)) return false;
+                if (!(Settings.Settings.BreakFor != 0 && Settings.Settings.ForceBreakAfter != 0)) return false;
                 if (_NeedToBreak)
                 {
                     if (!ObjectManager.EnumObjects())
@@ -57,19 +57,19 @@ namespace ZzukBot.Engines.Grind.Info
 
         internal void SetBreakAt(int parModifier)
         {
-            if (Options.ForceBreakAfter < 5)
-                Options.ForceBreakAfter = 5;
+            if (Settings.Settings.ForceBreakAfter < 5)
+                Settings.Settings.ForceBreakAfter = 5;
 
-            BreakAt = Environment.TickCount + Options.ForceBreakAfter*60*1000
+            BreakAt = Environment.TickCount + Settings.Settings.ForceBreakAfter*60*1000
                       + ran.Next(-120000, 120000) + parModifier;
         }
 
         private void SetResumeAt(int parModifier)
         {
-            if (Options.BreakFor < 5)
-                Options.BreakFor = 5;
+            if (Settings.Settings.BreakFor < 5)
+                Settings.Settings.BreakFor = 5;
 
-            ResumeAt = Environment.TickCount + Options.BreakFor*60*1000
+            ResumeAt = Environment.TickCount + Settings.Settings.BreakFor*60*1000
                        + ran.Next(-120000, 120000) + parModifier;
         }
     }

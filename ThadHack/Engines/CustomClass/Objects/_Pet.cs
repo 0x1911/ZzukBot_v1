@@ -29,7 +29,7 @@ namespace ZzukBot.Engines.CustomClass.Objects
         /// <value>
         ///     <c>true</c> if we have food. Otherwise <c>false</c>.
         /// </value>
-        public bool GotPetFood => ObjectManager.Player.Inventory.ItemCount(Options.PetFood) != 0;
+        public bool GotPetFood => ObjectManager.Player.Inventory.ItemCount(Settings.Settings.PetFood) != 0;
 
         /// <summary>
         ///     Feeds the players pet
@@ -40,14 +40,14 @@ namespace ZzukBot.Engines.CustomClass.Objects
             {
                 var encryptedName = "CanFeedMyPet".GenLuaVarName();
 
-                if (ObjectManager.Player.Inventory.ItemCount(Options.PetFood) != 0)
+                if (ObjectManager.Player.Inventory.ItemCount(Settings.Settings.PetFood) != 0)
                 {
                     Functions.DoString(Strings.CheckFeedPet.Replace("CanFeedMyPet", encryptedName));
                     if (Functions.GetText(encryptedName).Trim().Contains("0"))
                     {
                         Functions.DoString(Strings.FeedPet);
                     }
-                    Functions.DoString(Strings.UsePetFood1 + Options.PetFood.Replace("'", "\\'") + Strings.UsePetFood2);
+                    Functions.DoString(Strings.UsePetFood1 + Settings.Settings.PetFood.Replace("'", "\\'") + Strings.UsePetFood2);
                 }
             }
             Functions.DoString("ClearCursor()");

@@ -24,7 +24,7 @@ namespace ZzukBot.Engines.Grind.Info
                 var mobs = ObjectManager.Npcs;
                 return mobs
                     .Where(i => (i.CanBeLooted && (i.TappedByMe || !i.TappedByOther) ||
-                                 (Options.SkinUnits && i.IsSkinable && (Options.NinjaSkin || i.TappedByMe || !i.TappedByOther))
+                                 (Settings.SkinUnits && i.IsSkinable && (Settings.NinjaSkin || i.TappedByMe || !i.TappedByOther))
                         )
                                 && !LootBlacklist.Contains(i.Guid)
                                 && !i.IsSwimming
@@ -45,7 +45,7 @@ namespace ZzukBot.Engines.Grind.Info
                     BlacklistCurrentLoot = false;
                     return false;
                 }
-                return ObjectManager.Player.Inventory.FreeSlots >= Options.MinFreeSlotsBeforeVendor && tmp != null;
+                return ObjectManager.Player.Inventory.FreeSlots >= Settings.Settings.MinFreeSlotsBeforeVendor && tmp != null;
             }
         }
 

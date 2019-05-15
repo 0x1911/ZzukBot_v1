@@ -133,9 +133,9 @@ namespace ZzukBot.Engines.CustomClass
         public void SetCombatDistance(int parDistance)
         {
             // ReSharper disable once CompareOfFloatsByEqualityOperator
-            if (Options.CombatDistance != parDistance
+            if (Settings.Settings.CombatDistance != parDistance
                 && Grinder.Access.Info.Target.InSightWithTarget)
-                Options.CombatDistance = parDistance;
+                Settings.Settings.CombatDistance = parDistance;
         }
 
 

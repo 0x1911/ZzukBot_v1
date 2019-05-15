@@ -32,13 +32,13 @@ namespace ZzukBot.Constants
 
             internal static void AdjustToRealm()
             {
-                var isElysium = Options.RealmList.Contains("elysium");
-                if (!Options.RealmList.Contains("nostalrius") && !isElysium)
+                var isElysium = Settings.Settings.RealmList.Contains("elysium");
+                if (!Settings.Settings.RealmList.Contains("nostalrius") && !isElysium)
                 {
                     CanBeLooted = 0x1;
                     TappedByMe = 0x0;
                 }
-                if (Options.RealmList.Contains("vanillagaming"))
+                if (Settings.Settings.RealmList.Contains("vanillagaming"))
                 {
                     AuraBase = 0x138;
                     NextAura = -4;

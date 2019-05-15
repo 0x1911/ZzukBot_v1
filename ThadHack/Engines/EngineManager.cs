@@ -98,9 +98,9 @@ namespace ZzukBot.Engines
 
             if (IsEngineRunning) return;
             string tmpProfileName;
-            if (parLoadLast && Options.LastProfileFileName != "")
+            if (parLoadLast && Settings.Settings.LastProfileFileName != "")
             {
-                tmpProfileName = Paths.ProfilesDirectory + Options.LastProfileFileName;
+                tmpProfileName = Paths.ProfilesDirectory + Settings.Settings.LastProfileFileName;
             }
             else
             {
@@ -123,7 +123,7 @@ namespace ZzukBot.Engines
                 }
             }
 
-            Helpers.Logger.Append("cc directory: " + Options.CCDirectory.ToString());
+            Helpers.Logger.Append("cc directory: " + Settings.Settings.CCDirectory.ToString());
             Helpers.Logger.Append("internal directory: " + Paths.InternalDirectory.ToString());
             Helpers.Logger.Append("wow directory: " + Paths.WowDirectory.ToString());
             Helpers.Logger.Append("profiles directory: " + Paths.ProfilesDirectory.ToString());
@@ -138,7 +138,7 @@ namespace ZzukBot.Engines
                 {
                     GuiCore.MainForm.lGrindState.Text = "State: Loading mmaps";
                     string profileFileName = tmpProfileName.Replace(Paths.ProfilesDirectory, "");
-                    Options.LastProfileFileName = profileFileName;
+                    Settings.Settings.LastProfileFileName = profileFileName;
                 }));
             }
 
@@ -151,7 +151,7 @@ namespace ZzukBot.Engines
             {
                 GuiCore.MainForm.Invoke(new MethodInvoker(delegate
                 {
-                    GuiCore.MainForm.lGrindLoadProfile.Text = "Profile: " + Options.LastProfileFileName + " Loaded";
+                    GuiCore.MainForm.lGrindLoadProfile.Text = "Profile: " + Settings.Settings.LastProfileFileName + " Loaded";
                     _Engine = tmpGrind;
                 }));
             }

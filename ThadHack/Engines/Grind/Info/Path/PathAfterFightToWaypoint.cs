@@ -46,7 +46,7 @@ namespace ZzukBot.Engines.Grind.Info.Path
 
             var diff = Calc.Distance2D(Grinder.Access.Info.Waypoints.CurrentWaypoint,
                 ObjectManager.Player.Position);
-            if (diff > Options.MaxDiffToWp)
+            if (diff > Settings.Settings.MaxDiffToWp)
             {
                 ShouldReturn = true;
                 if (AfterFightMovement)

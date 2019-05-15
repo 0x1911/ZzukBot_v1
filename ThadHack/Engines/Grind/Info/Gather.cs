@@ -19,7 +19,7 @@ namespace ZzukBot.Engines.Grind.Info
         internal bool SearchGatherObjects()
         {
             //do we even want to gather?
-            if(!Settings.Options.Mine && !Settings.Options.Herb) { return false; }
+            if(!Settings.Settings.Mine && !Settings.Settings.Herb) { return false; }
             //any possible objects to gather?
             if (ObjectManager.GameObjects == null) { return false; }
 
@@ -29,8 +29,8 @@ namespace ZzukBot.Engines.Grind.Info
             int tmpCount = 0;
             foreach (var tmpWoWObject in tmpPossibleGatherObjects)
             {
-                if (Settings.Options.Herb && tmpWoWObject.GatherInfo.Type == Constants.Enums.GatherType.Herbalism && HasEnoughSkill(Enums.Skills.HERBALISM, tmpWoWObject) ||
-                    Settings.Options.Mine && tmpWoWObject.GatherInfo.Type == Constants.Enums.GatherType.Mining && HasEnoughSkill(Enums.Skills.MINING, tmpWoWObject))
+                if (Settings.Settings.Herb && tmpWoWObject.GatherInfo.Type == Constants.Enums.GatherType.Herbalism && HasEnoughSkill(Enums.Skills.HERBALISM, tmpWoWObject) ||
+                    Settings.Settings.Mine && tmpWoWObject.GatherInfo.Type == Constants.Enums.GatherType.Mining && HasEnoughSkill(Enums.Skills.MINING, tmpWoWObject))
                 {
                     if(!IsOnGatherBlacklist(tmpWoWObject.Guid))
                         return true;
@@ -51,8 +51,8 @@ namespace ZzukBot.Engines.Grind.Info
  
             foreach (var tmpWoWObject in tmpPossibleGatherObjects)
             {
-                if (Settings.Options.Herb && tmpWoWObject.GatherInfo.Type == Constants.Enums.GatherType.Herbalism && HasEnoughSkill(Enums.Skills.HERBALISM, tmpWoWObject) ||
-                    Settings.Options.Mine && tmpWoWObject.GatherInfo.Type == Constants.Enums.GatherType.Mining && HasEnoughSkill(Enums.Skills.MINING, tmpWoWObject))
+                if (Settings.Settings.Herb && tmpWoWObject.GatherInfo.Type == Constants.Enums.GatherType.Herbalism && HasEnoughSkill(Enums.Skills.HERBALISM, tmpWoWObject) ||
+                    Settings.Settings.Mine && tmpWoWObject.GatherInfo.Type == Constants.Enums.GatherType.Mining && HasEnoughSkill(Enums.Skills.MINING, tmpWoWObject))
                 {
                     tmpResources.Add(tmpWoWObject, Calc.Distance3D(tmpWoWObject.Position, ObjectManager.Player.Position));
                 }

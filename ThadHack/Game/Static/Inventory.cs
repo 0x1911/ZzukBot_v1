@@ -40,12 +40,12 @@ namespace ZzukBot.Game.Static
                         var tmp = ObjectManager.Items
                             .FirstOrDefault(x => x.Guid == tmpSlotGuid);
 
-                        var itemName = Options.ProtectedItems.FirstOrDefault(x => x.StartsWith("*") && tmp.Name.Contains(x.TrimStart('*')));
+                        var itemName = Settings.Settings.ProtectedItems.FirstOrDefault(x => x.StartsWith("*") && tmp.Name.Contains(x.TrimStart('*')));
 
                         //don't sell protected items or food & drinks
-                        if (string.IsNullOrEmpty(itemName) && !Options.ProtectedItems.Contains(tmp.Name) && !Game.Static.Consumeables.DrinksDictionary.ContainsKey(tmp.Id) && !Game.Static.Consumeables.FoodsDictionary.ContainsKey(tmp.Id))
+                        if (string.IsNullOrEmpty(itemName) && !Settings.Settings.ProtectedItems.Contains(tmp.Name) && !Game.Static.Consumeables.DrinksDictionary.ContainsKey(tmp.Id) && !Game.Static.Consumeables.FoodsDictionary.ContainsKey(tmp.Id))
                         {
-                            if (tmp.Quality < Options.KeepItemsFromQuality)
+                            if (tmp.Quality < Settings.Settings.KeepItemsFromQuality)
                             {
                                 if (!VendorExclude.Contains(tmp.Guid) || Game.Static.Consumeables.DrinksDictionary.ContainsKey(tmp.Id) || Game.Static.Consumeables.FoodsDictionary.ContainsKey(tmp.Id))
                                 {
@@ -94,9 +94,9 @@ namespace ZzukBot.Game.Static
                         {
                             var tmp = ObjectManager.Items
                                 .FirstOrDefault(x => x.Guid == tmpSlotGuid);
-                            if (!Options.ProtectedItems.Contains(tmp.Name))
+                            if (!Settings.Settings.ProtectedItems.Contains(tmp.Name))
                             {
-                                if (tmp.Quality < Options.KeepItemsFromQuality)
+                                if (tmp.Quality < Settings.Settings.KeepItemsFromQuality)
                                 {
                                     if (!VendorExclude.Contains(tmp.Guid))
                                     {

@@ -136,7 +136,7 @@ namespace ZzukBot.Mem
 
         internal static void Login()
         {
-            Functions.DoString("DefaultServerLogin('" + Options.AccountName + "', '" + Options.AccountPassword + "');");
+            Functions.DoString("DefaultServerLogin('" + Settings.Settings.AccountName + "', '" + Settings.Settings.AccountPassword + "');");
         }
 
         internal static void EnterWorld()

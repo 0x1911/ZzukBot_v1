@@ -520,10 +520,10 @@ namespace ZzukBot.Engines.CustomClass.Objects
             {
                 if (!ObjectManager.Player.IsEating)
                 {
-                    if (ObjectManager.Player.Inventory.ItemCount(Options.Food) != 0)
+                    if (ObjectManager.Player.Inventory.ItemCount(Settings.Settings.Food) != 0)
                     {
                         if (Wait.For("EatTimeout", 100))
-                            ObjectManager.Player.Inventory.UseItemByName(Options.Food);
+                            ObjectManager.Player.Inventory.UseItemByName(Settings.Settings.Food);
                     }
                 }
             }
@@ -542,10 +542,10 @@ namespace ZzukBot.Engines.CustomClass.Objects
                 if (!ObjectManager.Player.IsDrinking)
                 {
                     // do we stil have drinks?
-                    if (ObjectManager.Player.Inventory.ItemCount(Options.Drink) != 0)
+                    if (ObjectManager.Player.Inventory.ItemCount(Settings.Settings.Drink) != 0)
                     {
                         if (Wait.For("DrinkTimeout", 100))
-                            ObjectManager.Player.Inventory.UseItemByName(Options.Drink);
+                            ObjectManager.Player.Inventory.UseItemByName(Settings.Settings.Drink);
                     }
                 }
             }

@@ -161,9 +161,9 @@ namespace ZzukBot
                         }
                         else
                         {
-                            Options.WowExePath = loc.FileName;
+                            Settings.Settings.WowExePath = loc.FileName;
                             //write minimal settings doc file to hdd
-                            OptionManager.InitialSetupSettingsFile();
+                            SettingsManager.InitialSetupSettingsFile();
                             break;
                         }
                     }
@@ -199,7 +199,7 @@ namespace ZzukBot
                 if (x.ToLower().StartsWith("set realmlist "))
                     name = x.ToLower();
             }
-            Options.RealmList = name;
+            Settings.Settings.RealmList = name;
         }
 
 

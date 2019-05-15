@@ -3,7 +3,7 @@
     /// <summary>
     ///     The class containing settings the user made
     /// </summary>
-    internal static class Options
+    internal static class Settings
     {
         internal static string AccountName = "";
         internal static string AccountPassword = "";

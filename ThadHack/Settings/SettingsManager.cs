@@ -10,7 +10,7 @@ namespace ZzukBot.Settings
     /// <summary>
     ///     Class to manage the options
     /// </summary>
-    internal static class OptionManager
+    internal static class SettingsManager
     {
         /// <summary>
         ///     Holding the path to the xml file
@@ -60,166 +60,166 @@ namespace ZzukBot.Settings
                 parTb.Text += listEntry + Environment.NewLine;
             }
 
-            Options.ProtectedItems = tmpItems.ToArray();
+            Settings.ProtectedItems = tmpItems.ToArray();
         }
 
         private static void LoadFromXml()
         {
             GetElement("AccountName",
-                ref Options.AccountName,
+                ref Settings.AccountName,
                 GuiCore.SettingsForm.tbAccount);
 
             GetElement("StopOnRare",
-                ref Options.StopOnRare,
+                ref Settings.StopOnRare,
                 GuiCore.SettingsForm.cbStopOnRare);
 
             GetElement("NotifyOnRare",
-                ref Options.NotifyOnRare,
+                ref Settings.NotifyOnRare,
                 GuiCore.SettingsForm.cbNotifyRare);
 
             GetElement("PetFood",
-                ref Options.PetFood,
+                ref Settings.PetFood,
                 GuiCore.SettingsForm.tbPetFood);
 
 
             GetElement("AccountPassword",
-                ref Options.AccountPassword,
+                ref Settings.AccountPassword,
                 GuiCore.SettingsForm.tbPassword);
 
             GetElement("CharacterName",
-                ref Options.CharacterName,
+                ref Settings.CharacterName,
                 GuiCore.SettingsForm.txt_Character);
 
             GetElement("RestManaAt",
-                ref Options.RestManaAt,
+                ref Settings.RestManaAt,
                 GuiCore.SettingsForm.nudDrinkAt);
 
             GetElement("Drink",
-                ref Options.Drink,
+                ref Settings.Drink,
                 GuiCore.SettingsForm.tbDrink);
 
             GetElement("RestHealthAt",
-                ref Options.RestHealthAt,
+                ref Settings.RestHealthAt,
                 GuiCore.SettingsForm.nudEatAt);
 
             GetElement("Food",
-                ref Options.Food,
+                ref Settings.Food,
                 GuiCore.SettingsForm.tbFood);
 
             GetElement("MobSearchRange",
-                ref Options.MobSearchRange,
+                ref Settings.MobSearchRange,
                 GuiCore.SettingsForm.nudMobSearchRange);
 
             GetElement("MaxDiffToWp",
-                ref Options.MaxDiffToWp,
+                ref Settings.MaxDiffToWp,
                 GuiCore.SettingsForm.nudRoamFromWp);
 
             GetElement("CombatDistance",
-                ref Options.CombatDistance,
+                ref Settings.CombatDistance,
                 GuiCore.SettingsForm.nudCombatRange);
 
             GetElement("MinFreeSlotsBeforeVendor",
-                ref Options.MinFreeSlotsBeforeVendor,
+                ref Settings.MinFreeSlotsBeforeVendor,
                 GuiCore.SettingsForm.nudFreeSlots);
 
             GetElement("KeepItemsFromQuality",
-                ref Options.KeepItemsFromQuality,
+                ref Settings.KeepItemsFromQuality,
                 GuiCore.SettingsForm.cbKeepQuality);
 
             GetElement("WaypointModifier",
-                ref Options.WaypointModifier,
+                ref Settings.WaypointModifier,
                 GuiCore.SettingsForm.nudWaypointModifier);
 
             GetElement("BeepOnSay",
-                ref Options.BeepOnSay,
+                ref Settings.BeepOnSay,
                 GuiCore.SettingsForm.cbBeepSay);
 
             GetElement("BeepOnWhisper",
-                ref Options.BeepOnWhisper,
+                ref Settings.BeepOnWhisper,
                 GuiCore.SettingsForm.cbBeepWhisper);
 
             GetElement("BeepOnName",
-                ref Options.BeepOnName,
+                ref Settings.BeepOnName,
                 GuiCore.SettingsForm.cbBeepName);
 
             GetElement("BreakFor",
-                ref Options.BreakFor,
+                ref Settings.BreakFor,
                 GuiCore.SettingsForm.nudBreakFor);
 
             GetElement("ForceBreakAfter",
-                ref Options.ForceBreakAfter,
+                ref Settings.ForceBreakAfter,
                 GuiCore.SettingsForm.nudForceBreakAfter);
 
             GetElement("UseIRC",
-                ref Options.UseIRC,
+                ref Settings.UseIRC,
                 GuiCore.SettingsForm.cbIRCConnect);
 
             GetElement("IRCBotNickname",
-                ref Options.IRCBotNickname,
+                ref Settings.IRCBotNickname,
                 GuiCore.SettingsForm.tbIRCBotNickname);
 
             GetElement("IRCBotChannel",
-                ref Options.IRCBotChannel,
+                ref Settings.IRCBotChannel,
                 GuiCore.SettingsForm.tbIRCBotChannel);
 
             GetElement("SkinUnits",
-                ref Options.SkinUnits,
+                ref Settings.SkinUnits,
                 GuiCore.SettingsForm.cbSkinUnits);
 
             GetElement("NinjaSkin",
-                ref Options.NinjaSkin,
+                ref Settings.NinjaSkin,
                 GuiCore.SettingsForm.cbNinjaSkin);
 
             GetElement("LootUnits",
-                ref Options.LootUnits,
+                ref Settings.LootUnits,
                 GuiCore.SettingsForm.cbLootUnits);
 
             GetElement("Herb",
-                ref Options.Herb,
+                ref Settings.Herb,
                 GuiCore.SettingsForm.cbHerb);
 
             GetElement("Mine",
-                ref Options.Mine,
+                ref Settings.Mine,
                 GuiCore.SettingsForm.cbMine);
             
             GetElement("WowExePath",
-               ref Options.WowExePath,
+               ref Settings.WowExePath,
                GuiCore.SettingsForm.txt_WowPath);
 
             GetElement("ProfilesDirectory",
-               ref Options.ProfilesDirectory,
+               ref Settings.ProfilesDirectory,
                GuiCore.SettingsForm.txt_ProfilesDirectory);
 
             GetElement("CCDirectory",
-               ref Options.CCDirectory,
+               ref Settings.CCDirectory,
                GuiCore.SettingsForm.txt_CCDirectory);
 
             GetElement("WowExePath",
-               ref Options.WowExePath,
+               ref Settings.WowExePath,
                GuiCore.SettingsForm.txt_WowPath);
 
             GetElement("WowWindowX",
-                ref Options.WowWindowX,
+                ref Settings.WowWindowX,
                 GuiCore.SettingsForm.txt_WowWindowX);
 
             GetElement("WowWindowY",
-                ref Options.WowWindowY,
+                ref Settings.WowWindowY,
                 GuiCore.SettingsForm.txt_WowWindowY);
 
             GetElement("WowWindowWidth",
-                ref Options.WowWindowWidth,
+                ref Settings.WowWindowWidth,
                 GuiCore.SettingsForm.txt_WowWindowWidth);
 
             GetElement("WowWindowHeight",
-                ref Options.WowWindowHeight,
+                ref Settings.WowWindowHeight,
                 GuiCore.SettingsForm.txt_WowWindowHeigth);
 
             GetElement("BotWindowX",
-                ref Options.BotWindowX,
+                ref Settings.BotWindowX,
                 GuiCore.SettingsForm.txt_BotWindowX);
 
             GetElement("BotWindowY",
-                ref Options.BotWindowY,
+                ref Settings.BotWindowY,
                 GuiCore.SettingsForm.txt_BotWindowY);
         }
         /// <summary>
@@ -241,7 +241,7 @@ namespace ZzukBot.Settings
                 tmpXmlDoc.AppendChild(settingsNode);
 
                 XmlNode pathNode = tmpXmlDoc.CreateElement("WowExePath");
-                pathNode.InnerText = Options.WowExePath;
+                pathNode.InnerText = Settings.WowExePath;
                 settingsNode.AppendChild(pathNode);
 
                 tmpXmlDoc.Save(tmpSettingsFilePath);
@@ -253,56 +253,56 @@ namespace ZzukBot.Settings
         internal static void SaveSettings()
         {
             #region write all the settings to file
-            SaveElement("AccountName", Options.AccountName);
-            SaveElement("AccountPassword", Options.AccountPassword);
-            SaveElement("CharacterName", Options.CharacterName);
-            SaveElement("RestManaAt", Options.RestManaAt);
-            SaveElement("Drink", Options.Drink);
-            SaveElement("RestHealthAt", Options.RestHealthAt);
-            SaveElement("Food", Options.Food);
-            SaveElement("MobSearchRange", Options.MobSearchRange);
-            SaveElement("MaxDiffToWp", Options.MaxDiffToWp);
-            SaveElement("CombatDistance", Options.CombatDistance);
-            SaveElement("MinFreeSlotsBeforeVendor", Options.MinFreeSlotsBeforeVendor);
-            SaveElement("KeepItemsFromQuality", Options.KeepItemsFromQuality);
-            SaveElement("WaypointModifier", Options.WaypointModifier);
-            SaveElement("PetFood", Options.PetFood);
+            SaveElement("AccountName", Settings.AccountName);
+            SaveElement("AccountPassword", Settings.AccountPassword);
+            SaveElement("CharacterName", Settings.CharacterName);
+            SaveElement("RestManaAt", Settings.RestManaAt);
+            SaveElement("Drink", Settings.Drink);
+            SaveElement("RestHealthAt", Settings.RestHealthAt);
+            SaveElement("Food", Settings.Food);
+            SaveElement("MobSearchRange", Settings.MobSearchRange);
+            SaveElement("MaxDiffToWp", Settings.MaxDiffToWp);
+            SaveElement("CombatDistance", Settings.CombatDistance);
+            SaveElement("MinFreeSlotsBeforeVendor", Settings.MinFreeSlotsBeforeVendor);
+            SaveElement("KeepItemsFromQuality", Settings.KeepItemsFromQuality);
+            SaveElement("WaypointModifier", Settings.WaypointModifier);
+            SaveElement("PetFood", Settings.PetFood);
 
-            SaveElement("BeepOnName", Options.BeepOnName);
-            SaveElement("BeepOnSay", Options.BeepOnSay);
-            SaveElement("BeepOnWhisper", Options.BeepOnWhisper);
+            SaveElement("BeepOnName", Settings.BeepOnName);
+            SaveElement("BeepOnSay", Settings.BeepOnSay);
+            SaveElement("BeepOnWhisper", Settings.BeepOnWhisper);
 
-            SaveElement("StopOnRare", Options.StopOnRare);
-            SaveElement("NotifyOnRare", Options.NotifyOnRare);
+            SaveElement("StopOnRare", Settings.StopOnRare);
+            SaveElement("NotifyOnRare", Settings.NotifyOnRare);
 
-            SaveElement("ForceBreakAfter", Options.ForceBreakAfter);
-            SaveElement("BreakFor", Options.BreakFor);
+            SaveElement("ForceBreakAfter", Settings.ForceBreakAfter);
+            SaveElement("BreakFor", Settings.BreakFor);
 
-            SaveElement("UseIRC", Options.UseIRC);
-            SaveElement("IRCBotNickname", Options.IRCBotNickname);
-            SaveElement("IRCBotChannel", Options.IRCBotChannel);
+            SaveElement("UseIRC", Settings.UseIRC);
+            SaveElement("IRCBotNickname", Settings.IRCBotNickname);
+            SaveElement("IRCBotChannel", Settings.IRCBotChannel);
 
-            SaveElement("LootUnits", Options.LootUnits);
-            SaveElement("SkinUnits", Options.SkinUnits);
-            SaveElement("NinjaSkin", Options.NinjaSkin);
-            SaveElement("Herb", Options.Herb);
-            SaveElement("Mine", Options.Mine);
+            SaveElement("LootUnits", Settings.LootUnits);
+            SaveElement("SkinUnits", Settings.SkinUnits);
+            SaveElement("NinjaSkin", Settings.NinjaSkin);
+            SaveElement("Herb", Settings.Herb);
+            SaveElement("Mine", Settings.Mine);
 
             //SaveElement("CapFps", Options.CapFpsTo);
 
             
-            SaveElement("WowExePath", Options.WowExePath);
-            SaveElement("ProfilesDirectory", Options.ProfilesDirectory);
-            SaveElement("CCDirectory", Options.CCDirectory);
+            SaveElement("WowExePath", Settings.WowExePath);
+            SaveElement("ProfilesDirectory", Settings.ProfilesDirectory);
+            SaveElement("CCDirectory", Settings.CCDirectory);
 
-            SaveElement("WowWindowX", Options.WowWindowX);
-            SaveElement("WowWindowY", Options.WowWindowY);
+            SaveElement("WowWindowX", Settings.WowWindowX);
+            SaveElement("WowWindowY", Settings.WowWindowY);
 
-            SaveElement("WowWindowWidth", Options.WowWindowWidth);
-            SaveElement("WowWindowHeight", Options.WowWindowHeight);
+            SaveElement("WowWindowWidth", Settings.WowWindowWidth);
+            SaveElement("WowWindowHeight", Settings.WowWindowHeight);
 
-            SaveElement("BotWindowX", Options.BotWindowX);
-            SaveElement("BotWindowY", Options.BotWindowY);
+            SaveElement("BotWindowX", Settings.BotWindowX);
+            SaveElement("BotWindowY", Settings.BotWindowY);
             #endregion
 
             //update our primitive sell protected items list
@@ -358,7 +358,7 @@ namespace ZzukBot.Settings
             File.Create(ProtectedItems).Close();
             var tmpText = "";
             // ReSharper disable once LoopCanBeConvertedToQuery
-            foreach (string t in Options.ProtectedItems)
+            foreach (string t in Settings.ProtectedItems)
             {
                 var tmp = t.Trim();
                 if (!string.IsNullOrWhiteSpace(tmp))

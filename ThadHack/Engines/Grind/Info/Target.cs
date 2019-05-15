@@ -40,7 +40,7 @@ namespace ZzukBot.Engines.Grind.Info
                               Grinder.Access.Profile.Factions.Contains(i.FactionID))) &&
                             i.Reaction != Enums.UnitReaction.Friendly && !i.IsCritter && i.IsUntouched &&
                             i.HealthPercent == 100 &&
-                            Calc.Distance3D(i.Position, ObjectManager.Player.Position) <= Options.MobSearchRange &&
+                            Calc.Distance3D(i.Position, ObjectManager.Player.Position) <= Settings.MobSearchRange &&
                             Math.Abs(ObjectManager.Player.Position.Z - i.Position.Z) <= 4 && i.SummonedBy == 0 &&
                             i.TargetGuid == 0)
                     .OrderBy(i => Calc.Distance3D(i.Position, ObjectManager.Player.Position)).ToList();
@@ -80,7 +80,7 @@ namespace ZzukBot.Engines.Grind.Info
         {
             get
             {
-                var tmp = Options.CombatDistance;
+                var tmp = Settings.Settings.CombatDistance;
                 if (!InSightWithTarget)
                 {
                     if (!Grinder.Access.Info.Combat.IsMovingBack)

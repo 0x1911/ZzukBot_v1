@@ -26,7 +26,7 @@ namespace ZzukBot.Engines.Grind.Info
         {
             get
             {
-                var res = ObjectManager.Player.Inventory.FreeSlots < Options.MinFreeSlotsBeforeVendor;
+                var res = ObjectManager.Player.Inventory.FreeSlots < Settings.Settings.MinFreeSlotsBeforeVendor;
                 if (res) _NeedToVendor = true;
                 return _NeedToVendor;
             }

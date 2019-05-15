@@ -49,14 +49,14 @@ namespace ZzukBot.Engines.CustomClass
         private static void GetCustomClasses()
         {
             ccs.Clear();
-            if (!Directory.Exists(Options.CCDirectory))
+            if (!Directory.Exists(Settings.Settings.CCDirectory))
             {
-                Helpers.Logger.Append($"Custom Classes { Options.CCDirectory } doesn't exist! Aborting CC loading..");
+                Helpers.Logger.Append($"Custom Classes { Settings.Settings.CCDirectory } doesn't exist! Aborting CC loading..");
                 return;
             }
 
 
-            var files = Directory.GetFiles(Options.CCDirectory);
+            var files = Directory.GetFiles(Settings.Settings.CCDirectory);
             int tmpCCCount = 0;
             int tmpLoadedCCount = 0;
 

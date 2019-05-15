@@ -88,11 +88,11 @@ namespace ZzukBot.Engines.Grind
         /// </summary>
         private void RareCheck()
         {
-            if (Options.StopOnRare || Options.NotifyOnRare)
+            if (Settings.Settings.StopOnRare || Settings.Settings.NotifyOnRare)
             {
                 if (Wait.For("RareScan12", 10000))
                 {
-                    if (Options.NotifyOnRare)
+                    if (Settings.Settings.NotifyOnRare)
                     {
                         var tmp = ObjectManager.Npcs.FirstOrDefault(i => i.IsRareElite && i.Health != 0);
                         if (tmp != null)
@@ -106,7 +106,7 @@ namespace ZzukBot.Engines.Grind
                             }
                         }
                     }
-                    if (Options.StopOnRare)
+                    if (Settings.Settings.StopOnRare)
                     {
                         Stop();
                     }
@@ -282,10 +282,11 @@ namespace ZzukBot.Engines.Grind
                             GuiCore.MainForm.lbl_playerLevel.Text = "Level: " + player.Level.ToString();
                             GuiCore.MainForm.lbl_playerClass.Text = "Class: " + player.Class.ToString();
                             GuiCore.MainForm.lbl_playerRace.Text = "Race: " + player.Race.ToString();
-                            GuiCore.MainForm.lbl_playerAccountName.Text = "Account: " + Options.AccountName;
+                            GuiCore.MainForm.lbl_playerAccountName.Text = "Account: " + Settings.Settings.AccountName;
 
                             GuiCore.MainForm.lbl_Runtime.Text = "runtime: " + API.BMain.RunTimeSpan();
 
+                            #region Set Wow Title
                             if(Mem.WindowProcHook.HWnD != IntPtr.Zero && Mem.WindowProcHook.HWnD != null)
                             {
                                 string wantedWindowTitleString = "[" + player.Race.ToString() + " " + player.Class + "] - " + player.Name + " - Lvl: " + player.Level;
@@ -294,7 +295,8 @@ namespace ZzukBot.Engines.Grind
                                 {
                                     Mem.WindowProcHook.SetWindowTitle(wantedWindowTitleString);
                                 }
-                            } 
+                            }
+                            #endregion
                         }
                         catch(Exception crap)
                         {
@@ -368,7 +370,7 @@ namespace ZzukBot.Engines.Grind
                 new StateRest(45),
                 new StateBuff(44)
             };
-            if (Options.LootUnits)
+            if (Settings.Settings.LootUnits)
             {
                 tmpStates.Add(new StateLoot(36));
             }
@@ -380,7 +382,7 @@ namespace ZzukBot.Engines.Grind
             tmpStates.Add(new StateWaitAfterFight(43));
             tmpStates.Add(new StateDoRandomShit(19));
 
-            if (Options.BreakFor != 0 && Options.ForceBreakAfter != 0)
+            if (Settings.Settings.BreakFor != 0 && Settings.Settings.ForceBreakAfter != 0)
             {
                 Info.BreakHelper.SetBreakAt(60000);
                 tmpStates.Add(new StateStartBreak(49));
@@ -424,7 +426,7 @@ namespace ZzukBot.Engines.Grind
 
         internal void SetWaypointModifier(float parModifier)
         {
-            Options.WaypointModifier = (decimal) parModifier;
+            Settings.Settings.WaypointModifier = (decimal) parModifier;
         }
     }
 }
