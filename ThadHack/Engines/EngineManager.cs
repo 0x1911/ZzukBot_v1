@@ -123,7 +123,7 @@ namespace ZzukBot.Engines
                 }
             }
 
-            Helpers.Logger.Append("cc directory: " + Paths.CustomClassesDirectory.ToString());
+            Helpers.Logger.Append("cc directory: " + Options.CCDirectory.ToString());
             Helpers.Logger.Append("internal directory: " + Paths.InternalDirectory.ToString());
             Helpers.Logger.Append("wow directory: " + Paths.WowDirectory.ToString());
             Helpers.Logger.Append("profiles directory: " + Paths.ProfilesDirectory.ToString());

@@ -123,10 +123,10 @@ namespace ZzukBot.Forms
 
         [Obfuscation(Feature = "virtualization", Exclude = false)]
         internal void EndLaunchPrepare()
-        {
-            CCManager.LoadCCs();
+        {            
             Memory.Init();
             OptionManager.LoadSettings();
+            CCManager.LoadCCs();
 
             #region set wow & bot window location and size
             Helpers.WindowInteraction.SetWowWindow();

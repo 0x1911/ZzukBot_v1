@@ -126,41 +126,7 @@ namespace ZzukBot.Mem
         {
             return HookWardenMemScan.GetHack(parName);
         }
-
-        //internal static void InjectAsm(uint parPtr, string[] parInstructions, string parPatchName = "")
-        //{
-        //    if (Asm == null) Asm = new FasmNet();
-
-        //    Asm.Clear();
-        //    IntPtr start = new IntPtr(parPtr);
-        //    Asm.AddLine("use32");
-        //    foreach (string x in parInstructions)
-        //    {
-        //        Asm.AddLine(x);
-        //    }
-
-        //    byte[] byteCode = new byte[0];
-        //    try
-        //    {
-        //        byteCode = Asm.Assemble(start);
-        //    }
-        //    catch (FasmAssemblerException ex)
-        //    {
-        //        MessageBox.Show(String.Format("Error definition: {0}; Error code: {1}; Error line: {2}; Error offset: {3}; Mnemonics: {4}",
-        //            ex.ErrorCode, (int)ex.ErrorCode, ex.ErrorLine, ex.ErrorOffset, ex.Mnemonics));
-        //    }
-        //    byte[] originalBytes = Memory.Reader.ReadBytes((IntPtr)start, byteCode.Length);
-        //    Memory.Reader.WriteBytes(start, byteCode);
-
-        //    if (parPatchName != "")
-        //    {
-        //        Hack parHack = new Hack(start,
-        //            byteCode,
-        //            originalBytes, parPatchName);
-        //        HookWardenMemScan.AddHack(parHack);
-        //    }
-        //}
-
+        
         //[Obfuscation(Feature = "virtualization", Exclude = false)]
         internal static IntPtr InjectAsm(string[] parInstructions, string parPatchName)
         {

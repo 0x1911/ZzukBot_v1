@@ -4,7 +4,6 @@
     {
         internal static string BotAssemblyFile;
         internal static string WorkingDirectory;
-        internal static string CustomClassesDirectory;
         internal static string SettingsFile;
         internal static string ProfilesDirectory;
         internal static string InternalDirectory;

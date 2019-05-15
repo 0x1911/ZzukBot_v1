@@ -49,22 +49,25 @@ namespace ZzukBot.Engines.CustomClass
         private static void GetCustomClasses()
         {
             ccs.Clear();
-            if (!Directory.Exists(Paths.CustomClassesDirectory))
+            if (!Directory.Exists(Options.CCDirectory))
             {
-                Directory.CreateDirectory(Paths.CustomClassesDirectory);
+                Helpers.Logger.Append($"Custom Classes { Options.CCDirectory } doesn't exist! Aborting CC loading..");
                 return;
             }
-            if (Directory.Exists(Paths.CustomClassesDirectory + "\\Compiled"))
-                Directory.Delete(Paths.CustomClassesDirectory + "\\Compiled", true);
 
-            var files = Directory.GetFiles(Paths.CustomClassesDirectory);
 
-            try
+            var files = Directory.GetFiles(Options.CCDirectory);
+            int tmpCCCount = 0;
+            int tmpLoadedCCount = 0;
+
+            foreach (var file in files)
             {
-                foreach (var file in files)
+                tmpCCCount++;
+                var fileName = Path.GetFileNameWithoutExtension(file);
+                var fullFileName = Path.GetFileName(file);
+                if (!string.IsNullOrEmpty(fileName) && fullFileName.EndsWith(".cs"))
                 {
-                    var fileName = Path.GetFileNameWithoutExtension(file);
-                    if (!string.IsNullOrEmpty(fileName))
+                    try
                     {
                         using (var sr = new StreamReader(file))
                         {
@@ -79,29 +82,33 @@ namespace ZzukBot.Engines.CustomClass
                                     if (cc != null)
                                     {
                                         ccs.Add(cc);
+                                        tmpLoadedCCount++;
                                     }
                                 }
                             }
                         }
                     }
-                }
-            }
-            catch (Exception ex)
-            {
-                var exception = ex as ReflectionTypeLoadException;
-                if (exception != null)
-                {
-                    MessageBox.Show(exception.Message);
-                    var typeLoadException = exception;
-                    var loaderExceptions = typeLoadException.LoaderExceptions;
-                    foreach (var x in loaderExceptions)
+                    catch (Exception ex)
                     {
-                        MessageBox.Show(x.Message
-                                        + "\n\n"
-                                        + x.InnerException);
+                        var exception = ex as ReflectionTypeLoadException;
+                        if (exception != null)
+                        {
+                            MessageBox.Show(exception.Message);
+                            var typeLoadException = exception;
+                            var loaderExceptions = typeLoadException.LoaderExceptions;
+                            foreach (var x in loaderExceptions)
+                            {
+                                MessageBox.Show(x.Message
+                                                + "\n\n"
+                                                + x.InnerException);
+                            }
+                        }
                     }
                 }
             }
+
+
+            Helpers.Logger.Append($"Loaded {tmpLoadedCCount} Custom Classes out of {tmpCCCount} files.");
         }
 
         /// <summary>

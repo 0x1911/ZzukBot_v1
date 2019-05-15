@@ -185,8 +185,7 @@ namespace ZzukBot
             Paths.SettingsFile = Path.GetDirectoryName(strPath) + GuiCore.SettingsFilePath;
             Paths.WorkingDirectory = Path.GetDirectoryName(strPath);
             Paths.ProfilesDirectory = Path.GetDirectoryName(strPath) + "\\Profiles";
-            Paths.BotAssemblyFile = strPath + "\\ZzukBot.exe";
-            Paths.CustomClassesDirectory = strPath + "\\CustomClasses";
+            Paths.BotAssemblyFile = strPath + "\\ZzukBot.exe";            
             Paths.InternalDirectory = strPath;
         }
 
