@@ -14,7 +14,9 @@ namespace ZzukBot.Engines.Grind.States
         private int randomTakeLootDelay;
         private float lastResourceDistance;
 
-        internal override int Priority => 35;
+        public StateWalkToGather(int priority) : base(priority)
+        {
+        }
 
         internal override bool NeedToRun => Grinder.Access.Info.Gather.SearchGatherObjects() && !Grinder.Access.Info.Rest.NeedToDrink && !Grinder.Access.Info.Rest.NeedToEat;
 

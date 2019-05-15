@@ -5,7 +5,9 @@ namespace ZzukBot.Engines.Grind.States
 {
     internal class StateLoadNextWaypoint : State
     {
-        internal override int Priority => 14;
+        public StateLoadNextWaypoint(int priority) : base(priority)
+        {
+        }
 
         internal override bool NeedToRun => Grinder.Access.Info.Waypoints.NeedToLoadNextWaypoint() && ObjectManager.Player.Casting == 0 &&
                                             ObjectManager.Player.Channeling == 0;

@@ -6,7 +6,9 @@ namespace ZzukBot.Engines.Grind.States
 {
     internal class StateBuff : State
     {
-        internal override int Priority => 44;
+        public StateBuff(int priority) : base(priority)
+        {
+        }
 
         internal override bool NeedToRun => !CCManager.IsBuffed();
 

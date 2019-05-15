@@ -6,7 +6,9 @@ namespace ZzukBot.Engines.Grind.States
 {
     internal class StateRest : State
     {
-        internal override int Priority => 45;
+        public StateRest(int priority) : base(priority)
+        {
+        }
 
         internal override bool NeedToRun => (Grinder.Access.Info.Rest.NeedToDrink || Grinder.Access.Info.Rest.NeedToEat) &&
                                             !ObjectManager.Player.IsInCampfire && !ObjectManager.Player.IsSwimming;

@@ -6,7 +6,9 @@ namespace ZzukBot.Engines.Grind.States
 {
     internal class StateFindTarget : State
     {
-        internal override int Priority => 20;
+        public StateFindTarget(int priority) : base(priority)
+        {
+        }
 
         internal override bool NeedToRun => Wait.For("SearchTarget", 2000) ||
                                             (Grinder.Access.Info.Target.SearchDirect && !Grinder.Access.Info.Rest.NeedToDrink &&

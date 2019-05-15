@@ -4,7 +4,9 @@ namespace ZzukBot.Engines.Grind.States
 {
     internal class StateIdle : State
     {
-        internal override int Priority => int.MinValue;
+        public StateIdle(int priority) : base(priority)
+        {
+        }
 
         internal override bool NeedToRun => true;
 

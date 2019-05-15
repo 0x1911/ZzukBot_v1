@@ -10,7 +10,9 @@ namespace ZzukBot.Engines.Grind.States
 {
     internal class StateGhostWalk : State
     {
-        internal override int Priority => 54;
+        public StateGhostWalk(int priority) : base(priority)
+        {
+        }
 
         internal override bool NeedToRun => ObjectManager.Player.InGhostForm;
 

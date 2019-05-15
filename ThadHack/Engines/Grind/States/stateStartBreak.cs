@@ -6,7 +6,9 @@ namespace ZzukBot.Engines.Grind.States
 {
     internal class StateStartBreak : State
     {
-        internal override int Priority => 49;
+        public StateStartBreak(int priority) : base(priority)
+        {
+        }
 
         internal override bool NeedToRun => Grinder.Access.Info.BreakHelper.NeedToBreak;
 

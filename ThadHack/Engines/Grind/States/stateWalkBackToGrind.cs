@@ -5,7 +5,9 @@ namespace ZzukBot.Engines.Grind.States
 {
     internal class StateWalkBackToGrind : State
     {
-        internal override int Priority => 42;
+        public StateWalkBackToGrind(int priority) : base(priority)
+        {
+        }
 
         internal override bool NeedToRun => Grinder.Access.Info.Vendor.GoBackToGrindAfterVendor;
 

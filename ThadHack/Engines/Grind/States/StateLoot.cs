@@ -14,7 +14,9 @@ namespace ZzukBot.Engines.Grind.States
         private int randomOpenLootDelay;
         private int randomTakeLootDelay;
 
-        internal override int Priority => 36;
+        public StateLoot(int priority) : base(priority)
+        {
+        }
 
         internal override bool NeedToRun => Grinder.Access.Info.Loot.NeedToLoot && !Grinder.Access.Info.Vendor.GoBackToGrindAfterVendor
                                             && !Grinder.Access.Info.Vendor.TravelingToVendor;

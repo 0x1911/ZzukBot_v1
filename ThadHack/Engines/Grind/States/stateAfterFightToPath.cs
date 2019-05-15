@@ -7,7 +7,9 @@ namespace ZzukBot.Engines.Grind.States
 {
     internal class StateAfterFightToPath : State
     {
-        internal override int Priority => 33;
+        public StateAfterFightToPath(int priority) : base(priority)
+        {
+        }
 
         internal override bool NeedToRun => Grinder.Access.Info.PathAfterFightToWaypoint.NeedToReturn() && !Grinder.Access.Info.Rest.NeedToDrink && !Grinder.Access.Info.Rest.NeedToEat;
 
@@ -25,7 +27,7 @@ namespace ZzukBot.Engines.Grind.States
                 return;
             }
             #endregion
-
+            
             var tu = Grinder.Access.Info.PathToPosition.ToPos(Grinder.Access.Info.Waypoints.CurrentWaypoint);
             ObjectManager.Player.CtmTo(tu);           
         }

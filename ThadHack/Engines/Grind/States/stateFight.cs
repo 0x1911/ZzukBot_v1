@@ -17,7 +17,9 @@ namespace ZzukBot.Engines.Grind.States
 
         private WoWUnit target;
 
-        internal override int Priority => 50;
+        public StateFight(int priority) : base(priority)
+        {
+        }
 
         internal override bool NeedToRun => Grinder.Access.Info.Combat.Attackers.Count != 0 && !API.BMain.Me.IsEating && !API.BMain.Me.IsDrinking;
 

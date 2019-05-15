@@ -10,18 +10,22 @@ namespace ZzukBot.Engines.Grind.States
     internal class StateWalk : State
     {
         internal Random ran = new Random();
+        internal bool _AdjustWaypoints = false;
 
-        internal override int Priority => 10;
+        public StateWalk(int priority) : base(priority)
+        {
+        }
 
         internal override bool NeedToRun => (((ObjectManager.Player.MovementState &
-                                               (int) Enums.MovementFlags.Front)
-                                              != (int) Enums.MovementFlags.Front)
+                                               (int)Enums.MovementFlags.Front)
+                                              != (int)Enums.MovementFlags.Front)
                                              || !Grinder.Access.Info.Waypoints.NeedToLoadNextWaypoint())
                                             && ObjectManager.Player.Casting == 0
-                                            && ObjectManager.Player.Channeling == 0 
+                                            && ObjectManager.Player.Channeling == 0
                                             && !API.BMain.Me.IsLooting;
 
         internal override string Name => "Walking";
+
 
         internal override void Run()
         {
@@ -30,16 +34,16 @@ namespace ZzukBot.Engines.Grind.States
                 return;
 
             Shared.RandomJump();
-            Grinder.Access.Info.PathAfterFightToWaypoint.AdjustPath();
 
             #region party walking
-            if(API.BParty.IsInParty() && !API.BParty.IsPartyLeader())
+            if (API.BParty.IsInParty() && !API.BParty.IsPartyLeader())
             {
                 //stay near the leader
                 API.BParty.MoveNearLeader();
                 return;
             }
             #endregion
+
             // ReSharper disable once ConvertIfStatementToConditionalTernaryExpression
             if (Grinder.Access.Info.PathAfterFightToWaypoint.AfterFightMovement)
             {
@@ -49,13 +53,8 @@ namespace ZzukBot.Engines.Grind.States
                     return;
                 }
 
-                var pointToMove = Grinder.Access.Info.Waypoints.CurrentWaypoint;
-                if(pointToMove != null)
-                {
-                    ObjectManager.Player.CtmTo(
-                       Grinder.Access.Info.PathToPosition.ToPos(Grinder.Access.Info.Waypoints.CurrentWaypoint));
-                }
-
+                ObjectManager.Player.CtmTo(
+                   Grinder.Access.Info.PathToPosition.ToPos(Grinder.Access.Info.Waypoints.CurrentWaypoint));
             }
             else
             {
@@ -65,13 +64,9 @@ namespace ZzukBot.Engines.Grind.States
                     return;
                 }
 
-                var pointToMove = Grinder.Access.Info.Waypoints.CurrentWaypoint;
-                if (pointToMove != null)
-                {
-                    ObjectManager.Player.CtmTo(
-                       Grinder.Access.Info.PathToPosition.ToPos(Grinder.Access.Info.Waypoints.CurrentWaypoint));
-                }
-            }            
+                ObjectManager.Player.CtmTo(
+                   Grinder.Access.Info.PathToPosition.ToPos(Grinder.Access.Info.Waypoints.CurrentWaypoint));
+            }
         }
     }
 }

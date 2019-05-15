@@ -356,38 +356,38 @@ namespace ZzukBot.Engines.Grind
 
             var tmpStates = new List<State>
             {
-                new StateFishing(),
-                new StateIdle(),
-                new StateLoadNextHotspot(),
-                new StateLoadNextWaypoint(),
-                new StateWalk(),
-                new StateFindTarget(),
-                new StateApproachTarget(),
-                new StateWalkToGather(),
-                new StateFight(),
-                new StateRest(),
-                new StateBuff()
+                new StateFishing(42),
+                new StateIdle(int.MinValue),
+                new StateLoadNextHotspot(15),
+                new StateLoadNextWaypoint(14),
+                new StateWalk(10),
+                new StateFindTarget(20),
+                new StateApproachTarget(34),
+                new StateWalkToGather(35),
+                new StateFight(50),
+                new StateRest(45),
+                new StateBuff(44)
             };
             if (Options.LootUnits)
             {
-                tmpStates.Add(new StateLoot());
+                tmpStates.Add(new StateLoot(36));
             }
-            tmpStates.Add(new StateReleaseSpirit());
-            tmpStates.Add(new StateGhostWalk());
-            tmpStates.Add(new StateWalkToRepair());
-            tmpStates.Add(new StateWalkBackToGrind());
-            tmpStates.Add(new StateAfterFightToPath());
-            tmpStates.Add(new StateWaitAfterFight());
-            tmpStates.Add(new StateDoRandomShit());
+            tmpStates.Add(new StateReleaseSpirit(55));
+            tmpStates.Add(new StateGhostWalk(54));
+            tmpStates.Add(new StateWalkToRepair(41));
+            tmpStates.Add(new StateWalkBackToGrind(42));
+            tmpStates.Add(new StateAfterFightToPath(33));
+            tmpStates.Add(new StateWaitAfterFight(43));
+            tmpStates.Add(new StateDoRandomShit(19));
 
             if (Options.BreakFor != 0 && Options.ForceBreakAfter != 0)
             {
                 Info.BreakHelper.SetBreakAt(60000);
-                tmpStates.Add(new StateStartBreak());
+                tmpStates.Add(new StateStartBreak(49));
             }
 
             if (Profile.RepairNPC != null)
-                tmpStates.Add(new StateRepair());
+                tmpStates.Add(new StateRepair(40));
             tmpStates.Sort();
 
             Engine = new _Engine(tmpStates);

@@ -13,7 +13,9 @@ namespace ZzukBot.Engines.Grind.States
         private readonly Random ran = new Random();
         private WoWUnit target;
 
-        internal override int Priority => 34;
+        public StateApproachTarget(int priority) : base(priority)
+        {
+        }
 
         internal override bool NeedToRun => Grinder.Access.Info.Target.ShouldAttackTarget;
 

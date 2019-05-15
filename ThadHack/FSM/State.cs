@@ -5,7 +5,12 @@ namespace ZzukBot.FSM
 {
     internal abstract class State : IComparable<State>, IComparer<State>
     {
-        internal abstract int Priority { get; }
+         public State(int priority)
+         {
+             Priority = priority;
+         }
+
+         private int Priority { get; } 
 
         internal abstract bool NeedToRun { get; }
 

@@ -12,7 +12,6 @@ namespace ZzukBot.Engines.Grind.States
     internal class StateDoRandomShit : State
     {
         private readonly Random ran = new Random();
-        internal override int Priority => 19;
         internal override bool NeedToRun => Wait.For("DoRandomShit", 2000);
         internal override string Name => "Do random shit";
         private static readonly Enums.ControlBits[][] _movementFlags =
@@ -21,6 +20,11 @@ namespace ZzukBot.Engines.Grind.States
             new[] {Enums.ControlBits.Left, Enums.ControlBits.Right,},
             new[] {Enums.ControlBits.Front, Enums.ControlBits.Back,}
         };
+
+        public StateDoRandomShit(int priority) : base(priority)
+        {
+        }
+
         private Enums.ControlBits _randomFlag
         {
             get

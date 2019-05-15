@@ -6,7 +6,9 @@ namespace ZzukBot.Engines.Grind.States
 {
     internal class StateReleaseSpirit : State
     {
-        internal override int Priority => 55;
+        public StateReleaseSpirit(int priority) : base(priority)
+        {
+        }
 
         internal override bool NeedToRun => ObjectManager.Player.IsDead;
 

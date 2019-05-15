@@ -6,7 +6,9 @@ namespace ZzukBot.Engines.Grind.States
 {
     internal class StateWaitAfterFight : State
     {
-        internal override int Priority => 43;
+        public StateWaitAfterFight(int priority) : base(priority)
+        {
+        }
 
         internal override bool NeedToRun => Environment.TickCount - Grinder.Access.Info.Combat.LastFightTick <=
                                             Grinder.Access.Info.Latency*2 + 450

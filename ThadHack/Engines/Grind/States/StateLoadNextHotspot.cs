@@ -4,7 +4,9 @@ namespace ZzukBot.Engines.Grind.States
 {
     internal class StateLoadNextHotspot : State
     {
-        internal override int Priority => 15;
+        public StateLoadNextHotspot(int priority) : base(priority)
+        {
+        }
 
         internal override bool NeedToRun => Grinder.Access.Info.Waypoints.AtLastWaypoint;
 

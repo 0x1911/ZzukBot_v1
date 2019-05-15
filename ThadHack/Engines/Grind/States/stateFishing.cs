@@ -12,19 +12,20 @@ namespace ZzukBot.Engines.Grind.States
 {
     internal class StateFishing : State
     {
-        internal override int Priority => 42;
-
         internal override bool NeedToRun => knownFishingRodEquipped() && !API.BMain.Me.IsDrinking && !API.BMain.Me.IsEating && !API.BMain.Me.IsDead;
 
         internal override string Name => "Fishing";
-
-
+        
         private readonly Random rand = new Random();
         bool firstRound = true;
         ulong _oldBobberGuid;
         int maxFishingSkill;
         int currentFishingSkill;
         int previousFishingSkill;
+
+        public StateFishing(int priority) : base(priority)
+        {
+        }
 
         internal override void Run()
         {

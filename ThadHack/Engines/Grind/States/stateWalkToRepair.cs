@@ -7,7 +7,9 @@ namespace ZzukBot.Engines.Grind.States
 {
     internal class StateWalkToRepair : State
     {
-        internal override int Priority => 41;
+        public StateWalkToRepair(int priority) : base(priority)
+        {
+        }
 
         internal override bool NeedToRun => Grinder.Access.Info.Vendor.TravelingToVendor;
 

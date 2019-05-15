@@ -13,7 +13,9 @@ namespace ZzukBot.Engines.Grind.States
     {
         private bool BackToPath;
 
-        internal override int Priority => 40;
+        public StateRepair(int priority) : base(priority)
+        {
+        }
 
         internal override bool NeedToRun => Grinder.Access.Info.Vendor.NeedToVendor
                                             || ObjectManager.Player.Inventory.DurabilityPercentage < 30 
