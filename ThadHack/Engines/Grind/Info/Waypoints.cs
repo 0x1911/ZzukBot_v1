@@ -26,8 +26,17 @@ namespace ZzukBot.Engines.Grind.Info
         /// <summary>
         ///     Object of our current hotspot
         /// </summary>
-        internal XYZ CurrentHotspot => Grinder.Access.Profile.Hotspots[CurrentHotspotIndex].Position;
+        internal XYZ CurrentHotspot => GetHotspots();
 
+        private XYZ GetHotspots()
+        {
+            if(Grinder.Access.Profile.Hotspots == null)
+            {
+                return API.BMain.Me.Position;
+            }
+
+            return Grinder.Access.Profile.Hotspots[CurrentHotspotIndex].Position;
+        }
         /// <summary>
         ///     Object of our current waypoint
         /// </summary>
@@ -45,6 +54,9 @@ namespace ZzukBot.Engines.Grind.Info
             get
             {
                 var closestIndex = -1;
+
+                if (Grinder.Access.Profile.Hotspots == null) { return closestIndex; }
+                
                 for (var i = CurrentWaypointIndex; i < Grinder.Access.Profile.Hotspots.Length; i++)
                 {
                     if (closestIndex == -1)
@@ -61,6 +73,7 @@ namespace ZzukBot.Engines.Grind.Info
                         closestIndex = i;
                     }
                 }
+
                 return closestIndex;
             }
         }
@@ -100,6 +113,9 @@ namespace ZzukBot.Engines.Grind.Info
         internal int GetClosestHotspotIndex()
         {
             var closestIndex = CurrentHotspotIndex;
+
+            if (Grinder.Access.Profile.Hotspots == null) { return closestIndex; }
+
             for (var i = 0; i < Grinder.Access.Profile.Hotspots.Length; i++)
             {
                 float disA;
@@ -133,6 +149,8 @@ namespace ZzukBot.Engines.Grind.Info
         /// </summary>
         internal void LoadNextHotspot()
         {
+            if (Grinder.Access.Profile.Hotspots == null) { return; }
+
             var tmp = CurrentHotspotIndex + 1;
             if (tmp < Grinder.Access.Profile.Hotspots.Length)
                 CurrentHotspotIndex = tmp;
@@ -160,6 +178,7 @@ namespace ZzukBot.Engines.Grind.Info
         internal void LoadWaypoints()
         {
             var pos = ObjectManager.Player.Position;
+            
             CurrentWaypoints = Navigation.CalculatePath(pos, CurrentHotspot, true);
             CurrentWaypointIndex = 1;
         }

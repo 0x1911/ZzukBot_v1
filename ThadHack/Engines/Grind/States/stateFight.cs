@@ -67,7 +67,7 @@ namespace ZzukBot.Engines.Grind.States
                 var distanceToTarget =
                     Calc.Distance3D(player.Position, target.Position);
 
-                if (!Grinder.Access.Info.Combat.IsAttacker(target.Guid))
+                if (!Grinder.Access.Info.Combat.IsAttacker(target.Guid) && !API.BParty.IsInParty)
                 {
                     var tmp = Grinder.Access.Info.Combat.Attackers.OrderBy(i => i.Health).FirstOrDefault();
                     if (tmp == null) return;

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ZzukBot.API;
 using ZzukBot.Engines.CustomClass;
 
 namespace something
@@ -9,6 +6,11 @@ namespace something
 	// based on Schouten_Warrior 'rework'
     public class MiniWarrior : CustomClass
     {
+        /* http://rpgworld.altervista.org/classic_vanilla_talent/warrior.php */
+        public static readonly string[] TalentStrings =
+        {
+            "0000000000000000000505003502501005100000000000000000"
+        };
         public override byte DesignedForClass
         {
             get { return (int)ZzukBot.API.Enums.ClassType.Warrior; }
@@ -245,6 +247,11 @@ namespace something
 
         public override bool Buff()
         {
+            //Talent point spending
+            if (BMain.Me.TalentPointsAvailable() > 0)
+            {
+                BMain.Me.TalentsLearnByString(TalentStrings);
+            }
             return true;
         }
     }

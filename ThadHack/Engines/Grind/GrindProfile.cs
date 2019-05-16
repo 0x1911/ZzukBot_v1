@@ -54,6 +54,22 @@ namespace ZzukBot.Engines.Grind
             }
         }
 
+        /// <summary>
+        /// empty base profile
+        /// </summary>
+        public GrindProfile()
+        {
+            ProfileValid = true;
+            OriginalHotspots = null;
+            VendorHotspots = null;
+            GhostHotspots = null;
+            Factions = null;
+            VendorNPC = null;
+            RepairNPC = null;
+            RestockNPC = null;
+            RestockItems = null;
+        }
+
         private void ExtractRestockNpcAndItems(XElement tmpRestock, XElement tmpRestockItems)
         {
             if (tmpRestock != null)

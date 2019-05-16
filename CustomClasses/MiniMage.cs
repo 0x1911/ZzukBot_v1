@@ -481,7 +481,7 @@ namespace MiniMage
             }
 
             #region party buffing
-            if(ZzukBot.API.BParty.IsInParty())
+            if(ZzukBot.API.BParty.IsInParty)
             {
                 List<ZzukBot.Objects.WoWUnit> tmpPartyMemberList = BParty.GetMembers();
 

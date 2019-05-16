@@ -34,16 +34,7 @@ namespace ZzukBot.Engines.Grind.States
                 return;
 
             Shared.RandomJump();
-
-            #region party walking
-            if (API.BParty.IsInParty() && !API.BParty.IsPartyLeader())
-            {
-                //stay near the leader
-                API.BParty.MoveNearLeader();
-                return;
-            }
-            #endregion
-
+            
             // ReSharper disable once ConvertIfStatementToConditionalTernaryExpression
             if (Grinder.Access.Info.PathAfterFightToWaypoint.AfterFightMovement)
             {

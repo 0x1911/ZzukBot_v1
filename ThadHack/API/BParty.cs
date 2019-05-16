@@ -32,7 +32,7 @@ namespace ZzukBot.API
 
         public static bool IsMobTargetingPartyMember(ulong targetGuid)
         {
-            if (!IsInParty() || IsPartyLeader()) { return false; }
+            if (!IsInParty || IsPartyLeader()) { return false; }
 
             foreach (Objects.WoWUnit tmpMember in API.BParty.GetMembers())
             {
@@ -57,7 +57,7 @@ namespace ZzukBot.API
        
         public static void MoveNearLeader()
         {
-            if(!IsInParty() || IsPartyLeader()) { return; }
+            if(!IsInParty || IsPartyLeader()) { return; }
 
 
             Random rand = new Random();
@@ -71,7 +71,7 @@ namespace ZzukBot.API
 
         public static bool IsLeaderNextToVendor()
         {
-            if (!IsInParty() || IsPartyLeader()) { return false; }
+            if (!IsInParty || IsPartyLeader()) { return false; }
 
 
             Random rand = new Random();
@@ -85,9 +85,10 @@ namespace ZzukBot.API
             return false;
         }
 
-        public static bool IsInParty()
+        public static bool IsInParty => isInParty();
+        private static bool isInParty()
         {
-            if(GetMembers().Count > 0) { return true; }
+            if (GetMembers().Count > 0) { return true; }
 
 
             return false;

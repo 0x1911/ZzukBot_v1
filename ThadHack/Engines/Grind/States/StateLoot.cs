@@ -58,9 +58,9 @@ namespace ZzukBot.Engines.Grind.States
             {
                 if (!ObjectManager.Player.IsLooting)
                 {
-                    var auto = mob.IsSkinable;
+                   // var auto = mob.IsSkinable;
                     if (Wait.For("LootClick", randomOpenLootDelay))
-                        ObjectManager.Player.RightClick(mob, auto);
+                        ObjectManager.Player.RightClick(mob);
                 }
                 else
                 {

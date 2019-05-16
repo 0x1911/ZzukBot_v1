@@ -18,16 +18,7 @@ namespace ZzukBot.Engines.Grind.States
         internal override void Run()
         {
             Shared.RandomJump();
-
-            #region party walking
-            if (API.BParty.IsInParty() && !API.BParty.IsPartyLeader())
-            {
-                //stay near the leader
-                API.BParty.MoveNearLeader();                
-                return;
-            }
-            #endregion
-            
+                        
             var tu = Grinder.Access.Info.PathToPosition.ToPos(Grinder.Access.Info.Waypoints.CurrentWaypoint);
             ObjectManager.Player.CtmTo(tu);           
         }

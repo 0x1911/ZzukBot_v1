@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.IO;
 using System.Windows.Forms;
 using ZzukBot.Engines.Grind;
 using ZzukBot.Engines.ProfileCreation;
@@ -97,7 +98,8 @@ namespace ZzukBot.Engines
             GuiCore.MainForm.stopToolStripMenuItem.Enabled = true;
 
             if (IsEngineRunning) return;
-            string tmpProfileName;
+
+            string tmpProfileName = string.Empty;
             if (parLoadLast && Settings.Settings.LastProfileFileName != "")
             {
                 tmpProfileName = Paths.ProfilesDirectory + Settings.Settings.LastProfileFileName;
@@ -117,8 +119,8 @@ namespace ZzukBot.Engines
                     }
                     else
                     {
-                        StopCurrentEngine();
-                        return;
+                      //  StopCurrentEngine();
+                      //  return;
                     }
                 }
             }
@@ -141,6 +143,13 @@ namespace ZzukBot.Engines
                     Settings.Settings.LastProfileFileName = profileFileName;
                 }));
             }
+            else
+            {
+                Helpers.Logger.Append("Grinder wasn't able to finish preparing! Aborting launch process..");
+                GuiCore.MainForm.runToolStripMenuItem.Enabled = true;
+                GuiCore.MainForm.pauseToolStripMenuItem.Enabled = false;
+                GuiCore.MainForm.stopToolStripMenuItem.Enabled = false;
+            }
 
             StartTick = DateTime.Now.Ticks;
         }
@@ -151,7 +160,7 @@ namespace ZzukBot.Engines
             {
                 GuiCore.MainForm.Invoke(new MethodInvoker(delegate
                 {
-                    GuiCore.MainForm.lGrindLoadProfile.Text = "Profile: " + Settings.Settings.LastProfileFileName + " Loaded";
+                    GuiCore.MainForm.lGrindLoadProfile.Text = $"Profile: { Path.GetFileNameWithoutExtension(Settings.Settings.LastProfileFileName) } loaded";
                     _Engine = tmpGrind;
                 }));
             }

@@ -312,7 +312,7 @@ namespace MiniPriest
                 this.Player.CastWait("Renew", 1000);
             }
             #region party healing
-            if (ZzukBot.API.BParty.IsInParty())
+            if (ZzukBot.API.BParty.IsInParty)
             {
                 List<ZzukBot.Objects.WoWUnit> tmpPartyMemberList = BParty.GetMembers();
 
@@ -486,7 +486,7 @@ namespace MiniPriest
                     }
                 }
                 #region party buffing
-                if (ZzukBot.API.BParty.IsInParty())
+                if (ZzukBot.API.BParty.IsInParty)
                 {
                     List<ZzukBot.Objects.WoWUnit> tmpPartyMemberList = BParty.GetMembers();
 

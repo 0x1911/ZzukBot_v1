@@ -51,7 +51,7 @@ namespace ZzukBot.Objects
             Spells = new Spells();
         }
 
-        internal bool IsInParty => API.BParty.IsInParty();
+        internal bool IsInParty => API.BParty.IsInParty;
 
         internal bool IsPartyLeader => API.BParty.IsPartyLeader();
 

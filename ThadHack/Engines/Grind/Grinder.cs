@@ -342,54 +342,81 @@ namespace ZzukBot.Engines.Grind
         [Obfuscation(Feature = "virtualization", Exclude = false)]
         internal bool Prepare(string parProfilePath, Action parCallback)
         {
-            if (!ObjectManager.EnumObjects()) return false;
-            Profile = new GrindProfile(parProfilePath);
-            if (!Profile.ProfileValid) return false;
+            if (!ObjectManager.EnumObjects() || !API.BMain.IsInGame)
+            {
+                return false;
+            }
+
+            if(!string.IsNullOrEmpty(parProfilePath))
+            {
+                Profile = new GrindProfile(parProfilePath);
+            }
+            else
+            {
+                Profile = new GrindProfile();
+            }
+            
 
             if (!CCManager.ChooseCustomClassByWowClass((byte) ObjectManager.Player.Class))
             {
-                MessageBox.Show("Couldnt find a Custom Class we can use");
+                Helpers.Logger.Append($"Couldnt find a usable Custom Class for the { ObjectManager.Player.Class } class! Aborting..");
                 return false;
             }
 
             StuckHelper = new _StuckHelper();
             Info = new _Info();
-            Info.Waypoints.LoadFirstWaypointsAsync(parCallback);
+            if (Profile.ProfileValid)
+            {
+                Info.Waypoints.LoadFirstWaypointsAsync(parCallback);
+            }
 
             var tmpStates = new List<State>
             {
-                new StateFishing(42),
+                new StateFishing(420),
+                new StateFollowLeader(415),
                 new StateIdle(int.MinValue),
-                new StateLoadNextHotspot(15),
-                new StateLoadNextWaypoint(14),
-                new StateWalk(10),
-                new StateFindTarget(20),
-                new StateApproachTarget(34),
-                new StateWalkToGather(35),
-                new StateFight(50),
-                new StateRest(45),
-                new StateBuff(44)
+                new StateWalkToGather(350),
+                new StateFight(500),
+                new StateRest(450),
+                new StateBuff(440),
+                new StateReleaseSpirit(550),
+                new StateGhostWalk(540),
+                new StateWalkBackToGrind(420),
+                new StateAfterFightToPath(330),
+                new StateWaitAfterFight(430),
+                new StateDoRandomShit(190)
             };
+
+            if (Profile.Factions != null)
+            {
+                tmpStates.Add(new StateFindTarget(200));
+                tmpStates.Add(new StateApproachTarget(340));
+            }
+                
+            if(Profile.Hotspots != null)
+            {
+                tmpStates.Add(new StateLoadNextHotspot(150));
+                tmpStates.Add(new StateLoadNextWaypoint(140));
+                tmpStates.Add(new StateWalk(100));
+            }
+
             if (Settings.Settings.LootUnits)
             {
-                tmpStates.Add(new StateLoot(36));
+                tmpStates.Add(new StateLoot(360));
             }
-            tmpStates.Add(new StateReleaseSpirit(55));
-            tmpStates.Add(new StateGhostWalk(54));
-            tmpStates.Add(new StateWalkToRepair(41));
-            tmpStates.Add(new StateWalkBackToGrind(42));
-            tmpStates.Add(new StateAfterFightToPath(33));
-            tmpStates.Add(new StateWaitAfterFight(43));
-            tmpStates.Add(new StateDoRandomShit(19));
 
+            if(Profile.RepairNPC != null)
+            {
+                tmpStates.Add(new StateWalkToRepair(410));
+                tmpStates.Add(new StateRepair(400));
+            }
+            
             if (Settings.Settings.BreakFor != 0 && Settings.Settings.ForceBreakAfter != 0)
             {
                 Info.BreakHelper.SetBreakAt(60000);
-                tmpStates.Add(new StateStartBreak(49));
+                tmpStates.Add(new StateStartBreak(490));
             }
 
-            if (Profile.RepairNPC != null)
-                tmpStates.Add(new StateRepair(40));
             tmpStates.Sort();
 
             Engine = new _Engine(tmpStates);
