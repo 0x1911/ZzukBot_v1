@@ -160,6 +160,8 @@ namespace ZzukBot.Engines
             {
                 GuiCore.MainForm.Invoke(new MethodInvoker(delegate
                 {
+                    string tmpProfileNameString = "none";
+                    if(Path.GetFileNameWithoutExtension(Settings.Settings.LastProfileFileName) != string.Empty) { tmpProfileNameString = Path.GetFileNameWithoutExtension(Settings.Settings.LastProfileFileName); }
                     GuiCore.MainForm.lGrindLoadProfile.Text = $"Profile: { Path.GetFileNameWithoutExtension(Settings.Settings.LastProfileFileName) } loaded";
                     _Engine = tmpGrind;
                 }));

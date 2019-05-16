@@ -222,6 +222,7 @@ namespace ZzukBot.Engines.Grind
                         #region Update OverView labels
                         try
                         {
+                            #region target info print
                             var target = ObjectManager.Target;
                             if (target != null)
                             {
@@ -253,7 +254,9 @@ namespace ZzukBot.Engines.Grind
                                 GuiCore.MainForm.lbl_TargetLevel.Text = "Level: 0";
                                 GuiCore.MainForm.lbl_TargetCreatureType.Text = "Type: Unknown";
                             }
+                            #endregion
 
+                            #region player info print
                             var player = ObjectManager.Player;
                             if (player != null)
                             {
@@ -261,10 +264,15 @@ namespace ZzukBot.Engines.Grind
                                 GuiCore.MainForm.lbl_playerY.Text = "Z: " + player.Position.Y.ToString();
                                 GuiCore.MainForm.lbl_playerZ.Text = "Y: " + player.Position.Z.ToString();
 
+                                GuiCore.MainForm.lbl_playerLevel.Text = "Level: " + player.Level.ToString();
+                                GuiCore.MainForm.lbl_playerClass.Text = "Class: " + player.Class.ToString();
+                                GuiCore.MainForm.lbl_playerRace.Text = "Race: " + player.Race.ToString();
+                                GuiCore.MainForm.lbl_playerAccountName.Text = "Account: " + Settings.Settings.AccountName;
+
                                 GuiCore.MainForm.pBar_playerHealth.Value = player.HealthPercent;
                                 if (player.MaxMana > 0) { GuiCore.MainForm.pBar_playerMana.Value = player.ManaPercent; GuiCore.MainForm.pBar_playerMana.ForeColor = System.Drawing.Color.Blue; }
-                                else if (player.Class == API.Enums.ClassType.Rogue) { GuiCore.MainForm.pBar_playerMana.Value = player.Energy; GuiCore.MainForm.pBar_playerMana.ForeColor = System.Drawing.Color.Yellow; }
-                                else if (player.Class == API.Enums.ClassType.Warrior) { GuiCore.MainForm.pBar_playerMana.Value = player.Rage; GuiCore.MainForm.pBar_playerMana.ForeColor = System.Drawing.Color.Red; }
+                                if (player.Class == API.Enums.ClassType.Rogue) { GuiCore.MainForm.pBar_playerMana.Value = player.Energy; GuiCore.MainForm.pBar_playerMana.ForeColor = System.Drawing.Color.Yellow; }
+                                if (player.Class == API.Enums.ClassType.Warrior) { GuiCore.MainForm.pBar_playerMana.Value = player.Rage; GuiCore.MainForm.pBar_playerMana.ForeColor = System.Drawing.Color.Red; }
 
                                 if (player.Level < 60)
                                 {
@@ -278,11 +286,7 @@ namespace ZzukBot.Engines.Grind
                                 GuiCore.MainForm.lbl_playerZone.Text = "Zone: " + player.RealZoneText.ToString();
                                 GuiCore.MainForm.lbl_playerSubZone.Text = "Sub-Zone: " + player.MinimapZoneText.ToString();
                             }
-
-                            GuiCore.MainForm.lbl_playerLevel.Text = "Level: " + player.Level.ToString();
-                            GuiCore.MainForm.lbl_playerClass.Text = "Class: " + player.Class.ToString();
-                            GuiCore.MainForm.lbl_playerRace.Text = "Race: " + player.Race.ToString();
-                            GuiCore.MainForm.lbl_playerAccountName.Text = "Account: " + Settings.Settings.AccountName;
+                            #endregion
 
                             GuiCore.MainForm.lbl_Runtime.Text = "runtime: " + API.BMain.RunTimeSpan();
 
@@ -373,7 +377,7 @@ namespace ZzukBot.Engines.Grind
             var tmpStates = new List<State>
             {
                 new StateFishing(420),
-                new StateFollowLeader(415),
+                new StateFollowLeader(345),
                 new StateIdle(int.MinValue),
                 new StateWalkToGather(350),
                 new StateFight(500),
