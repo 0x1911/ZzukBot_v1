@@ -485,7 +485,23 @@ namespace MiniPriest
                         return false;
                     }
                 }
+                if (this.Player.GetSpellRank("Divine Spirit") != 0)
+                {
+                    if (!this.Player.GotBuff("Divine Spirit"))
+                    {
+                        this.Player.Cast("Divine Spirit");
+                        return false;
+                    }
+                }
+
+                if (useShadowForm == true && !this.Player.GotBuff("Shadowform") && this.Player.CanUse("Shadowform"))
+                {
+                    this.Player.Cast("Shadowform");
+                    return false;
+                }
                 #region party buffing
+                try
+                { 
                 if (ZzukBot.API.BParty.IsInParty)
                 {
                     List<ZzukBot.Objects.WoWUnit> tmpPartyMemberList = BParty.GetMembers();
@@ -513,21 +529,13 @@ namespace MiniPriest
                         }                        
                     }
                 }
+                }
+                catch
+                {
+                    return true;
+                }
                 #endregion
-                if (this.Player.GetSpellRank("Divine Spirit") != 0)
-                {
-                    if (!this.Player.GotBuff("Divine Spirit"))
-                    {
-                        this.Player.Cast("Divine Spirit");
-                        return false;
-                    }
-                }
-
-                if (useShadowForm == true && !this.Player.GotBuff("Shadowform") && this.Player.CanUse("Shadowform"))
-                {
-                    this.Player.Cast("Shadowform");
-                    return false;
-                }
+                
 
 
                 //Talent point spending

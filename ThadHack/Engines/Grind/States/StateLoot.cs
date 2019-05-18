@@ -56,13 +56,13 @@ namespace ZzukBot.Engines.Grind.States
             }
             else
             {
-                if (!ObjectManager.Player.IsLooting)
+                if (mob != null &&!ObjectManager.Player.IsLooting && !mob.IsKilledAndLooted)
                 {
                    // var auto = mob.IsSkinable;
                     if (Wait.For("LootClick", randomOpenLootDelay))
                         ObjectManager.Player.RightClick(mob);
                 }
-                else
+                else if(mob != null && !mob.IsKilledAndLooted)
                 {
                     if (Wait.For("LootTake12", randomTakeLootDelay))
                     {

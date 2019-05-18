@@ -479,56 +479,63 @@ namespace MiniMage
                     return false;
                 }
             }
-
-            #region party buffing
-            if(ZzukBot.API.BParty.IsInParty)
-            {
-                List<ZzukBot.Objects.WoWUnit> tmpPartyMemberList = BParty.GetMembers();
-
-                foreach(ZzukBot.Objects.WoWUnit tmpMember in tmpPartyMemberList)
+             if (this.Player.GetSpellRank("Dampen Magic") != 0 && useDampenMagic)
                 {
-                    if (tmpMember.HealthPercent <= 1 || tmpMember.DistanceToPlayer > 28) { continue; }
-
-
-                    if (!tmpMember.GotAura("Arcane Intellect") && this.Player.GetSpellRank("Arcane Intellect") != 0)
+                    if (!this.Player.GotBuff("Dampen Magic"))
                     {
-                        if (this.Player.TargetPartyMember(tmpMember))
-                            this.Player.Cast("Arcane Intellect");
+                        this.Player.Cast("Dampen Magic");
                         return false;
                     }
                 }
+
+                if (this.Player.ItemCount("Mana Agate") == 0)
+                {
+                    if (this.Player.TryCast("Conjure Mana Agate") && this.Player.ItemCount("Mana Agate") == 0)
+                    {
+                        this.Player.Cast("Conjure Mana Agate");
+                        return false;
+                    }
+                }
+
+                if (this.Player.GetSpellRank("Ice Barrier") != 0)
+                {
+                    if (!this.Player.GotBuff("Ice Barrier"))
+                    {
+                        if (this.Player.CanUse("Ice Barrier"))
+                        {
+                            this.Player.Cast("Ice Barrier");
+                            return false;
+                        }
+                        scrollBuff();
+                    }
+                }
+            #region party buffing
+            try
+            {
+                if (ZzukBot.API.BParty.IsInParty)
+                {
+                    List<ZzukBot.Objects.WoWUnit> tmpPartyMemberList = BParty.GetMembers();
+
+                    foreach (ZzukBot.Objects.WoWUnit tmpMember in tmpPartyMemberList)
+                    {
+                        if (tmpMember.HealthPercent <= 1 || tmpMember.DistanceToPlayer > 28) { continue; }
+
+
+                        if (!tmpMember.GotAura("Arcane Intellect") && this.Player.GetSpellRank("Arcane Intellect") != 0)
+                        {
+                            if (this.Player.TargetPartyMember(tmpMember))
+                                this.Player.Cast("Arcane Intellect");
+                            return false;
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                return true;
             }
             #endregion
-            if (this.Player.GetSpellRank("Dampen Magic") != 0 && useDampenMagic)
-            {
-                if (!this.Player.GotBuff("Dampen Magic"))
-                {
-                    this.Player.Cast("Dampen Magic");
-                    return false;
-                }
-            }
-
-            if (this.Player.ItemCount("Mana Agate") == 0)
-            {
-                if (this.Player.TryCast("Conjure Mana Agate") && this.Player.ItemCount("Mana Agate") == 0)
-                {
-                    this.Player.Cast("Conjure Mana Agate");
-                    return false;
-                }
-            }
-
-            if (this.Player.GetSpellRank("Ice Barrier") != 0)
-            {
-                if (!this.Player.GotBuff("Ice Barrier"))
-                {
-                    if (this.Player.CanUse("Ice Barrier"))
-                    {
-                        this.Player.Cast("Ice Barrier");
-                        return false;
-                    }
-                    scrollBuff();
-                }
-            }
+           
 
             //Talent point spending
             if (BMain.Me.TalentPointsAvailable() > 0)

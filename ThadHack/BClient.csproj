@@ -90,6 +90,7 @@
     <Compile Include="API\Helper.cs" />
     <Compile Include="Engines\Grind\States\stateFishing.cs" />
     <Compile Include="Engines\Grind\States\StateFollowLeader.cs" />
+    <Compile Include="Engines\Grind\States\stateWaitForMembers.cs" />
     <Compile Include="Forms\GraphicalDEVForm.cs">
       <SubType>Form</SubType>
     </Compile>

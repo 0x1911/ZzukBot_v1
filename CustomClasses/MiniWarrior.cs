@@ -58,27 +58,9 @@ namespace something
         public override void Fight()
         {
             this.Player.Attack();
-            //handle multi-mob
+            #region handle multi-mob
             if (this.Attackers.Count >= 2)
-            {
-                //keep the clap up
-                if (this.Player.GetSpellRank("Thunder Clap") != 0 && !this.Target.GotDebuff("Thunder Clap"))
-                {
-                    if (this.Player.CanUse("Thunder Clap"))
-                    {
-                        this.Player.Cast("Thunder Clap");
-                        return;
-                    }
-                }
-                //Get the damage down with Demoralizing Shout
-                if (this.Player.GetSpellRank("Demoralizing Shout") != 0 && !this.Target.GotDebuff("Demoralizing Shout"))
-                {
-                    if (this.Player.CanUse("Demoralizing Shout"))
-                    {
-                        this.Player.Cast("Demoralizing Shout");
-                        return;
-                    }
-                }
+            {                
                 //how about a little retaliation?
                 if (this.Player.GetSpellRank("Retaliation") != 0)
                 {
@@ -98,9 +80,10 @@ namespace something
                     }
                 }
             }
+            #endregion
 
-             //Health Potion
-             if (this.Player.HealthPercent <= 22 && this.Player.ItemCount("Superior Healing Potion") != 0)
+            //Health Potion
+            if (this.Player.HealthPercent <= 22 && this.Player.ItemCount("Superior Healing Potion") != 0)
              {
                 this.Player.UseItem("Superior Healing Potion");
              }
@@ -125,7 +108,6 @@ namespace something
                 this.Player.UseItem("Minor Healing Potion");
              }   			
 			
-            //keep battle shout up
             if (this.Player.GetSpellRank("Battle Shout") != 0 && !this.Player.GotBuff("Battle Shout"))
             {
                 if (this.Player.CanUse("Battle Shout"))
@@ -135,7 +117,6 @@ namespace something
                 }
             }
             
-            //keep rend up if target over 50%
             if (this.Player.GetSpellRank("Rend") != 0 && !this.Target.GotDebuff("Rend") && this.Target.HealthPercent > 50)
             {
                 if (this.Player.CanUse("Rend"))
@@ -144,8 +125,16 @@ namespace something
                     return;
                 }
             }
+            string HamstringSpell = "Hamstring";
+            if (this.Player.GetSpellRank(HamstringSpell) != 0 && !this.Target.GotDebuff(HamstringSpell) && this.Target.HealthPercent < 50)
+            {
+                if (this.Player.CanUse(HamstringSpell))
+                {
+                    this.Player.Cast(HamstringSpell);
+                    return;
+                }
+            }
 
-            //top of the list, always execute
             if (this.Player.GetSpellRank("Execute") != 0 && this.Target.HealthPercent <= 20)
             {
                 if (this.Player.CanUse("Execute"))
@@ -155,7 +144,6 @@ namespace something
                 }
             }
 
-            // i like overpower
             if(this.Player.GetSpellRank("Overpower") != 0)
             {
                 if(this.Player.CanUse("Overpower"))
@@ -164,17 +152,31 @@ namespace something
                     return;
                 }
             }
+
+            if (this.Player.GetSpellRank("Thunder Clap") != 0 && !this.Target.GotDebuff("Thunder Clap"))
+            {
+                if (this.Player.CanUse("Thunder Clap"))
+                {
+                    this.Player.Cast("Thunder Clap");
+                    return;
+                }
+            }
+            if (this.Player.GetSpellRank("Demoralizing Shout") != 0 && !this.Target.GotDebuff("Demoralizing Shout"))
+            {
+                if (this.Player.CanUse("Demoralizing Shout"))
+                {
+                    this.Player.Cast("Demoralizing Shout");
+                    return;
+                }
+            }
             //interrupt casting
-            /**
-            if(this.Player.GetSpellRank("Pummel") != 0 && this.Target.IsCasting != "" || this.Target.IsChanneling != "")
+            if (this.Player.GetSpellRank("Pummel") != 0 && this.Target.IsCasting != "" || this.Target.IsChanneling != "")
             {
                 if (this.Player.CanUse("Pummel"))
                 {
                     this.Player.Cast("Pummel");
                 }
             }
-            **/
-            /*
             if (this.Player.GetSpellRank("Berserker Rage") != 0)
             {
                 if (this.Player.CanUse("Berserker Rage"))
@@ -182,8 +184,7 @@ namespace something
                     this.Player.Cast("Berserker Rage");
                 }
             }
-            
-            //bloodthirst for grind-a-lot
+
             if (this.Player.GetSpellRank("Bloodthirst") != 0)
             {
                 if (this.Player.CanUse("Bloodthirst"))
@@ -192,19 +193,7 @@ namespace something
                     return;
                 }
             }
-            */
-
-            //slam is the jam
-            if (this.Player.GetSpellRank("Slam") != 0)
-            {
-                if (this.Player.CanUse("Slam"))
-                {
-                    this.Player.Cast("Slam");
-                    return;
-                }
-            }
-
-            //mortal strike is the jam
+            
             if (this.Player.GetSpellRank("Mortal Strike") != 0)
             {
                 if (this.Player.CanUse("Mortal Strike"))
@@ -214,16 +203,6 @@ namespace something
                 }
             }
 
-            if (this.Player.GetSpellRank("Cleave") != 0 && this.Player.Rage >= 80)
-            {
-                if (this.Player.CanUse("Cleave"))
-                {
-                    this.Player.Cast("Cleave");
-                    return;
-                }
-            }
-
-            //heroic strike is low level horse shit spell so set the rage a little higher
             if (this.Player.GetSpellRank("Heroic Strike") != 0)
             {
                 if (this.Player.CanUse("Heroic Strike"))
@@ -232,12 +211,12 @@ namespace something
                     return;
                 }
             }
-            //fuck it not doing anything else!
-            if (this.Player.GetSpellRank("Blood Rage") != 0)
+
+            if (this.Player.GetSpellRank("Bloodrage") != 0)
             {
-                if (this.Player.CanUse("Blood Rage"))
+                if (this.Player.CanUse("Bloodrage"))
                 {
-                    this.Player.Cast("Blood Rage");
+                    this.Player.Cast("Bloodrage");
                     return;
                 }
             }

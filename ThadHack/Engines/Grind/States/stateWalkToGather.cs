@@ -58,11 +58,13 @@ namespace ZzukBot.Engines.Grind.States
                 ObjectManager.Player.StopMovement(Enums.ControlBits.All);
                 ObjectManager.Player.CtmStopMovement();
 
-                if (!ObjectManager.Player.IsLooting)
+                nextResource = Grinder.Access.Info.Gather.GetNearestResource();
+
+                if (!ObjectManager.Player.IsLooting && nextResource != null)
                 {
-                    if (Wait.For("LootClick", randomOpenLootDelay)) { nextResource.Interact(false); }                        
+                    if (Wait.For("LootClick", randomOpenLootDelay)) { nextResource.Interact(true); }                        
                 }
-                else
+                else if(nextResource != null)
                 {
                     if (Wait.For("LootTake12", randomTakeLootDelay)) { ObjectManager.Player.LootAll(); }
                 }

@@ -54,6 +54,21 @@ namespace ZzukBot.API
             return false;
         }
 
+        public static bool NeedToWaitForGroup()
+        {
+            if(!BParty.IsPartyLeader()) { return false; }
+
+            foreach(var tmpMember in GetMembers())
+            {
+                if(tmpMember.Channeling != 0|| tmpMember.Casting != 0|| tmpMember.GotAura("Drink") || tmpMember.GotAura("Food"))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
        
         public static void MoveNearLeader()
         {

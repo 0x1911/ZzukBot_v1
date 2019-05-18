@@ -376,18 +376,19 @@ namespace ZzukBot.Engines.Grind
 
             var tmpStates = new List<State>
             {
-                new StateFishing(420),
-                new StateFollowLeader(345),
+                new StateFishing(700),
+                new stateWaitForMembers(600),
+                new StateFollowLeader(450),
                 new StateIdle(int.MinValue),
-                new StateWalkToGather(350),
-                new StateFight(500),
-                new StateRest(450),
-                new StateBuff(440),
-                new StateReleaseSpirit(550),
-                new StateGhostWalk(540),
-                new StateWalkBackToGrind(420),
+                new StateWalkToGather(460),
+                new StateFight(850),
+                new StateRest(800),
+                new StateBuff(750),
+                new StateReleaseSpirit(950),
+                new StateGhostWalk(900),
+                new StateWalkBackToGrind(550),
                 new StateAfterFightToPath(330),
-                new StateWaitAfterFight(430),
+                new StateWaitAfterFight(650),
                 new StateDoRandomShit(190)
             };
 
@@ -406,7 +407,7 @@ namespace ZzukBot.Engines.Grind
 
             if (Settings.Settings.LootUnits)
             {
-                tmpStates.Add(new StateLoot(360));
+                tmpStates.Add(new StateLoot(500));
             }
 
             if(Profile.RepairNPC != null)
@@ -418,7 +419,7 @@ namespace ZzukBot.Engines.Grind
             if (Settings.Settings.BreakFor != 0 && Settings.Settings.ForceBreakAfter != 0)
             {
                 Info.BreakHelper.SetBreakAt(60000);
-                tmpStates.Add(new StateStartBreak(490));
+                tmpStates.Add(new StateStartBreak(1500));
             }
 
             tmpStates.Sort();
