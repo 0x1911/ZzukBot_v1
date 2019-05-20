@@ -37,7 +37,7 @@ namespace ZzukBot.Engines.Grind.States
             //don't just stand around like a bot.. At least sit down while resting!
             if (!ObjectManager.Player.IsInCombat)
             {
-                ObjectManager.Player.DoString("DoEmote('sit');");
+               // ObjectManager.Player.DoString("DoEmote('sit');");
             }
             
 

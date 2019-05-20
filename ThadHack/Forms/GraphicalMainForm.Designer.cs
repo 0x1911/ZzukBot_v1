@@ -33,7 +33,7 @@ namespace ZzukBot.Forms
             this.tpGrind = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.grp_Target = new System.Windows.Forms.GroupBox();
             this.lbl_TargetCreatureType = new System.Windows.Forms.Label();
             this.lbl_TargetLevel = new System.Windows.Forms.Label();
             this.pBar_targetHealth = new ZzukBot.Helpers.NewProgressBar();
@@ -43,7 +43,7 @@ namespace ZzukBot.Forms
             this.lbl_targetY = new System.Windows.Forms.Label();
             this.lbl_targetX = new System.Windows.Forms.Label();
             this.lbl_targetName = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.grp_Player = new System.Windows.Forms.GroupBox();
             this.lbl_playerLevel = new System.Windows.Forms.Label();
             this.pBar_playerExperience = new ZzukBot.Helpers.NewProgressBar();
             this.pBar_playerMana = new ZzukBot.Helpers.NewProgressBar();
@@ -74,6 +74,7 @@ namespace ZzukBot.Forms
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.runToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pauseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,13 +83,12 @@ namespace ZzukBot.Forms
             this.dEVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lbl_Runtime = new System.Windows.Forms.ToolStripStatusLabel();
-            this.pauseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tcMain.SuspendLayout();
             this.tpGrind.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.grp_Target.SuspendLayout();
+            this.grp_Player.SuspendLayout();
             this.tp_InGameChat.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgChat)).BeginInit();
@@ -142,8 +142,8 @@ namespace ZzukBot.Forms
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.groupBox3);
-            this.panel1.Controls.Add(this.groupBox2);
+            this.panel1.Controls.Add(this.grp_Target);
+            this.panel1.Controls.Add(this.grp_Player);
             this.panel1.Controls.Add(this.lGrindLoadProfile);
             this.panel1.Controls.Add(this.cbLoadLastProfile);
             this.panel1.Controls.Add(this.lGrindState);
@@ -154,25 +154,26 @@ namespace ZzukBot.Forms
             this.panel1.Size = new System.Drawing.Size(364, 311);
             this.panel1.TabIndex = 1;
             // 
-            // groupBox3
+            // grp_Target
             // 
-            this.groupBox3.Controls.Add(this.lbl_TargetCreatureType);
-            this.groupBox3.Controls.Add(this.lbl_TargetLevel);
-            this.groupBox3.Controls.Add(this.pBar_targetHealth);
-            this.groupBox3.Controls.Add(this.lbl_targetId);
-            this.groupBox3.Controls.Add(this.lbl_targetFaction);
-            this.groupBox3.Controls.Add(this.lbl_targetZ);
-            this.groupBox3.Controls.Add(this.lbl_targetY);
-            this.groupBox3.Controls.Add(this.lbl_targetX);
-            this.groupBox3.Controls.Add(this.lbl_targetName);
-            this.groupBox3.Location = new System.Drawing.Point(183, 4);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Size = new System.Drawing.Size(170, 241);
-            this.groupBox3.TabIndex = 9;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Target";
+            this.grp_Target.Controls.Add(this.lbl_TargetCreatureType);
+            this.grp_Target.Controls.Add(this.lbl_TargetLevel);
+            this.grp_Target.Controls.Add(this.pBar_targetHealth);
+            this.grp_Target.Controls.Add(this.lbl_targetId);
+            this.grp_Target.Controls.Add(this.lbl_targetFaction);
+            this.grp_Target.Controls.Add(this.lbl_targetZ);
+            this.grp_Target.Controls.Add(this.lbl_targetY);
+            this.grp_Target.Controls.Add(this.lbl_targetX);
+            this.grp_Target.Controls.Add(this.lbl_targetName);
+            this.grp_Target.Location = new System.Drawing.Point(183, 4);
+            this.grp_Target.Margin = new System.Windows.Forms.Padding(4);
+            this.grp_Target.Name = "grp_Target";
+            this.grp_Target.Padding = new System.Windows.Forms.Padding(4);
+            this.grp_Target.Size = new System.Drawing.Size(170, 241);
+            this.grp_Target.TabIndex = 9;
+            this.grp_Target.TabStop = false;
+            this.grp_Target.Text = "Target";
+            this.grp_Target.Visible = false;
             // 
             // lbl_TargetCreatureType
             // 
@@ -271,28 +272,28 @@ namespace ZzukBot.Forms
             this.lbl_targetName.TabIndex = 12;
             this.lbl_targetName.Text = "Name: unknown";
             // 
-            // groupBox2
+            // grp_Player
             // 
-            this.groupBox2.Controls.Add(this.lbl_playerLevel);
-            this.groupBox2.Controls.Add(this.pBar_playerExperience);
-            this.groupBox2.Controls.Add(this.pBar_playerMana);
-            this.groupBox2.Controls.Add(this.pBar_playerHealth);
-            this.groupBox2.Controls.Add(this.lbl_playerSubZone);
-            this.groupBox2.Controls.Add(this.lbl_playerZone);
-            this.groupBox2.Controls.Add(this.lbl_playerAccountName);
-            this.groupBox2.Controls.Add(this.lbl_playerRace);
-            this.groupBox2.Controls.Add(this.lbl_playerClass);
-            this.groupBox2.Controls.Add(this.lbl_playerZ);
-            this.groupBox2.Controls.Add(this.lbl_playerY);
-            this.groupBox2.Controls.Add(this.lbl_playerX);
-            this.groupBox2.Location = new System.Drawing.Point(5, 4);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(170, 241);
-            this.groupBox2.TabIndex = 8;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Player";
+            this.grp_Player.Controls.Add(this.lbl_playerLevel);
+            this.grp_Player.Controls.Add(this.pBar_playerExperience);
+            this.grp_Player.Controls.Add(this.pBar_playerMana);
+            this.grp_Player.Controls.Add(this.pBar_playerHealth);
+            this.grp_Player.Controls.Add(this.lbl_playerSubZone);
+            this.grp_Player.Controls.Add(this.lbl_playerZone);
+            this.grp_Player.Controls.Add(this.lbl_playerAccountName);
+            this.grp_Player.Controls.Add(this.lbl_playerRace);
+            this.grp_Player.Controls.Add(this.lbl_playerClass);
+            this.grp_Player.Controls.Add(this.lbl_playerZ);
+            this.grp_Player.Controls.Add(this.lbl_playerY);
+            this.grp_Player.Controls.Add(this.lbl_playerX);
+            this.grp_Player.Location = new System.Drawing.Point(5, 4);
+            this.grp_Player.Margin = new System.Windows.Forms.Padding(4);
+            this.grp_Player.Name = "grp_Player";
+            this.grp_Player.Padding = new System.Windows.Forms.Padding(4);
+            this.grp_Player.Size = new System.Drawing.Size(170, 241);
+            this.grp_Player.TabIndex = 8;
+            this.grp_Player.TabStop = false;
+            this.grp_Player.Text = "Player";
             // 
             // lbl_playerLevel
             // 
@@ -625,6 +626,14 @@ namespace ZzukBot.Forms
             this.runToolStripMenuItem.Text = "Run";
             this.runToolStripMenuItem.Click += new System.EventHandler(this.runToolStripMenuItem_Click);
             // 
+            // pauseToolStripMenuItem
+            // 
+            this.pauseToolStripMenuItem.Enabled = false;
+            this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
+            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.pauseToolStripMenuItem.Text = "Pause";
+            this.pauseToolStripMenuItem.Click += new System.EventHandler(this.pauseToolStripMenuItem_Click);
+            // 
             // stopToolStripMenuItem
             // 
             this.stopToolStripMenuItem.Enabled = false;
@@ -684,14 +693,6 @@ namespace ZzukBot.Forms
             this.lbl_Runtime.Name = "lbl_Runtime";
             this.lbl_Runtime.Size = new System.Drawing.Size(0, 17);
             // 
-            // pauseToolStripMenuItem
-            // 
-            this.pauseToolStripMenuItem.Enabled = false;
-            this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
-            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
-            this.pauseToolStripMenuItem.Text = "Pause";
-            this.pauseToolStripMenuItem.Click += new System.EventHandler(this.pauseToolStripMenuItem_Click);
-            // 
             // GraphicalMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -712,10 +713,10 @@ namespace ZzukBot.Forms
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.grp_Target.ResumeLayout(false);
+            this.grp_Target.PerformLayout();
+            this.grp_Player.ResumeLayout(false);
+            this.grp_Player.PerformLayout();
             this.tp_InGameChat.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgChat)).EndInit();
@@ -759,8 +760,7 @@ namespace ZzukBot.Forms
         private System.Windows.Forms.ToolStripMenuItem newsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem dEVToolStripMenuItem;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox grp_Player;
         internal System.Windows.Forms.Label lbl_targetId;
         internal System.Windows.Forms.Label lbl_targetFaction;
         internal System.Windows.Forms.Label lbl_targetZ;
@@ -787,6 +787,7 @@ namespace ZzukBot.Forms
         internal System.Windows.Forms.Label lbl_TargetLevel;
         internal System.Windows.Forms.Label lbl_TargetCreatureType;
         internal System.Windows.Forms.ToolStripMenuItem pauseToolStripMenuItem;
+        internal System.Windows.Forms.GroupBox grp_Target;
     }
 }
 

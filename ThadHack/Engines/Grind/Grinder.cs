@@ -226,6 +226,8 @@ namespace ZzukBot.Engines.Grind
                             var target = ObjectManager.Target;
                             if (target != null)
                             {
+                                GuiCore.MainForm.grp_Target.Visible = true;
+
                                 GuiCore.MainForm.lbl_targetX.Text = "X: " + target.Position.X.ToString();
                                 GuiCore.MainForm.lbl_targetY.Text = "Z: " + target.Position.Y.ToString();
                                 GuiCore.MainForm.lbl_targetZ.Text = "Y: " + target.Position.Z.ToString();
@@ -241,6 +243,8 @@ namespace ZzukBot.Engines.Grind
                             }
                             else
                             {
+                                GuiCore.MainForm.grp_Target.Visible = false;
+
                                 GuiCore.MainForm.lbl_targetX.Text = "X: 0";
                                 GuiCore.MainForm.lbl_targetY.Text = "Z: 0";
                                 GuiCore.MainForm.lbl_targetZ.Text = "Y: 0";
@@ -263,17 +267,17 @@ namespace ZzukBot.Engines.Grind
                                 GuiCore.MainForm.lbl_playerX.Text = "X: " + player.Position.X.ToString();
                                 GuiCore.MainForm.lbl_playerY.Text = "Z: " + player.Position.Y.ToString();
                                 GuiCore.MainForm.lbl_playerZ.Text = "Y: " + player.Position.Z.ToString();
-
+                               
                                 GuiCore.MainForm.lbl_playerLevel.Text = "Level: " + player.Level.ToString();
                                 GuiCore.MainForm.lbl_playerClass.Text = "Class: " + player.Class.ToString();
                                 GuiCore.MainForm.lbl_playerRace.Text = "Race: " + player.Race.ToString();
-                                GuiCore.MainForm.lbl_playerAccountName.Text = "Account: " + Settings.Settings.AccountName;
+                                GuiCore.MainForm.lbl_playerAccountName.Text = "Name: " + player.Name;
 
                                 GuiCore.MainForm.pBar_playerHealth.Value = player.HealthPercent;
-                                if (player.MaxMana > 0) { GuiCore.MainForm.pBar_playerMana.Value = player.ManaPercent; GuiCore.MainForm.pBar_playerMana.ForeColor = System.Drawing.Color.Blue; }
-                                if (player.Class == API.Enums.ClassType.Rogue) { GuiCore.MainForm.pBar_playerMana.Value = player.Energy; GuiCore.MainForm.pBar_playerMana.ForeColor = System.Drawing.Color.Yellow; }
                                 if (player.Class == API.Enums.ClassType.Warrior) { GuiCore.MainForm.pBar_playerMana.Value = player.Rage; GuiCore.MainForm.pBar_playerMana.ForeColor = System.Drawing.Color.Red; }
-
+                                else if (player.Class == API.Enums.ClassType.Rogue) { GuiCore.MainForm.pBar_playerMana.Value = player.Energy; GuiCore.MainForm.pBar_playerMana.ForeColor = System.Drawing.Color.Yellow; }
+                                else { GuiCore.MainForm.pBar_playerMana.Value = player.ManaPercent; GuiCore.MainForm.pBar_playerMana.ForeColor = System.Drawing.Color.Blue; }
+                                
                                 if (player.Level < 60)
                                 {
                                     decimal tmpCurXp = player.CurrentXp;

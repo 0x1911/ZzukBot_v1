@@ -16,7 +16,7 @@ namespace ZzukBot.Engines.Grind.Info
             ResourceBlacklist = new List<ulong>();
         }
 
-        internal bool SearchGatherObjects()
+        internal bool GatherObjectInRange()
         {
             //do we even want to gather?
             if(!Settings.Settings.Mine && !Settings.Settings.Herb) { return false; }

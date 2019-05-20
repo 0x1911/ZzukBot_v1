@@ -18,7 +18,7 @@ namespace ZzukBot.Engines.Grind.States
         {
         }
 
-        internal override bool NeedToRun => Grinder.Access.Info.Gather.SearchGatherObjects() && !Grinder.Access.Info.Rest.NeedToDrink && !Grinder.Access.Info.Rest.NeedToEat;
+        internal override bool NeedToRun => !Grinder.Access.Info.Vendor.NeedToVendor && Grinder.Access.Info.Gather.GatherObjectInRange() && !Grinder.Access.Info.Rest.NeedToDrink && !Grinder.Access.Info.Rest.NeedToEat;
 
         internal override string Name => "Gathering";
 
