@@ -181,7 +181,15 @@ namespace ZzukBot.Settings
             GetElement("Mine",
                 ref Settings.Mine,
                 GuiCore.SettingsForm.cbMine);
-            
+
+            GetElement("DoRandomJumps",
+               ref Settings.DoRandomJumps,
+               GuiCore.SettingsForm.cbRandomJumps);
+
+            GetElement("MinimizeWorldRender",
+               ref Settings.MinimizeWorldRender,
+               GuiCore.SettingsForm.cbWorldRender);
+
             GetElement("WowExePath",
                ref Settings.WowExePath,
                GuiCore.SettingsForm.txt_WowPath);
@@ -288,9 +296,12 @@ namespace ZzukBot.Settings
             SaveElement("Herb", Settings.Herb);
             SaveElement("Mine", Settings.Mine);
 
+            SaveElement("DoRandomJumps", Settings.DoRandomJumps);
+            SaveElement("MinimizeWorldRender", Settings.MinimizeWorldRender);
+
             //SaveElement("CapFps", Options.CapFpsTo);
 
-            
+
             SaveElement("WowExePath", Settings.WowExePath);
             SaveElement("ProfilesDirectory", Settings.ProfilesDirectory);
             SaveElement("CCDirectory", Settings.CCDirectory);

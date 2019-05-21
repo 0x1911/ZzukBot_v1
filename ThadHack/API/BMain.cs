@@ -23,5 +23,15 @@ namespace ZzukBot.API
         public static bool IsInGame => API.BPreWorld.CurrentWindowName == "WorldFrame";
 
         public static bool IsOnCharSelect => API.BPreWorld.CurrentWindowName == "CharacterSelectUI";
+
+        public static bool ShouldMount()
+        {
+            if(!BMain.IsInGame || BMain.Me.IsDead || BMain.Me.IsInCampfire || BMain.Me.IsInCC || BMain.Me.IsSwimming || BMain.Me.IsConfused || BMain.Me.IsInCombat || BMain.Me.IsFleeing)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

@@ -68,6 +68,8 @@ namespace ZzukBot.Forms
             Settings.Settings.Herb = GuiCore.SettingsForm.cbHerb.Checked;
             Settings.Settings.Mine = GuiCore.SettingsForm.cbMine.Checked;
             Settings.Settings.LootUnits = GuiCore.SettingsForm.cbLootUnits.Checked;
+            Settings.Settings.DoRandomJumps = GuiCore.SettingsForm.cbRandomJumps.Checked;
+            Settings.Settings.MinimizeWorldRender = GuiCore.SettingsForm.cbWorldRender.Checked;
 
             #region settings - windows tabpage
             //wow window location
@@ -115,12 +117,7 @@ namespace ZzukBot.Forms
             EngineManager.StartProfileCreation(tmpNewProfileForm);
             tmpNewProfileForm.Show();
         }
-
-        private void cbIRCConnect_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void btn_ConnectIrc_Click(object sender, EventArgs e)
         {
             if (!GuiCore.SettingsForm.cbIRCConnect.Checked)

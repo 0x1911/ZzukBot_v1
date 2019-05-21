@@ -6,6 +6,7 @@ using System.Net;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZzukBot.AntiWarden;
 using ZzukBot.Constants;
 using ZzukBot.Engines;
 using ZzukBot.Engines.CustomClass;
@@ -133,6 +134,26 @@ namespace ZzukBot.Forms
             Helpers.WindowInteraction.SetBotWindow();
             #endregion
 
+            #region setup world render minimize if enabled in settings
+            if(Settings.Settings.MinimizeWorldRender)
+            {
+                Hack renderWorld = HookWardenMemScan.GetHack("RenderWorlObjectsPatch");
+
+                //setup render world patch if unknown to us
+                if (renderWorld == null)
+                {
+                    var RenderWorldPatch = new Hack(ZzukBot.Constants.Offsets.Hacks.RenderDisable, new byte[] { 0x00 }, "RenderWorlObjectsPatch");
+                    HookWardenMemScan.AddHack(RenderWorldPatch);
+
+                    renderWorld = HookWardenMemScan.GetHack("RenderWorlObjectsPatch");
+                }
+
+                if (!renderWorld.IsActivated && Settings.Settings.MinimizeWorldRender)
+                {
+                    renderWorld.Apply();
+                }
+            }            
+            #endregion
             IrcMonitor.Instance.MessageReceived += ChannelMessageRecieved;
             GuiCore.SettingsForm.SetupIrc();
             Enums.DynamicFlags.AdjustToRealm();

@@ -16,6 +16,9 @@ namespace ZzukBot.Engines.Grind
 
         internal static void RandomJump()
         {
+            if(!Settings.Settings.DoRandomJumps) { return; }
+
+
             if (Wait.For("RandomJump1", 1000))
             {
                 var ranNumber = ran.Next(1, 10);

@@ -57,5 +57,8 @@
         internal static string WowWindowHeight = "0";
         internal static string BotWindowX = "0";
         internal static string BotWindowY = "0";
+
+        internal static bool DoRandomJumps = false;
+        internal static bool MinimizeWorldRender = false;
     }
 }

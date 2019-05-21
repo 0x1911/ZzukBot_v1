@@ -7,9 +7,14 @@ namespace ZzukBot.Game.Static
         public static void SelectHelpfulPotion()
         {
             string WeakTrollBloodPotion = "Weak Troll's Blood Potion";
+            string StrongTrollBloodPotion = "Strong Troll's Blood Potion";
             if (!API.BMain.Me.GotAura("Regeneration") && API.BMain.Me.Inventory.ItemCount(WeakTrollBloodPotion) != 0)
             {
                 API.BMain.Me.Inventory.UseItemByName(WeakTrollBloodPotion);
+            }
+            else if (!API.BMain.Me.GotAura("Regeneration") && API.BMain.Me.Inventory.ItemCount(StrongTrollBloodPotion) != 0)
+            {
+                API.BMain.Me.Inventory.UseItemByName(StrongTrollBloodPotion);
             }
 
             string LionsStrengthElixir = "Elixir of Lion's Strength";

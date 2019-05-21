@@ -178,7 +178,7 @@ namespace ZzukBot.Forms
             }
 
             #region toggle render world
-            if (!renderWorld.IsActivated)
+            if (!renderWorld.IsActivated && Settings.Settings.MinimizeWorldRender)
             {
                 renderWorld.Apply();
                 return;
