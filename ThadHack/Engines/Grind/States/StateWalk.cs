@@ -34,7 +34,9 @@ namespace ZzukBot.Engines.Grind.States
                 return;
 
             Shared.RandomJump();
-            
+
+            Grinder.Access.Info.Mount.ShouldMount = true;
+
             // ReSharper disable once ConvertIfStatementToConditionalTernaryExpression
             if (Grinder.Access.Info.PathAfterFightToWaypoint.AfterFightMovement)
             {

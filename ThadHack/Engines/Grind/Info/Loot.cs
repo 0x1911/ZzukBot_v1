@@ -22,12 +22,36 @@ namespace ZzukBot.Engines.Grind.Info
             get
             {
                 var mobs = ObjectManager.Npcs;
-                return mobs
-                    .Where(i => (i.CanBeLooted && (i.TappedByMe || !i.TappedByOther) ||
-                                 (Settings.Settings.SkinUnits && i.IsSkinable && (Settings.Settings.NinjaSkin || i.TappedByMe || !i.TappedByOther))
-                        )
+
+                #region ninja skin
+                if (Settings.Settings.NinjaSkin)
+                {
+                    return mobs
+                    .Where(i => (i.IsSkinable
                                 && !LootBlacklist.Contains(i.Guid)
-                                && !i.IsSwimming
+                                && (Calc.Distance3D(i.Position, ObjectManager.Player.Position) < 32)))
+                                .OrderBy(i => Calc.Distance3D(i.Position, ObjectManager.Player.Position))
+                    .FirstOrDefault();
+                }
+                #endregion
+
+                #region standard skin own units
+                if(Settings.Settings.SkinUnits)
+                {
+                    return mobs
+                    .Where(i => (i.IsSkinable
+                                && (i.TappedByMe || !i.TappedByOther)
+                                && !LootBlacklist.Contains(i.Guid)
+                                && (Calc.Distance3D(i.Position, ObjectManager.Player.Position) < 32)))
+                                .OrderBy(i => Calc.Distance3D(i.Position, ObjectManager.Player.Position))
+                    .FirstOrDefault();
+                }
+                #endregion
+
+                //just return the standard loot mobs
+                return mobs
+                    .Where(i => (i.CanBeLooted && i.TappedByMe)
+                                && !LootBlacklist.Contains(i.Guid)
                                 && Calc.Distance3D(i.Position, ObjectManager.Player.Position) < 32)
                     .OrderBy(i => Calc.Distance3D(i.Position, ObjectManager.Player.Position))
                     .FirstOrDefault();

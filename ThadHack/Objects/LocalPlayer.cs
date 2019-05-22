@@ -55,6 +55,7 @@ namespace ZzukBot.Objects
 
         internal bool IsPartyLeader => API.BParty.IsPartyLeader();
 
+        internal bool IsIndoors { get; set; }
 
         /// <summary>
         ///     Position of corpse
@@ -120,7 +121,7 @@ namespace ZzukBot.Objects
                 return tmp != null;
             }
         }
-
+        
         /// <summary>
         ///     Are we looting?
         /// </summary>

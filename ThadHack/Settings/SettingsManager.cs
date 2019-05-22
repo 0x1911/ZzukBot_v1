@@ -229,6 +229,11 @@ namespace ZzukBot.Settings
             GetElement("BotWindowY",
                 ref Settings.BotWindowY,
                 GuiCore.SettingsForm.txt_BotWindowY);
+
+
+            GetElement("MountName",
+                ref Settings.MountName,
+                GuiCore.SettingsForm.txt_MountName);
         }
         /// <summary>
         /// First run settings setup
@@ -314,6 +319,8 @@ namespace ZzukBot.Settings
 
             SaveElement("BotWindowX", Settings.BotWindowX);
             SaveElement("BotWindowY", Settings.BotWindowY);
+
+            SaveElement("MountName", Settings.MountName);
             #endregion
 
             //update our primitive sell protected items list

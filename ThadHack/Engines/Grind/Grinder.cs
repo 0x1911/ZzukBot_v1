@@ -10,8 +10,6 @@ using ZzukBot.FSM;
 using ZzukBot.Helpers;
 using ZzukBot.Hooks;
 using ZzukBot.Mem;
-using ZzukBot.Settings;
-using System.Runtime.InteropServices;
 
 namespace ZzukBot.Engines.Grind
 {
@@ -80,6 +78,14 @@ namespace ZzukBot.Engines.Grind
             else if (e.Message.Contains("that while moving"))
             {
                 ObjectManager.Player.StopMovement(Constants.Enums.ControlBits.All);
+            }
+            else if (e.Message.Contains("You can't mount here") || e.Message.Contains("Can only use outside"))
+            {
+                var player = ObjectManager.Player;
+                if (player != null)
+                {
+                    player.IsIndoors = true;
+                }
             }
         }
 
@@ -381,6 +387,7 @@ namespace ZzukBot.Engines.Grind
             var tmpStates = new List<State>
             {
                 new StateFishing(700),
+                new StateMountUp(699),
                 new stateWaitForMembers(600),
                 new StateFollowLeader(450),
                 new StateIdle(int.MinValue),

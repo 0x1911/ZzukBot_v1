@@ -125,6 +125,9 @@
             this.reloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cbWorldRender = new System.Windows.Forms.CheckBox();
+            this.grp_Mount = new System.Windows.Forms.GroupBox();
+            this.txt_MountName = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tP_General.SuspendLayout();
             this.gbRelog.SuspendLayout();
@@ -155,6 +158,7 @@
             this.groupBox3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.grp_Mount.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -249,6 +253,7 @@
             // tP_Behaviour
             // 
             this.tP_Behaviour.BackColor = System.Drawing.SystemColors.Control;
+            this.tP_Behaviour.Controls.Add(this.grp_Mount);
             this.tP_Behaviour.Controls.Add(this.grp_ProtectedItems);
             this.tP_Behaviour.Controls.Add(this.gbMisc);
             this.tP_Behaviour.Controls.Add(this.gbChat);
@@ -522,9 +527,9 @@
             this.gbVendoring.Controls.Add(this.nudFreeSlots);
             this.gbVendoring.Controls.Add(this.lKeepQuality);
             this.gbVendoring.Controls.Add(this.lFreeSlots);
-            this.gbVendoring.Location = new System.Drawing.Point(6, 246);
+            this.gbVendoring.Location = new System.Drawing.Point(5, 246);
             this.gbVendoring.Name = "gbVendoring";
-            this.gbVendoring.Size = new System.Drawing.Size(167, 88);
+            this.gbVendoring.Size = new System.Drawing.Size(149, 88);
             this.gbVendoring.TabIndex = 18;
             this.gbVendoring.TabStop = false;
             this.gbVendoring.Text = "Vendoring";
@@ -1220,6 +1225,33 @@
             this.cbWorldRender.Text = "Minimize GPU Usage";
             this.cbWorldRender.UseVisualStyleBackColor = true;
             // 
+            // grp_Mount
+            // 
+            this.grp_Mount.Controls.Add(this.txt_MountName);
+            this.grp_Mount.Controls.Add(this.label5);
+            this.grp_Mount.Location = new System.Drawing.Point(160, 293);
+            this.grp_Mount.Name = "grp_Mount";
+            this.grp_Mount.Size = new System.Drawing.Size(187, 54);
+            this.grp_Mount.TabIndex = 27;
+            this.grp_Mount.TabStop = false;
+            this.grp_Mount.Text = "Mount";
+            // 
+            // txt_MountName
+            // 
+            this.txt_MountName.Location = new System.Drawing.Point(73, 21);
+            this.txt_MountName.Name = "txt_MountName";
+            this.txt_MountName.Size = new System.Drawing.Size(100, 20);
+            this.txt_MountName.TabIndex = 4;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 24);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Mount Name";
+            // 
             // GraphicalSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1277,6 +1309,8 @@
             this.tableLayoutPanel1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.grp_Mount.ResumeLayout(false);
+            this.grp_Mount.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1379,5 +1413,8 @@
         internal System.Windows.Forms.TextBox txt_WowPath;
         internal System.Windows.Forms.CheckBox cbRandomJumps;
         internal System.Windows.Forms.CheckBox cbWorldRender;
+        private System.Windows.Forms.GroupBox grp_Mount;
+        internal System.Windows.Forms.TextBox txt_MountName;
+        private System.Windows.Forms.Label label5;
     }
 }

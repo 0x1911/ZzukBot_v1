@@ -31,11 +31,13 @@ namespace ZzukBot.Engines.Grind.States
             if (nextResource == null || Grinder.Access.Info.Gather.IsOnGatherBlacklist(nextResource.Guid)) { if (Wait.For("GatherTimeout", 5000)) Wait.Remove("Gathering"); return; }
             
             float nextResourceDistance = Calc.Distance3D(nextResource.Position, ObjectManager.Player.Position);
-          //  Helpers.Logger.Append("Want to gather " + nextResource.Name + " in " + (int)nextResourceDistance);
+            //  Helpers.Logger.Append("Want to gather " + nextResource.Name + " in " + (int)nextResourceDistance);
+
             if (nextResourceDistance > 4.5)
             {
                 //lets sprinkle in a random jump once in while
                 Shared.RandomJump();
+                Grinder.Access.Info.Mount.ShouldMount = true;
 
                 var tu = Grinder.Access.Info.PathToPosition.ToPos(nextResource.Position);
                 ObjectManager.Player.CtmTo(tu);
@@ -52,6 +54,7 @@ namespace ZzukBot.Engines.Grind.States
             }
             else
             {
+                Grinder.Access.Info.Mount.ShouldMount = false;
                 randomOpenLootDelay = ran.Next(200, 550) + Grinder.Access.Info.Latency;
                 randomTakeLootDelay = ran.Next(50, 250) + Grinder.Access.Info.Latency;
 

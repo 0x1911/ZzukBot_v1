@@ -18,7 +18,8 @@ namespace ZzukBot.Engines.Grind.States
         internal override void Run()
         {
             Shared.RandomJump();
-                        
+            Grinder.Access.Info.Mount.ShouldMount = true;
+
             var tu = Grinder.Access.Info.PathToPosition.ToPos(Grinder.Access.Info.Waypoints.CurrentWaypoint);
             ObjectManager.Player.CtmTo(tu);           
         }

@@ -28,6 +28,12 @@ namespace ZzukBot.Game.Static
             {
                 API.BMain.Me.Inventory.UseItemByName(MinorDefenseElixir);
             }
+
+            string MinorFortitudeElixier = "Elixir of Minor Fortitude";
+            if (!API.BMain.Me.GotAura("Health") && API.BMain.Me.Inventory.ItemCount(MinorFortitudeElixier) != 0)
+            {
+                API.BMain.Me.Inventory.UseItemByName(MinorFortitudeElixier);
+            }
         }
 
         public static Dictionary<int, int> DrinksDictionary = new Dictionary<int, int>()
@@ -74,6 +80,7 @@ namespace ZzukBot.Game.Static
             { 422, 15 },    //Dwarven Mild
             { 4542, 15 },   //Moist Cornbread
             { 3770, 15 },   //Mutton Chop
+            { 1487, 25 },   //Conjured Pumpernickel
             { 1707, 25 },   //Stormwind Brie
             { 4539, 25 },   //Goldenbark Apple
             { 4544, 25 },   //Mulgore Spice Bread

@@ -27,6 +27,9 @@ namespace ZzukBot.Engines.Grind.States
         {
             var mob = Grinder.Access.Info.Loot.LootableMob;
             if (mob == null) return;
+
+
+            Grinder.Access.Info.Mount.ShouldMount = false;
             if (mob.Guid != oldMobGuid)
             {
                 oldMobGuid = mob.Guid;
@@ -55,26 +58,38 @@ namespace ZzukBot.Engines.Grind.States
                 randomTakeLootDelay = ran.Next(50, 250) + Grinder.Access.Info.Latency;
             }
             else
-            {
-                if (mob != null &&!ObjectManager.Player.IsLooting && !mob.IsKilledAndLooted)
-                {
-                   // var auto = mob.IsSkinable;
-                    if (Wait.For("LootClick", randomOpenLootDelay))
-                        ObjectManager.Player.RightClick(mob);
-                }
-                else if(mob != null && !mob.IsKilledAndLooted)
+            {                                
+                // standard looting
+                if(mob != null)
                 {
                     if (Wait.For("LootTake12", randomTakeLootDelay))
                     {
                         ObjectManager.Player.LootAll();
-                        if (ObjectManager.Player.LootSlots == 0)
+                      /*  if (ObjectManager.Player.LootSlots == 0)
+                        {
                             Grinder.Access.Info.Loot.AddToLootBlacklist(mob.Guid);
-                        Wait.Remove("Looting");
+                        } */
                     }
                 }
-                if (Wait.For("Looting", 1300))
+
+                // skin unit if set so in settings
+                if (mob != null && mob.IsSkinable && (Settings.Settings.SkinUnits || Settings.Settings.NinjaSkin))
+                {
+                    // var auto = mob.IsSkinable;
+                    if (Wait.For("LootClick", randomOpenLootDelay))
+                    {
+                        ObjectManager.Player.RightClick(mob);
+                    }
+                }
+                                
+                int LootTimeOut = 1500;
+                //increase lootTimeOut if we need to skin the(a) mob!
+                if(Settings.Settings.SkinUnits || Settings.Settings.NinjaSkin) { LootTimeOut = 5500; }
+                // everything loot related seems to be done.. blacklist the mob
+                if (mob != null && (!Settings.Settings.SkinUnits || !mob.IsSkinable) && Wait.For("Looting", LootTimeOut))
                 {
                     Grinder.Access.Info.Loot.AddToLootBlacklist(mob.Guid);
+                    Wait.Remove("Looting");
                 }
             }
         }

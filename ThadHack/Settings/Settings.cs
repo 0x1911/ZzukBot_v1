@@ -60,5 +60,7 @@
 
         internal static bool DoRandomJumps = false;
         internal static bool MinimizeWorldRender = false;
+
+        internal static string MountName = "";
     }
 }

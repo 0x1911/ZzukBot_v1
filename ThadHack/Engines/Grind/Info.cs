@@ -33,6 +33,7 @@ namespace ZzukBot.Engines.Grind
             SpiritWalk = new _SpiritWalk();
             RareSpotter = new _RareSpotter();
             BreakHelper = new _BreakHelper();
+            Mount = new Mount();
         }
 
         #endregion
@@ -56,5 +57,6 @@ namespace ZzukBot.Engines.Grind
         internal _PathBackup PathBackup { get; set; }
         internal _PathForceBackup PathForceBackup { get; set; }
         internal _PathManager PathManager { get; set; }
+        internal Mount Mount { get; set; }
     }
 }

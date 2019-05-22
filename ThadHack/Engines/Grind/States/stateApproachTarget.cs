@@ -39,8 +39,12 @@ namespace ZzukBot.Engines.Grind.States
             Grinder.Access.Info.Target.SearchDirect = true;
             Grinder.Access.Info.Combat.LastFightTick = Environment.TickCount + ran.Next(50, 100);
 
+            Grinder.Access.Info.Mount.ShouldMount = false;
             if (target != null)
             {
+                //start auto attack
+                ObjectManager.Player.Spells.Attack();
+
                 try
                 {
                     if (Grinder.Access.Info.Combat.Attackers.Count != 0 &&

@@ -33,6 +33,7 @@ namespace ZzukBot.Engines.Grind.States
                 {
                     //lets sprinkle in a random jump once in while
                     Shared.RandomJump();
+                    Grinder.Access.Info.Mount.ShouldMount = true;
 
                     var to = Grinder.Access.Info.PathToPosition.ToPos(tmpNpcCoords);
                     ObjectManager.Player.CtmTo(to);

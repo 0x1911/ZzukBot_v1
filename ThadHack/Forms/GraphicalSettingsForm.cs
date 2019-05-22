@@ -71,6 +71,8 @@ namespace ZzukBot.Forms
             Settings.Settings.DoRandomJumps = GuiCore.SettingsForm.cbRandomJumps.Checked;
             Settings.Settings.MinimizeWorldRender = GuiCore.SettingsForm.cbWorldRender.Checked;
 
+            Settings.Settings.MountName = GuiCore.SettingsForm.txt_MountName.Text;
+
             #region settings - windows tabpage
             //wow window location
             Settings.Settings.WowWindowX = GuiCore.SettingsForm.txt_WowWindowX.Text;
