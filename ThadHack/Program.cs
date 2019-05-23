@@ -2,26 +2,23 @@
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Threading;
 using System.Windows.Forms;
 using ZzukBot.Constants;
-using ZzukBot.Engines.CustomClass;
-using ZzukBot.Forms;
 using ZzukBot.Helpers;
 using ZzukBot.OOP;
-using ZzukBot.Properties;
 using ZzukBot.Settings;
-using System.Management;
 
 namespace ZzukBot
 {
     [Obfuscation(Feature = "Apply to member * when method or constructor: virtualization", Exclude = false)]
     internal static class Program
     {
+        private static bool debugMode = false;
+
         private const int mmapVersionConst = 2;
 
         private static EventWaitHandle s_event;
@@ -87,13 +84,14 @@ namespace ZzukBot
             }
             else
             {
-#if DEBUG
-                Debugger.Launch();
-                WinImports.AllocConsole();
-                Logger.Append("DEBUG BUILD");
-                DebugAssist.Init();
+                if (debugMode)
+                {
+                    Debugger.Launch();
+                    WinImports.AllocConsole();
+                    Logger.Append("DEBUG BUILD");
+                    DebugAssist.Init();
+                }
 
-#endif
                 SetPaths();
                 SetRealmlist();
                 try

@@ -524,8 +524,10 @@ namespace MiniMage
                         if (!tmpMember.GotAura("Arcane Intellect") && this.Player.GetSpellRank("Arcane Intellect") != 0)
                         {
                             if (this.Player.TargetPartyMember(tmpMember))
+                            { 
                                 this.Player.Cast("Arcane Intellect");
-                            return false;
+                                ZzukBot.API.BMain.Me.ClearTarget();
+                            }
                         }
                     }
                 }

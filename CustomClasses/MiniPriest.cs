@@ -331,7 +331,10 @@ namespace MiniPriest
                     if (!tmpMember.GotAura("Renew") && tmpMember.HealthPercent <= 90 && this.Player.GetSpellRank("Renew") != 0)
                     {
                         if (this.Player.TargetPartyMember(tmpMember))
+                        { 
                             this.Player.Cast("Renew");
+                            ZzukBot.API.BMain.Me.ClearTarget();
+                        }
                     }
                     //shield
                     if (this.Player.GetSpellRank("Power Word: Shield") != 0 && tmpMember.HealthPercent <= 30)
@@ -339,19 +342,29 @@ namespace MiniPriest
                         if (!tmpMember.GotAura("Power Word: Shield") && !tmpMember.GotDebuff("Weakened Soul") && this.Player.ManaPercent >= 10)
                         {
                             if (this.Player.TargetPartyMember(tmpMember))
+                            { 
                                 this.Player.Cast("Power Word: Shield");
+                                ZzukBot.API.BMain.Me.ClearTarget();
+                            }
                         }
                     }
                     //healing
-                    if (this.Player.GetSpellRank("Heal") != 0 && tmpMember.HealthPercent <= 40)
+                    if (this.Player.GetSpellRank("Heal") != 0 && tmpMember.HealthPercent <= 60)
                     {
                         if (this.Player.TargetPartyMember(tmpMember))
+                        { 
                             this.Player.Cast("Heal");
+                            ZzukBot.API.BMain.Me.ClearTarget();
+                        }
                     }
-                    if (this.Player.GetSpellRank("Lesser Heal") != 0 && tmpMember.HealthPercent <= 50)
+                    if (this.Player.GetSpellRank("Lesser Heal") != 0 && tmpMember.HealthPercent <= 70 && this.Player.GetSpellRank("Heal") == 0)
                     {
                         if (this.Player.TargetPartyMember(tmpMember))
+                        {
                             this.Player.Cast("Lesser Heal");
+                            ZzukBot.API.BMain.Me.ClearTarget();
+                        }
+                            
                     }
                 }
             }
@@ -501,34 +514,35 @@ namespace MiniPriest
                 }
                 #region party buffing
                 try
-                { 
-                if (ZzukBot.API.BParty.IsInParty)
                 {
-                    List<ZzukBot.Objects.WoWUnit> tmpPartyMemberList = BParty.GetMembers();
-
-                    foreach (ZzukBot.Objects.WoWUnit tmpMember in tmpPartyMemberList)
+                    if (ZzukBot.API.BParty.IsInParty)
                     {
-                        //member not dead, out of range
-                        if (tmpMember.HealthPercent <= 1 || tmpMember.DistanceToPlayer > 28 ) { continue; }
+                        List<ZzukBot.Objects.WoWUnit> tmpPartyMemberList = BParty.GetMembers();
 
-                        ZzukBot.API.Helper.WriteLogToConsole("checking " + tmpMember.PlayerName + " (" + tmpMember.Guid + ")");
-                        
-                        if (this.Player.IsWandEquipped())
+                        foreach (ZzukBot.Objects.WoWUnit tmpMember in tmpPartyMemberList)
                         {
-                            this.Player.StopWand();
-                        }
+                            //member not dead, out of range
+                            if (tmpMember.HealthPercent <= 1 || tmpMember.DistanceToPlayer > 28) { continue; }
 
-                        if (!tmpMember.GotAura("Power Word: Fortitude") && this.Player.GetSpellRank("Power Word: Fortitude") != 0)
-                        {
-                            ZzukBot.API.Helper.WriteLogToConsole("need PWF! -> " + tmpMember.PlayerName + " (" + tmpMember.Guid + ")");
-                            if (this.Player.TargetPartyMember(tmpMember))
+                            ZzukBot.API.Helper.WriteLogToConsole("checking " + tmpMember.PlayerName + " (" + tmpMember.Guid + ")");
+
+                            if (this.Player.IsWandEquipped())
                             {
-                                ZzukBot.API.Helper.WriteLogToConsole("set target to " + tmpMember.PlayerName + " (" + tmpMember.Guid + ")");                                
-                                this.Player.TryCast("Power Word: Fortitude");
+                                this.Player.StopWand();
                             }
-                        }                        
+
+                            if (!tmpMember.GotAura("Power Word: Fortitude") && this.Player.GetSpellRank("Power Word: Fortitude") != 0)
+                            {
+                                ZzukBot.API.Helper.WriteLogToConsole("need PWF! -> " + tmpMember.PlayerName + " (" + tmpMember.Guid + ")");
+                                if (this.Player.TargetPartyMember(tmpMember))
+                                {
+                                    ZzukBot.API.Helper.WriteLogToConsole("set target to " + tmpMember.PlayerName + " (" + tmpMember.Guid + ")");
+                                    this.Player.TryCast("Power Word: Fortitude");
+                                    ZzukBot.API.BMain.Me.ClearTarget();
+                                }
+                            }
+                        }
                     }
-                }
                 }
                 catch
                 {

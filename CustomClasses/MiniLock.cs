@@ -48,6 +48,7 @@
            
             public override void Fight()
             {
+            MultiDotting();
                 // Send our pet to attack (He should already be doing this anyway)
                 if (this.Player.GotPet() && Pet.HealthPercent > 0)
                 {
@@ -226,8 +227,51 @@
                     }
                 }
             }
-           
-            public override void Rest()
+
+        public bool MultiDotting()
+        {
+            if (this.Attackers.Count >= 2 && this.Player.ManaPercent >= 40)
+            {
+                var properTarget = this.Attackers.FirstOrDefault(t => t.HealthPercent <= 99);
+                int newAddH = this.Attackers.Max(Mob => Mob.HealthPercent);
+                var newAdd = this.Attackers.SingleOrDefault(Mob => Mob.HealthPercent == newAddH);
+                if (newAdd != null && newAdd.Guid != this.Target.Guid && !newAdd.GotDebuff("Shadow Word: Pain"))
+                {
+                    this.Player.SetTargetTo(newAdd);
+
+                    //Corruption
+                    if (this.Player.CanUse("Corruption") && this.Player.GetSpellRank("Corruption") != 0 && !this.Target.GotDebuff("Corruption") && !this.Target.GotDebuff("Drain Life") && this.Target.HealthPercent >= 12 && this.Player.ManaPercent >= 10)
+                    {
+                        this.Player.CastWait("Corruption", 500);
+                    }
+                    //Agony
+                    if (this.Player.CanUse("Curse of Agony") && this.Player.GetSpellRank("Curse of Agony") != 0 && !this.Target.GotDebuff("Curse of Agony") && !this.Target.GotDebuff("Drain Life") && this.Target.HealthPercent >= 12 && this.Player.ManaPercent >= 10)
+                    {
+                        this.Player.CastWait("Curse of Agony", 500);
+                    }
+                    //SL
+                    if (this.Player.CanUse("Siphon Life") && this.Player.GetSpellRank("Siphon Life") != 0 && !this.Target.GotDebuff("Siphon Life") && !this.Target.GotDebuff("Drain Life") && this.Target.HealthPercent >= 12 && this.Player.ManaPercent >= 10)
+                    {
+                        this.Player.CastWait("Siphon Life", 500);
+                    }
+                    //Drain Life
+                    if (this.Player.HealthPercent <= 60 && this.Player.ManaPercent >= 20 && !this.Target.GotDebuff("Drain Life") && this.Player.GetSpellRank("Drain Life") != 0 && this.Target.HealthPercent >= 10)
+                    {
+                        this.SetCombatDistance(19);
+                        this.Player.CastWait("Drain Life", 1000);
+                    }
+                    //Immolate
+                    if (this.Player.CanUse("Immolate") && this.Player.GetSpellRank("Immolate") != 0 && !this.Target.GotDebuff("Immolate") && !this.Target.GotDebuff("Drain Life") && this.Target.HealthPercent >= 12 && this.Player.ManaPercent >= 10)
+                    {
+                        this.Player.CastWait("Immolate", 500);
+                    }
+                }
+                this.Player.SetTargetTo(properTarget);
+            }
+
+            return true;
+        }
+        public override void Rest()
             {
                 if (lifeTapAtRest)
                 {
@@ -293,7 +337,7 @@
                     return false;
                 }
                 //Summon Pet
-                if (this.Player.IsCasting == "")
+                if (!ZzukBot.API.BParty.IsInParty && this.Player.IsCasting == "")
                 {
                     if (this.Player.GotPet())
                     {
@@ -323,7 +367,7 @@
                             return false;   
                         }
                     }
-                }//End Summon Pet
+                } //End Summon Pet
                 //Create Health Stones
                 if (this.Player.GetSpellRank("Create Healthstone (Major)") != 0 && this.Player.ItemCount("Major Healthstone") < 1 && this.Player.ItemCount("Soul Shard") >= 2)
                 {

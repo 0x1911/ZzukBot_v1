@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using ZzukBot.Engines.Grind.Info;
+﻿using ZzukBot.Engines.Grind.Info;
 using ZzukBot.Engines.Grind.Info.Path;
 
 namespace ZzukBot.Engines.Grind
 {
-    internal class _Info
+    internal class SessionContainer
     {
         internal int Latency = 0;
 
@@ -13,7 +12,7 @@ namespace ZzukBot.Engines.Grind
         /// <summary>
         ///     Constructor
         /// </summary>
-        internal _Info()
+        internal SessionContainer()
         {
             Waypoints = new _Waypoints();
             Rest = new _Rest();

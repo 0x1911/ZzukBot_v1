@@ -29,7 +29,7 @@ namespace ZzukBot.Engines.Grind
         // the fsm for our grindbot
         internal _Engine Engine { get; private set; }
         // ingame informations
-        internal _Info Info { get; private set; }
+        internal SessionContainer Info { get; private set; }
         // the last state that got run
         internal string LastState { get; private set; }
 
@@ -378,7 +378,7 @@ namespace ZzukBot.Engines.Grind
             }
 
             StuckHelper = new _StuckHelper();
-            Info = new _Info();
+            Info = new SessionContainer();
             if (Profile.ProfileValid)
             {
                 Info.Waypoints.LoadFirstWaypointsAsync(parCallback);

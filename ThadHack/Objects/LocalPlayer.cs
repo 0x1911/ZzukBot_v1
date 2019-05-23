@@ -484,6 +484,11 @@ namespace ZzukBot.Objects
             TargetGuid = Guid;
         }
 
+        public void ClearTarget()
+        {
+            Functions.SetTarget(0);
+            TargetGuid = 0;
+        }
         /// <summary>
         ///     Execute LUA code
         /// </summary>
@@ -564,5 +569,6 @@ namespace ZzukBot.Objects
             tmpTalentTree.LearnTalents(targetTalentTreeString);
         }
         #endregion
+
     }
 }

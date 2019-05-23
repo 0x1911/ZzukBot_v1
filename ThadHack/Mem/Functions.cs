@@ -407,12 +407,6 @@ namespace ZzukBot.Mem
         private delegate int UnitReactionDelegate(IntPtr unitPtr1, IntPtr unitPtr2);
 
         /// <summary>
-        ///     How many items can we loot?
-        /// </summary>
-        /// <summary>
-        ///     Get the current map id
-        /// </summary>
-        /// <summary>
         ///     Set the target by guid
         /// </summary>
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
