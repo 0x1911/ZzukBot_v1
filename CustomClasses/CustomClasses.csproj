@@ -45,7 +45,6 @@
     <Compile Include="MiniMage.cs" />
     <Compile Include="MiniPriest.cs" />
     <Compile Include="MiniWarrior.cs" />
-    <Compile Include="PartyPriest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
